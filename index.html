@@ -1,0 +1,534 @@
+<!doctype html>
+<html lang="hu">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PEAK AI — AI telefonos asszisztens vállalkozásoknak</title>
+<meta name="description" content="AI telefonos asszisztens magyarul. Felveszi a telefont, amikor Ön dolgozik, és rögzíti az időpontot. PEAK AI, Szeged.">
+<meta property="og:title" content="PEAK AI — Soha ne maradjon megválaszolatlan hívás">
+<meta property="og:description" content="AI telefonos asszisztens magyarul, kis- és középvállalkozásoknak.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://peakai.hu">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0E1626; --ink-2:#1B2740; --body:#3F4A60; --muted:#6B7689;
+  --line:#E2E5EC; --bg:#FCFBF9; --card:#FFFFFF;
+  --accent:#12A79B; --accent-dark:#0D8C82; --accent-soft:#E6F7F5;
+  --accent-bright:#4FE0D8;
+  --ok:#12A79B; --ok-soft:#E6F7F5;
+  --max:1120px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; background:var(--bg); color:var(--body);
+  font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  font-size:17px; line-height:1.65; -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,h4{color:var(--ink); line-height:1.15; margin:0 0 .5em; letter-spacing:-.02em; font-weight:700}
+h1{font-size:clamp(2.1rem,5.2vw,3.6rem); font-weight:800; letter-spacing:-.033em}
+h2{font-size:clamp(1.6rem,3.4vw,2.35rem); letter-spacing:-.028em}
+h3{font-size:1.12rem; font-weight:650}
+p{margin:0 0 1rem}
+a{color:inherit}
+.wrap{max-width:var(--max); margin:0 auto; padding:0 24px}
+.eyebrow{
+  font-size:.76rem; font-weight:700; letter-spacing:.13em; text-transform:uppercase;
+  color:var(--accent); margin:0 0 1rem;
+}
+.lede{font-size:clamp(1.05rem,2vw,1.2rem); color:var(--body); max-width:60ch}
+
+/* ---------- nav ---------- */
+nav{
+  position:sticky; top:0; z-index:50; background:rgba(252,251,249,.88);
+  backdrop-filter:saturate(180%) blur(12px); border-bottom:1px solid var(--line);
+}
+.nav-in{display:flex; align-items:center; justify-content:space-between; height:66px}
+.logo{display:flex; align-items:center; gap:11px; color:var(--ink); text-decoration:none}
+.logo-mark{width:36px; height:auto; display:block; flex:none}
+.pk-main,.pk-base{fill:var(--ink)}
+.pk-side{fill:#8C949E}
+.pk-side2{fill:#4E555F}
+.logo-word{font-size:1.24rem; font-weight:600; letter-spacing:-.025em; color:var(--ink); line-height:1}
+.logo-word em{font-style:italic; font-weight:400; color:var(--accent)}
+.logo-lock{display:flex; flex-direction:column; gap:5px}
+.logo-tag{
+  display:flex; align-items:center; gap:9px;
+  font-size:.6rem; font-weight:600; letter-spacing:.22em; text-transform:uppercase; color:var(--muted);
+}
+.logo-tag::before{content:""; width:26px; height:2px; background:var(--accent); flex:none}
+.nav-links{display:flex; gap:30px; align-items:center}
+.nav-links a{color:var(--body); text-decoration:none; font-size:.94rem; font-weight:500}
+.nav-links a:hover{color:var(--ink)}
+@media(max-width:840px){.nav-links{display:none}}
+
+.btn{
+  display:inline-block; background:var(--accent); color:#fff; text-decoration:none;
+  padding:13px 24px; border-radius:9px; font-weight:600; font-size:.97rem;
+  border:1px solid var(--accent); transition:background .15s,transform .15s;
+}
+.btn:hover{background:var(--accent-dark); border-color:var(--accent-dark)}
+.btn-sm{padding:9px 18px; font-size:.9rem}
+.btn-ghost{background:transparent; color:var(--ink); border:1px solid var(--line)}
+.btn-ghost:hover{background:#fff; border-color:#C9CEDA}
+.btn-light{background:#fff; color:var(--ink); border-color:#fff}
+.btn-light:hover{background:#F0F1F4; border-color:#F0F1F4}
+
+/* ---------- hero ---------- */
+.hero{background:var(--ink); color:#C3CAD8; padding:88px 0 96px; position:relative; overflow:hidden}
+.hero::after{
+  content:""; position:absolute; right:-160px; top:-120px; width:560px; height:560px; border-radius:50%;
+  background:radial-gradient(circle,rgba(79,224,216,.18),transparent 66%); pointer-events:none;
+}
+.hero h1{color:#fff; max-width:16ch}
+.hero .lede{color:#AEB7C7; font-size:clamp(1.06rem,2vw,1.24rem); max-width:54ch; margin-top:1.4rem}
+.hero .eyebrow{color:var(--accent-bright)}
+.hero-cta{display:flex; gap:12px; flex-wrap:wrap; margin-top:2.2rem}
+.hero-note{margin-top:1.6rem; font-size:.9rem; color:#7E8AA0}
+
+/* ---------- sections ---------- */
+section{padding:80px 0}
+.section-head{max-width:64ch; margin-bottom:44px}
+.alt{background:#fff; border-top:1px solid var(--line); border-bottom:1px solid var(--line)}
+
+.grid{display:grid; gap:22px}
+.g3{grid-template-columns:repeat(3,1fr)}
+.g2{grid-template-columns:repeat(2,1fr)}
+@media(max-width:880px){.g3,.g2{grid-template-columns:1fr}}
+
+.card{background:var(--card); border:1px solid var(--line); border-radius:14px; padding:28px}
+.card p:last-child{margin-bottom:0}
+.step-n{
+  width:30px;height:30px;border-radius:8px;background:var(--accent-soft);color:var(--accent);
+  display:grid;place-items:center;font-weight:700;font-size:.92rem;margin-bottom:14px;
+}
+
+/* ---------- calc ---------- */
+.calc{background:var(--ink-2); color:#C3CAD8; border-radius:16px; padding:34px}
+.calc h3{color:#fff; margin-bottom:18px}
+.calc-row{display:flex; justify-content:space-between; gap:16px; padding:11px 0; border-bottom:1px solid rgba(255,255,255,.10); font-size:.97rem}
+.calc-row:last-of-type{border-bottom:0}
+.calc-row b{color:#fff; font-weight:600; white-space:nowrap}
+.calc-total{margin-top:14px; padding-top:16px; border-top:2px solid rgba(255,255,255,.18); display:flex; justify-content:space-between; align-items:baseline; gap:16px}
+.calc-total span{font-size:.95rem}
+.calc-total b{color:var(--accent-bright); font-size:1.5rem; font-weight:800; white-space:nowrap}
+.calc-note{margin:18px 0 0; font-size:.82rem; color:#8792A6; line-height:1.55}
+
+/* ---------- can / cannot ---------- */
+.list{list-style:none; padding:0; margin:0}
+.list li{position:relative; padding-left:28px; margin-bottom:12px; font-size:.98rem}
+.list li::before{position:absolute; left:0; top:0; font-weight:700}
+.can li::before{content:"✓"; color:var(--ok)}
+.cant li::before{content:"✕"; color:var(--muted)}
+.pill{display:inline-block; font-size:.72rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; padding:5px 11px; border-radius:99px; margin-bottom:16px}
+.pill-ok{background:var(--ok-soft); color:var(--ok)}
+.pill-no{background:#F1F2F5; color:var(--muted)}
+
+/* ---------- pricing ---------- */
+.price-card{
+  background:#fff; border:1px solid var(--line); border-radius:16px; padding:30px;
+  display:flex; flex-direction:column;
+}
+.price-card.featured{border:2px solid var(--accent); box-shadow:0 12px 40px rgba(18,167,155,.15); position:relative}
+.badge{
+  position:absolute; top:-12px; left:30px; background:var(--accent); color:#fff;
+  font-size:.7rem; font-weight:700; letter-spacing:.09em; text-transform:uppercase; padding:5px 13px; border-radius:99px;
+}
+.price-name{font-size:.78rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); margin-bottom:14px}
+.price-amt{font-size:2.1rem; font-weight:800; color:var(--ink); letter-spacing:-.035em; line-height:1}
+.price-per{font-size:.9rem; color:var(--muted); font-weight:500; margin-top:6px}
+.price-desc{font-size:.94rem; margin:16px 0 20px; color:var(--body)}
+.feat{list-style:none; padding:0; margin:0 0 26px; border-top:1px solid var(--line); padding-top:20px; flex-grow:1}
+.feat li{position:relative; padding-left:24px; margin-bottom:10px; font-size:.93rem; line-height:1.5}
+.feat li::before{content:"✓"; position:absolute; left:0; color:var(--ok); font-weight:700}
+.feat li.off{color:#A2AAB9}
+.feat li.off::before{content:"–"; color:#C4CAD5}
+
+.tags{display:flex; flex-wrap:wrap; gap:9px}
+.tag{background:#fff; border:1px solid var(--line); border-radius:99px; padding:8px 16px; font-size:.9rem; color:var(--ink); font-weight:500}
+
+/* ---------- cta ---------- */
+.cta{background:var(--ink); color:#B7C0D0; border-radius:18px; padding:52px 44px; text-align:center}
+.cta h2{color:#fff}
+.cta p{max-width:52ch; margin:0 auto 26px; color:#AEB7C7}
+@media(max-width:600px){.cta{padding:38px 24px}}
+
+footer{border-top:1px solid var(--line); padding:44px 0; font-size:.88rem; color:var(--muted)}
+.foot-grid{display:flex; justify-content:space-between; gap:32px; flex-wrap:wrap}
+footer a{color:var(--body); text-decoration:none}
+footer a:hover{color:var(--ink)}
+.tiny{font-size:.8rem; color:#8B93A3; margin-top:26px; line-height:1.6}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap nav-in">
+    <a class="logo" href="#top" aria-label="Peak AI">
+      <svg class="logo-mark" viewBox="0 0 410 232" aria-hidden="true">
+        <polygon class="pk-side" points="90,172 4,222 176,222"/>
+        <polygon class="pk-side2" points="312,188 234,222 406,222"/>
+        <polygon class="pk-main" points="202,86 68,222 336,222"/>
+        <rect class="pk-base" x="0" y="222" width="410" height="10"/>
+      </svg>
+      <span class="logo-word">Peak <em>AI</em></span>
+    </a>
+    <div class="nav-links">
+      <a href="#hogyan">Hogyan működik</a>
+      <a href="#tudas">Mit tud</a>
+      <a href="#csomagok">Csomagok</a>
+      <a href="#kinek">Kinek</a>
+    </div>
+    <a class="btn btn-sm" href="#kapcsolat">Demót kérek</a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <p class="eyebrow">PEAK AI · Szeged</p>
+    <h1>Soha ne maradjon megválaszolatlan hívás.</h1>
+    <p class="lede">
+      Magyarul beszélő AI telefonos asszisztens, ami felveszi a telefont, amikor Ön létrán áll,
+      ügyfélnél ül vagy épp vezet. Megkérdezi, mi a probléma, hol van a helyszín, és mikor jó
+      az időpont — majd rögzíti a naptárába, mielőtt Ön letenné a szerszámot.
+    </p>
+    <div class="hero-cta">
+      <a class="btn" href="#kapcsolat">Kérek egy 15 perces demót</a>
+      <a class="btn btn-light" href="#hogyan">Hogyan működik</a>
+    </div>
+    <p class="hero-note">A meglévő telefonszáma marad. Nem kell semmit lecserélni.</p>
+  </div>
+</header>
+
+<section id="problema">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">A probléma</p>
+      <h2>A nem fogadott hívás nem nulla forint. Csak nem látszik a könyvelésben.</h2>
+      <p class="lede">
+        Aki nem éri el Önt, felhívja a következő céget a listán. Nem hagy üzenetet, és nem
+        próbálkozik újra. Számoljunk végig egy hétköznapi hetet.
+      </p>
+    </div>
+
+    <div class="grid g2">
+      <div class="calc">
+        <h3>Mintaszámítás</h3>
+        <div class="calc-row"><span>Nem fogadott hívás naponta</span><b>2 db</b></div>
+        <div class="calc-row"><span>Munkanap havonta</span><b>20 nap</b></div>
+        <div class="calc-row"><span>Elveszett érdeklődő havonta</span><b>40 fő</b></div>
+        <div class="calc-row"><span>Ebből munkává vált volna</span><b>10%</b></div>
+        <div class="calc-row"><span>Átlagos munka értéke</span><b>80 000 Ft</b></div>
+        <div class="calc-total">
+          <span>Havi elmaradt árbevétel</span>
+          <b>320 000 Ft</b>
+        </div>
+        <p class="calc-note">
+          Ez egy modellszámítás, nem mérési eredmény — a saját számai bizonyosan mások.
+          A lényeg nem a pontos összeg, hanem a nagyságrend: a nem fogadott hívás
+          jellemzően nagyobb tétel, mint amennyibe a megoldása kerül.
+        </p>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:22px">
+        <div class="card">
+          <h3>Este hét után is csörög</h3>
+          <p style="font-size:.96rem">
+            A klíma pénteken este áll le, a csap szombaton reggel törik el. Az asszisztens
+            0–24 fogad hívást, és hétfő reggelre kész listával várja Önt.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Nem kell recepcióst felvenni</h3>
+          <p style="font-size:.96rem">
+            Egy részmunkaidős telefonos kolléga havi bérköltsége többszöröse ennek — és
+            ő is csak munkaidőben veszi fel.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Ön nem változtat semmit</h3>
+          <p style="font-size:.96rem">
+            Ugyanaz a szám, ugyanaz a telefon. Csak akkor lép be az asszisztens, ha
+            Ön nem veszi fel néhány csörgésen belül.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="hogyan">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Hogyan működik</p>
+      <h2>Három lépés, és nincs több elveszett hívás.</h2>
+    </div>
+    <div class="grid g3">
+      <div class="card">
+        <div class="step-n">1</div>
+        <h3>Átirányítás</h3>
+        <p style="font-size:.96rem">
+          A meglévő céges számát beállítjuk úgy, hogy ha Ön 20 másodpercen belül nem veszi
+          fel, a hívás átcsúszik az asszisztensre. Szolgáltatót váltani nem kell,
+          számot cserélni nem kell.
+        </p>
+      </div>
+      <div class="card">
+        <div class="step-n">2</div>
+        <h3>Beszélgetés</h3>
+        <p style="font-size:.96rem">
+          Az asszisztens magyarul, magázódva felveszi. Megkérdezi a nevet, a problémát,
+          a helyszínt és azt, mikor lenne jó az időpont. Ha nem érti, visszakérdez —
+          nem találgat.
+        </p>
+      </div>
+      <div class="card">
+        <div class="step-n">3</div>
+        <h3>Rögzítés</h3>
+        <p style="font-size:.96rem">
+          A beszélgetés végén az adatok azonnal megjelennek a naptárában és a rendszerében,
+          a visszahívási számmal együtt. Ön SMS-t vagy e-mailt kap. Reggel csak
+          vissza kell hívnia.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="tudas">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Mit tud, és mit nem</p>
+      <h2>Amit egy AI asszisztensnek nem szabad megtennie, azt nálunk nem is teszi meg.</h2>
+      <p class="lede">
+        A legtöbb rossz tapasztalat abból származik, hogy az AI olyat mond, amire nincs
+        felhatalmazása. Ez nálunk nem korlát, hanem tervezési döntés.
+      </p>
+    </div>
+    <div class="grid g2">
+      <div class="card">
+        <span class="pill pill-ok">Ezt csinálja</span>
+        <ul class="list can">
+          <li>Időpontot foglal felmérésre, telepítésre, javításra, karbantartásra</li>
+          <li>Visszahívást kér, ha a kérdés meghaladja a hatáskörét</li>
+          <li>Válaszol nyitvatartásra, címre, szolgáltatási körre</li>
+          <li>Megjelöli a sürgős eseteket, hogy azok kerüljenek a lista tetejére</li>
+          <li>Rögzíti a visszahívási számot akkor is, ha rejtett a hívószám</li>
+          <li>0–24 elérhető, hétvégén és ünnepnapon is</li>
+        </ul>
+      </div>
+      <div class="card">
+        <span class="pill pill-no">Ezt nem csinálja</span>
+        <ul class="list cant">
+          <li>Nem mond árat és nem ad árajánlatot — azt felmérés után Ön adja</li>
+          <li>Nem ígér kiszállási időpontot az Ön megerősítése nélkül</li>
+          <li>Nem talál ki terméknevet, márkát, garanciát, akciót</li>
+          <li>Nem tesz úgy, mintha ember lenne — ha megkérdezik, megmondja</li>
+          <li>Nem hív fel senkit magától; nem használjuk hideghívásra</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="csomagok">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Csomagok</p>
+      <h2>Átlátható árak, rejtett tételek nélkül.</h2>
+      <p class="lede">
+        Minden ár nettó, havidíj. Az árlistát azért tesszük ki, hogy Ön eldönthesse,
+        érdemes-e beszélnünk, mielőtt bárki elrabolja az idejét.
+      </p>
+    </div>
+
+    <div class="grid g3">
+      <div class="price-card">
+        <div class="price-name">Alap</div>
+        <div class="price-amt">149 000 Ft</div>
+        <div class="price-per">/ hó + áfa</div>
+        <p class="price-desc">Az írásos csatornák automatizálása. Aki még nem akar hangot, itt kezd.</p>
+        <ul class="feat">
+          <li>AI chatbot a weboldalon, magyarul</li>
+          <li>Automata e-mail utánkövetés</li>
+          <li>SMS emlékeztetők, dedikált telefonszám</li>
+          <li>Egységes beérkező üzenetek: web, Facebook, Instagram</li>
+          <li>Google értékelés-kérés automatizálva</li>
+          <li>Havi teljesítményriport</li>
+          <li class="off">AI hangrecepciós</li>
+          <li class="off">Közösségi tartalom, blog, hirdetéskezelés</li>
+        </ul>
+        <a class="btn btn-ghost" href="#kapcsolat">Érdekel</a>
+      </div>
+
+      <div class="price-card featured">
+        <span class="badge">Legnépszerűbb</span>
+        <div class="price-name">Növekedési</div>
+        <div class="price-amt">249 000 Ft</div>
+        <div class="price-per">/ hó + áfa</div>
+        <p class="price-desc">A teljes hívásfogadás és a rendszeres tartalom. A legtöbb ügyfelünknek ez a jó.</p>
+        <ul class="feat">
+          <li><strong>Minden, ami az Alapban</strong></li>
+          <li><strong>AI hangrecepciós — 300 perc / hó</strong></li>
+          <li>Közösségi tartalom: 12 poszt és 8 story havonta</li>
+          <li>Automata blog: 4 helyi SEO-cikk havonta</li>
+          <li>Google cégprofil kezelése</li>
+          <li>Visszaszerző kampány a régi ügyfelekre</li>
+          <li>Havi 30 perc stratégiai konzultáció</li>
+          <li class="off">Hirdetéskezelés, egyedi fejlesztés</li>
+        </ul>
+        <a class="btn" href="#kapcsolat">Ezt kérem</a>
+      </div>
+
+      <div class="price-card">
+        <div class="price-name">Partner</div>
+        <div class="price-amt">399 000 Ft</div>
+        <div class="price-per">/ hó + áfa</div>
+        <p class="price-desc">Nagyobb hívásszám, hirdetések és egyedi automatizáció. Több telephelynél.</p>
+        <ul class="feat">
+          <li><strong>Minden, ami a Növekedésiben</strong></li>
+          <li><strong>AI hangrecepciós — 1000 perc / hó</strong></li>
+          <li>Google Ads és Meta Ads kezelés</li>
+          <li>Egyedi automatizáció-fejlesztés: 4 óra / hó</li>
+          <li>Havi 60 perc stratégiai konzultáció</li>
+        </ul>
+        <a class="btn btn-ghost" href="#kapcsolat">Beszéljünk</a>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:26px">
+      <h3>Weboldal, ha kell hozzá</h3>
+      <p style="font-size:.96rem;margin-bottom:14px">
+        A weboldal nem kötelező eleme egyik csomagnak sem — külön modul, egyszeri díjjal.
+        Ha van működő oldala, arra építünk.
+      </p>
+      <div class="grid g3" style="gap:14px">
+        <div><strong style="color:var(--ink)">Sablon — 199 000 Ft</strong><br><span style="font-size:.9rem">6 aloldal, gyors indulás</span></div>
+        <div><strong style="color:var(--ink)">Signature — 449 000 Ft</strong><br><span style="font-size:.9rem">10 aloldal, egyedi arculat</span></div>
+        <div><strong style="color:var(--ink)">Egyedi — 890 000 Ft-tól</strong><br><span style="font-size:.9rem">20 aloldal, egyedi funkciók</span></div>
+      </div>
+      <p style="font-size:.85rem;color:var(--muted);margin:18px 0 0">
+        Egyik csomag sem tartalmazza: a Google és Meta hirdetési médiaköltséget, fotózást,
+        videót, egyedi grafikát, valamint a foglalt hangkereten felüli perceket.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section id="kinek">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Kinek való</p>
+      <h2>Azoknak, akiknél a telefon az első kapu.</h2>
+      <p class="lede">
+        Ha az ügyfelei telefonon keresik meg, és Ön közben dolgozik, akkor minden nap
+        veszít néhány megkeresést. Ezekkel a szakmákkal dolgozunk:
+      </p>
+    </div>
+    <div class="tags">
+      <span class="tag">Klímatechnika</span>
+      <span class="tag">Épületgépészet</span>
+      <span class="tag">Fűtés- és hűtésszerelés</span>
+      <span class="tag">Villanyszerelés</span>
+      <span class="tag">Víz- és gázszerelés</span>
+      <span class="tag">Autószerviz</span>
+      <span class="tag">Fogorvosi rendelő</span>
+      <span class="tag">Magánorvosi praxis</span>
+      <span class="tag">Kozmetika és fodrászat</span>
+      <span class="tag">Fitness és pilates stúdió</span>
+      <span class="tag">Állatorvosi rendelő</span>
+      <span class="tag">Ingatlanközvetítés</span>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="rolunk">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Ahogy dolgozunk</p>
+      <h2>Nem kérünk bizalmat előre. Előbb megmutatjuk.</h2>
+      <p class="lede">
+        Az AI körül sok a hangzatos ígéret és kevés a bemutatható eredmény. Ezért nálunk
+        a sorrend fordított: előbb látja működni a saját cégén, utána beszélünk szerződésről.
+      </p>
+    </div>
+    <div class="grid g2">
+      <div class="card">
+        <h3>Amit vállalunk</h3>
+        <ul class="list can" style="margin-top:14px">
+          <li>Élő demót mutatunk az Ön cégére szabva, mielőtt bármit aláírna</li>
+          <li>Az asszisztens hangját, stílusát és tiltásait Önnel közösen állítjuk be</li>
+          <li>Minden beszélgetés leirata visszanézhető — nincs fekete doboz</li>
+          <li>Az adatokat magyar cég kezeli, GDPR-megfelelően</li>
+          <li>Ha nem hoz eredményt, nem tartjuk fogva hosszú szerződéssel</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Amit nem csinálunk</h3>
+        <ul class="list cant" style="margin-top:14px">
+          <li>Nem indítunk hideghívást és nem hívunk fel senkit az Ön engedélye nélkül</li>
+          <li>Nem adjuk ki az asszisztenst embernek</li>
+          <li>Nem kérünk éves elköteleződést az első hónap előtt</li>
+          <li>Nem számlázunk olyan tételt, ami nincs benne az ajánlatban</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="kapcsolat">
+  <div class="wrap">
+    <div class="cta">
+      <h2>Nézzük meg élőben, az Ön cégére szabva.</h2>
+      <p>
+        Küldök egy rövid felvételt arról, hogyan hangzana az asszisztens az Ön
+        vállalkozásának nevében. Nem kell hozzá döntés és nem kell hozzá szerződés —
+        15 perc az egész.
+      </p>
+      <a class="btn" href="mailto:barnabas@peakai.hu?subject=Demo%20kerese%20-%20PEAK%20AI">Írok egy e-mailt</a>
+      <p style="margin:22px 0 0;font-size:.92rem">
+        <a href="mailto:barnabas@peakai.hu" style="color:#4FE0D8;text-decoration:none">barnabas@peakai.hu</a>
+      </p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="logo" href="#top" aria-label="Peak AI">
+          <svg class="logo-mark" viewBox="0 0 410 232" aria-hidden="true">
+            <polygon class="pk-side" points="90,172 4,222 176,222"/>
+            <polygon class="pk-side2" points="312,188 234,222 406,222"/>
+            <polygon class="pk-main" points="202,86 68,222 336,222"/>
+            <rect class="pk-base" x="0" y="222" width="410" height="10"/>
+          </svg>
+          <span class="logo-lock">
+            <span class="logo-word">Peak <em>AI</em></span>
+            <span class="logo-tag">Reach higher ground</span>
+          </span>
+        </a>
+        <p style="margin:14px 0 0">AI telefonos asszisztens<br>kis- és középvállalkozásoknak.</p>
+      </div>
+      <div>
+        <strong style="color:var(--ink)">Kapcsolat</strong>
+        <p style="margin:8px 0 0">
+          <a href="mailto:barnabas@peakai.hu">barnabas@peakai.hu</a><br>
+          Szeged, Magyarország
+        </p>
+      </div>
+    </div>
+    <p class="tiny">
+      © 2026 PEAK AI ·
+      Az oldalon szereplő árak nettó árak, az áfát nem tartalmazzák. ·
+      A mintaszámítás szemléltető modell, nem konkrét vállalkozás mért adata.
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>
