@@ -3,178 +3,236 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>PEAK AI — AI telefonos asszisztens vállalkozásoknak</title>
-<meta name="description" content="AI telefonos asszisztens magyarul. Felveszi a telefont, amikor Ön dolgozik, és rögzíti az időpontot. PEAK AI, Szeged.">
-<meta property="og:title" content="PEAK AI — Soha ne maradjon megválaszolatlan hívás">
-<meta property="og:description" content="AI telefonos asszisztens magyarul, kis- és középvállalkozásoknak.">
+<title>Peak AI — AI telefonos asszisztens vállalkozásoknak</title>
+<meta name="description" content="Magyarul beszélő AI telefonos asszisztens kis- és középvállalkozásoknak. Felveszi a telefont, amikor Ön dolgozik, és rögzíti az időpontot. Peak AI, Szeged.">
+<meta name="theme-color" content="#0B0E13">
+<link rel="canonical" href="https://peakai.hu/">
+<meta property="og:title" content="Peak AI — Soha ne maradjon megválaszolatlan hívás">
+<meta property="og:description" content="Magyarul beszélő AI telefonos asszisztens kis- és középvállalkozásoknak.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://peakai.hu">
+<meta property="og:url" content="https://peakai.hu/">
+<meta property="og:locale" content="hu_HU">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 80'%3E%3Cpolygon points='20,72 60,6 100,72' fill='%235DE8E2'/%3E%3Cpolygon points='0,72 28,32 56,72' fill='%235DE8E2' opacity='.55'/%3E%3Cpolygon points='62,72 90,38 118,72' fill='%235DE8E2' opacity='.75'/%3E%3Crect x='0' y='72' width='120' height='2' fill='%235DE8E2' opacity='.9'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
+/* ─── Peak AI · Design Tokens v1.0 ─────────────────────────────── */
 :root{
-  --ink:#0E1626; --ink-2:#1B2740; --body:#3F4A60; --muted:#6B7689;
-  --line:#E2E5EC; --bg:#FCFBF9; --card:#FFFFFF;
-  --accent:#12A79B; --accent-dark:#0D8C82; --accent-soft:#E6F7F5;
-  --accent-bright:#4FE0D8;
-  --ok:#12A79B; --ok-soft:#E6F7F5;
-  --max:1120px;
+  --peak-depth:#060810; --peak-obsidian:#0B0E13; --peak-basalt:#14181F;
+  --peak-ridge:#1E232C; --peak-glacier:#5A6472; --peak-mist:#A8B1BD;
+  --peak-summit:#F4F6FA; --peak-snow:#FFFFFF;
+  --peak-accent:#5DE8E2; --peak-accent-lift:#7BFFF7; --peak-accent-deep:#1FAEA8;
+  --peak-solar:#FFD479;
+
+  --font-display:"Space Grotesk",system-ui,-apple-system,sans-serif;
+  --font-body:"Manrope",system-ui,-apple-system,sans-serif;
+  --font-mono:"JetBrains Mono",ui-monospace,SFMono-Regular,monospace;
+
+  /* felületi szerepek — világos alapú oldal */
+  --bg:var(--peak-summit);
+  --surface:var(--peak-snow);
+  --line:#DDE2EA;
+  --text:var(--peak-ridge);
+  --heading:var(--peak-obsidian);
+  --muted:var(--peak-glacier);
+  --max:1140px;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{
-  margin:0; background:var(--bg); color:var(--body);
-  font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-  font-size:17px; line-height:1.65; -webkit-font-smoothing:antialiased;
+  margin:0; background:var(--bg); color:var(--text);
+  font-family:var(--font-body); font-size:17px; line-height:1.68;
+  -webkit-font-smoothing:antialiased;
 }
-h1,h2,h3,h4{color:var(--ink); line-height:1.15; margin:0 0 .5em; letter-spacing:-.02em; font-weight:700}
-h1{font-size:clamp(2.1rem,5.2vw,3.6rem); font-weight:800; letter-spacing:-.033em}
-h2{font-size:clamp(1.6rem,3.4vw,2.35rem); letter-spacing:-.028em}
-h3{font-size:1.12rem; font-weight:650}
+h1,h2,h3{
+  font-family:var(--font-display); color:var(--heading);
+  line-height:1.14; margin:0 0 .5em; letter-spacing:-.03em; font-weight:600;
+}
+h1{font-size:clamp(2.2rem,5.4vw,3.7rem); letter-spacing:-.04em}
+h2{font-size:clamp(1.7rem,3.6vw,2.5rem)}
+h3{font-size:1.14rem; letter-spacing:-.02em}
 p{margin:0 0 1rem}
 a{color:inherit}
 .wrap{max-width:var(--max); margin:0 auto; padding:0 24px}
+.lede{font-size:clamp(1.05rem,2vw,1.2rem); max-width:62ch}
+
+/* eyebrow — a logó lockup vonalát ismétli */
 .eyebrow{
-  font-size:.76rem; font-weight:700; letter-spacing:.13em; text-transform:uppercase;
-  color:var(--accent); margin:0 0 1rem;
+  display:flex; align-items:center; gap:12px;
+  font-family:var(--font-mono); font-size:.7rem; font-weight:500;
+  letter-spacing:.22em; text-transform:uppercase;
+  color:var(--muted); margin:0 0 1.2rem;
 }
-.lede{font-size:clamp(1.05rem,2vw,1.2rem); color:var(--body); max-width:60ch}
+.eyebrow::before{content:""; width:34px; height:2px; background:var(--peak-accent-deep); flex:none}
+.on-dark .eyebrow{color:var(--peak-mist)}
+.on-dark .eyebrow::before{background:var(--peak-accent)}
 
-/* ---------- nav ---------- */
+/* ─── logó ─────────────────────────────────────────────────────── */
+.logo{display:block; text-decoration:none; line-height:0}
+.logo svg{display:block; height:auto}
+.logo-nav svg{width:128px}
+.logo-foot svg{width:224px}
+
+/* ─── nav ──────────────────────────────────────────────────────── */
 nav{
-  position:sticky; top:0; z-index:50; background:rgba(252,251,249,.88);
-  backdrop-filter:saturate(180%) blur(12px); border-bottom:1px solid var(--line);
+  position:sticky; top:0; z-index:50; background:rgba(244,246,250,.86);
+  backdrop-filter:saturate(160%) blur(14px); border-bottom:1px solid var(--line);
 }
-.nav-in{display:flex; align-items:center; justify-content:space-between; height:66px}
-.logo{display:flex; align-items:center; gap:11px; color:var(--ink); text-decoration:none}
-.logo-mark{width:36px; height:auto; display:block; flex:none}
-.pk-main,.pk-base{fill:var(--ink)}
-.pk-side{fill:#8C949E}
-.pk-side2{fill:#4E555F}
-.logo-word{font-size:1.24rem; font-weight:600; letter-spacing:-.025em; color:var(--ink); line-height:1}
-.logo-word em{font-style:italic; font-weight:400; color:var(--accent)}
-.logo-lock{display:flex; flex-direction:column; gap:5px}
-.logo-tag{
-  display:flex; align-items:center; gap:9px;
-  font-size:.6rem; font-weight:600; letter-spacing:.22em; text-transform:uppercase; color:var(--muted);
-}
-.logo-tag::before{content:""; width:26px; height:2px; background:var(--accent); flex:none}
-.nav-links{display:flex; gap:30px; align-items:center}
-.nav-links a{color:var(--body); text-decoration:none; font-size:.94rem; font-weight:500}
-.nav-links a:hover{color:var(--ink)}
-@media(max-width:840px){.nav-links{display:none}}
+.nav-in{display:flex; align-items:center; justify-content:space-between; height:70px}
+.nav-links{display:flex; gap:32px; align-items:center}
+.nav-links a{color:var(--text); text-decoration:none; font-size:.94rem; font-weight:500}
+.nav-links a:hover{color:var(--peak-accent-deep)}
+@media(max-width:900px){.nav-links{display:none}}
 
+/* ─── gombok ───────────────────────────────────────────────────── */
 .btn{
-  display:inline-block; background:var(--accent); color:#fff; text-decoration:none;
-  padding:13px 24px; border-radius:9px; font-weight:600; font-size:.97rem;
-  border:1px solid var(--accent); transition:background .15s,transform .15s;
+  display:inline-block; text-decoration:none; padding:13px 26px; border-radius:8px;
+  font-family:var(--font-display); font-weight:600; font-size:.97rem; letter-spacing:-.01em;
+  background:var(--peak-accent-deep); color:var(--peak-obsidian);
+  border:1px solid var(--peak-accent-deep); transition:background .16s,border-color .16s;
 }
-.btn:hover{background:var(--accent-dark); border-color:var(--accent-dark)}
-.btn-sm{padding:9px 18px; font-size:.9rem}
-.btn-ghost{background:transparent; color:var(--ink); border:1px solid var(--line)}
-.btn-ghost:hover{background:#fff; border-color:#C9CEDA}
-.btn-light{background:#fff; color:var(--ink); border-color:#fff}
-.btn-light:hover{background:#F0F1F4; border-color:#F0F1F4}
+.btn:hover{background:#1A9A94; border-color:#1A9A94}
+.btn-sm{padding:9px 19px; font-size:.9rem}
+.btn-ghost{background:transparent; color:var(--heading); border-color:var(--line)}
+.btn-ghost:hover{background:var(--surface); border-color:var(--muted)}
+/* sötét sávon a világos cián a helyes */
+.on-dark .btn{background:var(--peak-accent); border-color:var(--peak-accent); color:var(--peak-obsidian)}
+.on-dark .btn:hover{background:var(--peak-accent-lift); border-color:var(--peak-accent-lift)}
+.on-dark .btn-ghost{background:transparent; color:var(--peak-summit); border-color:#2C3542}
+.on-dark .btn-ghost:hover{background:var(--peak-basalt); border-color:var(--peak-glacier)}
 
-/* ---------- hero ---------- */
-.hero{background:var(--ink); color:#C3CAD8; padding:88px 0 96px; position:relative; overflow:hidden}
+/* ─── sötét sávok ──────────────────────────────────────────────── */
+.on-dark{background:var(--peak-obsidian); color:var(--peak-mist)}
+.on-dark h1,.on-dark h2,.on-dark h3{color:var(--peak-summit)}
+
+.hero{padding:94px 0 100px; position:relative; overflow:hidden;
+      background:linear-gradient(180deg,var(--peak-depth),var(--peak-obsidian))}
 .hero::after{
-  content:""; position:absolute; right:-160px; top:-120px; width:560px; height:560px; border-radius:50%;
-  background:radial-gradient(circle,rgba(79,224,216,.18),transparent 66%); pointer-events:none;
+  content:""; position:absolute; right:-180px; top:-160px; width:640px; height:640px;
+  border-radius:50%; pointer-events:none;
+  background:radial-gradient(circle,rgba(93,232,226,.13),transparent 65%);
 }
-.hero h1{color:#fff; max-width:16ch}
-.hero .lede{color:#AEB7C7; font-size:clamp(1.06rem,2vw,1.24rem); max-width:54ch; margin-top:1.4rem}
-.hero .eyebrow{color:var(--accent-bright)}
-.hero-cta{display:flex; gap:12px; flex-wrap:wrap; margin-top:2.2rem}
-.hero-note{margin-top:1.6rem; font-size:.9rem; color:#7E8AA0}
+.hero .wrap{position:relative; z-index:1}
+.hero h1{max-width:17ch}
+.hero .lede{color:var(--peak-mist); font-size:clamp(1.06rem,2vw,1.26rem); max-width:56ch; margin-top:1.5rem}
+.hero-cta{display:flex; gap:12px; flex-wrap:wrap; margin-top:2.4rem}
+.hero-note{margin-top:1.7rem; font-family:var(--font-mono); font-size:.78rem;
+           letter-spacing:.05em; color:var(--peak-glacier)}
 
-/* ---------- sections ---------- */
-section{padding:80px 0}
-.section-head{max-width:64ch; margin-bottom:44px}
-.alt{background:#fff; border-top:1px solid var(--line); border-bottom:1px solid var(--line)}
+/* ─── szekciók ─────────────────────────────────────────────────── */
+section{padding:86px 0}
+.section-head{max-width:66ch; margin-bottom:46px}
+.alt{background:var(--surface); border-top:1px solid var(--line); border-bottom:1px solid var(--line)}
 
 .grid{display:grid; gap:22px}
 .g3{grid-template-columns:repeat(3,1fr)}
 .g2{grid-template-columns:repeat(2,1fr)}
-@media(max-width:880px){.g3,.g2{grid-template-columns:1fr}}
+@media(max-width:900px){.g3,.g2{grid-template-columns:1fr}}
 
-.card{background:var(--card); border:1px solid var(--line); border-radius:14px; padding:28px}
+.card{background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:28px}
+.alt .card{background:var(--bg)}
 .card p:last-child{margin-bottom:0}
 .step-n{
-  width:30px;height:30px;border-radius:8px;background:var(--accent-soft);color:var(--accent);
-  display:grid;place-items:center;font-weight:700;font-size:.92rem;margin-bottom:14px;
+  width:34px;height:34px;border-radius:9px;background:rgba(31,174,168,.12);
+  color:var(--peak-accent-deep); display:grid;place-items:center;margin-bottom:16px;
+  font-family:var(--font-mono); font-weight:500; font-size:.9rem;
 }
 
-/* ---------- calc ---------- */
-.calc{background:var(--ink-2); color:#C3CAD8; border-radius:16px; padding:34px}
-.calc h3{color:#fff; margin-bottom:18px}
-.calc-row{display:flex; justify-content:space-between; gap:16px; padding:11px 0; border-bottom:1px solid rgba(255,255,255,.10); font-size:.97rem}
+/* ─── mintaszámítás (sötét kártya) ────────────────────────────── */
+.calc{background:var(--peak-obsidian); color:var(--peak-mist); border-radius:16px; padding:34px}
+.calc h3{color:var(--peak-summit); margin-bottom:20px}
+.calc-row{display:flex; justify-content:space-between; gap:16px; padding:12px 0;
+          border-bottom:1px solid #232935; font-size:.97rem}
 .calc-row:last-of-type{border-bottom:0}
-.calc-row b{color:#fff; font-weight:600; white-space:nowrap}
-.calc-total{margin-top:14px; padding-top:16px; border-top:2px solid rgba(255,255,255,.18); display:flex; justify-content:space-between; align-items:baseline; gap:16px}
+.calc-row b{font-family:var(--font-mono); font-weight:500; color:var(--peak-summit); white-space:nowrap}
+.calc-total{margin-top:14px; padding-top:18px; border-top:2px solid #2C3542;
+            display:flex; justify-content:space-between; align-items:baseline; gap:16px}
 .calc-total span{font-size:.95rem}
-.calc-total b{color:var(--accent-bright); font-size:1.5rem; font-weight:800; white-space:nowrap}
-.calc-note{margin:18px 0 0; font-size:.82rem; color:#8792A6; line-height:1.55}
+.calc-total b{font-family:var(--font-display); color:var(--peak-accent);
+              font-size:1.6rem; font-weight:600; letter-spacing:-.02em; white-space:nowrap}
+.calc-note{margin:20px 0 0; font-size:.83rem; color:var(--peak-glacier); line-height:1.6}
 
-/* ---------- can / cannot ---------- */
+/* ─── listák ───────────────────────────────────────────────────── */
 .list{list-style:none; padding:0; margin:0}
-.list li{position:relative; padding-left:28px; margin-bottom:12px; font-size:.98rem}
+.list li{position:relative; padding-left:28px; margin-bottom:13px; font-size:.98rem}
 .list li::before{position:absolute; left:0; top:0; font-weight:700}
-.can li::before{content:"✓"; color:var(--ok)}
+.can li::before{content:"✓"; color:var(--peak-accent-deep)}
 .cant li::before{content:"✕"; color:var(--muted)}
-.pill{display:inline-block; font-size:.72rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; padding:5px 11px; border-radius:99px; margin-bottom:16px}
-.pill-ok{background:var(--ok-soft); color:var(--ok)}
-.pill-no{background:#F1F2F5; color:var(--muted)}
+.pill{display:inline-block; font-family:var(--font-mono); font-size:.68rem; font-weight:500;
+      letter-spacing:.18em; text-transform:uppercase; padding:6px 12px; border-radius:99px; margin-bottom:18px}
+.pill-ok{background:rgba(31,174,168,.13); color:#177F7A}
+.pill-no{background:rgba(90,100,114,.12); color:var(--muted)}
 
-/* ---------- pricing ---------- */
-.price-card{
-  background:#fff; border:1px solid var(--line); border-radius:16px; padding:30px;
-  display:flex; flex-direction:column;
-}
-.price-card.featured{border:2px solid var(--accent); box-shadow:0 12px 40px rgba(18,167,155,.15); position:relative}
-.badge{
-  position:absolute; top:-12px; left:30px; background:var(--accent); color:#fff;
-  font-size:.7rem; font-weight:700; letter-spacing:.09em; text-transform:uppercase; padding:5px 13px; border-radius:99px;
-}
-.price-name{font-size:.78rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); margin-bottom:14px}
-.price-amt{font-size:2.1rem; font-weight:800; color:var(--ink); letter-spacing:-.035em; line-height:1}
-.price-per{font-size:.9rem; color:var(--muted); font-weight:500; margin-top:6px}
-.price-desc{font-size:.94rem; margin:16px 0 20px; color:var(--body)}
-.feat{list-style:none; padding:0; margin:0 0 26px; border-top:1px solid var(--line); padding-top:20px; flex-grow:1}
-.feat li{position:relative; padding-left:24px; margin-bottom:10px; font-size:.93rem; line-height:1.5}
-.feat li::before{content:"✓"; position:absolute; left:0; color:var(--ok); font-weight:700}
-.feat li.off{color:#A2AAB9}
-.feat li.off::before{content:"–"; color:#C4CAD5}
+/* ─── árazás ───────────────────────────────────────────────────── */
+.price-card{background:var(--surface); border:1px solid var(--line); border-radius:16px;
+            padding:32px; display:flex; flex-direction:column}
+.alt .price-card{background:var(--bg)}
+.price-card.featured{border:1px solid var(--peak-accent-deep);
+                     box-shadow:0 14px 46px rgba(31,174,168,.14); position:relative; background:var(--surface)}
+.badge{position:absolute; top:-12px; left:32px; background:var(--peak-accent-deep); color:var(--peak-obsidian);
+       font-family:var(--font-mono); font-size:.65rem; font-weight:500; letter-spacing:.16em;
+       text-transform:uppercase; padding:6px 13px; border-radius:99px}
+.price-name{font-family:var(--font-mono); font-size:.72rem; font-weight:500; letter-spacing:.2em;
+            text-transform:uppercase; color:var(--muted); margin-bottom:16px}
+.price-amt{font-family:var(--font-display); font-size:2.2rem; font-weight:600;
+           color:var(--heading); letter-spacing:-.04em; line-height:1}
+.price-per{font-size:.9rem; color:var(--muted); margin-top:7px}
+.price-desc{font-size:.94rem; margin:18px 0 22px}
+.feat{list-style:none; padding:20px 0 0; margin:0 0 26px; border-top:1px solid var(--line); flex-grow:1}
+.feat li{position:relative; padding-left:25px; margin-bottom:11px; font-size:.93rem; line-height:1.55}
+.feat li::before{content:"✓"; position:absolute; left:0; color:var(--peak-accent-deep); font-weight:700}
+.feat li strong{color:var(--heading); font-weight:600}
+.feat li.off{color:#9AA3B0}
+.feat li.off::before{content:"–"; color:#C3CAD4}
 
-.tags{display:flex; flex-wrap:wrap; gap:9px}
-.tag{background:#fff; border:1px solid var(--line); border-radius:99px; padding:8px 16px; font-size:.9rem; color:var(--ink); font-weight:500}
+.tags{display:flex; flex-wrap:wrap; gap:10px}
+.tag{background:var(--surface); border:1px solid var(--line); border-radius:99px;
+     padding:9px 17px; font-size:.9rem; color:var(--heading); font-weight:500}
 
-/* ---------- cta ---------- */
-.cta{background:var(--ink); color:#B7C0D0; border-radius:18px; padding:52px 44px; text-align:center}
-.cta h2{color:#fff}
-.cta p{max-width:52ch; margin:0 auto 26px; color:#AEB7C7}
-@media(max-width:600px){.cta{padding:38px 24px}}
+.web-tier strong{display:block; font-family:var(--font-display); color:var(--heading);
+                 font-size:1.02rem; font-weight:600; letter-spacing:-.02em; margin-bottom:3px}
+.web-tier span{font-size:.9rem; color:var(--muted)}
 
-footer{border-top:1px solid var(--line); padding:44px 0; font-size:.88rem; color:var(--muted)}
-.foot-grid{display:flex; justify-content:space-between; gap:32px; flex-wrap:wrap}
-footer a{color:var(--body); text-decoration:none}
-footer a:hover{color:var(--ink)}
-.tiny{font-size:.8rem; color:#8B93A3; margin-top:26px; line-height:1.6}
+/* ─── záró CTA ─────────────────────────────────────────────────── */
+.cta{border-radius:18px; padding:58px 44px; text-align:center; position:relative; overflow:hidden;
+     background:linear-gradient(160deg,var(--peak-obsidian),var(--peak-depth))}
+.cta::before{content:""; position:absolute; left:50%; top:-260px; transform:translateX(-50%);
+             width:640px; height:540px; border-radius:50%; pointer-events:none;
+             background:radial-gradient(circle,rgba(93,232,226,.13),transparent 66%)}
+.cta > *{position:relative}
+.cta p{max-width:54ch; margin:0 auto 28px; color:var(--peak-mist)}
+.cta-mail{display:inline-block; margin-top:24px; font-family:var(--font-mono);
+          font-size:.9rem; color:var(--peak-accent); text-decoration:none; letter-spacing:.02em}
+.cta-mail:hover{color:var(--peak-accent-lift)}
+@media(max-width:640px){.cta{padding:40px 24px}}
+
+/* ─── lábléc ───────────────────────────────────────────────────── */
+footer{background:var(--peak-obsidian); color:var(--peak-glacier);
+       padding:56px 0 44px; font-size:.9rem}
+.foot-grid{display:flex; justify-content:space-between; gap:40px; flex-wrap:wrap}
+footer a{color:var(--peak-mist); text-decoration:none}
+footer a:hover{color:var(--peak-accent)}
+.foot-h{font-family:var(--font-mono); font-size:.68rem; font-weight:500; letter-spacing:.2em;
+        text-transform:uppercase; color:var(--peak-glacier); display:block; margin-bottom:12px}
+.tiny{font-size:.8rem; margin-top:36px; line-height:1.65; color:#4A5462}
 </style>
 </head>
 <body>
 
 <nav>
   <div class="wrap nav-in">
-    <a class="logo" href="#top" aria-label="Peak AI">
-      <svg class="logo-mark" viewBox="0 0 410 232" aria-hidden="true">
-        <polygon class="pk-side" points="90,172 4,222 176,222"/>
-        <polygon class="pk-side2" points="312,188 234,222 406,222"/>
-        <polygon class="pk-main" points="202,86 68,222 336,222"/>
-        <rect class="pk-base" x="0" y="222" width="410" height="10"/>
+    <a class="logo logo-nav" href="#top" aria-label="Peak AI">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 110" role="img">
+        <g transform="translate(0,15)">
+          <polygon points="20,72 60,6 100,72" fill="#0B0E13"/>
+          <polygon points="0,72 28,32 56,72" fill="#0B0E13" opacity="0.55"/>
+          <polygon points="62,72 90,38 118,72" fill="#0B0E13" opacity="0.75"/>
+          <rect x="0" y="72" width="120" height="2" fill="#0B0E13" opacity="0.9"/>
+        </g>
+        <text x="170" y="80" font-family="Space Grotesk, system-ui, sans-serif" font-weight="600" font-size="72" letter-spacing="-2" fill="#0B0E13">Peak</text>
+        <text x="354" y="80" font-family="Space Grotesk, system-ui, sans-serif" font-weight="300" font-style="italic" font-size="72" letter-spacing="-2" fill="#1FAEA8"> AI</text>
       </svg>
-      <span class="logo-word">Peak <em>AI</em></span>
     </a>
     <div class="nav-links">
       <a href="#hogyan">Hogyan működik</a>
@@ -186,18 +244,18 @@ footer a:hover{color:var(--ink)}
   </div>
 </nav>
 
-<header class="hero" id="top">
+<header class="hero on-dark" id="top">
   <div class="wrap">
-    <p class="eyebrow">PEAK AI · Szeged</p>
+    <p class="eyebrow">Peak AI · Szeged</p>
     <h1>Soha ne maradjon megválaszolatlan hívás.</h1>
     <p class="lede">
       Magyarul beszélő AI telefonos asszisztens, ami felveszi a telefont, amikor Ön létrán áll,
-      ügyfélnél ül vagy épp vezet. Megkérdezi, mi a probléma, hol van a helyszín, és mikor jó
-      az időpont — majd rögzíti a naptárába, mielőtt Ön letenné a szerszámot.
+      ügyfélnél ül vagy épp vezet. Megkérdezi, mi a probléma, hol a helyszín, és mikor jó az
+      időpont — majd rögzíti a naptárába, mielőtt Ön letenné a szerszámot.
     </p>
     <div class="hero-cta">
       <a class="btn" href="#kapcsolat">Kérek egy 15 perces demót</a>
-      <a class="btn btn-light" href="#hogyan">Hogyan működik</a>
+      <a class="btn btn-ghost" href="#hogyan">Hogyan működik</a>
     </div>
     <p class="hero-note">A meglévő telefonszáma marad. Nem kell semmit lecserélni.</p>
   </div>
@@ -210,7 +268,7 @@ footer a:hover{color:var(--ink)}
       <h2>A nem fogadott hívás nem nulla forint. Csak nem látszik a könyvelésben.</h2>
       <p class="lede">
         Aki nem éri el Önt, felhívja a következő céget a listán. Nem hagy üzenetet, és nem
-        próbálkozik újra. Számoljunk végig egy hétköznapi hetet.
+        próbálkozik újra. Számoljunk végig egy hétköznapi hónapot.
       </p>
     </div>
 
@@ -227,7 +285,7 @@ footer a:hover{color:var(--ink)}
           <b>320 000 Ft</b>
         </div>
         <p class="calc-note">
-          Ez egy modellszámítás, nem mérési eredmény — a saját számai bizonyosan mások.
+          Ez egy modellszámítás, nem mérési eredmény — az Ön számai bizonyosan mások.
           A lényeg nem a pontos összeg, hanem a nagyságrend: a nem fogadott hívás
           jellemzően nagyobb tétel, mint amennyibe a megoldása kerül.
         </p>
@@ -237,21 +295,21 @@ footer a:hover{color:var(--ink)}
         <div class="card">
           <h3>Este hét után is csörög</h3>
           <p style="font-size:.96rem">
-            A klíma pénteken este áll le, a csap szombaton reggel törik el. Az asszisztens
+            A klíma pénteken este áll le, a csap szombat reggel törik el. Az asszisztens
             0–24 fogad hívást, és hétfő reggelre kész listával várja Önt.
           </p>
         </div>
         <div class="card">
           <h3>Nem kell recepcióst felvenni</h3>
           <p style="font-size:.96rem">
-            Egy részmunkaidős telefonos kolléga havi bérköltsége többszöröse ennek — és
-            ő is csak munkaidőben veszi fel.
+            Egy részmunkaidős telefonos kolléga havi bérköltsége ennek a többszöröse —
+            és ő is csak munkaidőben veszi fel.
           </p>
         </div>
         <div class="card">
           <h3>Ön nem változtat semmit</h3>
           <p style="font-size:.96rem">
-            Ugyanaz a szám, ugyanaz a telefon. Csak akkor lép be az asszisztens, ha
+            Ugyanaz a szám, ugyanaz a telefon. Az asszisztens csak akkor lép be, ha
             Ön nem veszi fel néhány csörgésen belül.
           </p>
         </div>
@@ -268,16 +326,16 @@ footer a:hover{color:var(--ink)}
     </div>
     <div class="grid g3">
       <div class="card">
-        <div class="step-n">1</div>
+        <div class="step-n">01</div>
         <h3>Átirányítás</h3>
         <p style="font-size:.96rem">
-          A meglévő céges számát beállítjuk úgy, hogy ha Ön 20 másodpercen belül nem veszi
+          A meglévő céges számát úgy állítjuk be, hogy ha Ön 20 másodpercen belül nem veszi
           fel, a hívás átcsúszik az asszisztensre. Szolgáltatót váltani nem kell,
           számot cserélni nem kell.
         </p>
       </div>
       <div class="card">
-        <div class="step-n">2</div>
+        <div class="step-n">02</div>
         <h3>Beszélgetés</h3>
         <p style="font-size:.96rem">
           Az asszisztens magyarul, magázódva felveszi. Megkérdezi a nevet, a problémát,
@@ -286,7 +344,7 @@ footer a:hover{color:var(--ink)}
         </p>
       </div>
       <div class="card">
-        <div class="step-n">3</div>
+        <div class="step-n">03</div>
         <h3>Rögzítés</h3>
         <p style="font-size:.96rem">
           A beszélgetés végén az adatok azonnal megjelennek a naptárában és a rendszerében,
@@ -401,16 +459,16 @@ footer a:hover{color:var(--ink)}
 
     <div class="card" style="margin-top:26px">
       <h3>Weboldal, ha kell hozzá</h3>
-      <p style="font-size:.96rem;margin-bottom:14px">
+      <p style="font-size:.96rem;margin-bottom:20px">
         A weboldal nem kötelező eleme egyik csomagnak sem — külön modul, egyszeri díjjal.
         Ha van működő oldala, arra építünk.
       </p>
-      <div class="grid g3" style="gap:14px">
-        <div><strong style="color:var(--ink)">Sablon — 199 000 Ft</strong><br><span style="font-size:.9rem">6 aloldal, gyors indulás</span></div>
-        <div><strong style="color:var(--ink)">Signature — 449 000 Ft</strong><br><span style="font-size:.9rem">10 aloldal, egyedi arculat</span></div>
-        <div><strong style="color:var(--ink)">Egyedi — 890 000 Ft-tól</strong><br><span style="font-size:.9rem">20 aloldal, egyedi funkciók</span></div>
+      <div class="grid g3" style="gap:16px">
+        <div class="web-tier"><strong>Sablon · 199 000 Ft</strong><span>6 aloldal, gyors indulás</span></div>
+        <div class="web-tier"><strong>Signature · 449 000 Ft</strong><span>10 aloldal, egyedi arculat</span></div>
+        <div class="web-tier"><strong>Egyedi · 890 000 Ft-tól</strong><span>20 aloldal, egyedi funkciók</span></div>
       </div>
-      <p style="font-size:.85rem;color:var(--muted);margin:18px 0 0">
+      <p style="font-size:.85rem;color:var(--muted);margin:22px 0 0">
         Egyik csomag sem tartalmazza: a Google és Meta hirdetési médiaköltséget, fotózást,
         videót, egyedi grafikát, valamint a foglalt hangkereten felüli perceket.
       </p>
@@ -445,7 +503,7 @@ footer a:hover{color:var(--ink)}
   </div>
 </section>
 
-<section class="alt" id="rolunk">
+<section class="alt" id="ahogy">
   <div class="wrap">
     <div class="section-head">
       <p class="eyebrow">Ahogy dolgozunk</p>
@@ -458,17 +516,17 @@ footer a:hover{color:var(--ink)}
     <div class="grid g2">
       <div class="card">
         <h3>Amit vállalunk</h3>
-        <ul class="list can" style="margin-top:14px">
+        <ul class="list can" style="margin-top:16px">
           <li>Élő demót mutatunk az Ön cégére szabva, mielőtt bármit aláírna</li>
           <li>Az asszisztens hangját, stílusát és tiltásait Önnel közösen állítjuk be</li>
           <li>Minden beszélgetés leirata visszanézhető — nincs fekete doboz</li>
-          <li>Az adatokat magyar cég kezeli, GDPR-megfelelően</li>
+          <li>Az adatokat magyar vállalkozás kezeli, GDPR-megfelelően</li>
           <li>Ha nem hoz eredményt, nem tartjuk fogva hosszú szerződéssel</li>
         </ul>
       </div>
       <div class="card">
         <h3>Amit nem csinálunk</h3>
-        <ul class="list cant" style="margin-top:14px">
+        <ul class="list cant" style="margin-top:16px">
           <li>Nem indítunk hideghívást és nem hívunk fel senkit az Ön engedélye nélkül</li>
           <li>Nem adjuk ki az asszisztenst embernek</li>
           <li>Nem kérünk éves elköteleződést az első hónap előtt</li>
@@ -481,17 +539,15 @@ footer a:hover{color:var(--ink)}
 
 <section id="kapcsolat">
   <div class="wrap">
-    <div class="cta">
+    <div class="cta on-dark">
       <h2>Nézzük meg élőben, az Ön cégére szabva.</h2>
       <p>
-        Küldök egy rövid felvételt arról, hogyan hangzana az asszisztens az Ön
+        Küldünk egy rövid felvételt arról, hogyan hangzana az asszisztens az Ön
         vállalkozásának nevében. Nem kell hozzá döntés és nem kell hozzá szerződés —
         15 perc az egész.
       </p>
-      <a class="btn" href="mailto:barnabas@peakai.hu?subject=Demo%20kerese%20-%20PEAK%20AI">Írok egy e-mailt</a>
-      <p style="margin:22px 0 0;font-size:.92rem">
-        <a href="mailto:barnabas@peakai.hu" style="color:#4FE0D8;text-decoration:none">barnabas@peakai.hu</a>
-      </p>
+      <a class="btn" href="mailto:barnabas@peakai.hu?subject=Demo%20kerese%20-%20Peak%20AI">Írok egy e-mailt</a>
+      <a class="cta-mail" href="mailto:barnabas@peakai.hu">barnabas@peakai.hu</a>
     </div>
   </div>
 </section>
@@ -500,30 +556,40 @@ footer a:hover{color:var(--ink)}
   <div class="wrap">
     <div class="foot-grid">
       <div>
-        <a class="logo" href="#top" aria-label="Peak AI">
-          <svg class="logo-mark" viewBox="0 0 410 232" aria-hidden="true">
-            <polygon class="pk-side" points="90,172 4,222 176,222"/>
-            <polygon class="pk-side2" points="312,188 234,222 406,222"/>
-            <polygon class="pk-main" points="202,86 68,222 336,222"/>
-            <rect class="pk-base" x="0" y="222" width="410" height="10"/>
+        <a class="logo logo-foot" href="#top" aria-label="Peak AI — Reach higher ground">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 180" role="img">
+            <g transform="translate(0,20)">
+              <polygon points="20,72 60,6 100,72" fill="#5DE8E2"/>
+              <polygon points="0,72 28,32 56,72" fill="#5DE8E2" opacity="0.55"/>
+              <polygon points="62,72 90,38 118,72" fill="#5DE8E2" opacity="0.75"/>
+              <rect x="0" y="72" width="120" height="2" fill="#5DE8E2" opacity="0.9"/>
+            </g>
+            <text x="170" y="85" font-family="Space Grotesk, system-ui, sans-serif" font-weight="600" font-size="72" letter-spacing="-2" fill="#F4F6FA">Peak</text>
+            <text x="354" y="85" font-family="Space Grotesk, system-ui, sans-serif" font-weight="300" font-style="italic" font-size="72" letter-spacing="-2" fill="#5DE8E2"> AI</text>
+            <line x1="170" y1="115" x2="220" y2="115" stroke="#5DE8E2" stroke-width="2"/>
+            <text x="232" y="121" font-family="JetBrains Mono, ui-monospace, monospace" font-weight="500" font-size="16" letter-spacing="3" fill="#A8B1BD">REACH HIGHER GROUND</text>
           </svg>
-          <span class="logo-lock">
-            <span class="logo-word">Peak <em>AI</em></span>
-            <span class="logo-tag">Reach higher ground</span>
-          </span>
         </a>
-        <p style="margin:14px 0 0">AI telefonos asszisztens<br>kis- és középvállalkozásoknak.</p>
+        <p style="margin:20px 0 0;color:var(--peak-mist)">AI telefonos asszisztens<br>kis- és középvállalkozásoknak.</p>
       </div>
       <div>
-        <strong style="color:var(--ink)">Kapcsolat</strong>
-        <p style="margin:8px 0 0">
+        <span class="foot-h">Kapcsolat</span>
+        <p style="margin:0">
           <a href="mailto:barnabas@peakai.hu">barnabas@peakai.hu</a><br>
           Szeged, Magyarország
         </p>
       </div>
+      <div>
+        <span class="foot-h">Oldalak</span>
+        <p style="margin:0">
+          <a href="#hogyan">Hogyan működik</a><br>
+          <a href="#csomagok">Csomagok</a><br>
+          <a href="#kapcsolat">Kapcsolat</a>
+        </p>
+      </div>
     </div>
     <p class="tiny">
-      © 2026 PEAK AI ·
+      © 2026 Peak AI ·
       Az oldalon szereplő árak nettó árak, az áfát nem tartalmazzák. ·
       A mintaszámítás szemléltető modell, nem konkrét vállalkozás mért adata.
     </p>
