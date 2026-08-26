@@ -1,0 +1,32 @@
+# peakai.hu
+
+User-agent: *
+Allow: /
+
+# Generativ keresok es AI-asszisztensek - szandekosan engedve,
+# hogy a blogcikkek idezhetok legyenek (GEO).
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+Sitemap: https://peakai.hu/sitemap.xml
