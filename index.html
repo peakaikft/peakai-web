@@ -16,6 +16,55 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://peakai.hu/#szervezet",
+      "name": "Peak AI",
+      "slogan": "Reach higher ground",
+      "description": "Magyarul beszélő AI telefonos asszisztens és időpontfoglaló rendszer kis- és középvállalkozásoknak.",
+      "url": "https://peakai.hu/",
+      "email": "barnabas@peakai.hu",
+      "inLanguage": "hu-HU",
+      "address": { "@type": "PostalAddress", "addressLocality": "Szeged", "addressCountry": "HU" },
+      "areaServed": [
+        { "@type": "City", "name": "Szeged" },
+        { "@type": "Country", "name": "Magyarország" }
+      ],
+      "founder": {
+        "@type": "Person",
+        "name": "Dr. Révész Barnabás",
+        "jobTitle": "alapító",
+        "email": "barnabas@peakai.hu"
+      },
+      "knowsLanguage": "hu",
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Csomagok",
+        "itemListElement": [
+          { "@type": "Offer", "name": "Hangrecepciós", "price": "59000", "priceCurrency": "HUF",
+            "description": "AI hangrecepciós 200 perc / hó, időpontfoglalással. Nettó ár, havidíj." },
+          { "@type": "Offer", "name": "Asszisztens", "price": "149000", "priceCurrency": "HUF",
+            "description": "AI hangrecepciós 500 perc / hó, weboldali chatbot és automatizációk. Nettó ár, havidíj." },
+          { "@type": "Offer", "name": "Partner", "price": "399000", "priceCurrency": "HUF",
+            "description": "AI hangrecepciós 1500 perc / hó, több telephely, egyedi fejlesztés. Nettó ár, havidíj." }
+        ]
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://peakai.hu/#weboldal",
+      "url": "https://peakai.hu/",
+      "name": "Peak AI",
+      "inLanguage": "hu-HU",
+      "publisher": { "@id": "https://peakai.hu/#szervezet" }
+    }
+  ]
+}
+</script>
 <style>
 /* ─── Peak AI · Design Tokens v1.0 ─────────────────────────────── */
 :root{
@@ -239,6 +288,7 @@ footer a:hover{color:var(--peak-accent)}
       <a href="#tudas">Mit tud</a>
       <a href="#csomagok">Csomagok</a>
       <a href="#kinek">Kinek</a>
+      <a href="/blog/">Blog</a>
     </div>
     <a class="btn btn-sm" href="#kapcsolat">Demót kérek</a>
   </div>
@@ -581,6 +631,7 @@ footer a:hover{color:var(--peak-accent)}
         <p style="margin:0">
           <a href="#hogyan">Hogyan működik</a><br>
           <a href="#csomagok">Csomagok</a><br>
+          <a href="/blog/">Blog</a><br>
           <a href="#kapcsolat">Kapcsolat</a>
         </p>
       </div>
