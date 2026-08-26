@@ -1,0 +1,361 @@
+<!doctype html>
+<html lang="hu">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hány hívás vész el egy autószervizben? — modellszámítás | Peak AI</title>
+<meta name="description" content="Egy szerviznél naponta 1-3 hívás marad megválaszolatlanul. Lépésről lépésre modellszámítás arról, mennyi bevétel esik ki havonta, és mi a három reális megoldás.">
+<meta name="theme-color" content="#0B0E13">
+<link rel="canonical" href="https://peakai.hu/blog/elveszett-hivasok-autoszerviz/">
+<meta property="og:title" content="Hány hívás vész el egy autószervizben, ha senki nem veszi fel?">
+<meta property="og:description" content="Modellszámítás a nem fogadott hívások havi költségéről, és a három reális megoldás összehasonlítása.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://peakai.hu/blog/elveszett-hivasok-autoszerviz/">
+<meta property="og:locale" content="hu_HU">
+<meta property="og:site_name" content="Peak AI">
+<meta property="article:published_time" content="2026-08-26">
+<meta name="author" content="Dr. Révész Barnabás">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 80'%3E%3Cpolygon points='20,72 60,6 100,72' fill='%235DE8E2'/%3E%3Cpolygon points='0,72 28,32 56,72' fill='%235DE8E2' opacity='.55'/%3E%3Cpolygon points='62,72 90,38 118,72' fill='%235DE8E2' opacity='.75'/%3E%3Crect x='0' y='72' width='120' height='2' fill='%235DE8E2' opacity='.9'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/blog/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Hány hívás vész el egy autószervizben, ha senki nem veszi fel?",
+      "description": "Modellszámítás a nem fogadott hívások havi költségéről egy autószerviznél, és a három reális megoldás összehasonlítása.",
+      "inLanguage": "hu-HU",
+      "datePublished": "2026-08-26",
+      "dateModified": "2026-08-26",
+      "mainEntityOfPage": { "@type": "WebPage", "@id": "https://peakai.hu/blog/elveszett-hivasok-autoszerviz/" },
+      "author": {
+        "@type": "Person",
+        "name": "Dr. Révész Barnabás",
+        "jobTitle": "alapító, Peak AI",
+        "email": "barnabas@peakai.hu"
+      },
+      "publisher": { "@type": "Organization", "name": "Peak AI", "url": "https://peakai.hu/" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Peak AI", "item": "https://peakai.hu/" },
+        { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://peakai.hu/blog/" },
+        { "@type": "ListItem", "position": 3, "name": "Hány hívás vész el egy autószervizben?" }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        { "@type": "Question", "name": "Honnan tudom meg, hány hívást vesztek el valójában?",
+          "acceptedAnswer": { "@type": "Answer", "text": "A telefonszolgáltatója hívásrészletezője megmutatja a bejövő, nem fogadott hívásokat. Nézze meg egy teljes hónapra, és bontsa ketté: nyitvatartás alatt és azon kívül érkezett. A második csoport az, amiről ma jellemzően semmilyen információ nincs." } },
+        { "@type": "Question", "name": "Nem elég egyszerűen a hangposta?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Ha a hívó azonnali igénnyel keresi (defekt, nem hűtő klíma, nem induló autó), akkor nem. Az ilyen hívó jellemzően nem hagy üzenetet, hanem tovább tárcsáz a következő céghez." } },
+        { "@type": "Question", "name": "Az AI-asszisztens elárulja, hogy gép?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Egy tisztességesen beállított rendszernél igen. A Peak AI asszisztense az első mondatban közli, hogy automata rendszer, és nem adja ki magát embernek." } },
+        { "@type": "Question", "name": "Mennyibe kerül egy AI telefonos recepciós?",
+          "acceptedAnswer": { "@type": "Answer", "text": "A Peak AI belépő csomagja 59 000 Ft + áfa havonta, egyszeri 79 000 Ft + áfa beállítási díjjal. A modellszámítás szerint havi egy-két visszaszerzett munka már fedezi a belépő csomag díját." } },
+        { "@type": "Question", "name": "Le kell cserélnem a telefonszámomat?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Nem. A meglévő céges szám marad, csak átirányítást állítunk be rá, hogy ha néhány csörgésen belül nem veszi fel, a hívás átcsússzon az asszisztensre." } }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<nav>
+  <div class="wrap nav-in">
+    <a class="logo logo-nav" href="/" aria-label="Peak AI">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 110" role="img">
+        <g transform="translate(0,15)">
+          <polygon points="20,72 60,6 100,72" fill="#0B0E13"/>
+          <polygon points="0,72 28,32 56,72" fill="#0B0E13" opacity="0.55"/>
+          <polygon points="62,72 90,38 118,72" fill="#0B0E13" opacity="0.75"/>
+          <rect x="0" y="72" width="120" height="2" fill="#0B0E13" opacity="0.9"/>
+        </g>
+        <text x="170" y="80" font-family="Space Grotesk, system-ui, sans-serif" font-weight="600" font-size="72" letter-spacing="-2" fill="#0B0E13">Peak</text>
+        <text x="354" y="80" font-family="Space Grotesk, system-ui, sans-serif" font-weight="300" font-style="italic" font-size="72" letter-spacing="-2" fill="#1FAEA8"> AI</text>
+      </svg>
+    </a>
+    <div class="nav-links">
+      <a href="/#hogyan">Hogyan működik</a>
+      <a href="/#tudas">Mit tud</a>
+      <a href="/#csomagok">Csomagok</a>
+      <a href="/#kinek">Kinek</a>
+      <a href="/blog/" aria-current="page">Blog</a>
+    </div>
+    <a class="btn btn-sm" href="/#kapcsolat">Demót kérek</a>
+  </div>
+</nav>
+<article class="article">
+  <p class="breadcrumb"><a href="/">Peak AI</a> › <a href="/blog/">Blog</a> › Elveszett hívások</p>
+
+  <h1>Hány hívás vész el egy autószervizben, ha senki nem veszi fel?</h1>
+
+  <p class="post-meta" style="margin:18px 0 30px">2026. augusztus 26. · 6 perc olvasás</p>
+
+  <div class="answer">
+    <p class="post-meta">Rövid válasz</p>
+    <p>
+      Egy egy-két szerelőállásos szerviznél naponta jellemzően 1–3 hívás marad
+      megválaszolatlanul — szerelés közben, egyszerre két ügyfélnél, ebédszünetben és
+      nyitvatartás után. Egy óvatos modellel számolva (napi 2 elveszett hívás, 20 munkanap,
+      ezek tizede válik munkává, egy átlagos munka 40–80 ezer forint) ez
+      <strong>havi 160–320 ezer forint elmaradt árbevétel</strong> — minden hónapban
+      újratermelődve, és a könyvelésben sehol nem látszik.
+    </p>
+  </div>
+
+  <p>
+    Ez a szám elsőre soknak tűnik. Nézzük meg, honnan jön, és hol lehet benne tévedni.
+  </p>
+
+  <h2>Miért pont a szerviz veszíti el a legtöbb hívást</h2>
+
+  <p>
+    Egy autószerviznél, gumisnál vagy klímás cégnél a tulajdonos vagy a pultos kolléga
+    szinte soha nem ül tétlenül az íróasztalnál. Vagy szerel, vagy épp egy másik ügyféllel
+    beszél, vagy a telefont kellene fognia olajos kézzel. Ez a fajta munka fizikailag zárja
+    ki, hogy minden hívás elsőre bejöjjön.
+  </p>
+  <p>
+    Ehhez jön a nyitvatartás. A legtöbb kisebb szerviz hétfőtől péntekig dolgozik, sokszor
+    ebédszünettel. Minden hívás, ami ezen kívül érkezik — péntek este, szombat délelőtt, a
+    hétfő reggeli indulás előtt —, automatikusan elvész, hacsak nincs mögötte valami, ami
+    felveszi.
+  </p>
+  <p>
+    A döntő tényező viszont nem a hívások száma, hanem az, hogy <strong>mit csinál a hívó,
+    ha nem veszik fel.</strong> Egy defektes autóval vagy nem hűtő klímával senki nem vár
+    két órát visszahívásra: felhívja a következő céget a Google-találatok közül. A hívás
+    tehát nem elhalasztódik, hanem átmegy a versenytárshoz.
+  </p>
+
+  <h2>A számolás, lépésről lépésre</h2>
+
+  <p>
+    Az alábbi tábla egy <strong>modellszámítás, nem mérési eredmény.</strong> Azért ilyen
+    felépítésű, hogy minden sorát át lehessen írni a saját számaira — a lényeg nem a végösszeg,
+    hanem a nagyságrend.
+  </p>
+
+  <div class="tbl-wrap">
+  <table>
+    <thead>
+      <tr><th>Tényező</th><th>Modellérték</th><th>Miből jön</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Nem fogadott hívás naponta</td><td><b>2 db</b></td><td>szerelés közben, egyszerre két ügyfél, ebédszünet, csúcsidő</td></tr>
+      <tr><td>Munkanap havonta</td><td><b>20 nap</b></td><td>jellemző hétfő–péntek</td></tr>
+      <tr><td>Elveszett megkeresés havonta</td><td><b>40 fő</b></td><td>a fenti kettő szorzata</td></tr>
+      <tr><td>Ebből munkává vált volna</td><td><b>10%</b></td><td>a többi tájékozódó hívás, ami e nélkül is elment volna máshova</td></tr>
+      <tr><td>Tényleges kiesett munka havonta</td><td><b>4 db</b></td><td></td></tr>
+      <tr><td>Egy átlagos munka értéke</td><td><b>40–80 000 Ft</b></td><td>szerviztípustól függően: gumicserétől a nagyszervizig</td></tr>
+      <tr class="sum"><td>Havi elmaradt árbevétel</td><td><b>160–320 000 Ft</b></td><td></td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p class="note">
+    A 10%-os arány szándékosan óvatos. Ha a szerviz erős Google-jelenléttel dolgozik és a
+    hívások nagyobb része konkrét igénnyel érkezik, ez az arány magasabb; ha sok az árat
+    kérdező, összehasonlító hívás, alacsonyabb. A modell mindkét irányban torzíthat — pont
+    ezért érdemes a saját számaival újraszámolni.
+  </p>
+
+  <h3>Hol téved leggyakrabban ez a becslés?</h3>
+
+  <p>
+    Két irányban. <strong>Alulbecsül</strong>, ha a szerviz szezonális: gumiszezonban vagy
+    a nyári klímacsúcsban a napi 2 elveszett hívás könnyen 5–8 is lehet, miközben pont akkor
+    a legdrágább minden kiesett munka. <strong>Túlbecsül</strong>, ha a hívók jelentős része
+    visszahív később — ez létező jelenség, csak jóval ritkább, mint ahogy a legtöbb tulajdonos
+    gondolja, mert a visszahívó ügyfelek láthatók, az elpártolók viszont nem.
+  </p>
+  <p>
+    Innen jön az egész téma vakfoltja: <strong>a nem fogadott hívás nem hagy nyomot a
+    könyvelésben.</strong> Nincs olyan sor a főkönyvben, hogy „elmaradt bevétel". Csak az
+    látszik, ami megvalósult — ezért érzi a legtöbb szerviz, hogy „nagyjából minden hívást
+    felveszünk", miközben a szolgáltatói hívásstatisztika mást mutat.
+  </p>
+
+  <h2>Mit lehet tenni ellene?</h2>
+
+  <p>Három reális út van, eltérő költséggel és eltérő korlátokkal.</p>
+
+  <h3>1. Felvenni valakit, aki a telefont kezeli</h3>
+  <p>
+    Ez a legalaposabb és a legdrágább megoldás. Egy részmunkaidős pultos bérköltsége is
+    nagyságrendekkel a fenti kiesés fölött vagy annak közelében van, és — ez a lényeges
+    korlát — <strong>nyitvatartáson kívül ő sem vesz fel semmit.</strong> A péntek esti és
+    hétvégi hívás ugyanúgy elvész.
+  </p>
+
+  <h3>2. Hangposta vagy visszahívás-kérés</h3>
+  <p>
+    Ingyenes, és éppen ezért csábító. A gyakorlati tapasztalat viszont az, hogy a hívók nagy
+    része <strong>nem hagy üzenetet</strong> — a hangposta hangja pontosan azt közli, hogy
+    „most nem érünk rá", ami az azonnali igénnyel hívó ügyfelet elküldi a következő
+    szervizhez. A hangposta nem megoldja a problémát, hanem dokumentálja.
+  </p>
+
+  <h3>3. AI-alapú telefonos recepciós</h3>
+  <p>
+    A hívást élőben, emberi hangon fogadja, magyarul, magázódva. Megkérdezi a nevet, a
+    problémát és azt, mikor lenne jó az időpont — és ha van mögötte foglalórendszer, akkor
+    <strong>valódi időpontot ad a naptárban</strong>, nem csak igényt rögzít. Nyitvatartástól
+    függetlenül, a hét minden napján.
+  </p>
+  <p>
+    A különbség az első kettőhöz képest nem a technológia, hanem az időzítés: az ügyfél
+    <em>a hívás pillanatában</em> kap valódi választ, nem fél óra múlva visszahívást. Aki
+    időpontot kapott, az már nem hívja fel a következő szervizt.
+  </p>
+
+  <h2>Mit jelent ez Szegeden és környékén?</h2>
+  <p>
+    Egy szegedi, csongrád-csanádi szervizpiacon a hívó ügyfél két-három percen belül talál
+    másik szervizt a Google-ban. Ez nem nagyvárosi sajátosság: éppen a közepes méretű
+    városokban a legélesebb, ahol elég sok az alternatíva ahhoz, hogy legyen hova
+    továbbmenni, de nem annyi, hogy a kapacitás szűkössége miatt kivárjanak. A Peak AI
+    elsősorban itt, szegedi és Szeged környéki szervizekkel, gumisokkal és klímás cégekkel
+    dolgozik.
+  </p>
+
+  <h2>Gyakori kérdések</h2>
+
+  <div class="faq">
+    <div class="faq-item">
+      <h3>Honnan tudom meg, hány hívást vesztek el valójában?</h3>
+      <p>
+        A telefonszolgáltatója hívásrészletezője megmutatja a bejövő, nem fogadott hívásokat
+        — ez a leggyorsabb, ingyenes ellenőrzés. Nézze meg egy teljes hónapra, és bontsa
+        ketté: nyitvatartás alatt és azon kívül érkezett. A második csoport az, amiről ma
+        jellemzően semmilyen információ nincs.
+      </p>
+    </div>
+    <div class="faq-item">
+      <h3>Nem elég egyszerűen a hangposta?</h3>
+      <p>
+        Ha a hívó azonnali igénnyel keresi (defekt, nem hűtő klíma, nem induló autó), akkor
+        nem. Az ilyen hívó jellemzően nem hagy üzenetet, hanem tovább tárcsáz. A hangposta
+        ott működik, ahol a hívás nem sürgős és az ügyfél amúgy is ragaszkodik a céghez.
+      </p>
+    </div>
+    <div class="faq-item">
+      <h3>Az AI-asszisztens elárulja, hogy gép?</h3>
+      <p>
+        Egy tisztességesen beállított rendszernél igen — nálunk ez alapbeállítás, nem opció.
+        Az asszisztens nem adja ki magát embernek. A tapasztalat szerint ez nem rontja a
+        foglalási arányt: az ügyfelet az érdekli, hogy kapott-e időpontot.
+      </p>
+    </div>
+    <div class="faq-item">
+      <h3>Mennyibe kerül egy ilyen rendszer?</h3>
+      <p>
+        A Peak AI belépő csomagja 59 000 Ft + áfa havonta, egyszeri 79 000 Ft + áfa
+        beállítási díjjal; a teljes árlista nyilvános a
+        <a href="/#csomagok" style="color:var(--peak-accent-deep);text-decoration:none">Csomagok</a>
+        oldalon. A megtérülés kérdése egyszerű: a fenti modell szerint havi egy-két visszaszerzett
+        munka már fedezi a belépő csomag díját.
+      </p>
+    </div>
+    <div class="faq-item">
+      <h3>Le kell cserélnem a telefonszámomat?</h3>
+      <p>
+        Nem. A meglévő céges szám marad; csak átirányítást állítunk be rá, hogy ha Ön
+        néhány csörgésen belül nem veszi fel, a hívás átcsússzon az asszisztensre.
+        Szolgáltatót váltani nem kell.
+      </p>
+    </div>
+  </div>
+    <div class="author">
+      <div class="author-mark">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 80" role="img" aria-label="Peak AI">
+          <polygon points="20,72 60,6 100,72" fill="#1FAEA8"/>
+          <polygon points="0,72 28,32 56,72" fill="#1FAEA8" opacity="0.55"/>
+          <polygon points="62,72 90,38 118,72" fill="#1FAEA8" opacity="0.75"/>
+          <rect x="0" y="72" width="120" height="2" fill="#1FAEA8" opacity="0.9"/>
+        </svg>
+      </div>
+      <div>
+        <h4>Dr. Révész Barnabás</h4>
+        <p>
+          A Peak AI alapítója. Nukleáris medicina szakorvos, egészségügyi közgazdasági
+          végzettséggel — szabályozott iparágban szerzett tapasztalattal épít magyar nyelvű
+          AI telefonos asszisztenseket kis- és középvállalkozásoknak.
+          <a href="mailto:barnabas@peakai.hu" style="color:var(--peak-accent-deep);text-decoration:none">barnabas@peakai.hu</a>
+        </p>
+      </div>
+    </div>
+</article>
+  <div class="next-up">
+    <p class="post-meta">Következő cikk</p>
+    <a class="post-card" href="/blog/ai-telefonos-recepcios-mennyibe-kerul/">
+      <h2>AI telefonos recepciós kisvállalkozásoknak: hogyan működik, mennyibe kerül, kinek éri meg</h2>
+      <p>Működés lépésről lépésre, a három árazási modell, konkrét árak — és a kérdés, amit a legtöbben elfelejtenek megkérdezni a dupla foglalásról.</p>
+      <span class="post-more">Elolvasom →</span>
+    </a>
+  </div>
+  <div class="wrap" style="margin-top:56px">
+    <div class="cta on-dark">
+      <h2>Nézzük meg élőben, az Ön cégére szabva.</h2>
+      <p>
+        Megmutatjuk, hogyan hangzana az asszisztens az Ön vállalkozásának nevében, és
+        közben látja, ahogy a lefoglalt időpont megjelenik a naptárban. 15 perc az egész,
+        döntés és szerződés nélkül.
+      </p>
+      <a class="btn" href="/#kapcsolat">Kérek egy demót</a>
+    </div>
+  </div>
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="logo logo-foot" href="/" aria-label="Peak AI — Reach higher ground">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 180" role="img">
+            <g transform="translate(0,20)">
+              <polygon points="20,72 60,6 100,72" fill="#5DE8E2"/>
+              <polygon points="0,72 28,32 56,72" fill="#5DE8E2" opacity="0.55"/>
+              <polygon points="62,72 90,38 118,72" fill="#5DE8E2" opacity="0.75"/>
+              <rect x="0" y="72" width="120" height="2" fill="#5DE8E2" opacity="0.9"/>
+            </g>
+            <text x="170" y="85" font-family="Space Grotesk, system-ui, sans-serif" font-weight="600" font-size="72" letter-spacing="-2" fill="#F4F6FA">Peak</text>
+            <text x="354" y="85" font-family="Space Grotesk, system-ui, sans-serif" font-weight="300" font-style="italic" font-size="72" letter-spacing="-2" fill="#5DE8E2"> AI</text>
+            <line x1="170" y1="115" x2="220" y2="115" stroke="#5DE8E2" stroke-width="2"/>
+            <text x="232" y="121" font-family="JetBrains Mono, ui-monospace, monospace" font-weight="500" font-size="16" letter-spacing="3" fill="#A8B1BD">REACH HIGHER GROUND</text>
+          </svg>
+        </a>
+        <p style="margin:20px 0 0;color:var(--peak-mist)">AI telefonos asszisztens<br>kis- és középvállalkozásoknak.</p>
+      </div>
+      <div>
+        <span class="foot-h">Kapcsolat</span>
+        <p style="margin:0">
+          <a href="mailto:barnabas@peakai.hu">barnabas@peakai.hu</a><br>
+          Szeged, Magyarország
+        </p>
+      </div>
+      <div>
+        <span class="foot-h">Oldalak</span>
+        <p style="margin:0">
+          <a href="/#hogyan">Hogyan működik</a><br>
+          <a href="/#csomagok">Csomagok</a><br>
+          <a href="/blog/">Blog</a><br>
+          <a href="/#kapcsolat">Kapcsolat</a>
+        </p>
+      </div>
+    </div>
+    <p class="tiny">
+      © 2026 Peak AI ·
+      A bruttó árak 27% áfával számolva, tájékoztató jelleggel. ·
+      A mintaszámítások szemléltető modellek, nem konkrét vállalkozás mért adatai.
+    </p>
+  </div>
+</footer>
+</body>
+</html>
