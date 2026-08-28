@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="hu">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0B0E13">
+<title>Hívás-veszteség kalkulátor — mennyi bevételt veszítesz el havonta? | Peak AI</title>
+<meta name="description" content="Ingyenes, interaktív kalkulátor autószervizeknek, gumisoknak és klímás cégeknek: 3 kérdés, és látod, mennyi bevétel veszik el havonta a meg nem válaszolt hívások miatt.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://peakai.hu/kalkulator/">
+<meta property="og:title" content="Hívás-veszteség kalkulátor — mennyi bevételt veszítesz el havonta?">
+<meta property="og:description" content="Töltsd ki a saját számaiddal — 10 másodperc, és látod a becsült havi kiesett fedezetet.">
+<meta property="og:locale" content="hu_HU">
+<meta property="og:site_name" content="Peak AI">
+<link rel="canonical" href="https://peakai.hu/kalkulator/">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:ital,wght@0,300;0,500;0,600;0,700;1,300&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="/assets/peak.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Peak AI hívás-veszteség kalkulátor",
+  "url": "https://peakai.hu/kalkulator/",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Web",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "HUF" },
+  "description": "Ingyenes online kalkulátor kis- és középvállalkozásoknak (autószerviz, gumis, klímás cégek) a meg nem válaszolt hívások becsült havi bevételkiesésének kiszámítására."
+}
+</script>
+<style>
+  /* ─── kalkulátor-specifikus kiegészítés a megosztott peak.css fölé ── */
+  .calc-card{ max-width:720px; }
+  .calc-row{
+    display:grid; grid-template-columns: 1fr 200px; gap:18px 24px;
+    align-items:center; padding:20px 0; border-bottom:1px solid var(--line);
+  }
+  .calc-row:last-of-type{ border-bottom:none; }
+  .calc-row label{ font-size:.98rem; color:var(--text); }
+  .calc-row .hint{ display:block; font-size:.82rem; color:var(--muted); margin-top:4px; }
+  .calc-input-wrap{ display:flex; align-items:center; gap:8px; justify-self:end; }
+  .calc-row input[type="number"]{
+    width:120px; font-family:var(--font-mono); font-size:1rem; text-align:right;
+    padding:10px 12px; border-radius:8px; border:1px solid var(--line);
+    background:var(--surface); color:var(--heading);
+  }
+  .calc-input-wrap .unit{ font-family:var(--font-mono); font-size:.82rem; color:var(--muted); min-width:28px; }
+  .calc-row.fixed{ background:var(--surface); border-radius:12px; padding:16px 18px; border-bottom:none; margin-top:4px; }
+  .calc-row.fixed label{ color:var(--muted); font-size:.92rem; }
+  .calc-row.fixed .fixed-val{
+    font-family:var(--font-mono); font-weight:600; color:var(--peak-accent-deep); font-size:1.05rem; justify-self:end;
+  }
+  .calc-total{
+    margin-top:22px; border-radius:16px; padding:26px 30px;
+    background:var(--peak-obsidian); display:flex; align-items:center; justify-content:space-between;
+    gap:20px; flex-wrap:wrap;
+  }
+  .calc-total .lbl{ font-family:var(--font-mono); font-size:.72rem; letter-spacing:.16em;
+    text-transform:uppercase; color:var(--peak-mist); margin-bottom:6px; }
+  .calc-total .val{ font-family:var(--font-display); font-weight:600; font-size:2.1rem; color:var(--peak-summit); letter-spacing:-.02em; }
+  .calc-total .val em{ font-style:normal; color:var(--peak-accent); }
+  .calc-total a.btn{ white-space:nowrap; }
+  .step-grid{ display:grid; grid-template-columns:1fr 1fr; gap:20px 32px; margin:0 0 8px; }
+  @media(max-width:640px){ .step-grid{ grid-template-columns:1fr; } .calc-row{ grid-template-columns:1fr; } .calc-input-wrap{ justify-self:start; } .calc-row.fixed .fixed-val{ justify-self:start; } }
+  .step{ display:flex; gap:14px; }
+  .step .num{
+    font-family:var(--font-mono); font-weight:700; font-size:.85rem; color:var(--peak-accent-deep);
+    border:1px solid var(--peak-accent-deep); border-radius:50%; width:26px; height:26px; min-width:26px;
+    display:flex; align-items:center; justify-content:center; margin-top:2px;
+  }
+  .step p{ margin:0; font-size:.95rem; color:var(--text); }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap nav-in">
+    <a class="logo logo-nav" href="https://peakai.hu/" aria-label="Peak AI főoldal">
+      <svg viewBox="0 0 520 110" role="img" aria-label="Peak AI">
+        <g transform="translate(0,15)">
+          <polygon points="20,72 60,6 100,72" fill="#0B0E13"/>
+          <polygon points="0,72 28,32 56,72" fill="#0B0E13" opacity="0.55"/>
+          <polygon points="62,72 90,38 118,72" fill="#0B0E13" opacity="0.75"/>
+          <rect x="0" y="72" width="120" height="2" fill="#0B0E13" opacity="0.9"/>
+        </g>
+        <text x="170" y="80" font-family="Space Grotesk, sans-serif" font-weight="600" font-size="72" letter-spacing="-2" fill="#0B0E13">Peak</text>
+        <text x="354" y="80" font-family="Space Grotesk, sans-serif" font-weight="300" font-style="italic" font-size="72" letter-spacing="-2" fill="#1FAEA8"> AI</text>
+      </svg>
+    </a>
+    <div class="nav-links">
+      <a href="https://peakai.hu/#hogyan">Hogyan működik</a>
+      <a href="https://peakai.hu/#tudas">Mit tud</a>
+      <a href="https://peakai.hu/#csomagok">Csomagok</a>
+      <a href="https://peakai.hu/#kinek">Kinek</a>
+      <a href="https://peakai.hu/blog/">Blog</a>
+      <a href="https://peakai.hu/kalkulator/" aria-current="page">Kalkulátor</a>
+      <a href="https://peakai.hu/#kapcsolat" class="btn btn-sm">Demót kérek</a>
+    </div>
+  </div>
+</nav>
+
+<section class="blog-hero on-dark">
+  <div class="wrap">
+    <div class="eyebrow">Ingyenes, interaktív eszköz</div>
+    <h1>Hány ügyfelet veszítesz el,<br>ha nem veszed fel a telefont?</h1>
+    <p class="lede">Töltsd ki a saját számaiddal — 10 másodperc, és látod a becsült havi kiesett fedezetet, amit a meg nem válaszolt hívások okoznak.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="card calc-card">
+
+      <div class="calc-row">
+        <label for="days">Nyitvatartási napok / hó
+          <span class="hint">jellemzően 22–26</span>
+        </label>
+        <div class="calc-input-wrap">
+          <input type="number" id="days" min="0" max="31" step="1" inputmode="numeric" placeholder="24">
+          <span class="unit">nap</span>
+        </div>
+      </div>
+
+      <div class="calc-row">
+        <label for="missed">Becsült elveszett hívás / nyitvatartási nap
+          <span class="hint">csúcsidőben, szerelés közben, ebédszünetben</span>
+        </label>
+        <div class="calc-input-wrap">
+          <input type="number" id="missed" min="0" max="50" step="1" inputmode="numeric" placeholder="2">
+          <span class="unit">db</span>
+        </div>
+      </div>
+
+      <div class="calc-row fixed">
+        <label>Ténylegesen munkává váló arány
+          <span class="hint">fix érték, óvatos iparági becslés</span>
+        </label>
+        <div class="fixed-val">50%</div>
+      </div>
+
+      <div class="calc-row">
+        <label for="margin">Egy átlagos munka nettó fedezete
+          <span class="hint">saját árlistád alapján</span>
+        </label>
+        <div class="calc-input-wrap">
+          <input type="number" id="margin" min="0" step="500" inputmode="numeric" placeholder="8000">
+          <span class="unit">Ft</span>
+        </div>
+      </div>
+
+      <div class="calc-total">
+        <div>
+          <div class="lbl">Havi kiesett fedezet (becslés)</div>
+          <div class="val" id="result">—</div>
+        </div>
+        <a class="btn" href="https://peakai.hu/#kapcsolat">Ingyenes felmérés kérése</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Mit jelent ez a gyakorlatban</h2>
+    <div class="step-grid">
+      <div class="step"><div class="num">1</div><p><b>Ez nem egyszeri veszteség.</b> A fenti szám minden hónapban újratermelődik, amíg a hívás elvész.</p></div>
+      <div class="step"><div class="num">2</div><p><b>A hangposta nem oldja meg.</b> A hívók nagy része nem hagy üzenetet — hívja a következő céget a listán.</p></div>
+      <div class="step"><div class="num">3</div><p><b>Egy teljes munkaidős recepciós drága</b>, és nyitvatartáson kívül az sem segít.</p></div>
+      <div class="step"><div class="num">4</div><p><b>Egy AI-alapú telefonos recepciós</b> minden hívást felvesz, a hét minden napján, és valódi időpontot ad — nem csak igényt rögzít.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="cta">
+      <h2>Nézzük meg együtt a te számaidat</h2>
+      <p>15 perces, ingyenes beszélgetés — konkrét javaslattal arról, hol térülne meg leggyorsabban egy AI-recepciós a te vállalkozásodban.</p>
+      <a class="btn" href="https://peakai.hu/#kapcsolat">Ingyenes felmérés kérése</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-grid">
+    <div>
+      <h2>Peak AI</h2>
+      <p>AI telefonos asszisztens<br>kis- és középvállalkozásoknak.</p>
+    </div>
+    <div>
+      <span class="foot-h">Kapcsolat</span>
+      <p>barnabas@peakai.hu<br>Szeged, Magyarország</p>
+    </div>
+    <div>
+      <span class="foot-h">Oldalak</span>
+      <p>
+        <a href="https://peakai.hu/#hogyan">Hogyan működik</a><br>
+        <a href="https://peakai.hu/#csomagok">Csomagok</a><br>
+        <a href="https://peakai.hu/blog/">Blog</a><br>
+        <a href="https://peakai.hu/kalkulator/">Kalkulátor</a><br>
+        <a href="https://peakai.hu/#kapcsolat">Kapcsolat</a>
+      </p>
+    </div>
+  </div>
+  <div class="wrap">
+    <p class="tiny">© 2026 Peak AI · A bruttó árak 27% áfával számolva, tájékoztató jelleggel.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var daysEl = document.getElementById('days');
+  var missedEl = document.getElementById('missed');
+  var marginEl = document.getElementById('margin');
+  var resultEl = document.getElementById('result');
+  var RATIO = 0.5;
+
+  function fmt(n){
+    return Math.round(n).toLocaleString('hu-HU') + ' Ft';
+  }
+
+  function calc(){
+    var days = parseFloat(daysEl.value);
+    var missed = parseFloat(missedEl.value);
+    var margin = parseFloat(marginEl.value);
+
+    if (isNaN(days) || isNaN(missed) || isNaN(margin) || days <= 0 || missed <= 0 || margin <= 0){
+      resultEl.textContent = '—';
+      return;
+    }
+    var total = days * missed * RATIO * margin;
+    resultEl.innerHTML = '<em>' + fmt(total) + '</em> / hó';
+  }
+
+  [daysEl, missedEl, marginEl].forEach(function(el){
+    el.addEventListener('input', calc);
+  });
+})();
+</script>
+
+</body>
+</html>
