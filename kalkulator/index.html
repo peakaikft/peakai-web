@@ -64,6 +64,21 @@
     display:flex; align-items:center; justify-content:center; margin-top:2px;
   }
   .step p{ margin:0; font-size:.95rem; color:var(--text); }
+  .quote-card{ margin-top:24px; }
+  .quote-form{ margin-top:4px; }
+  .quote-input-row{ display:flex; gap:12px; flex-wrap:wrap; }
+  .quote-input-row input[type="email"]{
+    flex:1 1 240px; font-family:var(--font-mono); font-size:.98rem;
+    padding:12px 14px; border-radius:8px; border:1px solid var(--line);
+    background:var(--surface); color:var(--heading);
+  }
+  .quote-input-row .btn{ white-space:nowrap; cursor:pointer; border:1px solid var(--peak-accent-deep); font-family:inherit; }
+  .quote-consent{ display:flex; gap:8px; align-items:flex-start; margin-top:14px; font-size:.82rem; color:var(--muted); }
+  .quote-consent input{ margin-top:3px; }
+  .quote-consent a{ color:var(--peak-accent-deep); }
+  .quote-status{ margin:12px 0 0; font-size:.9rem; min-height:1.2em; }
+  .quote-status.ok{ color:var(--peak-accent-deep); }
+  .quote-status.err{ color:#d9534f; }
 </style>
 </head>
 <body>
@@ -147,6 +162,23 @@
       <p class="calc-footnote">* A becslés fix, 50%-os óvatos iparági aránnyal számol: átlagosan ennyi elveszett hívásból lesz ténylegesen munka.</p>
 
     </div>
+
+    <div class="card calc-card quote-card">
+      <h2 style="margin-top:0">Kérj személyre szabott ajánlatot e-mailben</h2>
+      <p class="lede" style="margin-bottom:22px">Add meg az e-mail címed — a fenti számaid alapján pár másodperc múlva küldünk egy rövid, személyre szabott ajánlatot.</p>
+      <form id="quoteForm" class="quote-form" novalidate>
+        <div class="quote-input-row">
+          <input type="email" id="quoteEmail" name="email" required placeholder="pl. nev@ceged.hu" autocomplete="email">
+          <button type="submit" class="btn" id="quoteSubmit">Kérek ajánlatot</button>
+        </div>
+        <label class="quote-consent">
+          <input type="checkbox" id="quoteConsent" required>
+          <span>Hozzájárulok, hogy a Peak AI a megadott adataim alapján ajánlatot küldjön e-mailben. <a href="https://peakai.hu/adatkezeles/">Adatkezelési tájékoztató</a></span>
+        </label>
+        <p class="quote-status" id="quoteStatus" aria-live="polite"></p>
+      </form>
+    </div>
+
   </div>
 </section>
 
@@ -225,6 +257,84 @@
 
   [daysEl, missedEl, marginEl].forEach(function(el){
     el.addEventListener('input', calc);
+  });
+})();
+</script>
+
+<script>
+(function(){
+  // TODO: cseréld le a valós Make.com webhook URL-re, amint elkészül a "kalkulátor ajánlat" scenario
+  var AJANLAT_WEBHOOK_URL = "REPLACE_WITH_MAKE_WEBHOOK_URL";
+
+  var form = document.getElementById('quoteForm');
+  if (!form) return;
+
+  var emailEl = document.getElementById('quoteEmail');
+  var consentEl = document.getElementById('quoteConsent');
+  var statusEl = document.getElementById('quoteStatus');
+  var submitBtn = document.getElementById('quoteSubmit');
+  var RATIO = 0.5;
+
+  function setStatus(msg, kind){
+    statusEl.textContent = msg;
+    statusEl.className = 'quote-status' + (kind ? ' ' + kind : '');
+  }
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    setStatus('', '');
+
+    var days = parseFloat(document.getElementById('days').value);
+    var missed = parseFloat(document.getElementById('missed').value);
+    var margin = parseFloat(document.getElementById('margin').value);
+    var email = emailEl.value.trim();
+
+    if (isNaN(days) || isNaN(missed) || isNaN(margin) || days <= 0 || missed <= 0 || margin <= 0){
+      setStatus('Kérlek, először töltsd ki a fenti három mezőt.', 'err');
+      return;
+    }
+    if (!emailEl.checkValidity()){
+      setStatus('Adj meg egy érvényes e-mail címet.', 'err');
+      return;
+    }
+    if (!consentEl.checked){
+      setStatus('Az ajánlat elküldéséhez el kell fogadnod az adatkezelést.', 'err');
+      return;
+    }
+    if (AJANLAT_WEBHOOK_URL.indexOf('REPLACE_WITH') !== -1){
+      setStatus('Ez a funkció hamarosan élesedik — addig írj nekünk a barnabas@peakai.hu címre.', 'err');
+      return;
+    }
+
+    var monthlyLoss = Math.round(days * missed * RATIO * margin);
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Küldés...';
+
+    fetch(AJANLAT_WEBHOOK_URL, {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        email: email,
+        openDaysPerMonth: days,
+        missedCallsPerDay: missed,
+        marginPerJob: margin,
+        assumedConversionRatio: RATIO,
+        monthlyLossEstimate: monthlyLoss,
+        source: 'kalkulator',
+        page: window.location.href,
+        submittedAt: new Date().toISOString()
+      })
+    }).then(function(r){
+      if (!r.ok) throw new Error('bad status');
+      setStatus('Elküldtük az ajánlatot a(z) ' + email + ' címre — nézd meg a postaládád (esetleg a spam mappát is).', 'ok');
+      form.reset();
+    }).catch(function(){
+      setStatus('Valami elromlott. Próbáld újra, vagy írj nekünk a barnabas@peakai.hu címre.', 'err');
+    }).finally(function(){
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Kérek ajánlatot';
+    });
   });
 })();
 </script>
