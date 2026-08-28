@@ -44,11 +44,7 @@
     background:var(--surface); color:var(--heading);
   }
   .calc-input-wrap .unit{ font-family:var(--font-mono); font-size:.82rem; color:var(--muted); min-width:28px; }
-  .calc-row.fixed{ background:var(--surface); border-radius:12px; padding:16px 18px; border-bottom:none; margin-top:4px; }
-  .calc-row.fixed label{ color:var(--muted); font-size:.92rem; }
-  .calc-row.fixed .fixed-val{
-    font-family:var(--font-mono); font-weight:600; color:var(--peak-accent-deep); font-size:1.05rem; justify-self:end;
-  }
+  .calc-footnote{ margin-top:14px; font-size:.78rem; color:var(--muted); line-height:1.5; }
   .calc-total{
     margin-top:22px; border-radius:16px; padding:26px 30px;
     background:var(--peak-obsidian); display:flex; align-items:center; justify-content:space-between;
@@ -60,7 +56,7 @@
   .calc-total .val em{ font-style:normal; color:var(--peak-accent); }
   .calc-total a.btn{ white-space:nowrap; }
   .step-grid{ display:grid; grid-template-columns:1fr 1fr; gap:20px 32px; margin:0 0 8px; }
-  @media(max-width:640px){ .step-grid{ grid-template-columns:1fr; } .calc-row{ grid-template-columns:1fr; } .calc-input-wrap{ justify-self:start; } .calc-row.fixed .fixed-val{ justify-self:start; } }
+  @media(max-width:640px){ .step-grid{ grid-template-columns:1fr; } .calc-row{ grid-template-columns:1fr; } .calc-input-wrap{ justify-self:start; } }
   .step{ display:flex; gap:14px; }
   .step .num{
     font-family:var(--font-mono); font-weight:700; font-size:.85rem; color:var(--peak-accent-deep);
@@ -130,16 +126,9 @@
         </div>
       </div>
 
-      <div class="calc-row fixed">
-        <label>Ténylegesen munkává váló arány
-          <span class="hint">fix érték, óvatos iparági becslés</span>
-        </label>
-        <div class="fixed-val">50%</div>
-      </div>
-
       <div class="calc-row">
-        <label for="margin">Egy átlagos munka nettó fedezete
-          <span class="hint">saját árlistád alapján</span>
+        <label for="margin">Egy átlagos munkán mennyi marad neked?
+          <span class="hint">bevétel mínusz anyagköltség — saját becslésed alapján</span>
         </label>
         <div class="calc-input-wrap">
           <input type="number" id="margin" min="0" step="500" inputmode="numeric" placeholder="8000">
@@ -154,6 +143,8 @@
         </div>
         <a class="btn" href="https://peakai.hu/#kapcsolat">Ingyenes felmérés kérése</a>
       </div>
+
+      <p class="calc-footnote">* A becslés fix, 50%-os óvatos iparági aránnyal számol: átlagosan ennyi elveszett hívásból lesz ténylegesen munka.</p>
 
     </div>
   </div>
