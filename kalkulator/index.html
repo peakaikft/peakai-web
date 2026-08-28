@@ -54,7 +54,7 @@
     text-transform:uppercase; color:var(--peak-mist); margin-bottom:6px; }
   .calc-total .val{ font-family:var(--font-display); font-weight:600; font-size:2.1rem; color:var(--peak-summit); letter-spacing:-.02em; }
   .calc-total .val em{ font-style:normal; color:var(--peak-accent); }
-  .calc-total a.btn{ white-space:nowrap; }
+  .calc-sub{ margin-top:10px; font-size:.85rem; line-height:1.5; color:var(--peak-mist); max-width:440px; }
   .step-grid{ display:grid; grid-template-columns:1fr 1fr; gap:20px 32px; margin:0 0 8px; }
   @media(max-width:640px){ .step-grid{ grid-template-columns:1fr; } .calc-row{ grid-template-columns:1fr; } .calc-input-wrap{ justify-self:start; } }
   .step{ display:flex; gap:14px; }
@@ -64,7 +64,8 @@
     display:flex; align-items:center; justify-content:center; margin-top:2px;
   }
   .step p{ margin:0; font-size:.95rem; color:var(--text); }
-  .quote-card{ margin-top:24px; }
+  .quote-block{ margin-top:28px; padding-top:26px; border-top:1px solid var(--line); }
+  .quote-block h2{ margin:0 0 6px; font-size:1.25rem; }
   .quote-form{ margin-top:4px; }
   .quote-input-row{ display:flex; gap:12px; flex-wrap:wrap; }
   .quote-input-row input[type="email"]{
@@ -155,28 +156,28 @@
         <div>
           <div class="lbl">Havi kiesett fedezet (becslés)</div>
           <div class="val" id="result">—</div>
+          <p class="calc-sub">Ez nem csak elveszett bevétel — ez idő is, amit hívások visszahívásával és hangposta-ellenőrzéssel tölt, ahelyett hogy dolgozna.</p>
         </div>
-        <a class="btn" href="https://peakai.hu/#kapcsolat">Ingyenes felmérés kérése</a>
       </div>
 
       <p class="calc-footnote">* A becslés fix, 50%-os óvatos iparági aránnyal számol: átlagosan ennyi elveszett hívásból lesz ténylegesen munka.</p>
 
-    </div>
+      <div class="quote-block">
+        <h2>Kérj személyre szabott ajánlatot e-mailben</h2>
+        <p class="lede" style="margin-bottom:22px">A fenti számaid alapján pár másodperc múlva küldünk egy rövid, személyre szabott ajánlatot — ugyanide.</p>
+        <form id="quoteForm" class="quote-form" novalidate>
+          <div class="quote-input-row">
+            <input type="email" id="quoteEmail" name="email" required placeholder="pl. nev@ceged.hu" autocomplete="email">
+            <button type="submit" class="btn" id="quoteSubmit">Kérek ajánlatot</button>
+          </div>
+          <label class="quote-consent">
+            <input type="checkbox" id="quoteConsent" required>
+            <span>Hozzájárulok, hogy a Peak AI a megadott adataim alapján ajánlatot küldjön e-mailben. <a href="https://peakai.hu/adatkezeles/">Adatkezelési tájékoztató</a></span>
+          </label>
+          <p class="quote-status" id="quoteStatus" aria-live="polite"></p>
+        </form>
+      </div>
 
-    <div class="card calc-card quote-card">
-      <h2 style="margin-top:0">Kérj személyre szabott ajánlatot e-mailben</h2>
-      <p class="lede" style="margin-bottom:22px">Add meg az e-mail címed — a fenti számaid alapján pár másodperc múlva küldünk egy rövid, személyre szabott ajánlatot.</p>
-      <form id="quoteForm" class="quote-form" novalidate>
-        <div class="quote-input-row">
-          <input type="email" id="quoteEmail" name="email" required placeholder="pl. nev@ceged.hu" autocomplete="email">
-          <button type="submit" class="btn" id="quoteSubmit">Kérek ajánlatot</button>
-        </div>
-        <label class="quote-consent">
-          <input type="checkbox" id="quoteConsent" required>
-          <span>Hozzájárulok, hogy a Peak AI a megadott adataim alapján ajánlatot küldjön e-mailben. <a href="https://peakai.hu/adatkezeles/">Adatkezelési tájékoztató</a></span>
-        </label>
-        <p class="quote-status" id="quoteStatus" aria-live="polite"></p>
-      </form>
     </div>
 
   </div>
