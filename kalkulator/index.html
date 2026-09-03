@@ -3,16 +3,17 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="/assets/consent.js" defer></script>
 <meta name="theme-color" content="#0B0E13">
-<title>Hívás-veszteség kalkulátor — mennyi bevételt veszítesz el havonta? | Peak AI</title>
-<meta name="description" content="Ingyenes, interaktív kalkulátor autószervizeknek, gumisoknak és klímás cégeknek: 3 kérdés, és látod, mennyi bevétel veszik el havonta a meg nem válaszolt hívások miatt.">
+<title>Hívás-veszteség kalkulátor — mennyi bevételt veszít el havonta? | Peak AI</title>
+<meta name="description" content="Ingyenes, interaktív kalkulátor autószervizeknek, gumisoknak és klímás cégeknek: 3 kérdés, és látja, mennyi bevétel veszik el havonta a nem fogadott hívások miatt.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://peakai.hu/kalkulator/">
-<meta property="og:title" content="Hívás-veszteség kalkulátor — mennyi bevételt veszítesz el havonta?">
-<meta property="og:description" content="Töltsd ki a saját számaiddal — 10 másodperc, és látod a becsült havi kiesett fedezetet.">
+<meta property="og:title" content="Hívás-veszteség kalkulátor — mennyi bevételt veszít el havonta?">
+<meta property="og:description" content="Töltse ki a saját számaival — 10 másodperc, és látja a becsült havi kiesett fedezetet.">
 <meta property="og:locale" content="hu_HU">
 <meta property="og:site_name" content="Peak AI">
-<link rel="canonical" href="https://peakai.hu/kalkulator/">
+<link rel="canonical" href="/kalkulator/">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:ital,wght@0,300;0,500;0,600;0,700;1,300&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap">
 <link rel="stylesheet" href="/assets/peak.css">
 <script type="application/ld+json">
@@ -86,7 +87,7 @@
 
 <nav>
   <div class="wrap nav-in">
-    <a class="logo logo-nav" href="https://peakai.hu/" aria-label="Peak AI főoldal">
+    <a class="logo logo-nav" href="/" aria-label="Peak AI főoldal">
       <svg viewBox="0 0 520 110" role="img" aria-label="Peak AI">
         <g transform="translate(0,15)">
           <polygon points="20,72 60,6 100,72" fill="#0B0E13"/>
@@ -99,22 +100,22 @@
       </svg>
     </a>
     <div class="nav-links">
-      <a href="https://peakai.hu/#hogyan">Hogyan működik</a>
-      <a href="https://peakai.hu/#tudas">Mit tud</a>
-      <a href="https://peakai.hu/#csomagok">Csomagok</a>
-      <a href="https://peakai.hu/#kinek">Kinek</a>
-      <a href="https://peakai.hu/blog/">Blog</a>
-      <a href="https://peakai.hu/kalkulator/" aria-current="page">Kalkulátor</a>
-      <a href="https://peakai.hu/#kapcsolat" class="btn btn-sm">Demót kérek</a>
+      <a href="/#hogyan">Hogyan működik</a>
+      <a href="/#tudas">Mit tud</a>
+      <a href="/#csomagok">Csomagok</a>
+      <a href="/#kinek">Kinek</a>
+      <a href="/blog/">Blog</a>
+      <a href="/kalkulator/" aria-current="page">Kalkulátor</a>
     </div>
+    <a class="btn btn-sm" href="/#kapcsolat">Demót kérek</a>
   </div>
 </nav>
 
 <section class="blog-hero on-dark">
   <div class="wrap">
     <div class="eyebrow">Ingyenes, interaktív eszköz</div>
-    <h1>Hány ügyfelet veszítesz el,<br>ha nem veszed fel a telefont?</h1>
-    <p class="lede">Töltsd ki a saját számaiddal — 10 másodperc, és látod a becsült havi kiesett fedezetet, amit a meg nem válaszolt hívások okoznak.</p>
+    <h1>Hány ügyfelet veszít el,<br>ha nem veszi fel a telefont?</h1>
+    <p class="lede">Töltse ki a saját számaival — 10 másodperc, és látja a becsült havi kiesett fedezetet, amit a nem fogadott hívások okoznak.</p>
   </div>
 </section>
 
@@ -143,8 +144,8 @@
       </div>
 
       <div class="calc-row">
-        <label for="margin">Egy átlagos munkán mennyi marad neked?
-          <span class="hint">bevétel mínusz anyagköltség — saját becslésed alapján</span>
+        <label for="margin">Egy átlagos munkán mennyi marad Önnél?
+          <span class="hint">bevétel mínusz anyagköltség — saját becslése alapján</span>
         </label>
         <div class="calc-input-wrap">
           <input type="number" id="margin" min="0" step="500" inputmode="numeric" placeholder="8000">
@@ -156,23 +157,23 @@
         <div>
           <div class="lbl">Havi kiesett fedezet (becslés)</div>
           <div class="val" id="result">—</div>
-          <p class="calc-sub">Ez nem csak elveszett bevétel — ez idő is, amit hívások visszahívásával és hangposta-ellenőrzéssel tölt, ahelyett hogy dolgozna.</p>
+          <p class="calc-sub">Ez nem csak elveszett bevétel — ez idő is, amit visszahívásokkal és hangposta-ellenőrzéssel tölt ahelyett, hogy dolgozna.</p>
         </div>
       </div>
 
-      <p class="calc-footnote">* A becslés fix, 50%-os óvatos iparági aránnyal számol: átlagosan ennyi elveszett hívásból lesz ténylegesen munka.</p>
+      <p class="calc-footnote">* Modellszámítás: fix 50%-os feltevéssel számol arra, hogy az elveszett hívások fele lett volna ténylegesen munka. Az Ön aránya lehet más — a nagyságrend a lényeg. Részletes levezetés: <a href="/blog/elveszett-hivasok-autoszerviz/" style="color:var(--peak-accent-deep);text-decoration:none">hány hívás vész el egy autószervizben</a>.</p>
 
       <div class="quote-block">
-        <h2>Kérj személyre szabott ajánlatot e-mailben</h2>
-        <p class="lede" style="margin-bottom:22px">A fenti számaid alapján pár másodperc múlva küldünk egy rövid, személyre szabott ajánlatot — ugyanide.</p>
+        <h2>Kérjen személyre szabott ajánlatot e-mailben</h2>
+        <p class="lede" style="margin-bottom:22px">A fenti számai alapján pár másodpercen belül küldünk egy rövid, személyre szabott ajánlatot a megadott címre, PDF-ben.</p>
         <form id="quoteForm" class="quote-form" novalidate>
           <div class="quote-input-row">
-            <input type="email" id="quoteEmail" name="email" required placeholder="pl. nev@ceged.hu" autocomplete="email">
+            <input type="email" id="quoteEmail" name="email" required placeholder="pl. nev@cege.hu" autocomplete="email">
             <button type="submit" class="btn" id="quoteSubmit">Kérek ajánlatot</button>
           </div>
           <label class="quote-consent">
             <input type="checkbox" id="quoteConsent" required>
-            <span>Hozzájárulok, hogy a Peak AI a megadott adataim alapján ajánlatot küldjön e-mailben. <a href="https://peakai.hu/adatkezeles/">Adatkezelési tájékoztató</a></span>
+            <span>Hozzájárulok, hogy a Peak AI a megadott adataim alapján ajánlatot küldjön e-mailben. <a href="/adatkezeles/#kalkulator">Adatkezelési tájékoztató</a></span>
           </label>
           <p class="quote-status" id="quoteStatus" aria-live="polite"></p>
         </form>
@@ -189,7 +190,7 @@
     <div class="step-grid">
       <div class="step"><div class="num">1</div><p><b>Ez nem egyszeri veszteség.</b> A fenti szám minden hónapban újratermelődik, amíg a hívás elvész.</p></div>
       <div class="step"><div class="num">2</div><p><b>A hangposta nem oldja meg.</b> A hívók nagy része nem hagy üzenetet — hívja a következő céget a listán.</p></div>
-      <div class="step"><div class="num">3</div><p><b>Egy teljes munkaidős recepciós drága</b>, és nyitvatartáson kívül az sem segít.</p></div>
+      <div class="step"><div class="num">3</div><p><b>Egy teljes munkaidős recepciós drága</b> — 2026-ban minimálbéren is 364 764 Ft/hó a munkáltatónak —, és nyitvatartáson kívül az sem segít. <a href="/blog/ai-recepcios-vs-alkalmazott-recepcios-koltsege-2026/" style="color:var(--peak-accent-deep);text-decoration:none">Összehasonlítás →</a></p></div>
       <div class="step"><div class="num">4</div><p><b>Egy AI-alapú telefonos recepciós</b> minden hívást felvesz, a hét minden napján, és valódi időpontot ad — nem csak igényt rögzít.</p></div>
     </div>
   </div>
@@ -198,36 +199,64 @@
 <section>
   <div class="wrap">
     <div class="cta">
-      <h2>Nézzük meg együtt a te számaidat</h2>
-      <p>15 perces, ingyenes beszélgetés — konkrét javaslattal arról, hol térülne meg leggyorsabban egy AI-recepciós a te vállalkozásodban.</p>
-      <a class="btn" href="https://peakai.hu/#kapcsolat">Ingyenes felmérés kérése</a>
+      <h2>Nézzük meg együtt az Ön számait</h2>
+      <p>15 perces, ingyenes beszélgetés — konkrét javaslattal arról, hol térülne meg leggyorsabban egy AI-recepciós az Ön vállalkozásában.</p>
+      <a class="btn" href="/#kapcsolat">Ingyenes felmérés kérése</a>
     </div>
   </div>
 </section>
 
 <footer>
-  <div class="wrap foot-grid">
-    <div>
-      <h2>Peak AI</h2>
-      <p>AI telefonos asszisztens<br>kis- és középvállalkozásoknak.</p>
-    </div>
-    <div>
-      <span class="foot-h">Kapcsolat</span>
-      <p>barnabas@peakai.hu<br>Szeged, Magyarország</p>
-    </div>
-    <div>
-      <span class="foot-h">Oldalak</span>
-      <p>
-        <a href="https://peakai.hu/#hogyan">Hogyan működik</a><br>
-        <a href="https://peakai.hu/#csomagok">Csomagok</a><br>
-        <a href="https://peakai.hu/blog/">Blog</a><br>
-        <a href="https://peakai.hu/kalkulator/">Kalkulátor</a><br>
-        <a href="https://peakai.hu/#kapcsolat">Kapcsolat</a>
-      </p>
-    </div>
-  </div>
   <div class="wrap">
-    <p class="tiny">© 2026 Peak AI · A bruttó árak 27% áfával számolva, tájékoztató jelleggel.</p>
+    <div class="foot-grid">
+      <div>
+        <a class="logo logo-foot" href="/" aria-label="Peak AI — Reach higher ground">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 180" role="img">
+            <g transform="translate(0,20)">
+              <polygon points="20,72 60,6 100,72" fill="#5DE8E2"/>
+              <polygon points="0,72 28,32 56,72" fill="#5DE8E2" opacity="0.55"/>
+              <polygon points="62,72 90,38 118,72" fill="#5DE8E2" opacity="0.75"/>
+              <rect x="0" y="72" width="120" height="2" fill="#5DE8E2" opacity="0.9"/>
+            </g>
+            <text x="170" y="85" font-family="Space Grotesk, system-ui, sans-serif" font-weight="600" font-size="72" letter-spacing="-2" fill="#F4F6FA">Peak</text>
+            <text x="354" y="85" font-family="Space Grotesk, system-ui, sans-serif" font-weight="300" font-style="italic" font-size="72" letter-spacing="-2" fill="#5DE8E2"> AI</text>
+            <line x1="170" y1="115" x2="220" y2="115" stroke="#5DE8E2" stroke-width="2"/>
+            <text x="232" y="121" font-family="JetBrains Mono, ui-monospace, monospace" font-weight="500" font-size="16" letter-spacing="3" fill="#A8B1BD">REACH HIGHER GROUND</text>
+          </svg>
+        </a>
+        <p style="margin:20px 0 0;color:var(--peak-mist)">AI telefonos asszisztens<br>kis- és középvállalkozásoknak.</p>
+      </div>
+      <div>
+        <span class="foot-h">Kapcsolat</span>
+        <p style="margin:0">
+          <a href="mailto:barnabas@peakai.hu">barnabas@peakai.hu</a><br>
+          Szeged, Magyarország
+        </p>
+      </div>
+      <div>
+        <span class="foot-h">Oldalak</span>
+        <p style="margin:0">
+          <a href="/#hogyan">Hogyan működik</a><br>
+          <a href="/#csomagok">Csomagok</a><br>
+          <a href="/blog/">Blog</a><br>
+          <a href="/kalkulator/">Kalkulátor</a><br>
+          <a href="/#kapcsolat">Kapcsolat</a>
+        </p>
+      </div>
+      <div>
+        <span class="foot-h">Jogi</span>
+        <p style="margin:0">
+          <a href="/impresszum/">Impresszum</a><br>
+          <a href="/adatkezeles/">Adatkezelési tájékoztató</a><br>
+          <a href="/aszf/">ÁSZF</a>
+        </p>
+      </div>
+    </div>
+    <p class="tiny">
+      Peak AI — az AlignMed Kft. márkaneve · © 2026 ·
+      A bruttó árak 27% áfával számolva, tájékoztató jelleggel. ·
+      A kalkulátor eredménye modellszámítás, nem konkrét vállalkozás mért adata.
+    </p>
   </div>
 </footer>
 
@@ -254,6 +283,7 @@
     }
     var total = days * missed * RATIO * margin;
     resultEl.innerHTML = '<em>' + fmt(total) + '</em> / hó';
+    if (window.peakTrack && !calc.sent){ calc.sent = true; peakTrack('kalkulator_szamol', { havi_veszteseg: Math.round(total) }); }
   }
 
   [daysEl, missedEl, marginEl].forEach(function(el){
@@ -290,19 +320,19 @@
     var email = emailEl.value.trim();
 
     if (isNaN(days) || isNaN(missed) || isNaN(margin) || days <= 0 || missed <= 0 || margin <= 0){
-      setStatus('Kérlek, először töltsd ki a fenti három mezőt.', 'err');
+      setStatus('Kérjük, először töltse ki a fenti három mezőt.', 'err');
       return;
     }
     if (!emailEl.checkValidity()){
-      setStatus('Adj meg egy érvényes e-mail címet.', 'err');
+      setStatus('Adjon meg egy érvényes e-mail címet.', 'err');
       return;
     }
     if (!consentEl.checked){
-      setStatus('Az ajánlat elküldéséhez el kell fogadnod az adatkezelést.', 'err');
+      setStatus('Az ajánlat elküldéséhez el kell fogadnia az adatkezelési tájékoztatót.', 'err');
       return;
     }
     if (AJANLAT_WEBHOOK_URL.indexOf('REPLACE_WITH') !== -1){
-      setStatus('Ez a funkció hamarosan élesedik — addig írj nekünk a barnabas@peakai.hu címre.', 'err');
+      setStatus('Ez a funkció hamarosan élesedik — addig írjon nekünk a barnabas@peakai.hu címre.', 'err');
       return;
     }
 
@@ -327,10 +357,11 @@
       })
     }).then(function(r){
       if (!r.ok) throw new Error('bad status');
-      setStatus('Elküldtük az ajánlatot a(z) ' + email + ' címre — nézd meg a postaládád (esetleg a spam mappát is).', 'ok');
+      setStatus('Elküldtük az ajánlatot a(z) ' + email + ' címre — kérjük, nézze meg a postaládáját (esetleg a spam mappát is).', 'ok');
+      if (window.peakTrack) peakTrack('ajanlatkeres', { havi_veszteseg: monthlyLoss });
       form.reset();
     }).catch(function(){
-      setStatus('Valami elromlott. Próbáld újra, vagy írj nekünk a barnabas@peakai.hu címre.', 'err');
+      setStatus('Valami elromlott. Próbálja újra, vagy írjon nekünk a barnabas@peakai.hu címre.', 'err');
     }).finally(function(){
       submitBtn.disabled = false;
       submitBtn.textContent = 'Kérek ajánlatot';
