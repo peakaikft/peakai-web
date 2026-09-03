@@ -13,6 +13,11 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://peakai.hu/">
 <meta property="og:locale" content="hu_HU">
+<meta property="og:image" content="https://peakai.hu/assets/og/default.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://peakai.hu/assets/og/default.png">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 80'%3E%3Cpolygon points='20,72 60,6 100,72' fill='%235DE8E2'/%3E%3Cpolygon points='0,72 28,32 56,72' fill='%235DE8E2' opacity='.55'/%3E%3Cpolygon points='62,72 90,38 118,72' fill='%235DE8E2' opacity='.75'/%3E%3Crect x='0' y='72' width='120' height='2' fill='%235DE8E2' opacity='.9'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -266,6 +271,34 @@ footer a:hover{color:var(--peak-accent)}
 .foot-h{font-family:var(--font-mono); font-size:.68rem; font-weight:500; letter-spacing:.2em;
         text-transform:uppercase; color:var(--peak-glacier); display:block; margin-bottom:12px}
 .tiny{font-size:.8rem; margin-top:36px; line-height:1.65; color:#4A5462}
+
+/* ─── visszahívás-kérő űrlap ──────────────────────────────────── */
+.cb-form{max-width:560px;margin:8px auto 0;text-align:left}
+.cb-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:560px){.cb-grid{grid-template-columns:1fr}}
+.cb-form label{display:block;font-family:var(--font-mono);font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--peak-mist);margin:0 0 6px}
+.cb-form input,.cb-form select{width:100%;font-family:var(--font-body);font-size:1rem;padding:12px 14px;border-radius:8px;border:1px solid #2C3542;background:var(--peak-basalt);color:var(--peak-summit)}
+.cb-form input::placeholder{color:var(--peak-glacier)}
+.cb-form input:focus,.cb-form select:focus{outline:none;border-color:var(--peak-accent)}
+.cb-full{grid-column:1/-1}
+.cb-form label.cb-consent{display:flex;gap:10px;align-items:flex-start;font-family:var(--font-body);font-size:.82rem;letter-spacing:0;text-transform:none;color:var(--peak-mist);margin:14px 0 16px;line-height:1.5}
+.cb-consent input{width:auto;margin-top:3px}
+.cb-consent a{color:var(--peak-accent);text-decoration:none}
+.cb-form .btn{width:100%;cursor:pointer;font-family:var(--font-display)}
+.cb-status{margin:12px 0 0;font-size:.92rem;min-height:1.3em;color:var(--peak-mist)}
+.cb-status.ok{color:var(--peak-accent)}
+.cb-status.err{color:#FF7A7A}
+.cb-or{margin:22px 0 0;font-size:.9rem;color:var(--peak-glacier)}
+
+/* ─── „Így hangzik" hangminta ─────────────────────────────────── */
+.listen{display:none;margin-top:2rem;padding:18px 20px;border:1px solid #2C3542;border-radius:14px;background:rgba(20,24,31,.7);max-width:560px}
+.listen.ready{display:block}
+.listen-head{display:flex;align-items:center;gap:14px;margin-bottom:10px}
+.listen-btn{width:46px;height:46px;border-radius:50%;border:0;background:var(--peak-accent);color:var(--peak-obsidian);cursor:pointer;display:grid;place-items:center;flex:none;font-size:1rem}
+.listen-btn:hover{background:var(--peak-accent-lift)}
+.listen-title{font-family:var(--font-display);font-weight:600;color:var(--peak-summit);font-size:1rem;letter-spacing:-.01em}
+.listen-sub{font-size:.82rem;color:var(--peak-glacier);margin:2px 0 0;font-family:var(--font-mono);letter-spacing:.04em}
+.listen audio{width:100%;height:36px;filter:invert(1) hue-rotate(180deg) saturate(.6)}
 </style>
 </head>
 <body>
@@ -311,6 +344,16 @@ footer a:hover{color:var(--peak-accent)}
       <a class="btn btn-ghost" href="#hogyan">Hogyan működik</a>
     </div>
     <p class="hero-note">A meglévő telefonszáma marad — csak átirányítást állítunk be rá. Nem kell semmit lecserélni.</p>
+    <div class="listen" id="igy-hangzik">
+      <div class="listen-head">
+        <button type="button" class="listen-btn" id="listenBtn" aria-label="Hangminta lejátszása">&#9654;</button>
+        <div>
+          <div class="listen-title">Így hangzik — hallgasson bele</div>
+          <p class="listen-sub">Mintabeszélgetés egy szervizes időpontfoglalásról · magyarul</p>
+        </div>
+      </div>
+      <audio id="listenAudio" preload="metadata" controls src="/assets/demo-hivas.mp3"></audio>
+    </div>
   </div>
 </header>
 
@@ -330,17 +373,18 @@ footer a:hover{color:var(--peak-accent)}
         <h3>Mintaszámítás</h3>
         <div class="calc-row"><span>Nem fogadott hívás naponta</span><b>2 db</b></div>
         <div class="calc-row"><span>Munkanap havonta</span><b>20 nap</b></div>
-        <div class="calc-row"><span>Elveszett érdeklődő havonta</span><b>40 fő</b></div>
-        <div class="calc-row"><span>Ebből munkává vált volna</span><b>10%</b></div>
-        <div class="calc-row"><span>Átlagos munka értéke</span><b>80 000 Ft</b></div>
+        <div class="calc-row"><span>Elveszett hívás havonta</span><b>40 db</b></div>
+        <div class="calc-row"><span>Ebből munka lett volna</span><b>50% → 20 db</b></div>
+        <div class="calc-row"><span>Egy átlagos munka fedezete</span><b>12 000 Ft</b></div>
         <div class="calc-total">
-          <span>Havi elmaradt árbevétel</span>
-          <b>320 000 Ft</b>
+          <span>Havi kiesett fedezet</span>
+          <b>240 000 Ft</b>
         </div>
         <p class="calc-note">
-          Ez egy modellszámítás, nem mérési eredmény — az Ön számai bizonyosan mások.
-          A lényeg nem a pontos összeg, hanem a nagyságrend: a nem fogadott hívás
-          jellemzően nagyobb tétel, mint amennyibe a megoldása kerül.
+          Modellszámítás, nem mérési eredmény — az Ön számai bizonyosan mások. A fix 50%-os
+          feltevés (az elveszett hívások fele lett volna munka) ugyanaz, mint a kalkulátorban;
+          a fedezet a munkadíj mínusz az anyagköltség. A lényeg a nagyságrend: a nem fogadott
+          hívás jellemzően nagyobb tétel, mint amennyibe a megoldása kerül.
           <a href="/kalkulator/" style="color:var(--peak-accent);text-decoration:none">Számolja ki a saját számaival →</a>
         </p>
       </div>
@@ -620,12 +664,39 @@ footer a:hover{color:var(--peak-accent)}
     <div class="cta on-dark">
       <h2>Nézzük meg élőben, az Ön cégére szabva.</h2>
       <p>
-        Küldünk egy rövid felvételt arról, hogyan hangzana az asszisztens az Ön
-        vállalkozásának nevében. Nem kell hozzá döntés és nem kell hozzá szerződés —
-        15 perc az egész.
+        Adja meg a nevét és a számát, mi visszahívjuk a megadott időszakban. 15 perc az egész:
+        megmutatjuk, hogyan hangzana az asszisztens az Ön vállalkozásának nevében — döntés és
+        szerződés nélkül.
       </p>
-      <a class="btn" href="mailto:barnabas@peakai.hu?subject=Demo%20kerese%20-%20Peak%20AI">Írok egy e-mailt</a>
-      <a class="cta-mail" href="mailto:barnabas@peakai.hu">barnabas@peakai.hu</a>
+      <form class="cb-form" id="cbForm" novalidate>
+        <div class="cb-grid">
+          <div>
+            <label for="cbNev">Név</label>
+            <input type="text" id="cbNev" name="nev" required autocomplete="name" placeholder="pl. Kovács Péter">
+          </div>
+          <div>
+            <label for="cbTel">Telefonszám</label>
+            <input type="tel" id="cbTel" name="telefon" required autocomplete="tel" inputmode="tel" placeholder="+36 30 123 4567">
+          </div>
+          <div class="cb-full">
+            <label for="cbMikor">Mikor hívhatjuk?</label>
+            <select id="cbMikor" name="mikor" required>
+              <option value="">Válasszon…</option>
+              <option>Délelőtt (8–12)</option>
+              <option>Délután (12–17)</option>
+              <option>Este (17–20)</option>
+              <option>Bármikor</option>
+            </select>
+          </div>
+        </div>
+        <label class="cb-consent">
+          <input type="checkbox" id="cbConsent" required>
+          <span>Hozzájárulok, hogy a Peak AI a megadott adataimon visszahívjon. <a href="/adatkezeles/#kapcsolat">Adatkezelési tájékoztató</a></span>
+        </label>
+        <button type="submit" class="btn" id="cbSubmit">Kérem a visszahívást</button>
+        <p class="cb-status" id="cbStatus" aria-live="polite"></p>
+      </form>
+      <p class="cb-or">Vagy írjon: <a class="cta-mail" style="margin:0" href="mailto:barnabas@peakai.hu?subject=Demo%20kerese%20-%20Peak%20AI">barnabas@peakai.hu</a></p>
     </div>
   </div>
 </section>
@@ -684,5 +755,45 @@ footer a:hover{color:var(--peak-accent)}
   </div>
 </footer>
 
+<script>
+(function(){
+  /* hangminta: csak akkor jelenik meg, ha a fájl tényleg betölthető */
+  var box=document.getElementById('igy-hangzik'), au=document.getElementById('listenAudio'), btn=document.getElementById('listenBtn');
+  if(au){
+    au.addEventListener('loadedmetadata',function(){ box.classList.add('ready'); });
+    au.addEventListener('error',function(){ box.classList.remove('ready'); });
+    btn.addEventListener('click',function(){
+      if(au.paused){ au.play(); btn.innerHTML='&#10074;&#10074;'; if(window.peakTrack) peakTrack('hangminta_lejatszas',{}); }
+      else { au.pause(); btn.innerHTML='&#9654;'; }
+    });
+    au.addEventListener('ended',function(){ btn.innerHTML='&#9654;'; });
+    au.addEventListener('pause',function(){ btn.innerHTML='&#9654;'; });
+    au.addEventListener('play',function(){ btn.innerHTML='&#10074;&#10074;'; });
+  }
+
+  /* visszahívás-kérő űrlap → Make.com webhook */
+  var WEBHOOK='https://hook.eu2.make.com/6sre7eo775aes5pwxxxrw9yrlq1psrmp';
+  var f=document.getElementById('cbForm'); if(!f) return;
+  var st=document.getElementById('cbStatus'), sb=document.getElementById('cbSubmit');
+  function say(m,k){ st.textContent=m; st.className='cb-status'+(k?' '+k:''); }
+  f.addEventListener('submit',function(e){
+    e.preventDefault(); say('','');
+    var nev=document.getElementById('cbNev').value.trim(), tel=document.getElementById('cbTel').value.trim(), mikor=document.getElementById('cbMikor').value;
+    var digits=tel.replace(/\D/g,'');
+    if(nev.length<3){ say('Kérjük, adja meg a nevét.','err'); return; }
+    if(digits.length<8||digits.length>13){ say('Kérjük, érvényes telefonszámot adjon meg (pl. +36 30 123 4567).','err'); return; }
+    if(!mikor){ say('Kérjük, válassza ki, mikor hívhatjuk.','err'); return; }
+    if(!document.getElementById('cbConsent').checked){ say('A visszahíváshoz el kell fogadnia az adatkezelési tájékoztatót.','err'); return; }
+    sb.disabled=true; sb.textContent='Küldés…';
+    fetch(WEBHOOK,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({
+      nev:nev, telefon:tel, mikor:mikor, consent:'igen', source:'visszahivas-urlap', page:location.href, submittedAt:new Date().toISOString()
+    })}).then(function(r){ if(!r.ok) throw new Error('status'); 
+      say('Köszönjük! Visszahívjuk a megadott időszakban: '+mikor.toLowerCase()+'.','ok'); f.reset();
+      if(window.peakTrack) peakTrack('visszahivas_keres',{mikor:mikor});
+    }).catch(function(){ say('Valami elromlott. Kérjük, próbálja újra, vagy írjon a barnabas@peakai.hu címre.','err'); })
+      .finally(function(){ sb.disabled=false; sb.textContent='Kérem a visszahívást'; });
+  });
+})();
+</script>
 </body>
 </html>
