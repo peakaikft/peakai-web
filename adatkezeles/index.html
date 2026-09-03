@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="/assets/consent.js" defer></script>
 <title>Adatkezelési tájékoztató | Peak AI</title>
 <meta name="description" content="Milyen személyes adatokat kezel a Peak AI, milyen célból, meddig, és milyen jogai vannak Önnek — GDPR szerinti tájékoztató.">
 <meta name="theme-color" content="#0B0E13">
@@ -28,7 +29,7 @@
       "name": "Adatkezelési tájékoztató",
       "description": "Milyen személyes adatokat kezel a Peak AI, milyen célból, meddig, és milyen jogai vannak Önnek — GDPR szerinti tájékoztató.",
       "inLanguage": "hu-HU",
-      "dateModified": "2026-08-26",
+      "dateModified": "2026-09-03",
       "isPartOf": { "@type": "WebSite", "url": "https://peakai.hu/", "name": "Peak AI" },
       "publisher": { "@type": "Organization", "name": "Peak AI", "url": "https://peakai.hu/" }
     },
@@ -133,11 +134,49 @@
 
   <h2 id="weboldal">3. A weboldal látogatása</h2>
   <p>
-    A peakai.hu <strong>nem használ analitikai vagy marketing sütiket</strong>, nem futtat
-    követőszkriptet, és nem tartalmaz olyan űrlapot, amelyen adatot lehetne megadni.
-    Ezért nem jelenítünk meg sütibanner-t sem: nincs mihez hozzájárulást kérni.
+    A peakai.hu <strong>nem használ marketing- vagy hirdetési sütit</strong>, és nem
+    követi Önt más weboldalakon. Egyetlen mérőeszközt használunk, a Google Analytics 4-et,
+    <strong>kizárólag az Ön előzetes hozzájárulásával</strong> — ezért jelenik meg az
+    oldal alján a süti-sáv.
   </p>
-  <p>Két dolog azonban technikailag mégis történik:</p>
+  <h3>Forgalmi statisztika (Google Analytics 4)</h3>
+  <ul>
+    <li>
+      <strong>Mit mér:</strong> mely oldalakat nyitják meg, honnan érkezik a látogató
+      (kereső, közösségi média, közvetlen), milyen eszközről, és mely gombokra kattint
+      (pl. „Demót kérek", kalkulátor használata). Az IP-címet a Google a feldolgozás
+      során csonkolja; a mérés nem kapcsol nevet vagy e-mail-címet a látogatáshoz.
+    </li>
+    <li>
+      <strong>Süti csak hozzájárulással.</strong> Amíg nem kattint az „Elfogadom"
+      gombra, a Google Analytics nem helyez el sütit a böngészőjében (Google Consent
+      Mode, „denied" alapállapot). Elutasításkor a rendszer kizárólag süti nélküli,
+      azonosításra alkalmatlan, összesített jelzést küld a Google felé, amelyből
+      egyedi látogató nem azonosítható.
+    </li>
+    <li>
+      <strong>Jogalap:</strong> az Ön hozzájárulása (GDPR 6. cikk (1) a), az Eker. tv.
+      13/A. § és az elektronikus hírközlési szabályok szerint). A hozzájárulás
+      bármikor visszavonható: törölje a peakai.hu sütijeit és a helyi tárolóját a
+      böngészőjében, és a sáv újra megjelenik.
+    </li>
+    <li>
+      <strong>Döntésének megjegyzése:</strong> az „Elfogadom" / „Elutasítom" választást a
+      böngésző helyi tárolójában (<code>peakai_consent</code>) jegyezzük meg legfeljebb
+      12 hónapig, hogy ne kelljen minden oldalon újra dönteni. Ez technikailag
+      szükséges tárolás, személyes adatot nem tartalmaz.
+    </li>
+    <li>
+      <strong>Megőrzés a Google Analyticsben:</strong> a felhasználó- és eseményszintű
+      adatok 14 hónap, utána csak összesített riport marad.
+    </li>
+    <li>
+      <strong>Adatfeldolgozó:</strong> Google Ireland Limited (Gordon House, Barrow
+      Street, Dublin 4, Írország); a Google LLC (USA) felé történő továbbítás jogalapját
+      a 8. pont ismerteti.
+    </li>
+  </ul>
+  <p>Ezen felül két dolog technikailag mindenképp történik:</p>
   <ul>
     <li>
       <strong>Kiszolgálói naplók.</strong> A tárhelyszolgáltatónk (Vercel Inc.) a
@@ -152,6 +191,31 @@
       (GDPR 6. cikk (1) f) — egységes megjelenés. Ha ezt el szeretné kerülni, a
       betűtípusok betöltése böngészőbeállítással vagy tartalomblokkolóval megakadályozható.
     </li>
+  </ul>
+
+  <h3 id="kalkulator">A hívás-veszteség kalkulátor és az e-mailes ajánlatkérés</h3>
+  <p>
+    A <a href="/kalkulator/" style="color:var(--peak-accent-deep);text-decoration:none">kalkulátor</a>
+    a beírt számokkal a böngészőjében számol; ezek az adatok sehova nem kerülnek el,
+    amíg Ön nem kér ajánlatot. Ha az e-mail-címét megadva ajánlatot kér, az alábbi
+    történik:
+  </p>
+  <ul>
+    <li><strong>Kezelt adatok:</strong> az e-mail-cím, a kalkulátorba beírt három érték és
+      az ezekből számolt becslés, a küldés időpontja, valamint az oldal címe, ahonnan a
+      kérés érkezett.</li>
+    <li><strong>Cél:</strong> a személyre szabott ajánlat elkészítése és elküldése PDF-ben
+      a megadott címre, valamint — ha válaszol — a további egyeztetés.</li>
+    <li><strong>Jogalap:</strong> az Ön hozzájárulása (GDPR 6. cikk (1) a), amelyet a
+      jelölőnégyzet bepipálásával ad meg; utána szerződéskötést megelőző lépés
+      (6. cikk (1) b).</li>
+    <li><strong>Adatfeldolgozók ebben a lépésben:</strong> Make.com (Celonis, s.r.o.,
+      Prága, EU) — az űrlap adatainak fogadása és az automatikus PDF-készítés;
+      Google LLC — a PDF előállítása (Google Docs) és az e-mail kiküldése (Gmail,
+      barnabas@peakai.hu). Az átmeneti dokumentum a küldés után azonnal törlődik.</li>
+    <li><strong>Megőrzés:</strong> az elküldött ajánlat a levelezésünkben marad; ha nem jön
+      létre szerződés, az utolsó kapcsolatfelvételtől számított 1 évig. A Make.com
+      futtatási naplójából a szolgáltató gyakorlata szerint néhány hét után törlődik.</li>
   </ul>
 
   <h2 id="kapcsolat">4. Kapcsolatfelvétel</h2>
@@ -221,7 +285,8 @@
       <tr><td>ElevenLabs Inc.</td><td>beszédszintézis (az asszisztens hangja)</td><td>USA</td></tr>
       <tr><td>Gladia SAS</td><td>magyar nyelvű beszédfelismerés</td><td>EU (Franciaország)</td></tr>
       <tr><td>Resend, Inc.</td><td>visszaigazoló és emlékeztető e-mailek küldése</td><td>USA</td></tr>
-      <tr><td>Google LLC</td><td>betűtípusok kiszolgálása a weboldalon</td><td>USA</td></tr>
+      <tr><td>Google Ireland Ltd. / Google LLC</td><td>betűtípusok; forgalmi statisztika (Google Analytics 4, csak hozzájárulással); az ajánlat-PDF előállítása és az e-mail kiküldése</td><td>EU (Írország) / USA</td></tr>
+      <tr><td>Celonis, s.r.o. (Make.com)</td><td>a kalkulátor ajánlatkérő űrlapjának feldolgozása</td><td>EU (Csehország)</td></tr>
     </tbody>
   </table>
   </div>
@@ -249,6 +314,9 @@
       <tr><td>Hívásnapló, hangfelvétel, leirat</td><td><b>90 nap</b></td><td>havi teljesítményriport, panasz kivizsgálása</td></tr>
       <tr><td>Foglalási adat (név, telefonszám, időpont)</td><td>az ügyfél döntése szerint, jellemzően az időpontot követő 1 év</td><td>az ügyfél mint adatkezelő rendelkezése</td></tr>
       <tr><td>Bemutató asszisztens foglalásai</td><td><b>naponta törlődik</b></td><td>tesztrendszer</td></tr>
+      <tr><td>Google Analytics látogatói adat</td><td><b>14 hónap</b></td><td>forgalmi statisztika (csak hozzájárulással)</td></tr>
+      <tr><td>Süti-döntés a böngésző helyi tárolójában</td><td>legfeljebb 12 hónap</td><td>hogy ne kelljen újra dönteni</td></tr>
+      <tr><td>Kalkulátoros ajánlatkérés (e-mail, beírt számok)</td><td>szerződés nélkül 1 év</td><td>ajánlatadás, egyeztetés</td></tr>
       <tr><td>Kiszolgálói naplók</td><td>a tárhelyszolgáltató gyakorlata szerint, jellemzően néhány hét</td><td>üzembiztonság</td></tr>
       <tr><td>Szerződések, üzleti levelezés</td><td>a szerződés végét követő 5 év</td><td>általános elévülési idő</td></tr>
       <tr><td>Számlák és számviteli bizonylatok</td><td><b>8 év</b></td><td>a számvitelről szóló 2000. évi C. törvény 169. §-a</td></tr>
@@ -314,7 +382,7 @@
     dátumával együtt. Lényeges változásról a szerződött ügyfeleinket külön is értesítjük.
   </p>
 
-  <p class="stamp">Hatályos: 2026. augusztus 26. · Verzió: 1.0</p>
+  <p class="stamp">Hatályos: 2026. szeptember 3. · Verzió: 1.1 (Google Analytics és kalkulátoros ajánlatkérés bekerült) · Előző verzió: 2026. augusztus 26.</p>
 </article>
 <footer>
   <div class="wrap">
