@@ -1,0 +1,497 @@
+<!doctype html>
+<html lang="hu">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="/assets/consent.js" defer></script>
+<title>Nem fogadott hívások a fogászaton: hány páciens vész el 2026-ban? | Peak AI</title>
+<meta name="description" content="Egy fogászati rendelőben kezelés közben senki nem tudja felvenni a telefont. Hol veszik el a hívás, mennyit ér egy új páciens 2026-os magyar árakon, és modellszámítás arról, mennyi fedezet esik ki havonta — forrásokkal.">
+<meta name="theme-color" content="#0B0E13">
+<link rel="canonical" href="https://peakai.hu/blog/fogaszat-nem-fogadott-hivasok-elveszett-paciensek-2026/">
+<meta property="og:title" content="Nem fogadott hívások a fogászaton: hány páciens vész el 2026-ban?">
+<meta property="og:description" content="Kezelés közben senki nem veszi fel a telefont — és a fájó foggal hívó páciens a következő rendelőt tárcsázza. Modellszámítás 2026-os magyar árakkal, forrásokkal.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://peakai.hu/blog/fogaszat-nem-fogadott-hivasok-elveszett-paciensek-2026/">
+<meta property="og:locale" content="hu_HU">
+<meta property="og:image" content="https://peakai.hu/assets/og/blog-fogaszat.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://peakai.hu/assets/og/blog-fogaszat.png">
+<meta property="og:site_name" content="Peak AI">
+<meta property="article:published_time" content="2026-09-08">
+<meta name="author" content="Dr. Révész Barnabás">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 80'%3E%3Cpolygon points='20,72 60,6 100,72' fill='%235DE8E2'/%3E%3Cpolygon points='0,72 28,32 56,72' fill='%235DE8E2' opacity='.55'/%3E%3Cpolygon points='62,72 90,38 118,72' fill='%235DE8E2' opacity='.75'/%3E%3Crect x='0' y='72' width='120' height='2' fill='%235DE8E2' opacity='.9'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/peak.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Nem fogadott hívások a fogászaton: hány páciens vész el 2026-ban?",
+      "description": "Egy fogászati rendelőben kezelés közben senki nem tudja felvenni a telefont. Hol veszik el a hívás, mennyit ér egy új páciens 2026-os magyar árakon, és modellszámítás arról, mennyi fedezet esik ki havonta — forrásokkal.",
+      "inLanguage": "hu-HU",
+      "datePublished": "2026-09-08",
+      "dateModified": "2026-09-08",
+      "mainEntityOfPage": { "@type": "WebPage", "@id": "https://peakai.hu/blog/fogaszat-nem-fogadott-hivasok-elveszett-paciensek-2026/" },
+      "author": {
+        "@type": "Person",
+        "name": "Dr. Révész Barnabás",
+        "jobTitle": "alapító, Peak AI",
+        "email": "barnabas@peakai.hu",
+        "url": "https://peakai.hu/"
+      },
+      "publisher": { "@type": "Organization", "name": "Peak AI", "url": "https://peakai.hu/" },
+      "about": ["fogászati rendelő telefon", "elveszett hívások", "új páciens értéke", "AI telefonos recepciós fogászat"],
+      "keywords": "fogászat nem fogadott hívás, fogorvosi rendelő telefon, fogászati recepciós, új páciens értéke 2026, fogászati asszisztens telefon, AI recepciós fogászat, magánfogászat időpontfoglalás"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Peak AI", "item": "https://peakai.hu/" },
+        { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://peakai.hu/blog/" },
+        { "@type": "ListItem", "position": 3, "name": "Nem fogadott hívások a fogászaton" }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+                "@type": "Question",
+                "name": "Hány hívást veszít el egy fogászati rendelő?",
+                "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Magyar mérés nem áll rendelkezésre. A Dental Economics amerikai iparági benchmarkja szerint a fogászati rendelők a nyitvatartási időben érkező hívások 30–38%-át nem fogadják. Egy 85 vállalkozásra kiterjedő, 58 iparágat lefedő mérés (411 Locals) az összes kisvállalkozási hívás 37,8%-át találta fogadottnak. Saját rendelőjénél a mobilszolgáltató híváslistája vagy egy hetes strigulázás adja a valós számot."
+                }
+        },
+        {
+                "@type": "Question",
+                "name": "Mennyit ér egy új páciens egy magánfogászatnak 2026-ban?",
+                "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "2026-os budapesti árlisták alapján egy konzultáció 10–30 ezer Ft, egy fogkő-eltávolítás 25–60 ezer Ft, egy tömés 25–65 ezer Ft, egy cirkónium korona 90–150 ezer Ft. Az első látogatás jellemzően 35–90 ezer Ft bevétel, és a páciens többsége visszajár. A cikk modellszámítása óvatosan, első látogatásonként 20 000 Ft fedezettel számol."
+                }
+        },
+        {
+                "@type": "Question",
+                "name": "Miért nem veszi fel az asszisztens a telefont a fogászaton?",
+                "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Mert kezelés közben a széknél van: kesztyűben, eszközt ad, nyálat szív. Egy egyszékes rendelőben nincs harmadik ember, aki a telefont kezelné. A hívás nem hanyagságból, hanem a munka természetéből vész el — ezért nem oldja meg, ha 'jobban odafigyelnek'."
+                }
+        },
+        {
+                "@type": "Question",
+                "name": "Mit tehet egy AI telefonos asszisztens fájó foggal hívó páciens esetén?",
+                "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Nem diagnosztizál és nem ad orvosi tanácsot. Felveszi a hívást, felismeri, hogy sürgős panaszról van szó, rögzíti a nevet és a visszahívható számot, és a rendelő szabályai szerint vagy a legközelebbi sürgősségi időpontot ajánlja, vagy azonnali visszahívást jelez a rendelőnek. A lényeg, hogy a páciens ne a következő rendelőt hívja."
+                }
+        },
+        {
+                "@type": "Question",
+                "name": "Kezelhet egy AI asszisztens egészségügyi adatot a GDPR szerint?",
+                "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Az egészségügyi adat a GDPR 9. cikke szerint különleges adat. A helyes gyakorlat az adattakarékosság: az asszisztens csak az időpontfoglaláshoz szükséges minimumot kéri (név, telefonszám, a panasz rövid jellege), nem kérdez kórtörténetet, és a hívót az első mondatban tájékoztatja, hogy automata rendszerrel beszél. A rendelő és a szolgáltató között adatfeldolgozói szerződés szükséges."
+                }
+        }
+]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<nav>
+  <div class="wrap nav-in">
+    <a class="logo logo-nav" href="/" aria-label="Peak AI">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 110" role="img">
+        <g transform="translate(0,15)">
+          <polygon points="20,72 60,6 100,72" fill="#0B0E13"/>
+          <polygon points="0,72 28,32 56,72" fill="#0B0E13" opacity="0.55"/>
+          <polygon points="62,72 90,38 118,72" fill="#0B0E13" opacity="0.75"/>
+          <rect x="0" y="72" width="120" height="2" fill="#0B0E13" opacity="0.9"/>
+        </g>
+        <text x="170" y="80" font-family="Space Grotesk, system-ui, sans-serif" font-weight="600" font-size="72" letter-spacing="-2" fill="#0B0E13">Peak</text>
+        <text x="354" y="80" font-family="Space Grotesk, system-ui, sans-serif" font-weight="300" font-style="italic" font-size="72" letter-spacing="-2" fill="#1FAEA8"> AI</text>
+      </svg>
+    </a>
+    <div class="nav-links">
+      <a href="/#hogyan">Hogyan működik</a>
+      <a href="/#tudas">Mit tud</a>
+      <a href="/#csomagok">Csomagok</a>
+      <a href="/#kinek">Kinek</a>
+      <a href="/blog/" aria-current="page">Blog</a>
+      <a href="/kalkulator/">Kalkulátor</a>
+    </div>
+    <a class="btn btn-sm" href="/#kapcsolat">Demót kérek</a>
+  </div>
+</nav>
+<article class="article">
+  <p class="breadcrumb"><a href="/">Peak AI</a> › <a href="/blog/">Blog</a> › Nem fogadott hívások a fogászaton</p>
+
+  <h1>Nem fogadott hívások a fogászaton: hány páciens vész el 2026-ban?</h1>
+
+  <p class="post-meta" style="margin:18px 0 30px">2026. szeptember 8. · 9 perc olvasás</p>
+
+  <div class="answer">
+    <p class="post-meta">Rövid válasz</p>
+    <p>
+      Egy fogászati rendelőben a telefon akkor csörög, amikor senki nem tudja felvenni:
+      az asszisztens a széknél áll kesztyűben, az orvos kezel. Amerikai iparági
+      benchmark szerint a rendelők a <strong>nyitvatartási időben érkező hívások
+      30–38%-át nem fogadják</strong>; magyar mérés nincs, de a munka természete itt sem
+      más. A hívó pedig többnyire nem hagy üzenetet, hanem a következő rendelőt
+      tárcsázza. Modellszámításunkban egy egyszékes rendelő <strong>napi 2 elveszett
+      hívása</strong> — óvatos, 20 000 Ft-os első látogatási fedezettel — <strong>havi
+      kb. 420 000 Ft kiesést</strong> jelent; egy háromszékes rendelőnél ez millió fölé
+      megy. A megoldás nem a szigorúbb odafigyelés, hanem az, hogy a hívást
+      olyasvalaki vegye fel, aki soha nincs a széknél.
+    </p>
+  </div>
+
+  <h2>Miért pont a fogászaton vész el a legtöbb hívás?</h2>
+
+  <p>
+    Egy autószervizben a szerelő leteheti a kulcsot, és felveheti a telefont. Egy
+    fogászati rendelőben ez nem így működik. Kezelés közben az asszisztens
+    <strong>steril kesztyűben</strong> eszközt ad, nyálat szív, keveri a lenyomatanyagot;
+    az orvos keze a páciens szájában van. A recepció — ha van egyáltalán — egy ember,
+    aki egyszerre fogadja az érkező pácienst, számláz, és a következő időpontot
+    egyezteti. Az egyszékes, orvos-plusz-asszisztens felállású rendelőben pedig nincs
+    harmadik személy.
+  </p>
+
+  <p>
+    Ehhez jön a hívások időbeli eloszlása. A páciens akkor hív, amikor neki alkalmas:
+    <strong>munka után, 17 óra körül</strong>, ebédidőben, vagy hétfő reggel, amikor a
+    hétvégén megjelent fájdalommal együtt mindenki egyszerre tárcsáz. Ezek pontosan azok
+    az időszakok, amikor a rendelő vagy zárva van, vagy a legzsúfoltabb.
+  </p>
+
+  <h3>Mit mondanak a mérések?</h3>
+
+  <ul>
+    <li>A <strong>Dental Economics</strong> amerikai szaklap iparági benchmarkja szerint a
+      fogászati rendelők a nyitvatartási időben érkező hívások <strong>30–38%-át</strong>
+      nem fogadják. Ugyanez a cikk egy új páciens első éves értékét 850–1 300 dollárra
+      teszi az amerikai piacon — ez a szám nálunk nem alkalmazható, a magyar árakkal
+      lentebb számolunk.</li>
+    <li>A <strong>411 Locals</strong> 85 kisvállalkozást, 58 iparágat 30 napon át mérő
+      vizsgálatában a hívások <strong>37,8%-át fogadták</strong>, 37,8% hangpostára ment,
+      24,3%-ra semmilyen válasz nem érkezett. Nem fogászati adat, de a kisvállalkozási
+      telefon általános állapotát mutatja: tízből hat hívás nem talál embert.</li>
+    <li>Magyar, rendelőkre vonatkozó hívásmérés tudomásunk szerint nem létezik. Amíg
+      nincs, a saját számát a legegyszerűbb a mobilszolgáltató híváslistájából
+      kiolvasni: a „nem fogadott" tételek egy hétre visszamenőleg megvannak.</li>
+  </ul>
+
+  <h2>Mennyit ér egy elveszett hívás egy magánfogászatnak?</h2>
+
+  <p>
+    Itt tér el a fogászat minden más kisvállalkozástól: a <strong>páciens értéke
+    magas, és visszajár</strong>. A G7 elemzése a KSH és a NEAK adataiból azt mutatja,
+    hogy a magyarok a fogászati ellátások <strong>kétharmadát saját zsebből
+    fizetik</strong>, a szektor árbevétele 2015 és 2021 között megduplázódott, és 2022-ben
+    az ágazat adózás előtti eredményhányada 22% volt. Ugyanakkor 2021-ben százezer
+    lakosra 71 fogorvos jutott, amivel Magyarország az európai mezőny alsó harmadában
+    volt — vagyis a kereslet megvan, a rendelő ideje a szűk keresztmetszet.
+  </p>
+
+  <p>2026-os budapesti magánrendelői árlista alapján egy-egy beavatkozás:</p>
+
+  <div class="tbl-wrap">
+  <table>
+    <thead>
+      <tr><th>Beavatkozás</th><th>2026-os ártartomány (magánrendelő, Budapest)</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Konzultáció, vizsgálat</td><td>10 000 – 30 000 Ft</td></tr>
+      <tr><td>Fogkő-eltávolítás, dentálhigiénia</td><td>25 000 – 60 000 Ft</td></tr>
+      <tr><td>Tömés</td><td>25 000 – 65 000 Ft</td></tr>
+      <tr><td>Gyökérkezelés (csatornánként)</td><td>25 000 – 55 000 Ft</td></tr>
+      <tr><td>Cirkónium korona</td><td>90 000 – 150 000 Ft</td></tr>
+      <tr><td>Implantátum beültetése (csak a műtét)</td><td>200 000 Ft-tól</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p class="note">
+    Forrás: SZÉ-DENT Fogászat 2026. augusztusi árösszefoglalója. Vidéken az alsó
+    tartomány a jellemző, ezért a modellben nem bevétellel, hanem óvatos
+    <strong>fedezettel</strong> számolunk: egy első látogatás (konzultáció + fogkő vagy
+    egy tömés) 35–90 ezer Ft bevételéből az anyag, a labor és az orvosi idő után
+    <strong>20 000 Ft fedezetet</strong> feltételezünk. Ez szándékosan alacsony —
+    a rendelő javára tévedünk, nem a magunkéra.
+  </p>
+
+  <h2>Modellszámítás: mennyi fedezet esik ki havonta?</h2>
+
+  <p>
+    Ugyanazzal a logikával számolunk, mint a <a href="/kalkulator/" style="color:var(--peak-accent-deep);text-decoration:none">peakai.hu kalkulátora</a>:
+    elveszett hívás naponta × nyitvatartási nap × <strong>50% konverzió</strong> × egy
+    munka fedezete. Az 50% feltevés: a nem fogadott hívások fele amúgy is
+    visszahívna, érdeklődött csak, vagy meglévő páciens volt — a másik fele viszont
+    <strong>a következő rendelőnél köt ki</strong>. Ez modellszámítás, nem mérés.
+  </p>
+
+  <div class="tbl-wrap">
+  <table>
+    <thead>
+      <tr><th>Rendelő</th><th>Elveszett hívás / nap</th><th>Havi elveszett hívás (21 nap)</th><th>Elveszett páciens (50%)</th><th>Kiesett fedezet / hó (20 000 Ft)</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Egyszékes, orvos + asszisztens</td><td>2</td><td>42</td><td>21</td><td><b>≈ 420 000 Ft</b></td></tr>
+      <tr><td>Kétszékes, egy recepciós</td><td>3</td><td>63</td><td>31–32</td><td><b>≈ 630 000 Ft</b></td></tr>
+      <tr><td>Háromszékes klinika, recepció</td><td>5</td><td>105</td><td>52–53</td><td><b>≈ 1 050 000 Ft</b></td></tr>
+      <tr class="sum"><td colspan="4">Fedezeti pont egy AI recepciós díjára (59 000 Ft + áfa / hó)</td><td><b>≈ 3 megmentett páciens / hó</b></td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p class="note">
+    A napi elveszett hívásszám a fenti 30–38%-os benchmark és egy kis rendelő napi
+    6–15 bejövő hívásának szorzata — helyettesítse be a sajátját. A táblázat
+    <strong>csak az első látogatás fedezetét</strong> tartalmazza; egy megtartott
+    páciens évekig visszajár, tehát a valós veszteség ennek többszöröse. A
+    <a href="/kalkulator/" style="color:var(--peak-accent-deep);text-decoration:none">kalkulátorban</a>
+    a három saját számával percek alatt megkapja a saját eredményét.
+  </p>
+
+  <h3>Hol téved ez a becslés?</h3>
+
+  <p>
+    Két irányban. <strong>Fölfelé téved</strong>, ha a rendelő tele van hónapokra előre:
+    ilyenkor az elveszett hívás nem elveszett bevétel, csak elveszett várólista — bár a
+    fájdalommal hívó, sürgős páciens ekkor is a versenytárshoz megy, és ott marad.
+    <strong>Lefelé téved</strong>, ha a rendelő implantológiára vagy fogszabályozásra
+    szakosodott: ott egy elveszett első konzultáció mögött több százezer forintos
+    kezelési terv áll, és a 20 000 Ft-os fedezet nevetségesen alacsony.
+  </p>
+
+  <h2>Mit lehet tenni? Négy lépcső, a legolcsóbbtól</h2>
+
+  <ol>
+    <li><strong>Mérjen egy hetet.</strong> A mobil híváslistája vagy egy papír a recepción:
+      hány hívás, hányra nem volt kéz, mikor. Ez a legtöbb rendelőnél önmagában
+      meglepetés, és nulla forintba kerül.</li>
+    <li><strong>Hangposta helyett visszahívás-ígéret.</strong> Ha marad a hangposta, a
+      szöveg legyen konkrét: „egy órán belül visszahívjuk". A hangposta gyengesége nem
+      a technika, hanem hogy a páciens nem hisz benne — a mérések szerint a hívók nagy
+      része nem hagy üzenetet, hanem továbblép.</li>
+    <li><strong>Online időpontfoglalás</strong> a weboldalon és a Google-cégprofilon.
+      Levesz egy részt a telefonról, de a fájó foggal hívó, idősebb vagy bizonytalan
+      páciens beszélni akar valakivel — a telefont nem váltja ki.</li>
+    <li><strong>AI telefonos asszisztens</strong>, amely a foglalt vonalat, az ebédszünetet,
+      a 17 óra utáni és a hétvégi hívásokat veszi fel, időpontot foglal a naptárba,
+      a sürgős panaszt pedig megjelöli. Nem a recepciós helyett — a recepciós
+      <em>mellé</em>, arra az időre, amikor ő a széknél áll. Hogy ez mennyibe kerül egy
+      alkalmazotthoz képest, azt <a href="/blog/ai-recepcios-vs-alkalmazott-recepcios-koltsege-2026/" style="color:var(--peak-accent-deep);text-decoration:none">külön cikkben</a>
+      számoltuk ki.</li>
+  </ol>
+
+  <h2>Amit egy AI asszisztensnek a fogászaton nem szabad megtennie</h2>
+
+  <p>
+    Egészségügyi rendelőnél a „mit nem" fontosabb, mint a „mit igen". Három szabály,
+    amelyet a Peak AI asszisztensei beállításból betartanak:
+  </p>
+  <ul>
+    <li><strong>Nem diagnosztizál és nem ad orvosi tanácsot.</strong> „Kihúzzák-e a fogam?"
+      — erre a válasz: „Ezt az orvos a vizsgálaton dönti el, a legközelebbi szabad
+      időpont…". A sürgős panaszt felismeri és megjelöli, de nem minősíti.</li>
+    <li><strong>Adattakarékos.</strong> Az egészségügyi adat a GDPR 9. cikke szerint
+      különleges adat. Az asszisztens csak azt kéri, ami a foglaláshoz kell: név,
+      visszahívható szám, a panasz rövid jellege („fájdalom", „kontroll", „fogkő").
+      Kórtörténetet, gyógyszereket, TAJ-számot nem kérdez.</li>
+    <li><strong>Nem titkolja, hogy gép.</strong> Az első mondatban közli, hogy automata
+      asszisztens, és bármikor kérhető emberi visszahívás. A rendelő és a szolgáltató
+      között adatfeldolgozói szerződés szükséges — ez a Peak AI-nál a szerződés része.</li>
+  </ul>
+
+  <p>
+    A hangfelvételek és leiratok kezeléséről, a törlési határidőről és arról, hogy
+    mit lát a rendelő a hívásokból, a szerződés előtt írásban egyeztetünk — fogászatnál
+    ezt nem utólag kell rendezni.
+  </p>
+
+  <h2>Az első 30 nap egy fogászati rendelőben</h2>
+
+  <p>
+    A tapasztalat szerint a bevezetés kritikus pontja nem a technika, hanem a
+    <strong>rendelő saját szabályai</strong>: milyen hosszú egy első vizsgálat, egy
+    fogkő, egy tömés; melyik napokon ki rendel; mikor van sürgősségi ablak; mit mondhat
+    az asszisztens árról (jellemzően semmit, csak a konzultációs díjat). Ezek
+    összeírása egy 60–90 perces beszélgetés. Utána az első húsz éles hívás leiratát
+    közösen nézzük át, és ott derül ki, mit kérdeznek a páciensek, amire nem
+    készültünk. A harmadik hét végére a rendszer jellemzően már nem igényel
+    beavatkozást — a rendelő pedig egy havi riportban látja, hány hívást vett fel
+    olyankor, amikor egyébként senki nem tudta volna.
+  </p>
+
+  <p>
+    Ha kíváncsi, hogyan hangzana ez az Ön rendelőjének nevében, kérjen egy 15 perces
+    bemutatót a <a href="/#kapcsolat" style="color:var(--peak-accent-deep);text-decoration:none">visszahívás-kérő űrlapon</a> —
+    döntés és szerződés nélkül.
+  </p>
+
+  <h2>Gyakori kérdések</h2>
+
+  <div class="faq">
+    <div class="faq-item">
+      <h3>Hány hívást veszít el egy fogászati rendelő?</h3>
+      <p>
+        Magyar mérés nem áll rendelkezésre. A Dental Economics amerikai iparági
+        benchmarkja szerint a rendelők a nyitvatartási időben érkező hívások 30–38%-át
+        nem fogadják; a 411 Locals 85 kisvállalkozásra kiterjedő mérése az összes
+        hívás 37,8%-át találta fogadottnak. A saját számát a mobilszolgáltató
+        híváslistája vagy egy hetes strigulázás adja meg.
+      </p>
+    </div>
+    <div class="faq-item">
+      <h3>Mennyit ér egy új páciens egy magánfogászatnak 2026-ban?</h3>
+      <p>
+        2026-os budapesti árlista alapján egy konzultáció 10–30 ezer, egy fogkő-eltávolítás
+        25–60 ezer, egy tömés 25–65 ezer, egy cirkónium korona 90–150 ezer Ft. Az első
+        látogatás jellemzően 35–90 ezer Ft bevétel, és a páciensek többsége visszajár.
+        A modellszámítás óvatosan, első látogatásonként 20 000 Ft fedezettel számol.
+      </p>
+    </div>
+    <div class="faq-item">
+      <h3>Miért nem veszi fel az asszisztens a telefont a fogászaton?</h3>
+      <p>
+        Mert kezelés közben a széknél van: kesztyűben, eszközt ad, nyálat szív. Egy
+        egyszékes rendelőben nincs harmadik ember, aki a telefont kezelné. A hívás nem
+        hanyagságból, hanem a munka természetéből vész el — ezért nem oldja meg, ha
+        „jobban odafigyelnek".
+      </p>
+    </div>
+    <div class="faq-item">
+      <h3>Mit tesz az AI asszisztens, ha fájó foggal hív a páciens?</h3>
+      <p>
+        Nem diagnosztizál és nem ad orvosi tanácsot. Felveszi a hívást, felismeri, hogy
+        sürgős panaszról van szó, rögzíti a nevet és a visszahívható számot, és a rendelő
+        szabályai szerint vagy a legközelebbi sürgősségi időpontot ajánlja, vagy azonnali
+        visszahívást jelez. A lényeg, hogy a páciens ne a következő rendelőt hívja.
+      </p>
+    </div>
+    <div class="faq-item">
+      <h3>Kezelhet egy AI asszisztens egészségügyi adatot a GDPR szerint?</h3>
+      <p>
+        Az egészségügyi adat a GDPR 9. cikke szerint különleges adat. A helyes gyakorlat
+        az adattakarékosság: az asszisztens csak a foglaláshoz szükséges minimumot kéri,
+        nem kérdez kórtörténetet, és az első mondatban közli, hogy automata rendszer.
+        A rendelő és a szolgáltató között adatfeldolgozói szerződés szükséges. Konkrét
+        adatvédelmi kérdésben az adatvédelmi tisztviselője vagy ügyvédje a mérvadó.
+      </p>
+    </div>
+  </div>
+
+  <h2>Források</h2>
+  <ul class="note" style="padding-left:20px">
+    <li>Dental Economics: <a href="https://www.dentaleconomics.com/practice/article/55385634/the-economics-of-missed-calls-quantifying-revenue-loss-in-dental-practices" rel="nofollow noopener" target="_blank" style="color:var(--peak-accent-deep);text-decoration:none">The economics of missed calls: Quantifying revenue loss in dental practices</a> — 30–38%-os nem fogadott hívásarány, új páciens első éves értéke (amerikai adat).</li>
+    <li>411 Locals: <a href="https://411locals.us/small-business-owners-dont-answer-62-of-phone-calls/" rel="nofollow noopener" target="_blank" style="color:var(--peak-accent-deep);text-decoration:none">SMBs don't answer 62% of phone calls</a> — 85 vállalkozás, 58 iparág, 30 napos mérés: 37,8% fogadott, 37,8% hangposta, 24,3% válasz nélkül.</li>
+    <li>Telex / G7: <a href="https://telex.hu/g7/kozelet/2024/01/18/a-fogorvosi-ellatasok-ketharmadat-sajat-zsebbol-fizetik-a-magyarok" rel="nofollow noopener" target="_blank" style="color:var(--peak-accent-deep);text-decoration:none">A fogorvosi ellátások kétharmadát saját zsebből fizetik a magyarok</a> — KSH- és NEAK-adatok: önköltséges arány, 71 fogorvos / 100 000 lakos (2021), ágazati árbevétel és eredményhányad.</li>
+    <li>SZÉ-DENT Fogászat: <a href="https://sze-dent.hu/2026/08/31/fogaszati-arak-mennyibe-kerulnek-a-kezelesek-2026-ban/" rel="nofollow noopener" target="_blank" style="color:var(--peak-accent-deep);text-decoration:none">Fogászati árak: mennyibe kerülnek a kezelések 2026-ban?</a> — beavatkozásonkénti ártartományok.</li>
+    <li>Az Európai Parlament és a Tanács (EU) 2016/679 rendelete (GDPR) — 9. cikk, különleges adatok kezelése.</li>
+    <li>Peak AI árlista: <a href="/#csomagok" style="color:var(--peak-accent-deep);text-decoration:none">Csomagok</a> — 2026. szeptemberi állapot.</li>
+  </ul>
+
+    <div class="author">
+      <div class="author-mark">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 80" role="img" aria-label="Peak AI">
+          <polygon points="20,72 60,6 100,72" fill="#1FAEA8"/>
+          <polygon points="0,72 28,32 56,72" fill="#1FAEA8" opacity="0.55"/>
+          <polygon points="62,72 90,38 118,72" fill="#1FAEA8" opacity="0.75"/>
+          <rect x="0" y="72" width="120" height="2" fill="#1FAEA8" opacity="0.9"/>
+        </svg>
+      </div>
+      <div>
+        <h4>Dr. Révész Barnabás</h4>
+        <p>
+          A Peak AI alapítója. Nukleáris medicina szakorvos, egészségügyi közgazdasági
+          végzettséggel — szabályozott iparágban szerzett tapasztalattal épít magyar nyelvű
+          AI telefonos asszisztenseket kis- és középvállalkozásoknak.
+          <a href="mailto:barnabas@peakai.hu" style="color:var(--peak-accent-deep);text-decoration:none">barnabas@peakai.hu</a>
+        </p>
+      </div>
+    </div>
+</article>
+  <div class="next-up">
+    <p class="post-meta">Következő cikk</p>
+    <a class="post-card" href="/blog/ai-recepcios-vs-alkalmazott-recepcios-koltsege-2026/">
+      <h2>AI recepciós vs. alkalmazott recepciós: mennyibe kerül valójában 2026-ban?</h2>
+      <p>Minimálbér 322 800 Ft, szocho 13%, szabadság, betegszabadság, eszköz: a teljes havi költség egy telefonos munkatársnál, összevetve egy AI recepciós díjával.</p>
+      <span class="post-more">Elolvasom →</span>
+    </a>
+  </div>
+  <div class="wrap" style="margin-top:56px">
+    <div class="cta on-dark">
+      <h2>Nézzük meg élőben, az Ön cégére szabva.</h2>
+      <p>
+        Megmutatjuk, hogyan hangzana az asszisztens az Ön vállalkozásának nevében, és
+        közben látja, ahogy a lefoglalt időpont megjelenik a naptárban. 15 perc az egész,
+        döntés és szerződés nélkül.
+      </p>
+      <a class="btn" href="/#kapcsolat">Kérek egy demót</a>
+    </div>
+  </div>
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="logo logo-foot" href="/" aria-label="Peak AI — Reach higher ground">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 180" role="img">
+            <g transform="translate(0,20)">
+              <polygon points="20,72 60,6 100,72" fill="#5DE8E2"/>
+              <polygon points="0,72 28,32 56,72" fill="#5DE8E2" opacity="0.55"/>
+              <polygon points="62,72 90,38 118,72" fill="#5DE8E2" opacity="0.75"/>
+              <rect x="0" y="72" width="120" height="2" fill="#5DE8E2" opacity="0.9"/>
+            </g>
+            <text x="170" y="85" font-family="Space Grotesk, system-ui, sans-serif" font-weight="600" font-size="72" letter-spacing="-2" fill="#F4F6FA">Peak</text>
+            <text x="354" y="85" font-family="Space Grotesk, system-ui, sans-serif" font-weight="300" font-style="italic" font-size="72" letter-spacing="-2" fill="#5DE8E2"> AI</text>
+            <line x1="170" y1="115" x2="220" y2="115" stroke="#5DE8E2" stroke-width="2"/>
+            <text x="232" y="121" font-family="JetBrains Mono, ui-monospace, monospace" font-weight="500" font-size="16" letter-spacing="3" fill="#A8B1BD">REACH HIGHER GROUND</text>
+          </svg>
+        </a>
+        <p style="margin:20px 0 0;color:var(--peak-mist)">AI telefonos asszisztens<br>kis- és középvállalkozásoknak.</p>
+      </div>
+      <div>
+        <span class="foot-h">Kapcsolat</span>
+        <p style="margin:0">
+          <a href="mailto:barnabas@peakai.hu">barnabas@peakai.hu</a><br>
+          Szeged, Magyarország
+        </p>
+      </div>
+      <div>
+        <span class="foot-h">Oldalak</span>
+        <p style="margin:0">
+          <a href="/#hogyan">Hogyan működik</a><br>
+          <a href="/#csomagok">Csomagok</a><br>
+          <a href="/blog/">Blog</a><br>
+          <a href="/#kapcsolat">Kapcsolat</a>
+        </p>
+      </div>
+      <div>
+        <span class="foot-h">Jogi</span>
+        <p style="margin:0">
+          <a href="/impresszum/">Impresszum</a><br>
+          <a href="/adatkezeles/">Adatkezelési tájékoztató</a><br>
+          <a href="/aszf/">ÁSZF</a>
+        </p>
+      </div>
+    </div>
+    <p class="tiny">
+      Peak AI — az AlignMed Kft. márkaneve · © 2026 ·
+      A bruttó árak 27% áfával számolva, tájékoztató jelleggel. ·
+      A mintaszámítások szemléltető modellek, nem konkrét vállalkozás mért adatai.
+    </p>
+  </div>
+</footer>
+</body>
+</html>
