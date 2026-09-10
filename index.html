@@ -52,11 +52,11 @@
         "name": "Csomagok",
         "itemListElement": [
           { "@type": "Offer", "name": "Hangrecepciós", "price": "59000", "priceCurrency": "HUF",
-            "description": "AI hangrecepciós 200 perc / hó, időpontfoglalással. Nettó ár, havidíj." },
+            "description": "AI hangrecepciós 200 perc / hó, időpontfoglalással. Nettó havidíj; egyszeri beállítás 79 000 Ft, 12 hónapos szerződéssel 0 Ft. 14 napos díjmentes próbaüzem." },
           { "@type": "Offer", "name": "Asszisztens", "price": "149000", "priceCurrency": "HUF",
-            "description": "AI hangrecepciós 500 perc / hó, weboldali chatbot és automatizációk. Nettó ár, havidíj." },
+            "description": "AI hangrecepciós 500 perc / hó, magyar nyelvű weboldali chatbot és automatizációk. Nettó havidíj; egyszeri beállítás 149 000 Ft, 12 hónapos szerződéssel 0 Ft. 14 napos díjmentes próbaüzem." },
           { "@type": "Offer", "name": "Partner", "price": "399000", "priceCurrency": "HUF",
-            "description": "AI hangrecepciós 1500 perc / hó, több telephely, egyedi fejlesztés. Nettó ár, havidíj." }
+            "description": "AI hangrecepciós 1500 perc / hó, több telephely, egyedi fejlesztés. Nettó havidíj; egyszeri beállítás 249 000 Ft, 12 hónapos szerződéssel 0 Ft. 14 napos díjmentes próbaüzem." }
         ]
       }
     },
@@ -238,6 +238,7 @@ section{padding:86px 0}
 .feat li{position:relative; padding-left:25px; margin-bottom:11px; font-size:.93rem; line-height:1.55}
 .feat li::before{content:"✓"; position:absolute; left:0; color:var(--peak-accent-deep); font-weight:700}
 .feat li strong{color:var(--heading); font-weight:600}
+.price-setup{font-size:.85rem;color:var(--muted);margin:14px 0 0}
 .feat li.off{color:#9AA3B0}
 .feat li.off::before{content:"–"; color:#C3CAD4}
 
@@ -515,9 +516,8 @@ footer a:hover{color:var(--peak-accent)}
           <li>Értesítés SMS-ben vagy e-mailben, azonnal</li>
           <li>Minden beszélgetés leirata visszanézhető</li>
           <li>Havi hívásriport</li>
-          <li class="off">Weboldali chatbot</li>
-          <li class="off">Egyedi automatizációk</li>
         </ul>
+        <p class="price-setup">Egyszeri beállítás: 79 000 Ft + áfa · 12 hónapos szerződéssel 0 Ft</p>
         <a class="btn" href="#kapcsolat">Ezzel kezdeném</a>
       </div>
 
@@ -537,6 +537,7 @@ footer a:hover{color:var(--peak-accent)}
           <li>Egy egyedi automatizáció az Ön folyamatára</li>
           <li>Havi 30 perc konzultáció</li>
         </ul>
+        <p class="price-setup">Egyszeri beállítás: 149 000 Ft + áfa · 12 hónapos szerződéssel 0 Ft</p>
         <a class="btn" href="#kapcsolat">Ezt kérem</a>
       </div>
 
@@ -553,16 +554,18 @@ footer a:hover{color:var(--peak-accent)}
           <li>Elsőbbségi hibaelhárítás</li>
           <li>Havi 60 perc konzultáció</li>
         </ul>
+        <p class="price-setup">Egyszeri beállítás: 249 000 Ft + áfa · 12 hónapos szerződéssel 0 Ft</p>
         <a class="btn btn-ghost" href="#kapcsolat">Beszéljünk</a>
       </div>
     </div>
 
     <div class="card" style="margin-top:26px">
       <h3>Amit tudni érdemes az árakról</h3>
-      <div class="grid g3" style="gap:16px;margin-top:6px">
-        <div class="web-tier"><strong>Egyszeri beállítás</strong><span>79 000 Ft + áfa — az asszisztens felépítése az Ön cégére: szolgáltatások, nyitvatartás, tiltások, naptár-integráció.</span></div>
-        <div class="web-tier"><strong>A hangkereten felül</strong><span>120 Ft + áfa / perc. A percszámot havonta látja a riportban, tehát nem ér meglepetés.</span></div>
-        <div class="web-tier"><strong>Nincs hűségidő</strong><span>Havi díjas, egy hónapos felmondással. Az első hónap után bármikor kiszállhat.</span></div>
+      <div class="grid g2" style="gap:16px;margin-top:6px">
+        <div class="web-tier"><strong>14 napos díjmentes próbaüzem</strong><span>Beállítjuk, két hétig élesben használja, és csak utána dönt. Ha nem válik be, nem fizet semmit.</span></div>
+        <div class="web-tier"><strong>Egyszeri beállítás</strong><span>Csomagonként 79 000 / 149 000 / 249 000 Ft + áfa — annyi munkát fizet, amennyi a bevezetéshez tényleg kell. 12 hónapos szerződéssel elengedjük.</span></div>
+        <div class="web-tier"><strong>Havi vagy éves</strong><span>Havi díjas, hűségidő nélkül, egy hónapos felmondással — vagy 12 hónapos szerződés 0 Ft beállítással. Éves előrefizetéssel további 10% kedvezmény a havidíjból.</span></div>
+        <div class="web-tier"><strong>A hangkereten felül</strong><span>120 Ft + áfa / perc, a következő hónap elején külön tételként számlázva. A percszámot havonta látja a riportban, tehát nem ér meglepetés.</span></div>
       </div>
       <p style="font-size:.85rem;color:var(--muted);margin:22px 0 0">
         Nem tartalmazza: a saját telefonszáma átirányításának szolgáltatói díját (ha a
