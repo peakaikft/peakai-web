@@ -74,9 +74,10 @@
   </div>
 
 <script type="module">
-  import Vapi from 'https://cdn.jsdelivr.net/npm/@vapi-ai/web/+esm';
+  import VapiPkg from 'https://cdn.jsdelivr.net/npm/@vapi-ai/web/+esm';
+  const Vapi = (VapiPkg && VapiPkg.default) ? VapiPkg.default : VapiPkg;
 
-  const PUBLIC_KEY   = '5cea083e-0b0e-4dda-b684-f228bfef5522';
+  const PUBLIC_KEY   = 'aabffae6-6fd2-4e4c-9b76-8dddf741c720';
   const ASSISTANT_ID = '3169b3d9-814e-48a9-a488-c68bf476939d';
 
   const btn = document.getElementById('callBtn');
@@ -98,7 +99,7 @@
       inCall = false; connecting = false;
       btn.textContent = '📞 Beszélek a demóval';
       btn.classList.remove('end'); btn.disabled = false;
-      setStatus('A hívás véget ért. Köszönjük, hogy kiprôbálta!');
+      setStatus('A hívás véget ért. Köszönjük, hogy kipróbálta!');
     });
     vapi.on('error', (e) => {
       inCall = false; connecting = false;
@@ -120,7 +121,7 @@
     }catch(err){
       connecting = false; btn.disabled = false;
       console.error(err);
-      setStatus('Nem sikerült elindítani a hívást. Engedélyezze a mikrofont, és próbálja újra.');
+      setStatus('Nem sikerült elindítani a hívást. Engedélyezze a mikrofont, és prôbálja újra.');
     }
   });
 </script>
