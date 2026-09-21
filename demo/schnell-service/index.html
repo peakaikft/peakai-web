@@ -1,0 +1,619 @@
+<!doctype html>
+<html lang="hu">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<script src="/assets/consent.js" defer></script>
+<meta name="robots" content="noindex, nofollow">
+<title>Schnell Service – foglalási rendszer bemutató | Peak AI</title>
+<meta name="description" content="Bemutató foglalási rendszer a Schnell Service (Miskolc) számára, Peak AI fejlesztésben.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap">
+<style>
+  :root {
+    --bg: #FFFFFF; --surface: #FFFFFF; --surface-2: #F1F5FB; --border: #DCE4F0;
+    --text: #12151A; --text-muted: #565F73;
+    --navy: #004DA9; --navy-deep: #013B82; --navy-ink: #FFFFFF;
+    --gold: #FFC619; --gold-ink: #12151A;
+    --accent: var(--navy); --accent-contrast: #FFFFFF; --accent-soft: #E3EDFB;
+    --success: #12805F; --success-soft: #E1F4EC; --danger: #C1493B;
+    --st-wait: #5A6B8C; --st-arrived: #B4790E; --st-inservice: #1F8A6F; --st-done: #8B93A3;
+    --src-partner: #7C3AED; --src-partner-bg: #F3E8FF;
+    --shadow: 0 1px 2px rgba(0, 40, 90, .06), 0 8px 24px rgba(0, 40, 90, .08);
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--text); font-family: Manrope, "Segoe UI", Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+  h1, h2, h3 { font-family: "Space Grotesk", Manrope, Arial, sans-serif; letter-spacing: -0.02em; margin: 0; }
+  .mono { font-family: "JetBrains Mono", ui-monospace, Menlo, monospace; }
+  [hidden] { display: none !important; }
+
+  .topbar { background: var(--navy); color: var(--navy-ink); }
+  .topbar-inner { max-width: 720px; margin: 0 auto; padding: 12px 18px; display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+  .brand-mark { font-family: "Space Grotesk", sans-serif; font-weight: 700; font-size: 16px; letter-spacing: -0.01em; color: var(--gold); }
+  .brand-sub { font-family: "JetBrains Mono", monospace; font-size: 10.5px; letter-spacing: .12em; text-transform: uppercase; color: rgba(255, 255, 255, .8); }
+
+  .page { max-width: 720px; margin: 0 auto; padding: 20px 18px calc(96px + env(safe-area-inset-bottom, 0px)); display: flex; flex-direction: column; gap: 18px; }
+
+  .intro { display: flex; flex-direction: column; gap: 6px; }
+  .eyebrow { font-family: "JetBrains Mono", monospace; font-size: 11px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--navy); margin: 0; }
+  .intro h1 { font-size: clamp(20px, 5.5vw, 25px); }
+  .lead { margin: 0; color: var(--text-muted); font-size: 13.5px; line-height: 1.55; max-width: 60ch; }
+
+  .tabs-row { display: flex; gap: 6px; background: var(--surface-2); border: 1px solid var(--border); border-radius: 12px; padding: 4px; }
+  .tab-btn { flex: 1; font: inherit; font-weight: 700; font-size: 13px; padding: 9px 6px; border-radius: 9px; border: none; background: transparent; color: var(--text-muted); cursor: pointer; text-align: center; }
+  .tab-btn.active { background: var(--surface); color: var(--navy); box-shadow: var(--shadow); }
+
+  .stepper { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
+  .step-dot { display: flex; flex-direction: column; gap: 6px; align-items: flex-start; }
+  .step-dot .bar { height: 3px; width: 100%; border-radius: 3px; background: var(--border); transition: background .2s ease; }
+  .step-dot.active .bar, .step-dot.done .bar { background: var(--navy); }
+  .step-dot .lbl { font-family: "JetBrains Mono", monospace; font-size: 9.5px; letter-spacing: .05em; text-transform: uppercase; color: var(--text-muted); }
+  .step-dot.active .lbl { color: var(--text); font-weight: 600; }
+
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; box-shadow: var(--shadow); padding: 20px; display: flex; flex-direction: column; gap: 16px; }
+  .card h2 { font-size: 17px; }
+  .card h3 { font-size: 13.5px; letter-spacing: .02em; }
+  .step-hint { margin: -8px 0 0; color: var(--text-muted); font-size: 12.5px; line-height: 1.5; }
+
+  .substep { display: flex; flex-direction: column; gap: 10px; padding-top: 16px; border-top: 1px solid var(--border); }
+  .substep:first-of-type { padding-top: 0; border-top: none; }
+  .sublabel { font-family: "JetBrains Mono", monospace; font-size: 10.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--text-muted); margin: 0; font-weight: 600; }
+
+  .svc-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 9px; }
+  @media (max-width: 420px) { .svc-grid { grid-template-columns: 1fr; } }
+  .svc-card { text-align: left; border: 1px solid var(--border); background: var(--surface-2); border-radius: 12px; padding: 12px 13px; cursor: pointer; font: inherit; color: var(--text); display: flex; flex-direction: column; gap: 2px; transition: border-color .15s ease, background .15s ease; }
+  .svc-card:hover { border-color: var(--navy); }
+  .svc-card .name { font-weight: 700; font-size: 14px; }
+  .svc-card .note { font-size: 11.5px; color: var(--text-muted); }
+  .svc-card.selected { border-color: var(--navy); background: var(--accent-soft); }
+  .svc-card.selected .name { color: var(--navy); }
+
+  .day-row { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 4px; }
+  .day-chip { flex: 0 0 auto; border: 1px solid var(--border); background: var(--surface-2); border-radius: 11px; padding: 9px 13px; cursor: pointer; font: inherit; color: var(--text); display: flex; flex-direction: column; align-items: center; gap: 2px; min-width: 62px; }
+  .day-chip .d1 { font-family: "JetBrains Mono", monospace; font-size: 10px; color: var(--text-muted); text-transform: uppercase; }
+  .day-chip .d2 { font-weight: 700; font-size: 13.5px; }
+  .day-chip.selected { border-color: var(--navy); background: var(--accent-soft); color: var(--navy); }
+  .day-chip.selected .d1 { color: var(--navy); }
+
+  .slot-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+  @media (max-width: 420px) { .slot-grid { grid-template-columns: repeat(3, 1fr); } }
+  .slot-btn { font-family: "JetBrains Mono", monospace; font-size: 12.5px; font-weight: 500; border: 1px solid var(--border); background: var(--surface-2); color: var(--text); border-radius: 9px; padding: 9px 4px; cursor: pointer; text-align: center; }
+  .slot-btn.selected { border-color: var(--navy); background: var(--navy); color: var(--navy-ink); font-weight: 600; }
+  .slot-btn[disabled] { color: var(--text-muted); text-decoration: line-through; opacity: .45; cursor: not-allowed; }
+  .no-slots { color: var(--text-muted); font-size: 13px; padding: 8px 0; }
+
+  .recap-strip { display: flex; align-items: center; justify-content: space-between; gap: 10px; background: var(--accent-soft); border: 1px solid var(--border); border-radius: 11px; padding: 11px 13px; }
+  .recap-strip .txt { font-size: 13px; font-weight: 600; }
+  .recap-strip .txt small { display: block; font-weight: 400; color: var(--text-muted); font-size: 11.5px; margin-top: 1px; }
+  .recap-strip button { flex: 0 0 auto; }
+
+  .field { display: flex; flex-direction: column; gap: 6px; }
+  .field label { font-size: 12px; font-weight: 600; color: var(--text-muted); }
+  .field label .req { color: var(--danger); }
+  .field input { font: inherit; font-size: 14.5px; padding: 10px 12px; border-radius: 9px; border: 1px solid var(--border); background: var(--surface-2); color: var(--text); width: 100%; }
+  .field input:focus { outline: 2px solid var(--navy); outline-offset: -1px; }
+  .field input.plate { font-family: "JetBrains Mono", monospace; letter-spacing: .06em; text-transform: uppercase; }
+  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 11px; }
+  @media (max-width: 420px) { .form-grid { grid-template-columns: 1fr; } }
+
+  .check-field { display: flex; gap: 9px; align-items: flex-start; font-size: 12.5px; line-height: 1.5; color: var(--text-muted); }
+  .check-field input { margin-top: 2px; width: 16px; height: 16px; accent-color: var(--navy); flex: 0 0 auto; }
+  .check-field label .req { color: var(--danger); }
+
+  .summary-list { display: flex; flex-direction: column; gap: 0; border-top: 1px solid var(--border); }
+  .summary-row { display: flex; justify-content: space-between; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 13.5px; }
+  .summary-row .k { color: var(--text-muted); }
+  .summary-row .v { font-weight: 600; text-align: right; }
+
+  .navbar { position: fixed; left: 0; right: 0; bottom: 0; background: var(--surface); border-top: 1px solid var(--border); padding: 12px 18px calc(12px + env(safe-area-inset-bottom, 0px)); display: flex; justify-content: center; }
+  .navbar .inner { max-width: 720px; width: 100%; display: flex; gap: 10px; }
+  .btn { font: inherit; font-weight: 700; font-size: 14px; border-radius: 10px; padding: 12px 18px; border: 1px solid var(--border); background: var(--surface-2); color: var(--text); cursor: pointer; }
+  .btn.full { flex: 1; }
+  .btn.primary { background: var(--navy); border-color: var(--navy); color: var(--navy-ink); }
+  .btn.primary[disabled] { opacity: .4; cursor: not-allowed; }
+  .btn.ghost { padding: 8px 14px; font-size: 12.5px; }
+
+  .confirm { display: flex; flex-direction: column; gap: 16px; align-items: flex-start; }
+  .confirm-icon { width: 44px; height: 44px; border-radius: 50%; background: var(--success-soft); display: flex; align-items: center; justify-content: center; flex: 0 0 auto; }
+  .confirm h2 { font-size: 18px; }
+  .confirm .sub { color: var(--text-muted); font-size: 13px; margin: -8px 0 0; }
+  .next-steps { display: flex; flex-direction: column; gap: 10px; width: 100%; }
+  .next-step { display: flex; gap: 10px; font-size: 13px; line-height: 1.5; }
+  .next-step .num { font-family: "JetBrains Mono", monospace; font-size: 10.5px; font-weight: 700; color: var(--navy); border: 1px solid var(--navy); border-radius: 50%; width: 19px; height: 19px; flex: 0 0 auto; display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+
+  .pultos-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+  .rule-note { background: var(--accent-soft); border: 1px solid var(--border); border-radius: 10px; padding: 10px 12px; font-size: 12.5px; color: var(--text); line-height: 1.5; }
+
+  .legend-row { display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: center; }
+  .legend-item { display: flex; align-items: center; gap: 6px; font-size: 11.5px; color: var(--text-muted); }
+  .legend-dot { width: 9px; height: 9px; border-radius: 50%; flex: 0 0 auto; }
+
+  .bay-table-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: 12px; }
+  table.bay-table { width: 100%; border-collapse: collapse; font-size: 12.5px; min-width: 560px; }
+  table.bay-table th { background: var(--surface-2); text-align: left; font-family: "JetBrains Mono", monospace; font-size: 10.5px; letter-spacing: .05em; text-transform: uppercase; color: var(--text-muted); padding: 9px 10px; border-bottom: 1px solid var(--border); }
+  table.bay-table td { padding: 8px 10px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  table.bay-table .time-cell { font-family: "JetBrains Mono", monospace; color: var(--text-muted); white-space: nowrap; }
+  .booking-block { display: flex; flex-direction: column; gap: 3px; background: var(--surface-2); border-radius: 8px; padding: 7px 9px; cursor: pointer; border: 1px solid transparent; }
+  .booking-block:hover { border-color: var(--navy); }
+  .bb-top { display: flex; align-items: center; justify-content: space-between; gap: 6px; }
+  .booking-block .svc { font-weight: 700; font-size: 12px; }
+  .booking-block .meta { font-size: 11px; color: var(--text-muted); font-family: "JetBrains Mono", monospace; }
+  .src-tag { display: inline-block; font-family: "JetBrains Mono", monospace; font-size: 9.5px; letter-spacing: .04em; text-transform: uppercase; padding: 1px 6px; border-radius: 999px; margin-top: 1px; }
+  .src-web { background: var(--accent-soft); color: var(--navy); }
+  .src-phone { background: var(--success-soft); color: var(--success); }
+  .src-counter { background: var(--border); color: var(--text-muted); }
+  .src-partner { background: var(--src-partner-bg); color: var(--src-partner); }
+  .status-pill { font-family: "JetBrains Mono", monospace; font-size: 9px; letter-spacing: .04em; text-transform: uppercase; padding: 2px 7px; border-radius: 999px; font-weight: 700; white-space: nowrap; }
+  .status-wait { background: #EEF0F4; color: var(--st-wait); }
+  .status-arrived { background: #FCF0DC; color: var(--st-arrived); }
+  .status-inservice { background: #E1F4EC; color: var(--st-inservice); }
+  .status-done { background: #EEEFF2; color: var(--st-done); }
+  .free-cell { color: var(--text-muted); font-size: 11.5px; }
+
+  .callback-panel { display: flex; flex-direction: column; gap: 10px; }
+  .callback-item { display: flex; justify-content: space-between; align-items: center; gap: 10px; border: 1px solid var(--border); background: var(--surface-2); border-radius: 10px; padding: 10px 12px; }
+  .callback-item .who { font-weight: 700; font-size: 13px; }
+  .callback-item .why { font-size: 11.5px; color: var(--text-muted); }
+  .callback-chip { font-family: "JetBrains Mono", monospace; font-size: 10px; letter-spacing: .05em; text-transform: uppercase; background: #FCEFE9; color: #B14A1F; padding: 4px 8px; border-radius: 999px; white-space: nowrap; }
+
+  .footer-credit { text-align: center; font-size: 11px; color: var(--text-muted); padding-top: 4px; }
+
+  .modal-backdrop { position: fixed; inset: 0; background: rgba(10, 14, 20, .55); display: flex; align-items: flex-end; justify-content: center; z-index: 60; }
+  @media (min-width: 520px) { .modal-backdrop { align-items: center; padding: 20px; } }
+  .modal { background: var(--surface); width: 100%; max-width: 420px; border-radius: 16px 16px 0 0; box-shadow: var(--shadow); padding: 20px; display: flex; flex-direction: column; gap: 14px; max-height: 85vh; overflow-y: auto; }
+  @media (min-width: 520px) { .modal { border-radius: 16px; } }
+  .modal-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; }
+  .modal-close { background: var(--surface-2); border: 1px solid var(--border); border-radius: 8px; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; cursor: pointer; color: var(--text-muted); flex: 0 0 auto; }
+  .modal-meta { display: flex; flex-direction: column; gap: 5px; font-size: 13px; color: var(--text-muted); }
+  .modal-meta b { color: var(--text); font-size: 14px; }
+  .modal-status-label { font-family: "JetBrains Mono", monospace; font-size: 10.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--text-muted); font-weight: 600; margin: 0; }
+  .modal-status-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .status-opt { font: inherit; font-size: 12.5px; font-weight: 700; border-radius: 10px; padding: 11px 8px; border: 1.5px solid var(--border); background: var(--surface-2); color: var(--text); cursor: pointer; display: flex; align-items: center; gap: 7px; justify-content: center; }
+  .status-opt .dot { width: 8px; height: 8px; border-radius: 50%; flex: 0 0 auto; }
+  .status-opt.current { border-color: currentColor; }
+
+  @media print {
+    .topbar, .tabs-row, .intro, .navbar, .callback-panel, #printBtn, .stepper, .legend-row { display: none !important; }
+    .page { padding: 0; max-width: 100%; }
+    .card { box-shadow: none; border: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <span class="brand-mark">SCHNELL SERVICE</span>
+    <span class="brand-sub">Miskolc · Online rendszer</span>
+  </div>
+</div>
+
+<div class="page">
+  <div class="intro">
+    <p class="eyebrow">Foglaló · pultos nézet</p>
+    <h1>A teljes rendszer, ahogy Önöknél működne</h1>
+    <p class="lead">A mai beszélgetés alapján készült bemutató, Schnell Service arculatban. A demóban semmi nem kerül éles rendszerbe, adatot nem tárolunk és nem küldünk el.</p>
+  </div>
+
+  <div class="tabs-row" id="viewTabs">
+    <button class="tab-btn active" data-view="customer" type="button">Ügyfél foglalás</button>
+    <button class="tab-btn" data-view="pultos" type="button">Pultos nézet</button>
+  </div>
+
+  <!-- CUSTOMER VIEW -->
+  <div data-view-panel="customer">
+    <div class="stepper" id="stepper" style="margin-bottom: 14px;">
+      <div class="step-dot" data-step="1"><div class="bar"></div><div class="lbl">1. Mit és mikor</div></div>
+      <div class="step-dot" data-step="2"><div class="bar"></div><div class="lbl">2. Adatok</div></div>
+    </div>
+
+    <div class="card" id="wizardCard">
+      <section data-panel="1">
+        <h2>Milyen munkára, és mikor?</h2>
+        <p class="step-hint">Válasszon szolgáltatást, majd napot és időpontot.</p>
+        <div class="substep">
+          <p class="sublabel">Szolgáltatás</p>
+          <div class="svc-grid" id="svcGrid"></div>
+        </div>
+        <div class="substep">
+          <p class="sublabel">Nap</p>
+          <div class="day-row" id="dayRow"></div>
+        </div>
+        <div class="substep">
+          <p class="sublabel">Időpont</p>
+          <div class="slot-grid" id="slotGrid"></div>
+        </div>
+      </section>
+
+      <section data-panel="2" hidden>
+        <h2>Kinek szól a foglalás?</h2>
+        <div class="recap-strip" id="recapStrip"></div>
+        <div class="form-grid">
+          <div class="field"><label for="fName">Név <span class="req">*</span></label><input id="fName" type="text" autocomplete="name" placeholder="Kovács János"></div>
+          <div class="field"><label for="fPhone">Telefonszám <span class="req">*</span></label><input id="fPhone" type="tel" autocomplete="tel" placeholder="+36 30 123 4567"></div>
+          <div class="field"><label for="fEmail">E-mail <span class="req">*</span></label><input id="fEmail" type="email" autocomplete="email" placeholder="kovacs.janos@gmail.com"></div>
+          <div class="field"><label for="fPlate">Rendszám</label><input id="fPlate" type="text" class="plate" placeholder="ABC-123"></div>
+        </div>
+        <div class="check-field">
+          <input type="checkbox" id="consentData">
+          <label for="consentData">Elolvastam és elfogadom az adatkezelési tájékoztatót. <span class="req">*</span></label>
+        </div>
+        <div class="check-field">
+          <input type="checkbox" id="consentMarketing">
+          <label for="consentMarketing">Szeretnék értesítést kapni akciókról és kedvezményekről e-mailben.</label>
+        </div>
+      </section>
+
+      <section data-panel="confirm" hidden>
+        <div class="confirm">
+          <div class="confirm-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12.5L9.5 18L20 6" stroke="var(--success)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div><h2>Megvan a foglalás — DEMO</h2><p class="sub">Ez a foglalás nem került be éles rendszerbe.</p></div>
+          <div class="summary-list" id="confirmSummary" style="width:100%;"></div>
+          <div class="next-steps">
+            <p class="step-hint" style="margin:0;">Élesben, automatikusan, ezek is történnének:</p>
+            <div class="next-step"><span class="num">1</span><span>E-mail emlékeztetőt kap az ügyfél az időpont előtt 1–2 órával.</span></div>
+            <div class="next-step"><span class="num">2</span><span>A rendszer kódszinten kizárja, hogy két foglalás ugyanarra az állásra, ugyanarra az időpontra kerüljön.</span></div>
+            <div class="next-step"><span class="num">3</span><span>A foglalás azonnal megjelenik a pultos nézetben — nincs két külön nyilvántartás.</span></div>
+          </div>
+          <button class="btn full" id="restartBtn" type="button">Új foglalás indítása</button>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <!-- PULTOS VIEW -->
+  <div data-view-panel="pultos" hidden>
+    <div class="card">
+      <div class="pultos-head">
+        <h2>Mai nap — pultos nézet</h2>
+        <button class="btn ghost" id="printBtn" type="button">Nap nyomtatása</button>
+      </div>
+      <p class="step-hint" style="margin:0;">Illusztratív demóadatok, 2 szerelőállással. Kattintson egy foglalásra az állapotának módosításához.</p>
+      <div class="rule-note">Ez az EGYETLEN érvényes naptár. A telefonon vagy a pultnál felvett foglalás is ide kerül — így nem csúszik szét két külön nyilvántartás.</div>
+      <div class="legend-row" id="legendRow"></div>
+      <div class="bay-table-wrap"><table class="bay-table" id="bayTable"></table></div>
+    </div>
+    <div class="card callback-panel" style="margin-top: 14px;">
+      <h3>Visszahívások</h3>
+      <p class="step-hint" style="margin:0;">Amikor egy hívást élőben nem tud fogadni senki, ide kerül — hogy egyetlen érdeklődő se vesszen el.</p>
+      <div id="callbackList"></div>
+    </div>
+  </div>
+
+  <p class="footer-credit">Az időpontfoglalást a Peak AI működteti · DEMO verzió</p>
+</div>
+
+<div class="navbar" id="navbar">
+  <div class="inner">
+    <button class="btn" id="backBtn" type="button">Vissza</button>
+    <button class="btn primary full" id="nextBtn" type="button" disabled>Tovább</button>
+  </div>
+</div>
+
+<div class="modal-backdrop" id="modalBackdrop" hidden>
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-head">
+      <h3 id="modalTitle"></h3>
+      <button class="modal-close" id="modalClose" type="button" aria-label="Bezárás">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 5L19 19M19 5L5 19" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <div class="modal-meta" id="modalBody"></div>
+    <p class="modal-status-label">Állapot módosítása</p>
+    <div class="modal-status-grid" id="modalStatusGrid"></div>
+  </div>
+</div>
+
+<script>
+(function () {
+  var SERVICES = [
+    { id: 'gumicsere', name: 'Gumicsere / gumijavítás', note: 'kb. 30–45 perc' },
+    { id: 'egyensulyozas', name: 'Egyensúlyozás', note: 'kb. 20 perc' },
+    { id: 'futomu', name: 'Futómű-beállítás', note: 'kb. 45 perc' },
+    { id: 'fek', name: 'Fékvizsgálat, -javítás', note: 'kb. 45 perc' },
+    { id: 'olajcsere', name: 'Olajcsere', note: 'kb. 30 perc' },
+    { id: 'klima', name: 'Klímatöltés, -tisztítás', note: 'kb. 30 perc' }
+  ];
+  var NAP = ['V', 'H', 'K', 'Sze', 'Cs', 'P', 'Szo'];
+  var HONAP = ['jan.', 'febr.', 'márc.', 'ápr.', 'máj.', 'jún.', 'júl.', 'aug.', 'szept.', 'okt.', 'nov.', 'dec.'];
+  var TELJES_NAP = { 0: 'vasárnap', 1: 'hétfő', 2: 'kedd', 3: 'szerda', 4: 'csütörtök', 5: 'péntek', 6: 'szombat' };
+
+  var state = { step: 1, serviceId: null, day: null, slot: null, name: '', phone: '', email: '', plate: '' };
+  var days = buildDays(8);
+
+  var svcGrid = document.getElementById('svcGrid');
+  var dayRow = document.getElementById('dayRow');
+  var slotGrid = document.getElementById('slotGrid');
+  var recapStrip = document.getElementById('recapStrip');
+  var confirmSummary = document.getElementById('confirmSummary');
+  var backBtn = document.getElementById('backBtn');
+  var nextBtn = document.getElementById('nextBtn');
+  var restartBtn = document.getElementById('restartBtn');
+  var navbar = document.getElementById('navbar');
+
+  function pad(n) { return n < 10 ? '0' + n : '' + n; }
+  function fmtTime(s) { return pad(s.h) + ':' + pad(s.m); }
+  function fmtDayLong(d) { return TELJES_NAP[d.getDay()] + ', ' + HONAP[d.getMonth()] + ' ' + d.getDate() + '.'; }
+
+  function buildDays(n) {
+    var out = []; var cur = new Date(); cur.setHours(0, 0, 0, 0); cur.setDate(cur.getDate() + 1);
+    while (out.length < n) {
+      if (cur.getDay() !== 0) {
+        var isSat = cur.getDay() === 6;
+        var slots = []; var startH = 8, endH = isSat ? 12 : 17;
+        for (var h = startH; h < endH; h++) {
+          [0, 45].forEach(function (m) {
+            if (h === endH - 1 && m === 45) return;
+            slots.push({ h: h, m: m, booked: Math.random() < 0.38 });
+          });
+        }
+        out.push({ date: new Date(cur), slots: slots });
+      }
+      cur = new Date(cur); cur.setDate(cur.getDate() + 1);
+    }
+    return out;
+  }
+
+  // ---------- View tabs ----------
+  var viewTabs = document.getElementById('viewTabs');
+  viewTabs.addEventListener('click', function (e) {
+    var btn = e.target.closest('.tab-btn');
+    if (!btn) return;
+    var view = btn.getAttribute('data-view');
+    document.querySelectorAll('.tab-btn').forEach(function (b) { b.classList.toggle('active', b === btn); });
+    document.querySelectorAll('[data-view-panel]').forEach(function (p) { p.hidden = p.getAttribute('data-view-panel') !== view; });
+    navbar.hidden = view !== 'customer' || state.step === 'confirm';
+    if (view === 'pultos') { renderLegend(); renderBayTable(); }
+  });
+
+  // ---------- Customer flow (2 steps) ----------
+  function renderServices() {
+    svcGrid.innerHTML = '';
+    SERVICES.forEach(function (s) {
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'svc-card' + (state.serviceId === s.id ? ' selected' : '');
+      b.innerHTML = '<span class="name">' + s.name + '</span><span class="note">' + s.note + '</span>';
+      b.addEventListener('click', function () { state.serviceId = s.id; renderServices(); updateNav(); });
+      svcGrid.appendChild(b);
+    });
+  }
+
+  function renderDays() {
+    dayRow.innerHTML = '';
+    days.forEach(function (d, i) {
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'day-chip' + (state.day === i ? ' selected' : '');
+      b.innerHTML = '<span class="d1">' + NAP[d.date.getDay()] + '</span><span class="d2">' + HONAP[d.date.getMonth()] + ' ' + d.date.getDate() + '.</span>';
+      b.addEventListener('click', function () { state.day = i; state.slot = null; renderDays(); renderSlots(); updateNav(); });
+      dayRow.appendChild(b);
+    });
+    if (state.day === null) state.day = 0;
+  }
+
+  function renderSlots() {
+    slotGrid.innerHTML = '';
+    dayRow.querySelectorAll('.day-chip').forEach(function (el, i) { el.classList.toggle('selected', i === state.day); });
+    var day = days[state.day]; if (!day) return;
+    var free = day.slots.filter(function (s) { return !s.booked; });
+    if (free.length === 0) {
+      var p = document.createElement('p'); p.className = 'no-slots';
+      p.textContent = 'Erre a napra nincs szabad időpont a demóban — próbáljon másik napot.';
+      slotGrid.appendChild(p); return;
+    }
+    day.slots.forEach(function (s, si) {
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'slot-btn' + (state.slot === si ? ' selected' : '');
+      b.textContent = fmtTime(s);
+      if (s.booked) { b.disabled = true; }
+      else { b.addEventListener('click', function () { state.slot = si; renderSlots(); updateNav(); }); }
+      slotGrid.appendChild(b);
+    });
+  }
+
+  function bindForm() {
+    ['fName', 'fPhone', 'fEmail', 'fPlate'].forEach(function (id) {
+      var el = document.getElementById(id);
+      el.addEventListener('input', function () { state[id.replace('f', '').toLowerCase()] = el.value; updateNav(); });
+    });
+    ['consentData', 'consentMarketing'].forEach(function (id) {
+      document.getElementById(id).addEventListener('change', updateNav);
+    });
+  }
+
+  function currentSelection() {
+    var day = days[state.day]; var slot = day ? day.slots[state.slot] : null;
+    var svc = SERVICES.filter(function (s) { return s.id === state.serviceId; })[0];
+    return { day: day, slot: slot, svc: svc };
+  }
+
+  function renderRecap() {
+    var sel = currentSelection();
+    recapStrip.innerHTML = '<div class="txt">' + (sel.svc ? sel.svc.name : '—') +
+      '<small>' + (sel.day && sel.slot ? (fmtDayLong(sel.day.date) + ', ' + fmtTime(sel.slot)) : '—') + '</small></div>' +
+      '<button class="btn ghost" type="button" id="editSelBtn">Módosít</button>';
+    document.getElementById('editSelBtn').addEventListener('click', function () { state.step = 1; showPanel(1); });
+  }
+
+  function renderConfirmSummary() {
+    var sel = currentSelection();
+    var rows = [
+      ['Szolgáltatás', sel.svc ? sel.svc.name : '—'],
+      ['Időpont', sel.day && sel.slot ? (fmtDayLong(sel.day.date) + ', ' + fmtTime(sel.slot)) : '—'],
+      ['Név', state.name || '—'],
+      ['Telefonszám', state.phone || '—'],
+      ['E-mail', state.email || '—'],
+      ['Rendszám', state.plate ? state.plate.toUpperCase() : '—']
+    ];
+    confirmSummary.innerHTML = rows.map(function (r) { return '<div class="summary-row"><span class="k">' + r[0] + '</span><span class="v">' + r[1] + '</span></div>'; }).join('');
+  }
+
+  function showPanel(step) {
+    document.querySelectorAll('[data-panel]').forEach(function (p) { p.hidden = p.getAttribute('data-panel') !== String(step); });
+    document.querySelectorAll('.step-dot').forEach(function (d) {
+      var n = Number(d.getAttribute('data-step'));
+      d.classList.toggle('active', n === step); d.classList.toggle('done', typeof step === 'number' && n < step);
+    });
+    document.getElementById('stepper').hidden = step === 'confirm';
+    if (step === 1) { renderDays(); renderSlots(); }
+    if (step === 2) renderRecap();
+    navbar.hidden = step === 'confirm';
+    backBtn.hidden = step === 1;
+    updateNav();
+  }
+
+  function stepValid(step) {
+    if (step === 1) return !!state.serviceId && state.day !== null && state.slot !== null;
+    if (step === 2) return state.name.trim() && state.phone.trim() && /\S+@\S+\.\S+/.test(state.email) && document.getElementById('consentData').checked;
+    return true;
+  }
+
+  function updateNav() {
+    nextBtn.disabled = !stepValid(state.step);
+    nextBtn.textContent = state.step === 2 ? 'Időpont lefoglalása (DEMO)' : 'Tovább';
+  }
+
+  backBtn.addEventListener('click', function () { if (state.step > 1) { state.step -= 1; showPanel(state.step); } });
+  nextBtn.addEventListener('click', function () {
+    if (!stepValid(state.step)) return;
+    if (state.step === 1) { state.step = 2; showPanel(2); }
+    else { renderConfirmSummary(); showPanel('confirm'); }
+  });
+  restartBtn.addEventListener('click', function () {
+    state = { step: 1, serviceId: null, day: null, slot: null, name: '', phone: '', email: '', plate: '' };
+    days = buildDays(8);
+    ['fName', 'fPhone', 'fEmail', 'fPlate'].forEach(function (id) { document.getElementById(id).value = ''; });
+    ['consentData', 'consentMarketing'].forEach(function (id) { document.getElementById(id).checked = false; });
+    renderServices(); showPanel(1); window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  // ---------- Pultos view ----------
+  var BAY_NAMES = ['1. állás', '2. állás'];
+  var DEMO_UGYFELEK = [
+    ['Nagy Zoltán', 'MEE-427'], ['Tóth Réka', 'LKH-118'], ['Varga Péter', 'NYK-931'],
+    ['Kiss Anna', 'HSA-204'], ['Szabó Bence', 'MZO-556'], ['Farkas Judit', 'BMA-812']
+  ];
+  var SRC_OPTIONS = [
+    { label: 'Web', cls: 'src-web' },
+    { label: 'Telefon', cls: 'src-phone' },
+    { label: 'Pult', cls: 'src-counter' },
+    { label: 'Partner · FlottaMax Kft.', cls: 'src-partner' },
+    { label: 'Partner · TransZóna Kft.', cls: 'src-partner' }
+  ];
+  var STATUSES = [
+    { key: 'wait', label: 'Várjuk', cls: 'status-wait', dot: 'var(--st-wait)' },
+    { key: 'arrived', label: 'Megérkezett', cls: 'status-arrived', dot: 'var(--st-arrived)' },
+    { key: 'inservice', label: 'Szerelés alatt', cls: 'status-inservice', dot: 'var(--st-inservice)' },
+    { key: 'done', label: 'Elment', cls: 'status-done', dot: 'var(--st-done)' }
+  ];
+  var bayData = null;
+
+  function statusForHour(h) {
+    var now = new Date().getHours();
+    if (h < now) return STATUSES[3];
+    if (h === now) return Math.random() < 0.5 ? STATUSES[1] : STATUSES[2];
+    return STATUSES[0];
+  }
+
+  function buildBayDay() {
+    var slots = []; for (var h = 8; h < 17; h++) { [0, 45].forEach(function (m) { if (h === 16 && m === 45) return; slots.push({ h: h, m: m }); }); }
+    return slots.map(function (s) {
+      var cells = BAY_NAMES.map(function () {
+        if (Math.random() < 0.5) {
+          var cust = DEMO_UGYFELEK[Math.floor(Math.random() * DEMO_UGYFELEK.length)];
+          var svc = SERVICES[Math.floor(Math.random() * SERVICES.length)];
+          var src = SRC_OPTIONS[Math.floor(Math.random() * SRC_OPTIONS.length)];
+          var status = statusForHour(s.h);
+          return { booked: true, name: cust[0], plate: cust[1], svc: svc.name, src: src, status: status };
+        }
+        return { booked: false };
+      });
+      return { slot: s, cells: cells };
+    });
+  }
+
+  function renderLegend() {
+    var el = document.getElementById('legendRow');
+    el.innerHTML = STATUSES.map(function (s) {
+      return '<span class="legend-item"><span class="legend-dot" style="background:' + s.dot + ';"></span>' + s.label + '</span>';
+    }).join('');
+  }
+
+  function renderBayTable() {
+    if (!bayData) bayData = buildBayDay();
+    var table = document.getElementById('bayTable');
+    var head = '<thead><tr><th>Idő</th>' + BAY_NAMES.map(function (n) { return '<th>' + n + '</th>'; }).join('') + '</tr></thead>';
+    var body = '<tbody>' + bayData.map(function (row, ri) {
+      var cellsHtml = row.cells.map(function (c, ci) {
+        if (c.booked) {
+          return '<td><div class="booking-block" data-row="' + ri + '" data-col="' + ci + '"><div class="bb-top"><span class="svc">' + c.svc + '</span><span class="status-pill ' + c.status.cls + '">' + c.status.label + '</span></div><span class="meta">' + c.name + ' · ' + c.plate + '</span><span class="src-tag ' + c.src.cls + '">' + c.src.label + '</span></div></td>';
+        }
+        return '<td><span class="free-cell">szabad</span></td>';
+      }).join('');
+      return '<tr><td class="time-cell">' + fmtTime(row.slot) + '</td>' + cellsHtml + '</tr>';
+    }).join('') + '</tbody>';
+    table.innerHTML = head + body;
+  }
+
+  document.getElementById('printBtn').addEventListener('click', function () { window.print(); });
+
+  document.getElementById('bayTable').addEventListener('click', function (e) {
+    var block = e.target.closest('.booking-block'); if (!block) return;
+    openModal(Number(block.getAttribute('data-row')), Number(block.getAttribute('data-col')));
+  });
+
+  // ---------- Status-edit modal ----------
+  var modalBackdrop = document.getElementById('modalBackdrop');
+  var modalTitle = document.getElementById('modalTitle');
+  var modalBody = document.getElementById('modalBody');
+  var modalStatusGrid = document.getElementById('modalStatusGrid');
+  var modalClose = document.getElementById('modalClose');
+  var activeCell = null;
+
+  function openModal(rowIdx, colIdx) {
+    var cell = bayData[rowIdx].cells[colIdx];
+    if (!cell.booked) return;
+    activeCell = { row: rowIdx, col: colIdx };
+    modalTitle.textContent = fmtTime(bayData[rowIdx].slot) + ' · ' + BAY_NAMES[colIdx];
+    modalBody.innerHTML = '<span><b>' + cell.svc + '</b></span><span>' + cell.name + ' · ' + cell.plate + '</span><span class="src-tag ' + cell.src.cls + '" style="align-self:flex-start;">' + cell.src.label + '</span>';
+    modalStatusGrid.innerHTML = STATUSES.map(function (s) {
+      return '<button type="button" class="status-opt' + (cell.status.key === s.key ? ' current' : '') + '" style="color:' + s.dot + ';" data-status="' + s.key + '"><span class="dot" style="background:' + s.dot + ';"></span>' + s.label + '</button>';
+    }).join('');
+    modalBackdrop.hidden = false;
+  }
+  function closeModal() { modalBackdrop.hidden = true; activeCell = null; }
+  modalClose.addEventListener('click', closeModal);
+  modalBackdrop.addEventListener('click', function (e) { if (e.target === modalBackdrop) closeModal(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !modalBackdrop.hidden) closeModal(); });
+  modalStatusGrid.addEventListener('click', function (e) {
+    var btn = e.target.closest('.status-opt'); if (!btn || !activeCell) return;
+    var key = btn.getAttribute('data-status');
+    var st = STATUSES.filter(function (s) { return s.key === key; })[0];
+    bayData[activeCell.row].cells[activeCell.col].status = st;
+    renderBayTable();
+    closeModal();
+  });
+
+  // ---------- Callback panel ----------
+  var CALLBACKS = [
+    { who: 'Horváth Gábor', phone: '+36 30 •• •• 214', why: 'Csúcsidőben hívott, nem sikerült felvenni — gumicserét szeretne még ezen a héten.' },
+    { who: 'Molnár Eszter', phone: '+36 70 •• •• 883', why: 'Zárás után hívott — fékzajra panaszkodott, árajánlatot kér vissza.' }
+  ];
+  function renderCallbacks() {
+    var list = document.getElementById('callbackList');
+    list.innerHTML = CALLBACKS.map(function (c) {
+      return '<div class="callback-item"><div><div class="who">' + c.who + ' <span class="mono" style="font-weight:400;color:var(--text-muted);font-size:11.5px;">' + c.phone + '</span></div><div class="why">' + c.why + '</div></div><span class="callback-chip">Vissza kell hívni</span></div>';
+    }).join('');
+  }
+
+  renderServices(); bindForm(); showPanel(1); renderCallbacks();
+})();
+</script>
+</body>
+</html>
