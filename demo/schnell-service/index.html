@@ -174,6 +174,13 @@
   .status-opt .dot { width: 8px; height: 8px; border-radius: 50%; flex: 0 0 auto; }
   .status-opt.current { border-color: currentColor; }
 
+  .modal-tabs { display: flex; gap: 4px; background: var(--surface-2); border: 1px solid var(--border); border-radius: 10px; padding: 3px; }
+  .modal-tab-btn { flex: 1; font: inherit; font-weight: 700; font-size: 12px; padding: 7px 4px; border-radius: 7px; border: none; background: transparent; color: var(--text-muted); cursor: pointer; text-align: center; }
+  .modal-tab-btn.active { background: var(--surface); color: var(--navy); box-shadow: var(--shadow); }
+  .field textarea { font: inherit; font-size: 14.5px; padding: 10px 12px; border-radius: 9px; border: 1px solid var(--border); background: var(--surface-2); color: var(--text); width: 100%; resize: vertical; }
+  .field textarea:focus { outline: 2px solid var(--navy); outline-offset: -1px; }
+  .note-flag { display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--gold); margin-left: 5px; vertical-align: middle; border: 1px solid rgba(0,0,0,.12); }
+
   @media print {
     .topbar, .tabs-row, .intro, .navbar, .callback-panel, #printBtn, .stepper, .legend-row { display: none !important; }
     .page { padding: 0; max-width: 100%; }
@@ -272,7 +279,7 @@
         <h2>Mai nap — pultos nézet</h2>
         <button class="btn ghost" id="printBtn" type="button">Nap nyomtatása</button>
       </div>
-      <p class="step-hint" style="margin:0;">Illusztratív demóadatok, 2 szerelőállással. Kattintson egy foglalásra az állapotának módosításához.</p>
+      <p class="step-hint" style="margin:0;">Illusztratív demóadatok, 2 szerelőállással. Kattintson egy foglalásra: ott állítható az állapota, szerkeszthetők az ügyfél adatai (név, rendszám, e-mail, telefon), és felvehető hozzá belső megjegyzés.</p>
       <div class="rule-note">Ez az EGYETLEN érvényes naptár. A telefonon vagy a pultnál felvett foglalás is ide kerül — így nem csúszik szét két külön nyilvántartás.</div>
       <div class="legend-row" id="legendRow"></div>
       <div class="bay-table-wrap"><table class="bay-table" id="bayTable"></table></div>
@@ -302,9 +309,36 @@
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 5L19 19M19 5L5 19" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
       </button>
     </div>
-    <div class="modal-meta" id="modalBody"></div>
-    <p class="modal-status-label">Állapot módosítása</p>
-    <div class="modal-status-grid" id="modalStatusGrid"></div>
+
+    <div class="modal-tabs" id="modalTabs">
+      <button type="button" class="modal-tab-btn active" data-mtab="status">Állapot</button>
+      <button type="button" class="modal-tab-btn" data-mtab="data">Adatok</button>
+      <button type="button" class="modal-tab-btn" data-mtab="note">Megjegyzés</button>
+    </div>
+
+    <div data-mpanel="status">
+      <div class="modal-meta" id="modalBody"></div>
+      <p class="modal-status-label">Állapot módosítása</p>
+      <div class="modal-status-grid" id="modalStatusGrid"></div>
+    </div>
+
+    <div data-mpanel="data" hidden style="display:flex; flex-direction:column; gap:14px;">
+      <div class="form-grid">
+        <div class="field"><label for="mName">Név</label><input id="mName" type="text" autocomplete="off"></div>
+        <div class="field"><label for="mPlate">Rendszám</label><input id="mPlate" type="text" class="plate" autocomplete="off"></div>
+        <div class="field"><label for="mEmail">E-mail</label><input id="mEmail" type="email" autocomplete="off"></div>
+        <div class="field"><label for="mPhone">Telefonszám</label><input id="mPhone" type="tel" autocomplete="off"></div>
+      </div>
+      <button class="btn primary full" id="modalSaveData" type="button">Adatok mentése</button>
+    </div>
+
+    <div data-mpanel="note" hidden style="display:flex; flex-direction:column; gap:14px;">
+      <div class="field">
+        <label for="mNote">Belső megjegyzés</label>
+        <textarea id="mNote" rows="4" placeholder="Pl. törzsvásárló, mindig a pultnál fizet, télen szokott jönni gumicserére…"></textarea>
+      </div>
+      <button class="btn primary full" id="modalSaveNote" type="button">Megjegyzés mentése</button>
+    </div>
   </div>
 </div>
 
@@ -496,8 +530,12 @@
   // ---------- Pultos view ----------
   var BAY_NAMES = ['1. állás', '2. állás'];
   var DEMO_UGYFELEK = [
-    ['Nagy Zoltán', 'MEE-427'], ['Tóth Réka', 'LKH-118'], ['Varga Péter', 'NYK-931'],
-    ['Kiss Anna', 'HSA-204'], ['Szabó Bence', 'MZO-556'], ['Farkas Judit', 'BMA-812']
+    ['Nagy Zoltán', 'MEE-427', '+36 30 212 4471', 'nagy.zoltan@gmail.com'],
+    ['Tóth Réka', 'LKH-118', '+36 20 556 8823', 'toth.reka@gmail.com'],
+    ['Varga Péter', 'NYK-931', '+36 70 334 1290', 'varga.peter@gmail.com'],
+    ['Kiss Anna', 'HSA-204', '+36 30 998 4415', 'kiss.anna@gmail.com'],
+    ['Szabó Bence', 'MZO-556', '+36 20 771 3302', 'szabo.bence@gmail.com'],
+    ['Farkas Judit', 'BMA-812', '+36 30 445 1187', 'farkas.judit@gmail.com']
   ];
   var SRC_OPTIONS = [
     { label: 'Web', cls: 'src-web' },
@@ -530,7 +568,7 @@
           var svc = SERVICES[Math.floor(Math.random() * SERVICES.length)];
           var src = SRC_OPTIONS[Math.floor(Math.random() * SRC_OPTIONS.length)];
           var status = statusForHour(s.h);
-          return { booked: true, name: cust[0], plate: cust[1], svc: svc.name, src: src, status: status };
+          return { booked: true, name: cust[0], plate: cust[1], phone: cust[2], email: cust[3], svc: svc.name, src: src, status: status, note: '' };
         }
         return { booked: false };
       });
@@ -552,7 +590,7 @@
     var body = '<tbody>' + bayData.map(function (row, ri) {
       var cellsHtml = row.cells.map(function (c, ci) {
         if (c.booked) {
-          return '<td><div class="booking-block" data-row="' + ri + '" data-col="' + ci + '"><div class="bb-top"><span class="svc">' + c.svc + '</span><span class="status-pill ' + c.status.cls + '">' + c.status.label + '</span></div><span class="meta">' + c.name + ' · ' + c.plate + '</span><span class="src-tag ' + c.src.cls + '">' + c.src.label + '</span></div></td>';
+          return '<td><div class="booking-block" data-row="' + ri + '" data-col="' + ci + '"><div class="bb-top"><span class="svc">' + c.svc + (c.note ? '<span class="note-flag" title="Van belső megjegyzés"></span>' : '') + '</span><span class="status-pill ' + c.status.cls + '">' + c.status.label + '</span></div><span class="meta">' + c.name + ' · ' + c.plate + '</span><span class="src-tag ' + c.src.cls + '">' + c.src.label + '</span></div></td>';
         }
         return '<td><span class="free-cell">szabad</span></td>';
       }).join('');
@@ -574,7 +612,15 @@
   var modalBody = document.getElementById('modalBody');
   var modalStatusGrid = document.getElementById('modalStatusGrid');
   var modalClose = document.getElementById('modalClose');
+  var modalTabs = document.getElementById('modalTabs');
+  var modalSaveData = document.getElementById('modalSaveData');
+  var modalSaveNote = document.getElementById('modalSaveNote');
   var activeCell = null;
+
+  function setModalTab(tab) {
+    document.querySelectorAll('.modal-tab-btn').forEach(function (b) { b.classList.toggle('active', b.getAttribute('data-mtab') === tab); });
+    document.querySelectorAll('[data-mpanel]').forEach(function (p) { p.hidden = p.getAttribute('data-mpanel') !== tab; });
+  }
 
   function openModal(rowIdx, colIdx) {
     var cell = bayData[rowIdx].cells[colIdx];
@@ -585,17 +631,46 @@
     modalStatusGrid.innerHTML = STATUSES.map(function (s) {
       return '<button type="button" class="status-opt' + (cell.status.key === s.key ? ' current' : '') + '" style="color:' + s.dot + ';" data-status="' + s.key + '"><span class="dot" style="background:' + s.dot + ';"></span>' + s.label + '</button>';
     }).join('');
+    document.getElementById('mName').value = cell.name || '';
+    document.getElementById('mPlate').value = cell.plate || '';
+    document.getElementById('mEmail').value = cell.email || '';
+    document.getElementById('mPhone').value = cell.phone || '';
+    document.getElementById('mNote').value = cell.note || '';
+    setModalTab('status');
     modalBackdrop.hidden = false;
   }
   function closeModal() { modalBackdrop.hidden = true; activeCell = null; }
   modalClose.addEventListener('click', closeModal);
   modalBackdrop.addEventListener('click', function (e) { if (e.target === modalBackdrop) closeModal(); });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !modalBackdrop.hidden) closeModal(); });
+  modalTabs.addEventListener('click', function (e) {
+    var btn = e.target.closest('.modal-tab-btn'); if (!btn) return;
+    setModalTab(btn.getAttribute('data-mtab'));
+  });
   modalStatusGrid.addEventListener('click', function (e) {
     var btn = e.target.closest('.status-opt'); if (!btn || !activeCell) return;
     var key = btn.getAttribute('data-status');
     var st = STATUSES.filter(function (s) { return s.key === key; })[0];
     bayData[activeCell.row].cells[activeCell.col].status = st;
+    renderBayTable();
+    closeModal();
+  });
+  modalSaveData.addEventListener('click', function () {
+    if (!activeCell) return;
+    var cell = bayData[activeCell.row].cells[activeCell.col];
+    var nameVal = document.getElementById('mName').value.trim();
+    var plateVal = document.getElementById('mPlate').value.trim();
+    cell.name = nameVal || cell.name;
+    cell.plate = plateVal ? plateVal.toUpperCase() : cell.plate;
+    cell.email = document.getElementById('mEmail').value.trim();
+    cell.phone = document.getElementById('mPhone').value.trim();
+    renderBayTable();
+    closeModal();
+  });
+  modalSaveNote.addEventListener('click', function () {
+    if (!activeCell) return;
+    var cell = bayData[activeCell.row].cells[activeCell.col];
+    cell.note = document.getElementById('mNote').value.trim();
     renderBayTable();
     closeModal();
   });
