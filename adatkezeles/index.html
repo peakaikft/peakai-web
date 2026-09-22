@@ -34,7 +34,7 @@
       "name": "Adatkezelési tájékoztató",
       "description": "Milyen személyes adatokat kezel a Peak AI, milyen célból, meddig, és milyen jogai vannak Önnek — GDPR szerinti tájékoztató.",
       "inLanguage": "hu-HU",
-      "dateModified": "2026-09-03",
+      "dateModified": "2026-09-22",
       "isPartOf": { "@type": "WebSite", "url": "https://peakai.hu/", "name": "Peak AI" },
       "publisher": { "@type": "Organization", "name": "Peak AI", "url": "https://peakai.hu/" }
     },
@@ -95,6 +95,7 @@
       <li><a href="#weboldal">A weboldal látogatása</a></li>
       <li><a href="#kapcsolat">Kapcsolatfelvétel</a></li>
       <li><a href="#demo">A bemutató asszisztens</a></li>
+      <li><a href="#chatbot">A weboldali chatbot</a></li>
       <li><a href="#szolgaltatas">Az ügyfeleink rendszerében kezelt adatok</a></li>
       <li><a href="#feldolgozok">Adatfeldolgozók</a></li>
       <li><a href="#harmadik">Adattovábbítás EU-n kívülre</a></li>
@@ -259,7 +260,37 @@
     tesztrendszer: a benne rögzített időpontra senki nem fogja várni.
   </p>
 
-  <h2 id="szolgaltatas">6. Az ügyfeleink rendszerében kezelt adatok</h2>
+  <h2 id="chatbot">6. A weboldali chatbot</h2>
+  <p>
+    A weboldal jobb alsó sarkában elérhető <strong>chatbot a PEAK AI Reception csomag
+    élő bemutatója</strong>: kérdezhet tőle a csomagokról, az árakról és a bevezetésről.
+    Ennél mi vagyunk az adatkezelő.
+  </p>
+  <ul>
+    <li><strong>Kezelt adatok:</strong> amit a beszélgetésben ír — beleértve, ha
+      önként megadja a nevét vagy telefonszámát, mert visszahívást vagy demót kér —,
+      valamint a beszélgetés szövege, az oldal címe, ahonnan indult, és az időbélyeg.</li>
+    <li><strong>Cél:</strong> tájékoztatás a szolgáltatásról, és — ha Ön ezt kéri —
+      a visszahívási igény rögzítése és továbbítása, ugyanúgy, mint a visszahívás-kérő
+      űrlapnál (4. pont).</li>
+    <li><strong>Jogalap:</strong> az Ön hozzájárulása (GDPR 6. cikk (1) a), amelyet a
+      beszélgetés megkezdésével ad meg; ha visszahívást kér, szerződéskötést megelőző
+      lépés (6. cikk (1) b).</li>
+    <li><strong>Adatfeldolgozók:</strong> Anthropic PBC (USA) — a beszélgetést
+      értelmező nyelvi modell (Claude); Supabase Inc. (EU, frankfurti régió) —
+      a beszélgetés naplózása; Celonis, s.r.o. / Make.com (EU, Csehország) — a
+      visszahívási igény továbbítása e-mailben, ha kér ilyet.</li>
+    <li><strong>Megőrzés:</strong> a beszélgetés-napló legfeljebb 1 évig marad meg,
+      utána törlődik. Ha visszahívást kért, a megadott adatokra a 4. pontban leírt
+      megőrzési idő vonatkozik.</li>
+  </ul>
+  <p>
+    <strong>Ne adjon meg a chatbotnak olyan adatot, amit nem szeretne, hogy egy AI-modell
+    feldolgozzon</strong> — a chatbot nem helyettesíti az ügyfélszolgálatot, és nem
+    tud szerződést kötni vagy fizetést kezelni.
+  </p>
+
+  <h2 id="szolgaltatas">7. Az ügyfeleink rendszerében kezelt adatok</h2>
   <p>
     Amikor egy ügyfelünk nevében üzemeltetjük az asszisztenst, a bejövő hívásokból az
     alábbi adatok keletkezhetnek: <strong>a hívó neve, telefonszáma, a kérése (például
@@ -282,7 +313,7 @@
     visszahívását, vagy bontsa a hívást.
   </p>
 
-  <h2 id="feldolgozok">7. Adatfeldolgozók</h2>
+  <h2 id="feldolgozok">8. Adatfeldolgozók</h2>
   <p>
     A szolgáltatás nyújtásához az alábbi szolgáltatókat vesszük igénybe. A lista aktuális
     állapotát bármikor kikérheti a <a href="mailto:barnabas@peakai.hu" style="color:var(--peak-accent-deep);text-decoration:none">barnabas@peakai.hu</a> címen.
@@ -291,15 +322,15 @@
   <table>
     <thead><tr><th>Szolgáltató</th><th>Mit végez</th><th>Hol</th></tr></thead>
     <tbody>
-      <tr><td>Vercel Inc.</td><td>a weboldal és a foglalófelület kiszolgálása</td><td>USA</td></tr>
-      <tr><td>Supabase Inc.</td><td>adatbázis: foglalások, törzsadatok</td><td>EU (frankfurti régió)</td></tr>
+      <tr><td>Vercel Inc.</td><td>a weboldal, a foglalófelület és a chatbot háttérszolgáltatásának kiszolgálása</td><td>USA</td></tr>
+      <tr><td>Supabase Inc.</td><td>adatbázis: foglalások, törzsadatok, a chatbot beszélgetés-naplója</td><td>EU (frankfurti régió)</td></tr>
       <tr><td>Vapi Labs, Inc.</td><td>telefonos hangplatform, hívásnapló, hangfelvétel</td><td>USA</td></tr>
-      <tr><td>Anthropic PBC</td><td>a beszélgetést értelmező nyelvi modell (Claude)</td><td>USA</td></tr>
+      <tr><td>Anthropic PBC</td><td>a beszélgetést értelmező nyelvi modell (Claude) — a bemutató telefonos asszisztensnél és a weboldali chatbotnál</td><td>USA</td></tr>
       <tr><td>ElevenLabs Inc.</td><td>beszédszintézis (az asszisztens hangja)</td><td>USA</td></tr>
       <tr><td>Gladia SAS</td><td>magyar nyelvű beszédfelismerés</td><td>EU (Franciaország)</td></tr>
       <tr><td>Resend, Inc.</td><td>visszaigazoló és emlékeztető e-mailek küldése</td><td>USA</td></tr>
       <tr><td>Google Ireland Ltd. / Google LLC</td><td>betűtípusok; forgalmi statisztika (Google Analytics 4, csak hozzájárulással); az ajánlat-PDF előállítása és az e-mail kiküldése</td><td>EU (Írország) / USA</td></tr>
-      <tr><td>Celonis, s.r.o. (Make.com)</td><td>a kalkulátor ajánlatkérő űrlapjának feldolgozása</td><td>EU (Csehország)</td></tr>
+      <tr><td>Celonis, s.r.o. (Make.com)</td><td>a kalkulátor ajánlatkérő űrlapjának és a chatbotban kért visszahívásnak a feldolgozása</td><td>EU (Csehország)</td></tr>
     </tbody>
   </table>
   </div>
@@ -309,7 +340,7 @@
     dolgozunk, amelyek kizárják, hogy a beszélgetések tartalmát modelltanításra használják.
   </p>
 
-  <h2 id="harmadik">8. Adattovábbítás EU-n kívülre</h2>
+  <h2 id="harmadik">9. Adattovábbítás EU-n kívülre</h2>
   <p>
     A fenti szolgáltatók egy része az Amerikai Egyesült Államokban működik, így az
     adatkezelés részben harmadik országban történik. Az adattovábbítás jogi alapja
@@ -319,7 +350,7 @@
     szolgáltatóra vonatkozó konkrét garancia másolatát kérésre megküldjük.
   </p>
 
-  <h2 id="megorzes">9. Megőrzési idők</h2>
+  <h2 id="megorzes">10. Megőrzési idők</h2>
   <div class="tbl-wrap">
   <table>
     <thead><tr><th>Adatkör</th><th>Meddig</th><th>Miért</th></tr></thead>
@@ -330,6 +361,7 @@
       <tr><td>Google Analytics látogatói adat</td><td><b>14 hónap</b></td><td>forgalmi statisztika (csak hozzájárulással)</td></tr>
       <tr><td>Süti-döntés a böngésző helyi tárolójában</td><td>legfeljebb 12 hónap</td><td>hogy ne kelljen újra dönteni</td></tr>
       <tr><td>Kalkulátoros ajánlatkérés és visszahívás-kérés (név, telefon, e-mail, beírt számok)</td><td>szerződés nélkül 1 év</td><td>ajánlatadás, egyeztetés</td></tr>
+      <tr><td>Chatbot beszélgetés-napló</td><td><b>1 év</b></td><td>a szolgáltatás minőségének javítása</td></tr>
       <tr><td>Kiszolgálói naplók</td><td>a tárhelyszolgáltató gyakorlata szerint, jellemzően néhány hét</td><td>üzembiztonság</td></tr>
       <tr><td>Szerződések, üzleti levelezés</td><td>a szerződés végét követő 5 év</td><td>általános elévülési idő</td></tr>
       <tr><td>Számlák és számviteli bizonylatok</td><td><b>8 év</b></td><td>a számvitelről szóló 2000. évi C. törvény 169. §-a</td></tr>
@@ -337,7 +369,7 @@
   </table>
   </div>
 
-  <h2 id="jogok">10. Az Ön jogai</h2>
+  <h2 id="jogok">11. Az Ön jogai</h2>
   <p>A GDPR alapján Önt az alábbi jogok illetik meg:</p>
   <ul>
     <li><strong>Hozzáférés</strong> — tájékoztatást kérhet arról, kezelünk-e Önről adatot, és ha igen, milyet.</li>
@@ -371,7 +403,7 @@
     törvényszék előtt is megindíthatja.
   </p>
 
-  <h2 id="biztonsag">11. Adatbiztonság</h2>
+  <h2 id="biztonsag">12. Adatbiztonság</h2>
   <ul>
     <li>Az adatok titkosított kapcsolaton (HTTPS) utaznak, és titkosítva tárolódnak.</li>
     <li>A pultos felület belépéshez kötött; a nyilvánosan elérhető bemutató felület nem jelenít meg telefonszámot, e-mail címet és rendszámot.</li>
@@ -379,7 +411,7 @@
     <li>Adatvédelmi incidens esetén — ha az valószínűsíthetően kockázattal jár — 72 órán belül bejelentést teszünk a NAIH felé, adatfeldolgozói szerepben pedig haladéktalanul értesítjük az érintett ügyfelet.</li>
   </ul>
 
-  <h2 id="dontes">12. Automatizált döntéshozatal</h2>
+  <h2 id="dontes">13. Automatizált döntéshozatal</h2>
   <p>
     Az asszisztens automatizáltan dolgozza fel a beszélgetést és foglal időpontot, de
     <strong>nem hoz olyan, kizárólag automatizált döntést, amely Önre nézve joghatással
@@ -388,14 +420,14 @@
     vagy elutasításról. Ha egy kérdés meghaladja a hatáskörét, emberi kollégához irányítja.
   </p>
 
-  <h2 id="modositas">13. A tájékoztató módosítása</h2>
+  <h2 id="modositas">14. A tájékoztató módosítása</h2>
   <p>
     A tájékoztatót akkor módosítjuk, ha a szolgáltatás vagy a jogszabályi környezet
     változik. A mindenkori hatályos szöveg ezen az oldalon érhető el, a hatálybalépés
     dátumával együtt. Lényeges változásról a szerződött ügyfeleinket külön is értesítjük.
   </p>
 
-  <p class="stamp">Hatályos: 2026. szeptember 3. · Verzió: 1.2 (Google Analytics, kalkulátoros ajánlatkérés és visszahívás-kérő űrlap bekerült) · Előző verzió: 2026. augusztus 26.</p>
+  <p class="stamp">Hatályos: 2026. szeptember 22. · Verzió: 1.3 (weboldali chatbot bekerült) · Előző verzió: 2026. szeptember 3. (Google Analytics, kalkulátoros ajánlatkérés és visszahívás-kérő űrlap).</p>
 </article>
 <footer>
   <div class="wrap">
