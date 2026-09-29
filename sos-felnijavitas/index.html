@@ -680,8 +680,7 @@
   </div>
 
   <div class="foot-block">
-    <!-- ELLENŐRIZENDŐ: nincs még élő adatvédelmi tájékoztató oldal, a link egyelőre helyőrző -->
-    <a href="#">Adatvédelem</a>
+    <a href="adatkezeles.html">Adatvédelem</a>
   </div>
 </footer>
 
@@ -725,7 +724,7 @@
         </div>
         <div class="checkbox-row">
           <input type="checkbox" id="f-gdpr" required>
-          <label for="f-gdpr">Hozzájárulok, hogy a megadott adataimat és a feltöltött képeket az árajánlat elkészítéséhez felhasználják.</label>
+          <label for="f-gdpr">Hozzájárulok, hogy a megadott adataimat és a feltöltött képeket az árajánlat elkészítéséhez felhasználják, az <a href="adatkezeles.html" target="_blank" rel="noopener">adatkezelési tájékoztatóban</a> foglaltak szerint.</label>
         </div>
         <div class="form-error" id="photo-form-error" style="display:none;"></div>
         <button type="submit" class="btn btn-primary" id="photo-form-submit">Elküldöm</button>
@@ -823,6 +822,10 @@
       <div style="display:flex;gap:8px;">
         <input type="text" id="kalk-nev" placeholder="Név" style="flex:1;min-height:44px;border:1.5px solid var(--border);border-radius:var(--radius-sm);padding:0 12px;font-family:var(--font);font-size:14px;color:var(--text-dark);">
         <input type="tel" id="kalk-telefon" placeholder="Telefonszám" style="flex:1;min-height:44px;border:1.5px solid var(--border);border-radius:var(--radius-sm);padding:0 12px;font-family:var(--font);font-size:14px;color:var(--text-dark);">
+      </div>
+      <div class="checkbox-row" style="margin-top:10px;margin-bottom:0;">
+        <input type="checkbox" id="kalk-gdpr" required>
+        <label for="kalk-gdpr">Hozzájárulok, hogy a megadott adataimat az árajánlat elkészítéséhez felhasználják, az <a href="adatkezeles.html" target="_blank" rel="noopener">adatkezelési tájékoztatóban</a> foglaltak szerint.</label>
       </div>
     </div>
 
@@ -968,6 +971,11 @@
       var telefon = document.getElementById('kalk-telefon').value.trim();
       if (!nev || !telefon) {
         errBox.textContent = 'Add meg a neved és a telefonszámod, hogy vissza tudjunk jelezni.';
+        errBox.style.display = 'block';
+        return;
+      }
+      if (!document.getElementById('kalk-gdpr').checked) {
+        errBox.textContent = 'Az ajánlatkéréshez el kell fogadnod az adatkezelési tájékoztatót.';
         errBox.style.display = 'block';
         return;
       }
