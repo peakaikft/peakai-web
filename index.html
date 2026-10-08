@@ -5,12 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="/assets/consent.js" defer></script>
 <script src="/assets/chatbot.js" defer></script>
-<title>Peak AI — AI telefonos asszisztens, ami időpontot is foglal</title>
-<meta name="description" content="Magyarul beszélő AI telefonos asszisztens kis- és középvállalkozásoknak. Felveszi a telefont, amikor Ön dolgozik, és valódi időpontot foglal a naptárban — nem csak üzenetet rögzít. Peak AI.">
+<title>Peak AI — AI telefonos asszisztens, foglalórendszer és egyedi fejlesztés kisvállalkozásoknak</title>
+<meta name="description" content="A Peak AI kis- és középvállalkozásoknak épít működő rendszereket: magyarul beszélő AI telefonos asszisztenst, saját foglalórendszert, Google-értékelések kezelését és egyedi fejlesztéseket. Élő demó az Ön cégére szabva.">
 <meta name="theme-color" content="#0B0E13">
 <link rel="canonical" href="https://peakai.hu/">
-<meta property="og:title" content="Peak AI — Soha ne maradjon megválaszolatlan hívás">
-<meta property="og:description" content="Magyarul beszélő AI telefonos asszisztens kis- és középvállalkozásoknak.">
+<meta property="og:title" content="Peak AI — AI-megoldások kisvállalkozásoknak: telefon, foglalás, értékelések">
+<meta property="og:description" content="AI telefonos asszisztens, saját foglalórendszer, Google-értékelések kezelése és egyedi fejlesztés kis- és középvállalkozásoknak.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://peakai.hu/">
 <meta property="og:locale" content="hu_HU">
@@ -32,7 +32,8 @@
 "@id": "https://peakai.hu/#szervezet",
 "name": "Peak AI",
 "slogan": "Reach higher ground",
-"description": "Magyarul beszélő AI telefonos asszisztens és időpontfoglaló rendszer kis- és középvállalkozásoknak.",
+"description": "AI telefonos asszisztens, online foglalórendszer, Google-értékelések kezelése és egyedi fejlesztés kis- és középvállalkozásoknak.",
+"serviceType": ["AI telefonos asszisztens", "Online foglalórendszer", "Google-értékelések kezelése", "Egyedi szoftverfejlesztés"],
 "url": "https://peakai.hu/",
 "email": "barnabas@peakai.hu",
 "inLanguage": "hu-HU",
@@ -55,7 +56,7 @@
 { "@type": "Offer", "name": "PEAK AI Reception", "price": "179000", "priceCurrency": "HUF",
 "description": "Foglalási rendszer és telefonos AI-asszisztens, 300 perc / hó beépítve. Nettó havidíj; egyszeri bevezetési díj 249 000 Ft, 12 hónapos szerződéssel. 14 napos díjmentes próbaüzem." },
 { "@type": "Offer", "name": "PEAK Pro", "price": "299000", "priceCurrency": "HUF",
-"description": "Foglalási rendszer és központi AI-asszisztens több telephelyről vagy partnercégtől érkező hívásokhoz, 800 perc / hó két forrásra. Nettó havidíj; egyszeri bevezetési díj 399 000 Ft, 12 hónapos szerződéssel. 14 napos díjmentes próbaüzem." }
+"description": "Foglalási rendszer és központi AI-asszisztens több telephelyről vagy partnercégtől érkező hívásokhoz, 800 perc / hó két forrásra; a Google Értékelés-őr alapból benne van. Nettó havidíj; egyszeri bevezetési díj 399 000 Ft, 12 hónapos szerződéssel. 14 napos díjmentes próbaüzem." }
 ]
 }
 },
@@ -318,8 +319,8 @@ text-transform:uppercase; color:var(--peak-glacier); display:block; margin-botto
 </svg>
 </a>
 <div class="nav-links">
-<a href="#hogyan">Hogyan működik</a>
-<a href="#tudas">Mit tud</a>
+<a href="#szolgaltatasok">Szolgáltatások</a>
+<a href="#hogyan">Telefonos asszisztens</a>
 <a href="#csomagok">Csomagok</a>
 <a href="#kinek">Kinek</a>
 <a href="/blog/">Blog</a>
@@ -332,18 +333,18 @@ text-transform:uppercase; color:var(--peak-glacier); display:block; margin-botto
 <header class="hero on-dark" id="top">
 <div class="wrap">
 <p class="eyebrow">Peak AI</p>
-<h1>Felveszi a telefont, és valódi időpontot ad.</h1>
+<h1>Telefon, foglalás, értékelések — kézi munka nélkül.</h1>
 <p class="lede">
-Magyarul beszélő AI telefonos asszisztens, ami felveszi a telefont, amikor Ön létrán áll,
-ügyfélnél ül vagy épp vezet. Megkérdezi, mire van szükség és mikor jó — majd beírja a
-naptárba. Nem üzenetet hagy a kollégának: valódi időpontot ad, és két ügyfél nem kerülhet
-ugyanarra a sávra.
+A Peak AI kisvállalkozásoknak épít működő rendszereket: magyarul beszélő telefonos
+asszisztenst, ami valódi időpontot foglal, saját foglalórendszert, Google-értékelések
+kezelését — és mindazt, amit a cége egyedi fejlesztésként igényel. Nem sablon:
+az Ön folyamatára szabjuk.
 </p>
 <div class="hero-cta">
 <a class="btn" href="#kapcsolat">Kérek egy 15 perces demót</a>
-<a class="btn btn-ghost" href="#hogyan">Hogyan működik</a>
+<a class="btn btn-ghost" href="#szolgaltatasok">Mit építünk</a>
 </div>
-<p class="hero-note">A meglévő telefonszáma marad — csak átirányítást állítunk be rá. Nem kell semmit lecserélni.</p>
+<p class="hero-note">Nem kell semmit lecserélnie: a meglévő telefonszámára és a mostani működésére építünk.</p>
 <div class="listen" id="igy-hangzik">
 <div class="listen-head">
 <button type="button" class="listen-btn" id="listenBtn" aria-label="Hangminta lejátszása">&#9654;</button>
@@ -357,10 +358,64 @@ ugyanarra a sávra.
 </div>
 </header>
 
+<section class="alt" id="szolgaltatasok">
+<div class="wrap">
+<div class="section-head">
+<p class="eyebrow">Mit építünk</p>
+<h2>Egy partner az ügyfélkapcsolat minden pontjára.</h2>
+<p class="lede">
+Telefonos asszisztenssel indultunk. Ma az ügyfélkapcsolat négy pontját fedjük le —
+külön-külön is, és együtt is.
+</p>
+</div>
+<div class="grid g2">
+<div class="card">
+<div class="step-n">01</div>
+<h3>Telefonos AI asszisztens</h3>
+<p style="font-size:.96rem">
+Magyarul, magázódva felveszi a hívást, amikor Ön nem tud. Valódi időpontot foglal,
+visszahívást kér, a sürgős eseteket előre sorolja — 0–24.
+<a href="#hogyan" style="color:var(--peak-accent-deep);text-decoration:none">Hogyan működik →</a>
+</p>
+</div>
+<div class="card">
+<div class="step-n">02</div>
+<h3>Online foglalórendszer</h3>
+<p style="font-size:.96rem">
+Saját domainen, az Ön arculatában. Iparágra szabott mezők, napi munkalista a pultnak,
+e-mailes visszaigazolás és emlékeztető, adatbázis-szintű ütközésvédelem: egy időpontot
+nem lehet kétszer lefoglalni. Partnercégek rendszeréhez igény esetén bekötjük.
+<a href="#csomagok" style="color:var(--peak-accent-deep);text-decoration:none">Csomagok →</a>
+</p>
+</div>
+<div class="card">
+<div class="step-n">03</div>
+<h3>Google Értékelés-őr</h3>
+<p style="font-size:.96rem">
+Az új Google-értékelésekre magyar nyelvű válaszjavaslatot ír — a közzététel előtt
+Ön hagyja jóvá —, és e-mailben értékelést kér az elégedett ügyfelektől. A hangnemet
+Önnel együtt állítjuk be.
+</p>
+</div>
+<div class="card">
+<div class="step-n">04</div>
+<h3>Egyedi fejlesztés</h3>
+<p style="font-size:.96rem">
+Ha a feladat nem fér bele egyik dobozba, megépítjük. Például: partnerektől érkező
+szállítmányok és foglalások automatikus követése, online konfigurátor automata
+státuszkövetéssel és PDF-ajánlattal, hívás utáni összefoglaló és CRM. A feladat
+megismerése után egyedi ajánlatot adunk.
+<a href="#kapcsolat" style="color:var(--peak-accent-deep);text-decoration:none">Meséljen a feladatról →</a>
+</p>
+</div>
+</div>
+</div>
+</section>
+
 <section id="problema">
 <div class="wrap">
 <div class="section-head">
-<p class="eyebrow">A probléma</p>
+<p class="eyebrow">A nem fogadott hívás</p>
 <h2>A nem fogadott hívás nem nulla forint. Csak nem látszik a könyvelésben.</h2>
 <p class="lede">
 Aki nem éri el Önt, felhívja a következő céget a listán. Nem hagy üzenetet, és nem
@@ -420,7 +475,7 @@ Ugyanaz a szám, ugyanaz a telefon. Az asszisztens csak akkor lép be, ha
 <section class="alt" id="hogyan">
 <div class="wrap">
 <div class="section-head">
-<p class="eyebrow">Hogyan működik</p>
+<p class="eyebrow">Telefonos asszisztens · hogyan működik</p>
 <h2>Három lépés, és nincs több elveszett hívás.</h2>
 </div>
 <div class="grid g3">
@@ -458,7 +513,7 @@ vissza kell hívnia.
 <section id="tudas">
 <div class="wrap">
 <div class="section-head">
-<p class="eyebrow">Mit tud, és mit nem</p>
+<p class="eyebrow">Telefonos asszisztens · mit tud, és mit nem</p>
 <h2>Amit egy AI asszisztensnek nem szabad megtennie, azt nálunk nem is teszi meg.</h2>
 <p class="lede">
 A legtöbb rossz tapasztalat abból származik, hogy az AI olyat mond, amire nincs
@@ -551,6 +606,7 @@ bárki elrabolja az idejét. A nettó ár mellett a bruttót is kiírjuk — azt
 <li>Forrásonkénti kapacitás és eltérő szolgáltatások/árak</li>
 <li>Központi ügyféladatbázis, forrásonkénti riportok</li>
 <li>Hívásirányítás, flottás ügyfelek kezelése, jogosultságkezelés</li>
+<li><strong>Google Értékelés-őr alapból</strong> — válaszjavaslat az Ön jóváhagyásával, értékeléskérés e-mailben</li>
 </ul>
 <p class="price-setup">Egyszeri bevezetési díj: 399 000 Ft + áfa · 12 hónapos szerződés · kereten felül 120 Ft + áfa/perc</p>
 <a class="btn btn-ghost" href="#kapcsolat">Beszéljünk</a>
@@ -565,6 +621,8 @@ bárki elrabolja az idejét. A nettó ár mellett a bruttót is kiírjuk — azt
 <div class="web-tier"><strong>12 hónapos szerződés</strong><span>Havonta számlázott havidíj, egy évre — ennyi idő alatt térül meg a bevezetési munka.</span></div>
 <div class="web-tier"><strong>A hangkereten felül</strong><span>120 Ft + áfa / perc, a következő hónap elején külön tételként számlázva. A percszámot havonta látja a riportban, tehát nem ér meglepetés.</span></div>
 <div class="web-tier"><strong>Ütközésvédelem</strong><span>Mindhárom csomagban adatbázis-szinten: egy időpontot nem foglal le kétszer, akkor sem, ha egyszerre több helyről — pult, weboldal, telefon — érkezik a foglalás.</span></div>
+<div class="web-tier"><strong>Google Értékelés-őr</strong><span>A PEAK Proban alapból benne van, a PEAK AI Receptionhöz felárral kérhető; a PEAK Booking mellé nem kínáljuk. A válaszokat alapértelmezetten Ön hagyja jóvá közzététel előtt.</span></div>
+<div class="web-tier"><strong>Egyedi fejlesztés</strong><span>Ami nincs az árlistán, arra a feladat megismerése után egyedi ajánlatot adunk — előre egyeztetett áron, nem óradíjban.</span></div>
 <div class="web-tier"><strong>Időpont-emlékeztető</strong><span>Mindhárom csomagban benne van: automatikus e-mail megy ki minden ügyfélnek röviddel az időpontja előtt, kézi munka nélkül — kevesebb elmulasztott foglalás, nem külön fizetendő szolgáltatás.</span></div>
 </div>
 <p style="font-size:.85rem;color:var(--muted);margin:22px 0 0">
@@ -581,8 +639,8 @@ szolgáltatója felszámol ilyet), valamint a foglalt hangkereten felüli percek
 <p class="eyebrow">Kinek való</p>
 <h2>Azoknak, akiknél a telefon az első kapu.</h2>
 <p class="lede">
-Ha az ügyfelei telefonon keresik meg, és Ön közben dolgozik, akkor minden nap
-veszít néhány megkeresést. Ezekkel a szakmákkal dolgozunk:
+Ha az ügyfelei telefonon, e-mailben vagy a Google-on keresik meg, és Ön közben
+dolgozik, akkor minden nap veszít néhány megkeresést. Ezekkel a szakmákkal dolgozunk:
 </p>
 </div>
 <div class="tags">
@@ -668,8 +726,8 @@ a sorrend fordított: előbb látja működni a saját cégén, utána beszélü
 <h2>Nézzük meg élőben, az Ön cégére szabva.</h2>
 <p>
 Adja meg a nevét és a számát, mi visszahívjuk a megadott időszakban. 15 perc az egész:
-megmutatjuk, hogyan hangzana az asszisztens az Ön vállalkozásának nevében — döntés és
-szerződés nélkül.
+megmutatjuk, mit tudna a rendszer az Ön vállalkozásában — telefonon, foglalásban,
+értékelésekben —, döntés és szerződés nélkül.
 </p>
 <form class="cb-form" id="cbForm" novalidate>
 <div class="cb-grid">
@@ -722,7 +780,7 @@ szerződés nélkül.
 <text x="232" y="121" font-family="JetBrains Mono, ui-monospace, monospace" font-weight="500" font-size="16" letter-spacing="3" fill="#A8B1BD">REACH HIGHER GROUND</text>
 </svg>
 </a>
-<p style="margin:20px 0 0;color:var(--peak-mist)">AI telefonos asszisztens<br>kis- és középvállalkozásoknak.</p>
+<p style="margin:20px 0 0;color:var(--peak-mist)">AI-megoldások kis- és középvállalkozásoknak:<br>telefon, foglalás, értékelések, egyedi fejlesztés.</p>
 </div>
 <div>
 <span class="foot-h">Kapcsolat</span>
@@ -733,7 +791,8 @@ szerződés nélkül.
 <div>
 <span class="foot-h">Oldalak</span>
 <p style="margin:0">
-<a href="#hogyan">Hogyan működik</a><br>
+<a href="#szolgaltatasok">Szolgáltatások</a><br>
+<a href="#hogyan">Telefonos asszisztens</a><br>
 <a href="#csomagok">Csomagok</a><br>
 <a href="/blog/">Blog</a><br>
 <a href="/kalkulator/">Kalkulátor</a><br>
