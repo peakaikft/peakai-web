@@ -8,7 +8,7 @@
   </url>
   <url>
     <loc>https://peakai.hu/blog/</loc>
-    <lastmod>2026-09-08</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -39,6 +39,42 @@
   <url>
     <loc>https://peakai.hu/blog/fogaszat-nem-fogadott-hivasok-elveszett-paciensek-2026/</loc>
     <lastmod>2026-09-08</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://peakai.hu/blog/ai-telefonos-asszisztens-maganrendelo-klinika/</loc>
+    <lastmod>2026-10-08</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://peakai.hu/blog/ai-asszisztens-szepsegszalon-kozmetika-idopontfoglalas/</loc>
+    <lastmod>2026-10-08</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://peakai.hu/blog/ai-telefonos-asszisztens-etterem-szalloda-foglalas/</loc>
+    <lastmod>2026-10-08</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://peakai.hu/blog/google-ertekelesek-valaszolas-automatizalasa/</loc>
+    <lastmod>2026-10-08</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://peakai.hu/blog/online-foglalorendszer-autoszerviz-gumiszerviz/</loc>
+    <lastmod>2026-10-08</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://peakai.hu/blog/ai-asszisztens-edzoterem-pilates-studio-idopontfoglalas/</loc>
+    <lastmod>2026-10-08</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
