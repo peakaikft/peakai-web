@@ -1,0 +1,16 @@
+# Peak AI
+
+> Peak AI (az AlignMed Kft. márkája) kis- és középvállalkozásoknak épít ügyfélkapcsolati megoldásokat Magyarországon: telefonos AI-asszisztenst, online foglalórendszert, Google-értékelések kezelését és egyedi fejlesztést. Alapító: Dr. Révész Barnabás.
+
+## Fő oldalak
+- [Főoldal, szolgáltatások, csomagok és árak](https://peakai.hu/): csomagok: PEAK Booking 59 000 Ft + áfa/hó, PEAK AI Reception 179 000 Ft + áfa/hó, PEAK Pro 299 000 Ft + áfa/hó
+- [Gyakori kérdések](https://peakai.hu/#gyik)
+- [Megtérülés-kalkulátor](https://peakai.hu/kalkulator/)
+- [Blog](https://peakai.hu/blog/)
+
+## Cikkek
+- [AI telefonos recepciós: hogyan működik, mennyibe kerül, kinek éri meg](https://peakai.hu/blog/ai-telefonos-recepcios-mennyibe-kerul/)
+- [AI recepciós vs. alkalmazott recepciós: mennyibe kerül 2026-ban](https://peakai.hu/blog/ai-recepcios-vs-alkalmazott-recepcios-koltsege-2026/)
+- [Gumiszezon 2026: telefonrohamok kezelése gumiszervizben](https://peakai.hu/blog/gumiszezon-2026-telefon-idopontfoglalas-gumiszerviz/)
+- [Elveszett hívások az autószervizben](https://peakai.hu/blog/elveszett-hivasok-autoszerviz/)
+- [Fogászat: nem fogadott hívások, elveszett páciensek](https://peakai.hu/blog/fogaszat-nem-fogadott-hivasok-elveszett-paciensek-2026/)

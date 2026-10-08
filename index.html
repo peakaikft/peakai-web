@@ -178,6 +178,13 @@ letter-spacing:.05em; color:var(--peak-glacier)}
 /* ─── szekciók ─────────────────────────────────────────────────── */
 section{padding:86px 0}
 .section-head{max-width:66ch; margin-bottom:46px}
+.faq{max-width:820px}
+.faq-i{border-bottom:1px solid var(--line);padding:16px 0}
+.faq-i summary{cursor:pointer;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:1.05rem;list-style:none}
+.faq-i summary::-webkit-details-marker{display:none}
+.faq-i summary::after{content:"+";float:right;color:var(--muted)}
+.faq-i[open] summary::after{content:"–"}
+.faq-i p{margin:10px 0 0;color:var(--muted);line-height:1.65}
 .alt{background:var(--surface); border-top:1px solid var(--line); border-bottom:1px solid var(--line)}
 
 .grid{display:grid; gap:22px}
@@ -301,6 +308,80 @@ text-transform:uppercase; color:var(--peak-glacier); display:block; margin-botto
 .listen-sub{font-size:.82rem;color:var(--peak-glacier);margin:2px 0 0;font-family:var(--font-mono);letter-spacing:.04em}
 .listen audio{width:100%;height:36px;filter:invert(1) hue-rotate(180deg) saturate(.6)}
 </style>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "@id": "https://peakai.hu/#gyik",
+ "inLanguage": "hu-HU",
+ "mainEntity": [
+  {
+   "@type": "Question",
+   "name": "Mennyibe kerül egy AI telefonos asszisztens Magyarországon?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "A Peak AI-nál havidíjas csomagokban: PEAK Booking 59 000 Ft + áfa/hó (csak foglalórendszer), PEAK AI Reception 179 000 Ft + áfa/hó (foglalórendszer és telefonos AI-asszisztens, 300 perc/hó beépítve), PEAK Pro 299 000 Ft + áfa/hó (központi asszisztens több telephelyre, 800 perc/hó, a Google-értékelések kezelésével). Egyszeri bevezetési díj: 149 000 / 249 000 / 399 000 Ft + áfa. A perckereten felül 120 Ft + áfa/perc."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Mit csinál a Peak AI?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "A Peak AI kis- és középvállalkozásoknak épít ügyfélkapcsolati megoldásokat: telefonos AI-asszisztenst, online foglalórendszert, Google-értékelések kezelését és egyedi fejlesztést. A cél, hogy a hívások, foglalások és értékelések kézi munka nélkül, következetesen megoldódjanak."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Tud az AI telefonos asszisztens valódi időpontot foglalni?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Igen. A telefonos asszisztens a foglalórendszerhez kapcsolódik, amely adatbázis-szinten védi az ütközéseket, így nincs dupla foglalás. Visszaigazolást és emlékeztetőt e-mailben küld, a pult pedig munkaállapot-táblán látja a napot."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Mennyiben más egy AI asszisztens, mint egy alkalmazott recepciós?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Egy minimálbéres alkalmazott 2026-ban havi 364 764 Ft-ba kerül a munkáltatónak, és csak munkaidőben veszi fel a telefont. A belépő Peak AI csomag bruttó 74 930 Ft/hó. A számokat és a határokat, ahol az AI olcsóbb, a blogunk összehasonlító cikke részletezi."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Mit jelent a Google-értékelések kezelése?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "A beérkező Google-értékelésekre az asszisztens válaszjavaslatot készít, amelyet alapértelmezés szerint a vállalkozás jóváhagy, mielőtt kikerül. A funkció a PEAK Pro csomag része, a PEAK AI Reception csomaghoz külön díjas kiegészítőként kérhető."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Mikor érdemes egyedi fejlesztést kérni?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Ha a vállalkozás folyamata nem fér bele egy kész csomagba, például saját rendszerekhez kell kapcsolódni, vagy egyedi belső eszköz kell. A fejlesztést előre egyeztetett áron vállaljuk, nem óradíjban. Egy rövid egyeztetés után konkrét ajánlatot adunk."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Van kötöttség, és ki tudom próbálni előtte?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "A csomagokra 12 hónapos szerződés vonatkozik, és 14 napos díjmentes próbaüzem van. A bevezetési díj a próbaidő utáni, 15. naptól esedékes."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Ki áll a Peak AI mögött?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "A Peak AI az AlignMed Kft. márkája. Alapítója Dr. Révész Barnabás, nukleáris medicina szakorvos, aki a szabályozott egészségügyi és gyógyszeripari környezet pontosságát hozza az ügyfélkapcsolati automatizálásba. Az ügyfélkör kis- és középvállalkozás országszerte, a szolgáltatás nem helyfüggő."
+   }
+  }
+ ]
+}
+</script>
 </head>
 <body>
 
@@ -716,6 +797,26 @@ a sorrend fordított: előbb látja működni a saját cégén, utána beszélü
 <li>Nem számlázunk olyan tételt, ami nincs benne az ajánlatban</li>
 </ul>
 </div>
+</div>
+</div>
+</section>
+
+<section class="alt" id="gyik">
+<div class="wrap">
+<div class="section-head">
+<p class="eyebrow">Gyakori kérdések</p>
+<h2>Amit a legtöbben megkérdeznek.</h2>
+<p class="lede">Rövid, konkrét válaszok árról, működésről és szerződésről.</p>
+</div>
+<div class="faq">
+<details class="faq-i"><summary>Mennyibe kerül egy AI telefonos asszisztens Magyarországon?</summary><p>A Peak AI-nál havidíjas csomagokban: PEAK Booking 59 000 Ft + áfa/hó (csak foglalórendszer), PEAK AI Reception 179 000 Ft + áfa/hó (foglalórendszer és telefonos AI-asszisztens, 300 perc/hó beépítve), PEAK Pro 299 000 Ft + áfa/hó (központi asszisztens több telephelyre, 800 perc/hó, a Google-értékelések kezelésével). Egyszeri bevezetési díj: 149 000 / 249 000 / 399 000 Ft + áfa. A perckereten felül 120 Ft + áfa/perc.</p></details>
+<details class="faq-i"><summary>Mit csinál a Peak AI?</summary><p>A Peak AI kis- és középvállalkozásoknak épít ügyfélkapcsolati megoldásokat: telefonos AI-asszisztenst, online foglalórendszert, Google-értékelések kezelését és egyedi fejlesztést. A cél, hogy a hívások, foglalások és értékelések kézi munka nélkül, következetesen megoldódjanak.</p></details>
+<details class="faq-i"><summary>Tud az AI telefonos asszisztens valódi időpontot foglalni?</summary><p>Igen. A telefonos asszisztens a foglalórendszerhez kapcsolódik, amely adatbázis-szinten védi az ütközéseket, így nincs dupla foglalás. Visszaigazolást és emlékeztetőt e-mailben küld, a pult pedig munkaállapot-táblán látja a napot.</p></details>
+<details class="faq-i"><summary>Mennyiben más egy AI asszisztens, mint egy alkalmazott recepciós?</summary><p>Egy minimálbéres alkalmazott 2026-ban havi 364 764 Ft-ba kerül a munkáltatónak, és csak munkaidőben veszi fel a telefont. A belépő Peak AI csomag bruttó 74 930 Ft/hó. A számokat és a határokat, ahol az AI olcsóbb, a blogunk összehasonlító cikke részletezi.</p></details>
+<details class="faq-i"><summary>Mit jelent a Google-értékelések kezelése?</summary><p>A beérkező Google-értékelésekre az asszisztens válaszjavaslatot készít, amelyet alapértelmezés szerint a vállalkozás jóváhagy, mielőtt kikerül. A funkció a PEAK Pro csomag része, a PEAK AI Reception csomaghoz külön díjas kiegészítőként kérhető.</p></details>
+<details class="faq-i"><summary>Mikor érdemes egyedi fejlesztést kérni?</summary><p>Ha a vállalkozás folyamata nem fér bele egy kész csomagba, például saját rendszerekhez kell kapcsolódni, vagy egyedi belső eszköz kell. A fejlesztést előre egyeztetett áron vállaljuk, nem óradíjban. Egy rövid egyeztetés után konkrét ajánlatot adunk.</p></details>
+<details class="faq-i"><summary>Van kötöttség, és ki tudom próbálni előtte?</summary><p>A csomagokra 12 hónapos szerződés vonatkozik, és 14 napos díjmentes próbaüzem van. A bevezetési díj a próbaidő utáni, 15. naptól esedékes.</p></details>
+<details class="faq-i"><summary>Ki áll a Peak AI mögött?</summary><p>A Peak AI az AlignMed Kft. márkája. Alapítója Dr. Révész Barnabás, nukleáris medicina szakorvos, aki a szabályozott egészségügyi és gyógyszeripari környezet pontosságát hozza az ügyfélkapcsolati automatizálásba. Az ügyfélkör kis- és középvállalkozás országszerte, a szolgáltatás nem helyfüggő.</p></details>
 </div>
 </div>
 </section>
