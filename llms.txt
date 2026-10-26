@@ -9,6 +9,7 @@
 - [Blog](https://peakai.hu/blog/)
 
 ## Cikkek
+- [Megéri-e AI recepciós egy klímaszerelő cégnek?](https://peakai.hu/blog/ai-recepcios-klimaszerelo-ceg-megeri/): modellszámítás arról, hány elveszett telepítésnél térül meg egy AI recepciós egy klímás cégnél, két cégmérettel
 - [AI telefonos recepciós: hogyan működik, mennyibe kerül, kinek éri meg](https://peakai.hu/blog/ai-telefonos-recepcios-mennyibe-kerul/)
 - [AI recepciós vs. alkalmazott recepciós: mennyibe kerül 2026-ban](https://peakai.hu/blog/ai-recepcios-vs-alkalmazott-recepcios-koltsege-2026/)
 - [Gumiszezon 2026: telefonrohamok kezelése gumiszervizben](https://peakai.hu/blog/gumiszezon-2026-telefon-idopontfoglalas-gumiszerviz/)
