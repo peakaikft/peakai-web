@@ -203,6 +203,36 @@
   }
   .stickybar a,.stickybar button{flex:1;}
 
+  /* desktop */
+  @media(min-width:900px){
+    :root{--gut:max(32px,calc((100vw - 1120px)/2));}
+    section,.hero,.closing{padding-left:var(--gut);padding-right:var(--gut);padding-top:64px;padding-bottom:64px;}
+    header{padding-left:var(--gut);padding-right:var(--gut);}
+    footer{padding-left:var(--gut);padding-right:var(--gut);padding-bottom:48px;}
+    h2{font-size:34px;} .closing h2{font-size:34px;}
+    .sec-head{max-width:720px;}
+    .sec-head p{font-size:17px;}
+    .hero{display:grid;grid-template-columns:1.05fr 1fr;column-gap:56px;align-items:center;}
+    .hero>.eyebrow,.hero>h1,.hero>p,.hero>.btn-row{grid-column:1;}
+    .hero>.photo-slot{grid-column:2;grid-row:1 / span 5;margin-top:0 !important;aspect-ratio:1/1 !important;}
+    .hero h1{font-size:48px;}
+    .hero p{font-size:18px;}
+    .btn{width:auto;}
+    .btn-row{flex-direction:row;flex-wrap:wrap;}
+    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:24px;}
+    #arak .cards{grid-template-columns:repeat(4,1fr);}
+    .why-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;}
+    .before-after{max-width:760px;gap:16px;}
+    .timeline{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;}
+    .tl-step{flex-direction:column;padding-bottom:0;}
+    .tl-step:not(:last-child)::before{display:none;}
+    .accordion{max-width:820px;}
+    .stickybar{display:none;}
+    body{padding-bottom:0;}
+    .closing .btn-row{justify-content:center;}
+    dialog{width:min(560px,92vw);}
+  }
+
   /* dialog */
   dialog{
     border:none;border-radius:var(--radius-lg);padding:0;width:min(420px,92vw);
@@ -303,11 +333,7 @@
   </div>
 
   <div class="photo-slot" style="aspect-ratio:4/3;margin-top:20px;">
-    <img src="https://sosfelnijavitas.hu/application/files/2316/2796/8209/1214-VW-U2-sosfelnijavitas.jpg" referrerpolicy="no-referrer" alt="Felújított felni gyári állapotban, megmunkált (gyémántvágott) felülettel" loading="lazy">
-    <div class="ph-cap">
-      <div class="num">FOTÓ 01</div>
-      <div class="meta">Referenciakép — saját fotóra cserélhető</div>
-    </div>
+    <img src="foto-01.jpg" alt="Felújított felni gyári állapotban, megmunkált (gyémántvágott) felülettel" loading="lazy">
   </div>
 </section>
 
@@ -426,18 +452,10 @@
 
   <div class="before-after">
     <div class="photo-slot">
-      <img src="https://sosfelnijavitas.hu/application/files/9116/2107/5625/F2-elotte-792-Lemezfelni-sosfelnijavitas.jpg" referrerpolicy="no-referrer" alt="Lemezfelni a javítás előtt, rozsdásan" loading="lazy">
-      <div class="ph-cap">
-        <div class="num">FOTÓ 06</div>
-        <div class="meta">Referenciakép — saját fotóra cserélhető</div>
-      </div>
+      <img src="foto-06.jpg" alt="Lemezfelni a javítás előtt, rozsdásan" loading="lazy">
     </div>
     <div class="photo-slot">
-      <img src="https://sosfelnijavitas.hu/application/files/8516/2107/5624/F2-utana-792-Lemezfelni-sosfelnijavitas.jpg" referrerpolicy="no-referrer" alt="Ugyanaz a lemezfelni a javítás után" loading="lazy">
-      <div class="ph-cap">
-        <div class="num">FOTÓ 07</div>
-        <div class="meta">Referenciakép — saját fotóra cserélhető</div>
-      </div>
+      <img src="foto-07.jpg" alt="Ugyanaz a lemezfelni a javítás után" loading="lazy">
     </div>
   </div>
 
@@ -513,7 +531,7 @@
     </details>
     <details class="acc-item">
       <summary class="acc-trigger">Meddig tárolják az átvett felnit?<svg class="chev" width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="#14181B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
-      <div class="acc-panel">7 napig díjmentesen, utána tárolási díj érvényes (az összeg egyeztetés alatt [ELLENŐRIZENDŐ]).</div>
+      <div class="acc-panel">A javításra átvett abroncsokat 7 naptári napig tároljuk, utána értékesítjük, ezért a kész kereket érdemes időben elvinni. Hosszabb tárolásra a gumihotel szolgáltatás elérhető: 3 000 Ft-tól kerekenként (gumiabroncs 3 000 Ft, szerelt kerék 3 500 Ft).</div>
     </details>
     <details class="acc-item">
       <summary class="acc-trigger">Kapok végleges árat csak a fotó alapján?<svg class="chev" width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="#14181B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
@@ -668,11 +686,7 @@
     <button class="dialog-close" aria-label="Bezárás" onclick="document.getElementById('dlg-gorgozes').close()">×</button>
     <h2>Görgőzés / mechanikai javítás</h2>
     <div class="photo-slot" style="aspect-ratio:16/9;margin-bottom:14px;">
-      <img src="https://sosfelnijavitas.hu/application/files/7717/2554/3840/mechanikai-gorgozes-sosfelnifelujitas.hu.jpg" referrerpolicy="no-referrer" alt="Görgőzés, a keréknél dolgozó szerelő" loading="lazy">
-      <div class="ph-cap">
-        <div class="num">FOTÓ 02</div>
-        <div class="meta">Referenciakép — saját fotóra cserélhető</div>
-      </div>
+      <img src="foto-02.jpg" alt="Görgőzés, a keréknél dolgozó szerelő" loading="lazy">
     </div>
     <div class="acc-panel" style="padding:0;">
       <table>
@@ -694,11 +708,7 @@
     <button class="dialog-close" aria-label="Bezárás" onclick="document.getElementById('dlg-spot').close()">×</button>
     <h2>Gyors spotjavítás</h2>
     <div class="photo-slot" style="aspect-ratio:16/9;margin-bottom:14px;">
-      <img src="https://sosfelnijavitas.hu/application/files/5216/2071/9842/1020-Hyundai-U2-sosfelnijavitas.jpg" referrerpolicy="no-referrer" alt="Felújított felni a javítás után" loading="lazy">
-      <div class="ph-cap">
-        <div class="num">FOTÓ 03</div>
-        <div class="meta">Referenciakép — saját fotóra cserélhető</div>
-      </div>
+      <img src="foto-03.jpg" alt="Felújított felni a javítás után" loading="lazy">
     </div>
     <div class="acc-panel" style="padding:0;">
       <table>
@@ -719,11 +729,7 @@
     <button class="dialog-close" aria-label="Bezárás" onclick="document.getElementById('dlg-komplett').close()">×</button>
     <h2>Teljes felújítás</h2>
     <div class="photo-slot" style="aspect-ratio:16/9;margin-bottom:14px;">
-      <img src="https://sosfelnijavitas.hu/application/files/6916/2796/8240/1278-Porsche-U2-sosfelnijavitas.jpg" referrerpolicy="no-referrer" alt="Fényezett, porfestett fekete felni" loading="lazy">
-      <div class="ph-cap">
-        <div class="num">FOTÓ 04</div>
-        <div class="meta">Referenciakép — saját fotóra cserélhető</div>
-      </div>
+      <img src="foto-04.jpg" alt="Fényezett, porfestett fekete felni" loading="lazy">
     </div>
     <div class="acc-panel" style="padding:0;">
       <table>
@@ -756,11 +762,7 @@
     <button class="dialog-close" aria-label="Bezárás" onclick="document.getElementById('dlg-cnc').close()">×</button>
     <h2>CNC / Diamond Cut</h2>
     <div class="photo-slot" style="aspect-ratio:16/9;margin-bottom:14px;">
-      <img src="https://sosfelnijavitas.hu/application/files/8716/2107/5657/K2-utana-845-Audi-sosfelnijavitas.jpg" referrerpolicy="no-referrer" alt="CNC-megmunkált, gyémántvágott felni" loading="lazy">
-      <div class="ph-cap">
-        <div class="num">FOTÓ 05</div>
-        <div class="meta">Referenciakép — saját fotóra cserélhető</div>
-      </div>
+      <img src="foto-05.jpg" alt="CNC-megmunkált, gyémántvágott felni" loading="lazy">
     </div>
     <div class="acc-panel" style="padding:0;">
       <table>
