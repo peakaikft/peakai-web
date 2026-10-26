@@ -826,7 +826,7 @@ a sorrend fordított: előbb látja működni a saját cégén, utána beszélü
 <div class="cta on-dark">
 <h2>Nézzük meg élőben, az Ön cégére szabva.</h2>
 <p>
-Adja meg a nevét és a számát, mi visszahívjuk a megadott időszakban. 15 perc az egész:
+Adja meg a nevét, telefonszámát és e-mail címét, mi visszahívjuk a megadott időszakban. 15 perc az egész:
 megmutatjuk, mit tudna a rendszer az Ön vállalkozásában — telefonon, foglalásban,
 értékelésekben —, döntés és szerződés nélkül.
 </p>
@@ -841,6 +841,10 @@ megmutatjuk, mit tudna a rendszer az Ön vállalkozásában — telefonon, fogla
 <input type="tel" id="cbTel" name="telefon" required autocomplete="tel" inputmode="tel" placeholder="+36 30 123 4567">
 </div>
 <div class="cb-full">
+<label for="cbEmail">E-mail cím</label>
+<input type="email" id="cbEmail" name="email" required autocomplete="email" inputmode="email" placeholder="pl. kovacs.peter@cegnev.hu">
+</div>
+<div class="cb-full">
 <label for="cbMikor">Mikor hívhatjuk?</label>
 <select id="cbMikor" name="mikor" required>
 <option value="">Válasszon…</option>
@@ -850,6 +854,10 @@ megmutatjuk, mit tudna a rendszer az Ön vállalkozásában — telefonon, fogla
 <option>Bármikor</option>
 </select>
 </div>
+</div>
+<div aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden">
+<label for="cbWeb">Weboldal (hagyja üresen)</label>
+<input type="text" id="cbWeb" name="weboldal" tabindex="-1" autocomplete="off">
 </div>
 <label class="cb-consent">
 <input type="checkbox" id="cbConsent" required>
@@ -940,15 +948,17 @@ var st=document.getElementById('cbStatus'), sb=document.getElementById('cbSubmit
 function say(m,k){ st.textContent=m; st.className='cb-status'+(k?' '+k:''); }
 f.addEventListener('submit',function(e){
 e.preventDefault(); say('','');
-var nev=document.getElementById('cbNev').value.trim(), tel=document.getElementById('cbTel').value.trim(), mikor=document.getElementById('cbMikor').value;
+var nev=document.getElementById('cbNev').value.trim(), tel=document.getElementById('cbTel').value.trim(), email=document.getElementById('cbEmail').value.trim(), mikor=document.getElementById('cbMikor').value;
+if(document.getElementById('cbWeb').value){ say('Köszönjük! Visszahívjuk a megadott időszakban.','ok'); f.reset(); return; }
 var digits=tel.replace(/\D/g,'');
 if(nev.length<3){ say('Kérjük, adja meg a nevét.','err'); return; }
 if(digits.length<8||digits.length>13){ say('Kérjük, érvényes telefonszámot adjon meg (pl. +36 30 123 4567).','err'); return; }
+if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)){ say('Kérjük, érvényes e-mail címet adjon meg.','err'); return; }
 if(!mikor){ say('Kérjük, válassza ki, mikor hívhatjuk.','err'); return; }
 if(!document.getElementById('cbConsent').checked){ say('A visszahíváshoz el kell fogadnia az adatkezelési tájékoztatót.','err'); return; }
 sb.disabled=true; sb.textContent='Küldés…';
 fetch(WEBHOOK,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({
-nev:nev, telefon:tel, mikor:mikor, consent:'igen', source:'visszahivas-urlap', page:location.href, submittedAt:new Date().toISOString()
+nev:nev, telefon:tel, email:email, mikor:mikor, consent:'igen', source:'visszahivas-urlap', page:location.href, submittedAt:new Date().toISOString()
 })}).then(function(r){ if(!r.ok) throw new Error('status');
 say('Köszönjük! Visszahívjuk a megadott időszakban: '+mikor.toLowerCase()+'.','ok'); f.reset();
 if(window.peakTrack) peakTrack('visszahivas_keres',{mikor:mikor});
