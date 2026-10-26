@@ -92,6 +92,9 @@
     display:block;color:#6B675F;
   }
   .photo-slot img{width:100%;height:100%;object-fit:cover;display:block;}
+  .photo-clean{aspect-ratio:1/1;background:#fff;overflow:hidden;}
+  .photo-clean img{transform:scale(1.2);transform-origin:52% 50.5%;object-fit:cover;}
+  .photo-clean.dlg-img{max-width:300px;margin:0 auto 14px;}
   .photo-slot .ph-tag{
     position:absolute;top:8px;left:8px;background:rgba(20,24,27,.72);color:#fff;
     font-size:9.5px;font-weight:800;letter-spacing:.3px;padding:4px 8px;border-radius:999px;text-transform:uppercase;
@@ -332,8 +335,8 @@
     <a class="btn btn-ghost-dark" href="#megoldasok">Melyik javítás kell nekem?</a>
   </div>
 
-  <div class="photo-slot" style="aspect-ratio:4/3;margin-top:20px;">
-    <img src="foto-01.jpg" alt="Felújított felni gyári állapotban, megmunkált (gyémántvágott) felülettel" loading="lazy">
+  <div class="photo-slot photo-clean" style="margin-top:20px;">
+    <img src="foto-05.jpg" alt="Felújított, gyémántvágott felni gyári megjelenéssel" loading="lazy">
   </div>
 </section>
 
@@ -707,7 +710,7 @@
   <div class="dialog-inner" style="position:relative;">
     <button class="dialog-close" aria-label="Bezárás" onclick="document.getElementById('dlg-spot').close()">×</button>
     <h2>Gyors spotjavítás</h2>
-    <div class="photo-slot" style="aspect-ratio:16/9;margin-bottom:14px;">
+    <div class="photo-slot photo-clean dlg-img">
       <img src="foto-03.jpg" alt="Felújított felni a javítás után" loading="lazy">
     </div>
     <div class="acc-panel" style="padding:0;">
@@ -728,7 +731,7 @@
   <div class="dialog-inner" style="position:relative;">
     <button class="dialog-close" aria-label="Bezárás" onclick="document.getElementById('dlg-komplett').close()">×</button>
     <h2>Teljes felújítás</h2>
-    <div class="photo-slot" style="aspect-ratio:16/9;margin-bottom:14px;">
+    <div class="photo-slot photo-clean dlg-img">
       <img src="foto-04.jpg" alt="Fényezett, porfestett fekete felni" loading="lazy">
     </div>
     <div class="acc-panel" style="padding:0;">
@@ -761,8 +764,8 @@
   <div class="dialog-inner" style="position:relative;">
     <button class="dialog-close" aria-label="Bezárás" onclick="document.getElementById('dlg-cnc').close()">×</button>
     <h2>CNC / Diamond Cut</h2>
-    <div class="photo-slot" style="aspect-ratio:16/9;margin-bottom:14px;">
-      <img src="foto-05.jpg" alt="CNC-megmunkált, gyémántvágott felni" loading="lazy">
+    <div class="photo-slot photo-clean dlg-img">
+      <img src="foto-01.jpg" alt="CNC-megmunkált, gyémántvágott felni" loading="lazy">
     </div>
     <div class="acc-panel" style="padding:0;">
       <table>
