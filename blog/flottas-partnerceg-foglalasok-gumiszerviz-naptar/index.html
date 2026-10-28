@@ -1,0 +1,375 @@
+<!doctype html>
+<html lang="hu">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="/assets/consent.js" defer></script>
+<title>Hogyan kezelje egy gumiszerviz a flottás partnercégek foglalásait egy naptárban? | Peak AI</title>
+<meta name="description" content="Flottás foglalások egy naptárban: API, e-mail-feldolgozás vagy pultos rögzítés, ütközésvédelem, rendszám és abroncsállapot. Modellszámítás a kézi átvezetés költségéről, árakkal.">
+<meta name="theme-color" content="#0B0E13">
+<link rel="canonical" href="https://peakai.hu/blog/flottas-partnerceg-foglalasok-gumiszerviz-naptar/">
+<meta property="og:title" content="Hogyan kezelje egy gumiszerviz a flottás partnercégek foglalásait egy naptárban?">
+<meta property="og:description" content="Flottás foglalások egy naptárban: API, e-mail-feldolgozás vagy pultos rögzítés, ütközésvédelem, rendszám és abroncsállapot. Modellszámítás a kézi átvezetés költségéről, árakkal.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://peakai.hu/blog/flottas-partnerceg-foglalasok-gumiszerviz-naptar/">
+<meta property="og:locale" content="hu_HU">
+<meta property="og:image" content="https://peakai.hu/assets/og/blog.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://peakai.hu/assets/og/blog.png">
+<meta property="og:site_name" content="Peak AI">
+<meta property="article:published_time" content="2026-10-28">
+<meta name="author" content="Dr. Révész Barnabás">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 80'%3E%3Cpolygon points='20,72 60,6 100,72' fill='%235DE8E2'/%3E%3Cpolygon points='0,72 28,32 56,72' fill='%235DE8E2' opacity='.55'/%3E%3Cpolygon points='62,72 90,38 118,72' fill='%235DE8E2' opacity='.75'/%3E%3Crect x='0' y='72' width='120' height='2' fill='%235DE8E2' opacity='.9'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/blog/style.css">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "Article",
+   "headline": "Hogyan kezelje egy gumiszerviz a flottás partnercégek foglalásait egy naptárban?",
+   "description": "Flottás foglalások egy naptárban: API, e-mail-feldolgozás vagy pultos rögzítés, ütközésvédelem, rendszám és abroncsállapot. Modellszámítás a kézi átvezetés költségéről, árakkal.",
+   "inLanguage": "hu-HU",
+   "datePublished": "2026-10-28",
+   "dateModified": "2026-10-28",
+   "image": "https://peakai.hu/assets/og/blog.png",
+   "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://peakai.hu/blog/flottas-partnerceg-foglalasok-gumiszerviz-naptar/"
+   },
+   "author": {
+    "@type": "Person",
+    "name": "Dr. Révész Barnabás",
+    "jobTitle": "alapító, Peak AI",
+    "email": "barnabas@peakai.hu"
+   },
+   "publisher": {
+    "@type": "Organization",
+    "name": "Peak AI",
+    "url": "https://peakai.hu/"
+   }
+  },
+  {
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Peak AI",
+     "item": "https://peakai.hu/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "Blog",
+     "item": "https://peakai.hu/blog/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 3,
+     "name": "Flottás foglalások egy naptárban"
+    }
+   ]
+  },
+  {
+   "@type": "FAQPage",
+   "mainEntity": [
+    {
+     "@type": "Question",
+     "name": "Bekötheti a gumiszerviz a flottakezelő rendszerét a saját naptárába?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Igen, ha a flottakezelőnek van API-ja, a foglalás emberi beavatkozás nélkül a naptárba kerülhet, forrásként a partner nevével. Ha API nincs, a partner állandó formátumú értesítő e-mailjei automatikusan feldolgozhatók, vagy a pultos listából választott flottával rögzíti a foglalást."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Mi történik, ha a flottás és a lakossági foglalás ugyanarra az időpontra esik?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Adatbázis-szintű ütközésvédelemnél a második foglalás nem megy át, akkor sem, ha a kettő egyszerre érkezik két csatornáról; a foglaló fél azonnal másik időpontot kap. Megosztott táblázatnál vagy két külön naptárnál ez nem garantált."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Mi van, ha egy partner e-mailje hiányos vagy szokatlan formátumú?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "A rendszer ilyenkor nem találgat: nem rögzít bizonytalan foglalást, hanem jelzést küld a pultnak, és a pultos dönt. Hiányzó rendszámnál vagy ismeretlen formátumnál ez a biztonságos viselkedés."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Mennyi időt visz el a flottás foglalások kézi átvezetése?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Modellszámítás: szezonhónapban napi 12 foglalással és darabonként 5 perccel havi 22 óra, ami a 2026-os minimálbér munkáltatói költségével (364 764 Ft/hó, 174 óra) kb. 46 100 Ft havonta."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Mennyibe kerül a partnercégek foglalásainak egy naptárba kötése?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "A Peak AI-nál a több forrás egy naptárban a PEAK Pro csomag: 299 000 Ft + áfa havonta 2 forrásig, minden további forrás +59 000 Ft + áfa havonta, egyszeri 399 000 Ft + áfa bevezetési díjjal, 12 hónapos szerződéssel. Az egyes flottakezelők API- vagy e-mail-bekötésére egyedi ajánlatot adunk, előre egyeztetett áron."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Kell-e külön bekötés, ha csak néhány flottás foglalásom van?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Nem feltétlenül. Heti egy-két flottás foglalásnál elég, ha a pultos listából választja ki a flottát a foglalásnál; a foglalás így is az egy naptárba kerül, és a riportban külön látszik a partner."
+     }
+    }
+   ]
+  }
+ ]
+}
+</script>
+</head>
+<body>
+<nav>
+  <div class="wrap nav-in">
+    <a class="logo logo-nav" href="/" aria-label="Peak AI">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 110" role="img">
+        <g transform="translate(0,15)">
+          <polygon points="20,72 60,6 100,72" fill="#0B0E13"/>
+          <polygon points="0,72 28,32 56,72" fill="#0B0E13" opacity="0.55"/>
+          <polygon points="62,72 90,38 118,72" fill="#0B0E13" opacity="0.75"/>
+          <rect x="0" y="72" width="120" height="2" fill="#0B0E13" opacity="0.9"/>
+        </g>
+        <text x="170" y="80" font-family="Space Grotesk, system-ui, sans-serif" font-weight="600" font-size="72" letter-spacing="-2" fill="#0B0E13">Peak</text>
+        <text x="354" y="80" font-family="Space Grotesk, system-ui, sans-serif" font-weight="300" font-style="italic" font-size="72" letter-spacing="-2" fill="#1FAEA8"> AI</text>
+      </svg>
+    </a>
+    <div class="nav-links">
+      <a href="/#hogyan">Hogyan működik</a>
+      <a href="/#tudas">Mit tud</a>
+      <a href="/#csomagok">Csomagok</a>
+      <a href="/#kinek">Kinek</a>
+      <a href="/blog/" aria-current="page">Blog</a>
+      <a href="/kalkulator/">Kalkulátor</a>
+    </div>
+    <a class="btn btn-sm" href="/#kapcsolat">Demót kérek</a>
+  </div>
+</nav>
+<article class="article">
+  <p class="breadcrumb"><a href="/">Peak AI</a> › <a href="/blog/">Blog</a> › Flottás foglalások egy naptárban</p>
+
+  <h1>Hogyan kezelje egy gumiszerviz a flottás partnercégek foglalásait egy naptárban?</h1>
+
+  <p class="post-meta" style="margin:18px 0 30px">2026. október 28. · 8 perc olvasás</p>
+
+  <div class="answer">
+    <p class="post-meta">Rövid válasz</p>
+    <p>Úgy, hogy minden foglalási csatorna — a lakossági online foglalás, a telefon, a flottakezelő rendszere, a partnercégek értesítő e-mailjei és a pultos rögzítés — <strong>ugyanabba az ütközésvédett naptárba</strong> írjon, és minden foglaláson látsszon, melyik flottától jött. A partnercéget háromféleképpen lehet bekötni: <strong>API-n</strong>, az <strong>értesítő e-mailek automatikus feldolgozásával</strong>, vagy <strong>pultos rögzítéssel</strong>, ahol a flottát listából választják ki. Modellszámítás: napi 12 kézzel átvezetett flottás foglalás egy szezonhónapban kb. 22 óra pultos munka, minimálbéres munkáltatói költséggel kb. <strong>46 000 Ft havonta</strong> — és ebben még nincsenek benne a kettős foglalások.</p>
+  </div>
+
+  <h2>Miért gond, ha a flottás foglalások külön csatornán jönnek?</h2>
+  <p>Azért, mert két naptár mellett előbb-utóbb ugyanarra az emelőre két autó kerül, és ezt jellemzően a szezon legforgalmasabb napján veszi észre a pult. A lakossági ügyfél a weboldalon vagy telefonon foglal, a flottás autó viszont egy partnerportálról, egy flottakezelői e-mailből vagy egy diszpécser telefonjából érkezik. Ha ezek nem egy helyre futnak, valakinek kézzel kell átvezetnie őket, és minden átvezetés egy újabb hibalehetőség.</p>
+  <p>A flottás ügyfél ráadásul más, mint a lakossági. Nem ő fizet, hanem a flottakezelő vagy a cég; a sofőr sokszor nem tudja, milyen abroncs jár neki; és a partner gyakran előre jelzi, hogy abroncsot küld az autóhoz. Ha mindez külön füzetben vagy e-mail-mappában él, a pult nem látja egyben a napot.</p>
+
+  <h2>Mekkora a flottás piac Magyarországon?</h2>
+  <p>A Magyar Lízingszövetség tagjainak flottakezelési állománya 2025 végén meghaladta az 50 ezer járművet, a teljes piacot pedig a szövetség 100 ezer jármű fölé becsüli. 2025-ben a flottakezelési szegmens új finanszírozása 16%-kal, 122,5 milliárd forintra nőtt.</p>
+  <p class="note"><strong>Modellszámítás:</strong> feltevés, hogy egy flottás autó évente két szezonális gumicserén megy át (télire és nyárra). Ekkor már a Lízingszövetség tagjainál nyilvántartott, 50 ezret meghaladó flotta önmagában több mint 100 ezer gumicsere-időpontot jelent évente, a teljes piac becsült mérete alapján ennek kétszeresét. Nem minden flottás autó cserél szezonálisan, ezért ez felső közelítés.</p>
+  <p>A nagy flottakezelők a gumicserét szerződött partnerszervizekben végeztetik, és évente kétszer tájékoztatják a sofőröket az időpontfoglalás menetéről. Aki ilyen partnerhálózatba bekerül, az szezonban egyszerre kap foglalást a flottakezelőtől és a saját lakossági ügyfeleitől — ezeket kell egy naptárban kezelnie.</p>
+
+  <h2>Milyen csatornákon érkeznek a flottás foglalások egy gumiszervizbe?</h2>
+  <p>Jellemzően négyen: a flottakezelő rendszeréből, e-mailben, telefonon és személyesen a pultnál.</p>
+  <ul>
+    <li><strong>Flottakezelői rendszer vagy partnerportál.</strong> A nagyobb partnerek saját felületen vagy rendszerből küldik a foglalást. Ha ehhez van API, a foglalás emberi beavatkozás nélkül a naptárba kerülhet.</li>
+    <li><strong>Értesítő e-mail.</strong> Sok partner szabványos e-mailt küld: rendszám, sofőr, kért időpont vagy időszak, abroncsadatok. Ez géppel feldolgozható, ha a formátum állandó.</li>
+    <li><strong>Telefon.</strong> A flottacég diszpécsere vagy maga a sofőr hív. Itt a pult rögzít, vagy a telefonos asszisztens veszi fel a foglalást.</li>
+    <li><strong>Pult.</strong> A sofőr beáll, és a helyszínen kér időpontot. A pultos rögzíti, és kiválasztja, melyik flottához tartozik.</li>
+  </ul>
+  <p>A lényeg nem az, hogy melyik csatornát szünteti meg, hanem hogy mind a négy ugyanabba a naptárba írjon, ugyanazokkal a mezőkkel.</p>
+
+  <h2>Hogyan lehet a partnercégeket ugyanabba a naptárba bekötni?</h2>
+  <p>Partnerenként azt a bekötési módot érdemes választani, amit az adott partner adatküldése lehetővé tesz: API-t, e-mail-feldolgozást vagy pultos rögzítést listából választható flottával.</p>
+
+  <div class="tbl-wrap">
+  <table>
+    <thead>
+      <tr><th>Bekötési mód</th><th>Mikor jó</th><th>Mit csinál a rendszer</th><th>Mire figyeljen</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><b>API</b></td><td>A partnernek van dokumentált interfésze, és sok foglalást küld</td><td>A foglalás azonnal a naptárba kerül, forrásként a partner nevével; foglaltság esetén a partner rendszere azonnal választ kap</td><td>A partnerrel egyeztetni kell a mezőket és a módosítás, lemondás kezelését</td></tr>
+      <tr><td><b>Értesítő e-mail feldolgozása</b></td><td>A partner állandó formátumú e-mailt küld, API nincs</td><td>Kiolvassa a rendszámot, időpontot, abroncsadatokat, és foglalást vagy várt abroncsot rögzít</td><td>Bizonytalan esetben (hiányzó rendszám, ismeretlen formátum) ne találgasson, hanem jelezzen a pultnak</td></tr>
+      <tr><td><b>Pultos rögzítés listából</b></td><td>Kevés foglalás, telefonos vagy személyes megkeresés</td><td>A pultos a foglalásnál listából választja ki a flottát, így a riportban és a számlázásnál is külön látszik</td><td>A flottalista legyen karbantartva, szabad szöveges „cégnév” mező helyett</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Ezt építjük: egy magyar gumiszerviznél élesben működik, hogy a flottakezelő és a partnercégek foglalásai — API-n, e-mail-értesítőből automatikusan vagy pultos rögzítéssel — ugyanabba a naptárba futnak, mint a lakossági foglalások.</p>
+
+  <h2>Mit kell látnia a pultnak egy flottás foglaláson?</h2>
+  <p>Legalább a forrást (melyik flotta vagy partner), a rendszámot, az időpontot, a kért munkát, és azt, hogy megérkezett-e már az autóhoz küldött abroncs.</p>
+  <ul>
+    <li><strong>Forrás.</strong> Lakossági, vagy melyik partnercég. Ettől függ a számlázás, az ár és a jóváhagyás menete.</li>
+    <li><strong>Rendszám.</strong> Ez a közös kulcs a flottakezelő, a sofőr és a szerviz között. Rendszámra keresve egy mozdulattal megvan a foglalás és az autó előzménye.</li>
+    <li><strong>Szerelői megjegyzés.</strong> Például „TPMS-szenzoros”, „csavarzár a kesztyűtartóban”, „a partner csak cserét hagyott jóvá, javítást nem”.</li>
+    <li><strong>Abroncs állapota.</strong> Ha a partner küldi az abroncsot, a foglalás mellett látszódjon, hogy várjuk, megérkezett vagy már fel van szerelve. Különben a sofőr beáll, és kiderül, hogy nincs mit felszerelni.</li>
+    <li><strong>Munkaállapot.</strong> A pultos táblán látszik, melyik autó vár, melyiken dolgoznak, melyik kész; a napi lista kinyomtatható a műhelynek.</li>
+  </ul>
+  <p>A beérkező flottás abroncsok nyilvántartása (Várjuk → Megérkezett → Felszerelve, darabszámmal, mérettel, márkával) önálló téma; a foglalás oldaláról annyi a fontos, hogy a kettő ugyanarra a rendszámra kapcsolódjon.</p>
+
+  <h2>Hogyan előzhető meg, hogy egy időpontra két foglalás kerüljön?</h2>
+  <p>Adatbázis-szintű ütközésvédelemmel: a rendszer nem enged két foglalást ugyanarra a kapacitásra, akkor sem, ha a kettő egyszerre érkezik két különböző csatornáról.</p>
+  <p>Egy megosztott táblázatba két ember egyszerre is beírhatja ugyanazt az időpontot. Ha viszont az ellenőrzés az adatbázisban történik, a második foglalás egyszerűen nem megy át: a partner rendszere, a weboldal vagy a telefonos asszisztens azonnal másik időpontot kínál. Érdemes azt is beállítani, hogy a flottás és a lakossági foglalások mekkora részt kaphatnak a napból — például ha a partnerrel napi kapacitásban állapodott meg, ez a szám legyen a rendszerben, ne a pultos fejében.</p>
+
+  <h2>Mennyi munkaidőt visz el a flottás foglalások kézi átvezetése?</h2>
+  <p>Modellszámításunkban szezonhónapban kb. 22 órát, ami minimálbéres munkáltatói költséggel kb. 46 000 Ft havonta.</p>
+  <p class="note"><strong>Modellszámítás, a feltevések kiírva:</strong> szezonhónapban napi 12 flottás foglalás érkezik a naptáron kívül (e-mail, partnerportál, telefon); darabonként 5 perc a rögzítés, az egyeztetés és a visszaigazolás. 12 × 5 = 60 perc naponta, 22 munkanappal 22 óra havonta. A 2026-os minimálbér 322 800 Ft, 13% szociális hozzájárulási adóval a munkáltatói költség 364 764 Ft havonta; 174 munkaórával ez kb. 2 096 Ft óránként. 22 × 2 096 ≈ 46 100 Ft havonta. Ha a 264 kézzel átvezetett foglalásból csak 2% hibás (rossz nap, elírt rendszám, kettős foglalás), az havonta kb. 5 ügyfél, akinél a szezon közepén kell rendet tenni. A számok szemléltetők, nem konkrét vállalkozás mért adatai.</p>
+  <p>A forintösszeg önmagában nem nagy. A drága rész a hiba: a sofőr, aki hiába jön be, a partner, aki legközelebb másik szervizt választ, és a pultos, aki a legforgalmasabb órában telefonon egyeztet.</p>
+
+  <h2>Mennyibe kerül, ha a partnercégek foglalásait is egy naptárba szeretné?</h2>
+  <p>A Peak AI-nál a több forrás egy naptárban a PEAK Pro csomag: 299 000 Ft / hó + áfa, 2 forrásig (telephely vagy partnercég). A nyilvános árlista szerint:</p>
+  <ul>
+    <li><strong>PEAK Booking — 59 000 Ft / hó + áfa.</strong> Saját foglalási rendszer telefonos AI-asszisztens nélkül: saját domain, rendszám és szerelői megjegyzés mező, munkaállapot-tábla nyomtatható napi listával, ütközésvédelem, e-mailes visszaigazolás és emlékeztető. Partnercég-integráció (API) igény esetén, egyedi ajánlat alapján. Egyszeri bevezetési díj: 149 000 Ft + áfa.</li>
+    <li><strong>PEAK AI Reception — 179 000 Ft / hó + áfa.</strong> Foglalási rendszer és telefonos AI-asszisztens, 300 perc / hó. Egyszeri bevezetési díj: 249 000 Ft + áfa, kereten felül 120 Ft + áfa / perc.</li>
+    <li><strong>PEAK Pro — 299 000 Ft / hó + áfa</strong>, 2 forrásig, 800 perc / hó a két forrásra együtt; minden további forrás (telephely vagy partnercég) +59 000 Ft + áfa / hó (+400 perc). Forrásonkénti kapacitás, eltérő szolgáltatások és árak, központi ügyféladatbázis, forrásonkénti riportok, flottás ügyfelek kezelése, Google-értékelések kezelése. Egyszeri bevezetési díj: 399 000 Ft + áfa.</li>
+  </ul>
+  <p>Mindhárom csomag 12 hónapos szerződés, 14 napos díjmentes próbaüzemmel; a bevezetési díj a próbaidő utáni, 15. naptól esedékes. Az egy-egy flottakezelő rendszeréhez írt API- vagy e-mail-bekötésre — mivel minden partner másképp küldi az adatot — a feladat megismerése után egyedi ajánlatot adunk, előre egyeztetett áron, nem óradíjban.</p>
+
+  <h2>Mikor nem éri meg külön bekötni a partnercégeket?</h2>
+  <p>Akkor, ha heti egy-két flottás foglalása van, és azok telefonon vagy a pultnál jönnek. Ilyenkor a pultos rögzítés listából választható flottával elég: a foglalás ugyanúgy az egy naptárba kerül, a riportban külön látszik a partner, és nincs mit automatizálni. Az API vagy az e-mail-feldolgozás akkor éri meg, ha egy partner szezonban naponta több foglalást küld, ha a partner abroncsot is szállít az autókhoz, vagy ha a kézi átvezetés miatt már előfordult kettős foglalás.</p>
+
+  <h2>Hogyan kezdjen hozzá?</h2>
+  <p>Egy hét alatt felmérhető, melyik partnerhez melyik bekötési mód kell:</p>
+  <ul>
+    <li><strong>1. Írja össze a partnereket.</strong> Melyik flottakezelő és partnercég küld foglalást, és hogyan: portálon, e-mailben, telefonon.</li>
+    <li><strong>2. Számolja meg a foglalásokat.</strong> Egy szezonhét alatt partnerenként hány foglalás jött, és hány percet vitt el az átvezetés.</li>
+    <li><strong>3. Gyűjtsön mintát.</strong> Partnerenként 3–5 értesítő e-mail (személyes adatok nélkül) megmutatja, feldolgozható-e a formátum.</li>
+    <li><strong>4. Döntse el a kapacitást.</strong> Naponta hány autót vállal flottától és hányat lakossági ügyfelektől.</li>
+  </ul>
+  <p>Ha a foglalórendszer még nincs meg, azzal kezdje — az <a href="/blog/online-foglalorendszer-autoszerviz-gumiszerviz/" style="color:var(--peak-accent-deep);text-decoration:none">online foglalórendszerekről gumiszervizeknek</a> külön cikkben írtunk. Ha a szezoncsúcs telefonrohama a nagyobb gond, a <a href="/blog/gumiszezon-2026-telefon-idopontfoglalas-gumiszerviz/" style="color:var(--peak-accent-deep);text-decoration:none">gumiszezonra felkészítő listánk</a> segít.</p>
+
+  <h2>Gyakori kérdések</h2>
+
+  <div class="faq">
+    <div class="faq-item">
+      <h3>Bekötheti a gumiszerviz a flottakezelő rendszerét a saját naptárába?</h3>
+      <p>Igen, ha a flottakezelőnek van API-ja, a foglalás emberi beavatkozás nélkül a naptárba kerülhet, forrásként a partner nevével. Ha API nincs, a partner állandó formátumú értesítő e-mailjei automatikusan feldolgozhatók, vagy a pultos listából választott flottával rögzíti a foglalást.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Mi történik, ha a flottás és a lakossági foglalás ugyanarra az időpontra esik?</h3>
+      <p>Adatbázis-szintű ütközésvédelemnél a második foglalás nem megy át, akkor sem, ha a kettő egyszerre érkezik két csatornáról; a foglaló fél azonnal másik időpontot kap. Megosztott táblázatnál vagy két külön naptárnál ez nem garantált.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Mi van, ha egy partner e-mailje hiányos vagy szokatlan formátumú?</h3>
+      <p>A rendszer ilyenkor nem találgat: nem rögzít bizonytalan foglalást, hanem jelzést küld a pultnak, és a pultos dönt. Hiányzó rendszámnál vagy ismeretlen formátumnál ez a biztonságos viselkedés.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Mennyi időt visz el a flottás foglalások kézi átvezetése?</h3>
+      <p>Modellszámítás: szezonhónapban napi 12 foglalással és darabonként 5 perccel havi 22 óra, ami a 2026-os minimálbér munkáltatói költségével (364 764 Ft/hó, 174 óra) kb. 46 100 Ft havonta.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Mennyibe kerül a partnercégek foglalásainak egy naptárba kötése?</h3>
+      <p>A Peak AI-nál a több forrás egy naptárban a PEAK Pro csomag: 299 000 Ft + áfa havonta 2 forrásig, minden további forrás +59 000 Ft + áfa havonta, egyszeri 399 000 Ft + áfa bevezetési díjjal, 12 hónapos szerződéssel. Az egyes flottakezelők API- vagy e-mail-bekötésére egyedi ajánlatot adunk, előre egyeztetett áron.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Kell-e külön bekötés, ha csak néhány flottás foglalásom van?</h3>
+      <p>Nem feltétlenül. Heti egy-két flottás foglalásnál elég, ha a pultos listából választja ki a flottát a foglalásnál; a foglalás így is az egy naptárba kerül, és a riportban külön látszik a partner.</p>
+    </div>
+  </div>
+
+  <h2>Források</h2>
+  <ul class="note" style="padding-left:20px">
+    <li>Economx: <a href="https://www.economx.hu/magyar-gazdasag/2026/02/24/magyar-lizingszovetseg-agardi-marianna-vallalatok-824405/" rel="nofollow noopener" target="_blank" style="color:var(--peak-accent-deep);text-decoration:none">Megindult a flották zöldítése, azonban van egy csavar: fordulópont jöhet?</a> (2026. február 24.): a Magyar Lízingszövetség 2025-ös adatai, flottakezelési állomány 50 ezer felett, teljes piac 100 ezer felett, 122,5 milliárd Ft új finanszírozás.</li>
+    <li>HVG: <a href="https://hvg.hu/gazdasag/20260224_lizing-lizingszovetseg-auto-kamat-valasztas-agardi-marianna" rel="nofollow noopener" target="_blank" style="color:var(--peak-accent-deep);text-decoration:none">Jó év után a választásokig kivár a magyar lízingpiac</a> (2026. február 24.): flottakezelési új finanszírozás +16%, 122,5 milliárd Ft.</li>
+    <li>Ayvens Magyarország: <a href="https://www.ayvens.com/hu-hu/autohasznaloinknak/gumiabroncs/" rel="nofollow noopener" target="_blank" style="color:var(--peak-accent-deep);text-decoration:none">Gumiabroncs — tájékoztató autóhasználóknak</a>: évente kétszer tájékoztató az időpontfoglalásról, szerződött gumiszerviz-partnerek.</li>
+    <li>Forvis Mazars: <a href="https://www.forvismazars.com/hu/hu/hirek/tudastar/minimalber-2026-brutto-es-netto-oesszegek" rel="nofollow noopener" target="_blank" style="color:var(--peak-accent-deep);text-decoration:none">A minimálbér és garantált bérminimum változása 2026-ban</a>: minimálbér 322 800 Ft, szocho 13%.</li>
+    <li>Peak AI árlista: <a href="/#csomagok" style="color:var(--peak-accent-deep);text-decoration:none">Csomagok</a> (2026. októberi állapot).</li>
+  </ul>
+
+    <div class="author">
+      <div class="author-mark">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 80" role="img" aria-label="Peak AI">
+          <polygon points="20,72 60,6 100,72" fill="#1FAEA8"/>
+          <polygon points="0,72 28,32 56,72" fill="#1FAEA8" opacity="0.55"/>
+          <polygon points="62,72 90,38 118,72" fill="#1FAEA8" opacity="0.75"/>
+          <rect x="0" y="72" width="120" height="2" fill="#1FAEA8" opacity="0.9"/>
+        </svg>
+      </div>
+      <div>
+        <h4>Dr. Révész Barnabás</h4>
+        <p>
+          A Peak AI alapítója. Nukleáris medicina szakorvos, egészségügyi közgazdasági
+          végzettséggel — szabályozott iparágban szerzett tapasztalattal épít magyar nyelvű
+          AI telefonos asszisztenseket kis- és középvállalkozásoknak.
+          <a href="mailto:barnabas@peakai.hu" style="color:var(--peak-accent-deep);text-decoration:none">barnabas@peakai.hu</a>
+        </p>
+      </div>
+    </div>
+</article>
+  <div class="next-up">
+    <p class="post-meta">Következő cikk</p>
+    <a class="post-card" href="/blog/gumiszezon-2026-telefon-idopontfoglalas-gumiszerviz/">
+      <h2>Gumiszezon 2026: hogyan élje túl a gumiszerviz a telefonrohamot — és ne veszítsen ügyfelet</h2>
+      <p>Amikor egy hétre előre tele a naptár, minden nem fogadott hívás a konkurenciához megy. Felkészülési lista, modellszámítás és a szezon telefonos csúcsainak kezelése.</p>
+      <span class="post-more">Elolvasom →</span>
+    </a>
+  </div>
+  <div class="wrap" style="margin-top:56px">
+    <div class="cta on-dark">
+      <h2>Nézzük meg élőben, az Ön cégére szabva.</h2>
+      <p>
+        Megmutatjuk, hogyan hangzana az asszisztens az Ön vállalkozásának nevében, és
+        közben látja, ahogy a lefoglalt időpont megjelenik a naptárban. 15 perc az egész,
+        döntés és szerződés nélkül.
+      </p>
+      <a class="btn" href="/#kapcsolat">Kérek egy demót</a>
+    </div>
+  </div>
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="logo logo-foot" href="/" aria-label="Peak AI — Reach higher ground">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 180" role="img">
+            <g transform="translate(0,20)">
+              <polygon points="20,72 60,6 100,72" fill="#5DE8E2"/>
+              <polygon points="0,72 28,32 56,72" fill="#5DE8E2" opacity="0.55"/>
+              <polygon points="62,72 90,38 118,72" fill="#5DE8E2" opacity="0.75"/>
+              <rect x="0" y="72" width="120" height="2" fill="#5DE8E2" opacity="0.9"/>
+            </g>
+            <text x="170" y="85" font-family="Space Grotesk, system-ui, sans-serif" font-weight="600" font-size="72" letter-spacing="-2" fill="#F4F6FA">Peak</text>
+            <text x="354" y="85" font-family="Space Grotesk, system-ui, sans-serif" font-weight="300" font-style="italic" font-size="72" letter-spacing="-2" fill="#5DE8E2"> AI</text>
+            <line x1="170" y1="115" x2="220" y2="115" stroke="#5DE8E2" stroke-width="2"/>
+            <text x="232" y="121" font-family="JetBrains Mono, ui-monospace, monospace" font-weight="500" font-size="16" letter-spacing="3" fill="#A8B1BD">REACH HIGHER GROUND</text>
+          </svg>
+        </a>
+        <p style="margin:20px 0 0;color:var(--peak-mist)">AI telefonos asszisztens<br>kis- és középvállalkozásoknak.</p>
+      </div>
+      <div>
+        <span class="foot-h">Kapcsolat</span>
+        <p style="margin:0">
+          <a href="mailto:barnabas@peakai.hu">barnabas@peakai.hu</a><br>
+          Magyarország
+        </p>
+      </div>
+      <div>
+        <span class="foot-h">Oldalak</span>
+        <p style="margin:0">
+          <a href="/#hogyan">Hogyan működik</a><br>
+          <a href="/#csomagok">Csomagok</a><br>
+          <a href="/blog/">Blog</a><br>
+          <a href="/#kapcsolat">Kapcsolat</a>
+        </p>
+      </div>
+    </div>
+    <p class="tiny">
+      © 2026 Peak AI ·
+      A bruttó árak 27% áfával számolva, tájékoztató jelleggel. ·
+      A mintaszámítások szemléltető modellek, nem konkrét vállalkozás mért adatai.
+    </p>
+  </div>
+</footer>
+</body>
+</html>
