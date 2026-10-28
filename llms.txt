@@ -9,6 +9,7 @@
 - [Blog](https://peakai.hu/blog/)
 
 ## Cikkek
+- [Hogyan kezelje egy gumiszerviz a flottás partnercégek foglalásait egy naptárban?](https://peakai.hu/blog/flottas-partnerceg-foglalasok-gumiszerviz-naptar/): flottakezelők és partnercégek foglalásai egy ütközésvédett naptárban (API, e-mail-feldolgozás, pultos rögzítés), modellszámítás a kézi átvezetés költségéről
 - [Megéri-e AI recepciós egy klímaszerelő cégnek?](https://peakai.hu/blog/ai-recepcios-klimaszerelo-ceg-megeri/): modellszámítás arról, hány elveszett telepítésnél térül meg egy AI recepciós egy klímás cégnél, két cégmérettel
 - [AI telefonos recepciós: hogyan működik, mennyibe kerül, kinek éri meg](https://peakai.hu/blog/ai-telefonos-recepcios-mennyibe-kerul/)
 - [AI recepciós vs. alkalmazott recepciós: mennyibe kerül 2026-ban](https://peakai.hu/blog/ai-recepcios-vs-alkalmazott-recepcios-koltsege-2026/)
