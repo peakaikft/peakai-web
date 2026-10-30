@@ -9,6 +9,7 @@
 - [Blog](https://peakai.hu/blog/)
 
 ## Cikkek
+- [Hogyan lehet nyomon követni a flottás ügyfelek beérkező abroncsait egy gumiszervizben?](https://peakai.hu/blog/flottas-abroncsok-nyomon-kovetese-gumiszerviz/): rendszámhoz kötött abroncs-nyilvántartás Várjuk → Megérkezett → Felszerelve állapotokkal, partner-e-mailek automatikus feldolgozása, modellszámítás a kézi követés költségéről
 - [Hogyan kezelje egy gumiszerviz a flottás partnercégek foglalásait egy naptárban?](https://peakai.hu/blog/flottas-partnerceg-foglalasok-gumiszerviz-naptar/): flottakezelők és partnercégek foglalásai egy ütközésvédett naptárban (API, e-mail-feldolgozás, pultos rögzítés), modellszámítás a kézi átvezetés költségéről
 - [Megéri-e AI recepciós egy klímaszerelő cégnek?](https://peakai.hu/blog/ai-recepcios-klimaszerelo-ceg-megeri/): modellszámítás arról, hány elveszett telepítésnél térül meg egy AI recepciós egy klímás cégnél, két cégmérettel
 - [AI telefonos recepciós: hogyan működik, mennyibe kerül, kinek éri meg](https://peakai.hu/blog/ai-telefonos-recepcios-mennyibe-kerul/)
