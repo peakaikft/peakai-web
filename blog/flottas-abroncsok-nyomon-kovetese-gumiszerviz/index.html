@@ -1,0 +1,373 @@
+<!doctype html>
+<html lang="hu">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="/assets/consent.js" defer></script>
+<title>Hogyan lehet nyomon követni a flottás ügyfelek beérkező abroncsait egy gumiszervizben? | Peak AI</title>
+<meta name="description" content="Flottás abroncsok rendszámhoz kötve: Várjuk → Megérkezett → Felszerelve, darabszám, méret, márka, partner-e-mailek automatikus feldolgozása. Modellszámítás a kézi követés költségéről, árakkal.">
+<meta name="theme-color" content="#0B0E13">
+<link rel="canonical" href="https://peakai.hu/blog/flottas-abroncsok-nyomon-kovetese-gumiszerviz/">
+<meta property="og:title" content="Hogyan lehet nyomon követni a flottás ügyfelek beérkező abroncsait egy gumiszervizben?">
+<meta property="og:description" content="Flottás abroncsok rendszámhoz kötve: Várjuk → Megérkezett → Felszerelve, darabszám, méret, márka, partner-e-mailek automatikus feldolgozása. Modellszámítás a kézi követés költségéről, árakkal.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://peakai.hu/blog/flottas-abroncsok-nyomon-kovetese-gumiszerviz/">
+<meta property="og:locale" content="hu_HU">
+<meta property="og:image" content="https://peakai.hu/assets/og/blog.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://peakai.hu/assets/og/blog.png">
+<meta property="og:site_name" content="Peak AI">
+<meta property="article:published_time" content="2026-10-30">
+<meta name="author" content="Dr. Révész Barnabás">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 80'%3E%3Cpolygon points='20,72 60,6 100,72' fill='%235DE8E2'/%3E%3Cpolygon points='0,72 28,32 56,72' fill='%235DE8E2' opacity='.55'/%3E%3Cpolygon points='62,72 90,38 118,72' fill='%235DE8E2' opacity='.75'/%3E%3Crect x='0' y='72' width='120' height='2' fill='%235DE8E2' opacity='.9'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/blog/style.css">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "Article",
+   "headline": "Hogyan lehet nyomon követni a flottás ügyfelek beérkező abroncsait egy gumiszervizben?",
+   "description": "Flottás abroncsok rendszámhoz kötve: Várjuk → Megérkezett → Felszerelve, darabszám, méret, márka, partner-e-mailek automatikus feldolgozása. Modellszámítás a kézi követés költségéről, árakkal.",
+   "inLanguage": "hu-HU",
+   "datePublished": "2026-10-30",
+   "dateModified": "2026-10-30",
+   "image": "https://peakai.hu/assets/og/blog.png",
+   "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://peakai.hu/blog/flottas-abroncsok-nyomon-kovetese-gumiszerviz/"
+   },
+   "author": {
+    "@type": "Person",
+    "name": "Dr. Révész Barnabás",
+    "jobTitle": "alapító, Peak AI",
+    "email": "barnabas@peakai.hu"
+   },
+   "publisher": {
+    "@type": "Organization",
+    "name": "Peak AI",
+    "url": "https://peakai.hu/"
+   }
+  },
+  {
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Peak AI",
+     "item": "https://peakai.hu/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "Blog",
+     "item": "https://peakai.hu/blog/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 3,
+     "name": "Flottás abroncsok nyomon követése"
+    }
+   ]
+  },
+  {
+   "@type": "FAQPage",
+   "mainEntity": [
+    {
+     "@type": "Question",
+     "name": "Milyen állapotokkal érdemes követni a flottás abroncsokat?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Három állapot elég: Várjuk (a partner jelezte a szállítást), Megérkezett (a szett a szervizben van, a darabszám és a méret egyezik) és Felszerelve (a szerelő lezárta a munkát). Mindhárom rendszámhoz kötve, és a foglaláson is látszik."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Fel lehet dolgozni automatikusan a flottakezelők értesítő e-mailjeit?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Igen, ha a partner állandó formátumban küldi őket: a rendszer kiolvassa a rendszámot, a darabszámot, a méretet és a márkát, és létrehozza a „Várjuk” sort. Hiányzó rendszámnál vagy ismeretlen formátumnál nem találgat, hanem a pultnak jelez."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Mi történik, ha a beérkező szett nem egyezik a partner jelzésével?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Átvételkor a pultos összeveti a darabszámot, a méretet és a márkát a „Várjuk” sorral; eltérésnél megjegyzést ír, és a partnert még a sofőr érkezése előtt értesíteni lehet."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Mennyi munkaidőt visz el a flottás abroncsok kézi követése?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Modellszámítás: havi 130 szettnél és szettenként 9 perc átvétellel, kereséssel és ellenőrzéssel kb. 19,5 óra, ami a 2026-os minimálbér munkáltatói költségével (364 764 Ft/hó, 174 óra) kb. 40 900 Ft havonta."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Mennyibe kerül a flottás abroncsok nyilvántartása?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "A Peak AI foglalórendszere a PEAK Booking csomaggal indul (59 000 Ft + áfa havonta, 149 000 Ft + áfa bevezetési díj, 12 hónapos szerződés), a flottás ügyfelek kezelése a PEAK Pro része (299 000 Ft + áfa havonta 2 forrásig). Az abroncs-nyilvántartásra és a partner-e-mailek bekötésére egyedi ajánlatot adunk, előre egyeztetett áron."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Elég-e egy táblázat a flottás abroncsokhoz?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Szezononként néhány tucat szettnél, egy-két partnerrel igen, ha rendszám, partner, darabszám, méret, márka és állapot oszlopa van. Ha a partnerek e-mailben jeleznek, hetente tucatnyi szett érkezik, vagy már volt hiába beálló sofőr, a rendszámhoz kötött nyilvántartás megéri."
+     }
+    }
+   ]
+  }
+ ]
+}
+</script>
+</head>
+<body>
+<nav>
+  <div class="wrap nav-in">
+    <a class="logo logo-nav" href="/" aria-label="Peak AI">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 110" role="img">
+        <g transform="translate(0,15)">
+          <polygon points="20,72 60,6 100,72" fill="#0B0E13"/>
+          <polygon points="0,72 28,32 56,72" fill="#0B0E13" opacity="0.55"/>
+          <polygon points="62,72 90,38 118,72" fill="#0B0E13" opacity="0.75"/>
+          <rect x="0" y="72" width="120" height="2" fill="#0B0E13" opacity="0.9"/>
+        </g>
+        <text x="170" y="80" font-family="Space Grotesk, system-ui, sans-serif" font-weight="600" font-size="72" letter-spacing="-2" fill="#0B0E13">Peak</text>
+        <text x="354" y="80" font-family="Space Grotesk, system-ui, sans-serif" font-weight="300" font-style="italic" font-size="72" letter-spacing="-2" fill="#1FAEA8"> AI</text>
+      </svg>
+    </a>
+    <div class="nav-links">
+      <a href="/#hogyan">Hogyan működik</a>
+      <a href="/#tudas">Mit tud</a>
+      <a href="/#csomagok">Csomagok</a>
+      <a href="/#kinek">Kinek</a>
+      <a href="/blog/" aria-current="page">Blog</a>
+      <a href="/kalkulator/">Kalkulátor</a>
+    </div>
+    <a class="btn btn-sm" href="/#kapcsolat">Demót kérek</a>
+  </div>
+</nav>
+<article class="article">
+  <p class="breadcrumb"><a href="/">Peak AI</a> › <a href="/blog/">Blog</a> › Flottás abroncsok nyomon követése</p>
+
+  <h1>Hogyan lehet nyomon követni a flottás ügyfelek beérkező abroncsait egy gumiszervizben?</h1>
+
+  <p class="post-meta" style="margin:18px 0 30px">2026. október 30. · 8 perc olvasás</p>
+
+  <div class="answer">
+    <p class="post-meta">Rövid válasz</p>
+    <p>Úgy, hogy minden partnertől érkező abroncsszett <strong>rendszámhoz kötve, három állapottal</strong> kerül nyilvántartásba: <strong>Várjuk → Megérkezett → Felszerelve</strong>, darabszámmal, mérettel és márkával, és ugyanez az állapot látszik a foglaláson is. A partner értesítő e-mailjeiből a „várjuk” sor automatikusan létrejöhet; ha az e-mail bizonytalan, a rendszer a pultnak jelez, és nem találgat. Modellszámítás: havi 130 beérkező flottás szettnél, szettenként 9 perc kézi nyilvántartással és kereséssel ez kb. <strong>19,5 óra pultos munka, minimálbéres munkáltatói költséggel kb. 41 000 Ft havonta</strong> — és ebben még nincs benne a sofőr, aki hiába jön be.</p>
+  </div>
+
+  <h2>Miért gond a flottás abroncsok kézi nyilvántartása?</h2>
+  <p>Azért, mert a flottás abroncs nem a sofőrrel érkezik, hanem külön, gyakran napokkal előtte, és ha nincs rendszámhoz kötve, a szerelés napján kell megkeresni a raktárban. A lakossági ügyfél a saját gumijával áll be, vagy a szerviz rendeli meg neki. A flottás autónál viszont a flottakezelő vagy a partnercég küldi az abroncsot, a sofőr gyakran nem is tudja, mi jár neki, a pult pedig egy e-mailből, egy szállítólevélből vagy egy telefonból értesül róla.</p>
+  <p>Ha ez füzetben, táblázatban vagy egy e-mail-mappában él, három tipikus hiba jön elő:</p>
+  <ul>
+    <li><strong>A sofőr beáll, de az abroncs még nem érkezett meg</strong> — vagy megérkezett, csak senki nem tudja, melyik polcon van.</li>
+    <li><strong>Rossz szettet szerelnek fel</strong>, mert két hasonló méretű csomag áll egymás mellett, és a címkén csak a cégnév szerepel.</li>
+    <li><strong>A partner nem tudja, mi a helyzet</strong>, ezért telefonál vagy e-mailt ír, és a pultos a szezon legforgalmasabb órájában keresgél.</li>
+  </ul>
+
+  <h2>Mekkora tétel ez egy flottás partnerszerviznél?</h2>
+  <p>A flottás autók abroncscseréje évente kétszer, szezononként tömegesen jelentkezik, ezért egy partnerszerviznél a beérkező szettek száma pár hét alatt torlódik fel. A Magyar Lízingszövetség tagjainak flottakezelési állománya 2025 végén meghaladta az 50 ezer járművet, a teljes piacot a szövetség 100 ezer jármű fölé becsüli. A legnagyobb hazai flottakezelő évente kétszer küld tájékoztatót az autóhasználóknak az időpontfoglalás menetéről, és szerződött partnerekkel dolgozik.</p>
+  <p class="note"><strong>Modellszámítás:</strong> feltevés, hogy egy flottás autó évente két szezonális cserén megy át. Ekkor a Lízingszövetség tagjainál nyilvántartott, 50 ezret meghaladó flotta önmagában több mint 100 ezer abroncsszett-mozgást jelenthet évente. Nem minden flottás autónál szállít abroncsot a partner, és nem minden autó cserél szezonálisan, ezért ez felső közelítés, nem piaci mérés.</p>
+
+  <h2>Milyen állapotai legyenek egy flottás abroncsszettnek?</h2>
+  <p>Három állapot elég, ha mindegyikhez egyértelmű esemény tartozik: <strong>Várjuk</strong>, <strong>Megérkezett</strong>, <strong>Felszerelve</strong>.</p>
+  <div class="tbl-wrap">
+  <table>
+    <thead>
+      <tr><th>Állapot</th><th>Mikor kerül ide</th><th>Mit lát a pult</th><th>Mi a következő lépés</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><b>Várjuk</b></td><td>A partner jelezte, hogy abroncsot küld (e-mail, portál, telefon)</td><td>Rendszám, partner, várt darabszám, méret, márka, várható érkezés</td><td>Érkezéskor átvenni és ellenőrizni</td></tr>
+      <tr><td><b>Megérkezett</b></td><td>A csomag fizikailag a szervizben van, a darabszám és a méret egyezik</td><td>Átvétel napja, tárolási hely, eltérés esetén megjegyzés</td><td>Időpontot foglalni vagy a meglévőt visszaigazolni</td></tr>
+      <tr><td><b>Felszerelve</b></td><td>A szerelő lezárta a munkát az autón</td><td>Szerelés napja, ki szerelte, a lekerülő abroncs sorsa</td><td>Partner értesítése, számlázás, tárolás vagy visszaküldés</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p>A lényeg, hogy az állapot <strong>a foglaláson is látsszon</strong>. Ha egy flottás foglalás mellett „Várjuk” áll, a pult még a sofőr érkezése előtt tudja, hogy telefonálni kell a partnernek, nem a helyszínen derül ki.</p>
+
+  <h2>Milyen adatokat érdemes rögzíteni egy beérkező abroncsról?</h2>
+  <p>Legalább a rendszámot, a partnert, a darabszámot, a méretet és a márkát — ezek nélkül a szettet nem lehet biztonságosan az autóhoz párosítani.</p>
+  <ul>
+    <li><strong>Rendszám.</strong> Ez a közös kulcs a partner, a sofőr és a szerviz között; rendszámra keresve egy mozdulattal megvan a szett és a foglalás.</li>
+    <li><strong>Partner.</strong> Listából választva, nem szabad szöveggel, hogy a riportban és a számlázásnál egyben látszódjon.</li>
+    <li><strong>Darabszám.</strong> Nem mindig négy: érkezhet két darab tengelycserére, vagy egy darab egy sérült helyére.</li>
+    <li><strong>Méret és márka.</strong> Átvételkor ezt kell összevetni a partner jelzésével; az eltérés azonnal megjegyzésbe kerüljön.</li>
+    <li><strong>Megjegyzés.</strong> Például „felnivel érkezett”, „TPMS-szenzoros”, „a partner csak cserét hagyott jóvá”.</li>
+  </ul>
+  <p>Érdemes a lekerülő abroncsról is rögzíteni egy-két adatot, mert a partner gyakran ebből dönt a következő szezonról. A jogszabályi minimum profilmélység 1,6 mm, a szakértők téli abroncsnál legalább 4 mm-t, nyárinál 3 mm-t ajánlanak. Ha a szerelő a „Felszerelve” állapotnál beírja, hogy a lekerülő szett 3 mm körül van, a partner időben rendelhet újat.</p>
+
+  <h2>Fel lehet-e dolgozni automatikusan a partnerek értesítő e-mailjeit?</h2>
+  <p>Igen, ha a partner állandó formátumban küldi az értesítőt: ilyenkor a rendszer kiolvassa a rendszámot, a darabszámot, a méretet és a márkát, és magától létrehozza a „Várjuk” sort.</p>
+  <p>Sok flottakezelő és abroncsszállító szabványos e-mailt küld minden szállításról. Ha a formátum állandó, a feldolgozás megbízható. Ami ennél fontosabb: a rendszernek tudnia kell, mikor <em>nem</em> biztos a dolgában. Ha hiányzik a rendszám, ha két rendszám szerepel egy levélben, vagy ha ismeretlen a formátum, ne rögzítsen tippet, hanem jelezzen a pultnak, és a pultos döntsön. Egy rossz rendszámra rögzített szett több kárt okoz, mint egy kézzel beírt sor.</p>
+  <p>Ezt építjük: egy magyar gumiszerviznél élesben működik, hogy a flottás ügyfelekhez beérkező abroncsok Várjuk → Megérkezett → Felszerelve állapotokkal, darabszámmal, mérettel és márkával kerülnek nyilvántartásba, rendszám szerint kereshetők, a partnerek értesítő e-mailjeit a rendszer automatikusan feldolgozza, bizonytalan esetben pedig a pultnak jelez.</p>
+
+  <h2>Hogyan kapcsolódjon az abroncs-nyilvántartás a foglaláshoz?</h2>
+  <p>Ugyanarra a rendszámra: a foglaláson látsszon a szett állapota, a szett mellett pedig a foglalás időpontja.</p>
+  <p>Így három dolog lesz egyszerű. A pult a napi listán látja, melyik flottás foglaláshoz nincs még meg az abroncs, és még előző nap szólhat a partnernek. A szerelő a munkaállapot-táblán látja, melyik polcon van a szett. A „Felszerelve” állapot pedig a munka lezárásával együtt áll be, nem kell külön adminisztrálni. Arról, hogy a flottás foglalások hogyan futnak ugyanabba a naptárba, mint a lakossági időpontok, a <a href="/blog/flottas-partnerceg-foglalasok-gumiszerviz-naptar/" style="color:var(--peak-accent-deep);text-decoration:none">flottás partnercégek foglalásairól szóló cikkünkben</a> írtunk részletesen.</p>
+
+  <h2>Mennyi munkaidőt visz el a flottás abroncsok kézi követése?</h2>
+  <p>Modellszámításunkban szezonhónapban kb. 19,5 órát, ami minimálbéres munkáltatói költséggel kb. 41 000 Ft havonta.</p>
+  <p class="note"><strong>Modellszámítás, a feltevések kiírva:</strong> szezonhónapban heti kb. 30, havonta 130 flottás abroncsszett érkezik partnerektől. Kézi nyilvántartásnál szettenként átlagosan 4 perc az átvétel és a beírás, 3 perc a keresés, amikor a partner vagy a sofőr érdeklődik, és 2 perc az ellenőrzés a foglalás előtt: összesen 9 perc. 130 × 9 = 1 170 perc, azaz 19,5 óra havonta. A 2026-os minimálbér 322 800 Ft, 13% szociális hozzájárulási adóval a munkáltatói költség 364 764 Ft havonta; 174 munkaórával ez kb. 2 096 Ft óránként. 19,5 × 2 096 ≈ 40 900 Ft havonta. Ha a 130 szettből 3%-nál (kb. 4 esetben) a sofőr úgy érkezik, hogy a szett nincs meg vagy nem található, és esetenként 45 perc emelőidő vész el, az havi kb. 3 óra kieső szerelési kapacitás a szezon csúcsán, plusz 4 új időpont. A számok szemléltetők, nem konkrét vállalkozás mért adatai.</p>
+  <p>A pultos ideje önmagában nem nagy tétel. A drága rész a szezoncsúcson elveszett emelőidő és a partner bizalma: a flottakezelő azt a szervizt tartja meg, ahol nem kell utánatelefonálni a saját abroncsának.</p>
+
+  <h2>Mennyibe kerül egy ilyen rendszer?</h2>
+  <p>A Peak AI-nál a foglalórendszer a PEAK Booking csomaggal indul, a flottás ügyfelek kezelése a PEAK Pro része; az abroncs-nyilvántartás és a partner-e-mailek bekötése partnerenként eltér, ezért arra egyedi ajánlatot adunk. A nyilvános árlista szerint:</p>
+  <ul>
+    <li><strong>PEAK Booking — 59 000 Ft / hó + áfa.</strong> Saját foglalási rendszer telefonos AI-asszisztens nélkül: saját domain, rendszám és szerelői megjegyzés mező, munkaállapot-tábla nyomtatható napi listával, adatbázis-szintű ütközésvédelem, e-mailes visszaigazolás és emlékeztető. Partnercég-integráció (API) igény esetén, egyedi ajánlat alapján. Egyszeri bevezetési díj: 149 000 Ft + áfa.</li>
+    <li><strong>PEAK AI Reception — 179 000 Ft / hó + áfa.</strong> Foglalási rendszer és telefonos AI-asszisztens, 300 perc / hó, kereten felül 120 Ft + áfa / perc. Egyszeri bevezetési díj: 249 000 Ft + áfa.</li>
+    <li><strong>PEAK Pro — 299 000 Ft / hó + áfa</strong>, 2 forrásig (telephely vagy partnercég), 800 perc / hó a két forrásra együtt; minden további forrás +59 000 Ft + áfa / hó (+400 perc). Forrásonkénti kapacitás és riportok, központi ügyféladatbázis, flottás ügyfelek kezelése, Google-értékelések kezelése. Egyszeri bevezetési díj: 399 000 Ft + áfa.</li>
+  </ul>
+  <p>Mindhárom csomag 12 hónapos szerződés, 14 napos díjmentes próbaüzemmel; a bevezetési díj a próbaidő utáni, 15. naptól esedékes. A flottás abroncsok nyilvántartására és az egyes partnerek értesítő e-mailjeinek automatikus feldolgozására — mivel minden partner másképp küldi az adatot — a minták megismerése után egyedi ajánlatot adunk, előre egyeztetett áron, nem óradíjban.</p>
+
+  <h2>Mikor elég egy egyszerű táblázat?</h2>
+  <p>Akkor, ha szezononként csak néhány tucat flottás szett érkezik, egy-két partnertől, és a raktárban egy ember tartja a rendet. Ilyenkor egy jól fejlécezett táblázat rendszám, partner, darabszám, méret, márka és állapot oszloppal sokat segít. A külön rendszer akkor éri meg, ha a partnerek e-mailben jelzik a szállításokat, ha szezonban hetente tucatnyi szett érkezik, ha már előfordult rossz szett felszerelése vagy hiába beálló sofőr, vagy ha a flottás foglalások is egy naptárba futnak, és a kettőt össze kell kötni.</p>
+
+  <h2>Hogyan kezdjen hozzá?</h2>
+  <p>Egy szezonhét adataiból felmérhető, mire van szükség:</p>
+  <ul>
+    <li><strong>1. Számolja meg a szetteket.</strong> Egy hét alatt partnerenként hány abroncsszett érkezett, és hányszor kellett keresni egyet.</li>
+    <li><strong>2. Gyűjtsön mintát.</strong> Partnerenként 3–5 szállítási értesítő (személyes adatok nélkül) megmutatja, feldolgozható-e a formátum.</li>
+    <li><strong>3. Jelölje ki a tárolási helyeket.</strong> Polc vagy rekesz azonosítóval, hogy a „Megérkezett” állapot mellé hely is kerüljön.</li>
+    <li><strong>4. Döntse el, ki zárja a „Felszerelve” állapotot.</strong> Legjobb, ha a szerelő a munka lezárásával együtt teszi.</li>
+  </ul>
+  <p>Ha a foglalórendszer még nincs meg, azzal kezdje — az <a href="/blog/online-foglalorendszer-autoszerviz-gumiszerviz/" style="color:var(--peak-accent-deep);text-decoration:none">online foglalórendszerekről gumiszervizeknek</a> külön cikkben írtunk.</p>
+
+  <h2>Gyakori kérdések</h2>
+
+  <div class="faq">
+    <div class="faq-item">
+      <h3>Milyen állapotokkal érdemes követni a flottás abroncsokat?</h3>
+      <p>Három állapot elég: Várjuk (a partner jelezte a szállítást), Megérkezett (a szett a szervizben van, a darabszám és a méret egyezik) és Felszerelve (a szerelő lezárta a munkát). Mindhárom rendszámhoz kötve, és a foglaláson is látszik.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Fel lehet dolgozni automatikusan a flottakezelők értesítő e-mailjeit?</h3>
+      <p>Igen, ha a partner állandó formátumban küldi őket: a rendszer kiolvassa a rendszámot, a darabszámot, a méretet és a márkát, és létrehozza a „Várjuk” sort. Hiányzó rendszámnál vagy ismeretlen formátumnál nem találgat, hanem a pultnak jelez.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Mi történik, ha a beérkező szett nem egyezik a partner jelzésével?</h3>
+      <p>Átvételkor a pultos összeveti a darabszámot, a méretet és a márkát a „Várjuk” sorral; eltérésnél megjegyzést ír, és a partnert még a sofőr érkezése előtt értesíteni lehet.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Mennyi munkaidőt visz el a flottás abroncsok kézi követése?</h3>
+      <p>Modellszámítás: havi 130 szettnél és szettenként 9 perc átvétellel, kereséssel és ellenőrzéssel kb. 19,5 óra, ami a 2026-os minimálbér munkáltatói költségével (364 764 Ft/hó, 174 óra) kb. 40 900 Ft havonta.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Mennyibe kerül a flottás abroncsok nyilvántartása?</h3>
+      <p>A Peak AI foglalórendszere a PEAK Booking csomaggal indul (59 000 Ft + áfa havonta, 149 000 Ft + áfa bevezetési díj, 12 hónapos szerződés), a flottás ügyfelek kezelése a PEAK Pro része (299 000 Ft + áfa havonta 2 forrásig). Az abroncs-nyilvántartásra és a partner-e-mailek bekötésére egyedi ajánlatot adunk, előre egyeztetett áron.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Elég-e egy táblázat a flottás abroncsokhoz?</h3>
+      <p>Szezononként néhány tucat szettnél, egy-két partnerrel igen, ha rendszám, partner, darabszám, méret, márka és állapot oszlopa van. Ha a partnerek e-mailben jeleznek, hetente tucatnyi szett érkezik, vagy már volt hiába beálló sofőr, a rendszámhoz kötött nyilvántartás megéri.</p>
+    </div>
+  </div>
+
+  <h2>Források</h2>
+  <ul class="note" style="padding-left:20px">
+    <li>Economx: <a href="https://www.economx.hu/magyar-gazdasag/2026/02/24/magyar-lizingszovetseg-agardi-marianna-vallalatok-824405/" rel="nofollow noopener" target="_blank" style="color:var(--peak-accent-deep);text-decoration:none">Megindult a flották zöldítése, azonban van egy csavar: fordulópont jöhet?</a> (2026. február 24.): a Magyar Lízingszövetség 2025-ös adatai, flottakezelési állomány 50 ezer felett, teljes piac 100 ezer felett.</li>
+    <li>Ayvens Magyarország: <a href="https://www.ayvens.com/hu-hu/autohasznaloinknak/gumiabroncs/" rel="nofollow noopener" target="_blank" style="color:var(--peak-accent-deep);text-decoration:none">Gumiabroncs — tájékoztató autóhasználóknak</a>: évente kétszer tájékoztató az időpontfoglalás menetéről, szerződött partnerek.</li>
+    <li>Economx: <a href="https://www.economx.hu/gazdasag/2025/10/27/gumicsere-teligumi-autozas-mire-kell-figyelni-818309/" rel="nofollow noopener" target="_blank" style="color:var(--peak-accent-deep);text-decoration:none">Itt a gumicsere ideje! Mutatjuk, mire kell figyelni</a> (2025. október 27.): jogszabályi minimum 1,6 mm profilmélység, ajánlott téli 4 mm, nyári 3 mm.</li>
+    <li>Forvis Mazars: <a href="https://www.forvismazars.com/hu/hu/hirek/tudastar/minimalber-2026-brutto-es-netto-oesszegek" rel="nofollow noopener" target="_blank" style="color:var(--peak-accent-deep);text-decoration:none">A minimálbér és garantált bérminimum változása 2026-ban</a>: minimálbér 322 800 Ft, szocho 13%.</li>
+    <li>Peak AI árlista: <a href="/#csomagok" style="color:var(--peak-accent-deep);text-decoration:none">Csomagok</a> (2026. októberi állapot).</li>
+  </ul>
+
+
+    <div class="author">
+      <div class="author-mark">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 80" role="img" aria-label="Peak AI">
+          <polygon points="20,72 60,6 100,72" fill="#1FAEA8"/>
+          <polygon points="0,72 28,32 56,72" fill="#1FAEA8" opacity="0.55"/>
+          <polygon points="62,72 90,38 118,72" fill="#1FAEA8" opacity="0.75"/>
+          <rect x="0" y="72" width="120" height="2" fill="#1FAEA8" opacity="0.9"/>
+        </svg>
+      </div>
+      <div>
+        <h4>Dr. Révész Barnabás</h4>
+        <p>
+          A Peak AI alapítója. Nukleáris medicina szakorvos, egészségügyi közgazdasági
+          végzettséggel — szabályozott iparágban szerzett tapasztalattal épít magyar nyelvű
+          AI telefonos asszisztenseket kis- és középvállalkozásoknak.
+          <a href="mailto:barnabas@peakai.hu" style="color:var(--peak-accent-deep);text-decoration:none">barnabas@peakai.hu</a>
+        </p>
+      </div>
+    </div>
+</article>
+  <div class="next-up">
+    <p class="post-meta">Következő cikk</p>
+    <a class="post-card" href="/blog/flottas-partnerceg-foglalasok-gumiszerviz-naptar/">
+      <h2>Hogyan kezelje egy gumiszerviz a flottás partnercégek foglalásait egy naptárban?</h2>
+      <p>Minden csatorna egy ütközésvédett naptárba: flottakezelő API-n, partner-e-mailből automatikusan vagy pultos rögzítéssel. Mit lásson a pult, mennyi munkaidőt visz el a kézi átvezetés, és mennyibe kerül.</p>
+      <span class="post-more">Elolvasom →</span>
+    </a>
+  </div>
+  <div class="wrap" style="margin-top:56px">
+    <div class="cta on-dark">
+      <h2>Nézzük meg élőben, az Ön cégére szabva.</h2>
+      <p>
+        Megmutatjuk, hogyan hangzana az asszisztens az Ön vállalkozásának nevében, és
+        közben látja, ahogy a lefoglalt időpont megjelenik a naptárban. 15 perc az egész,
+        döntés és szerződés nélkül.
+      </p>
+      <a class="btn" href="/#kapcsolat">Kérek egy demót</a>
+    </div>
+  </div>
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="logo logo-foot" href="/" aria-label="Peak AI — Reach higher ground">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 180" role="img">
+            <g transform="translate(0,20)">
+              <polygon points="20,72 60,6 100,72" fill="#5DE8E2"/>
+              <polygon points="0,72 28,32 56,72" fill="#5DE8E2" opacity="0.55"/>
+              <polygon points="62,72 90,38 118,72" fill="#5DE8E2" opacity="0.75"/>
+              <rect x="0" y="72" width="120" height="2" fill="#5DE8E2" opacity="0.9"/>
+            </g>
+            <text x="170" y="85" font-family="Space Grotesk, system-ui, sans-serif" font-weight="600" font-size="72" letter-spacing="-2" fill="#F4F6FA">Peak</text>
+            <text x="354" y="85" font-family="Space Grotesk, system-ui, sans-serif" font-weight="300" font-style="italic" font-size="72" letter-spacing="-2" fill="#5DE8E2"> AI</text>
+            <line x1="170" y1="115" x2="220" y2="115" stroke="#5DE8E2" stroke-width="2"/>
+            <text x="232" y="121" font-family="JetBrains Mono, ui-monospace, monospace" font-weight="500" font-size="16" letter-spacing="3" fill="#A8B1BD">REACH HIGHER GROUND</text>
+          </svg>
+        </a>
+        <p style="margin:20px 0 0;color:var(--peak-mist)">AI telefonos asszisztens<br>kis- és középvállalkozásoknak.</p>
+      </div>
+      <div>
+        <span class="foot-h">Kapcsolat</span>
+        <p style="margin:0">
+          <a href="mailto:barnabas@peakai.hu">barnabas@peakai.hu</a><br>
+          Magyarország
+        </p>
+      </div>
+      <div>
+        <span class="foot-h">Oldalak</span>
+        <p style="margin:0">
+          <a href="/#hogyan">Hogyan működik</a><br>
+          <a href="/#csomagok">Csomagok</a><br>
+          <a href="/blog/">Blog</a><br>
+          <a href="/#kapcsolat">Kapcsolat</a>
+        </p>
+      </div>
+    </div>
+    <p class="tiny">
+      © 2026 Peak AI ·
+      A bruttó árak 27% áfával számolva, tájékoztató jelleggel. ·
+      A mintaszámítások szemléltető modellek, nem konkrét vállalkozás mért adatai.
+    </p>
+  </div>
+</footer>
+</body>
+</html>
