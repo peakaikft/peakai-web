@@ -126,4 +126,10 @@
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
+  <url>
+    <loc>https://peakai.hu/blog/szezonalis-gumicsere-flottas-es-lakossagi-ugyfelek-kapacitas/</loc>
+    <lastmod>2026-11-04</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
 </urlset>

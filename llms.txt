@@ -9,6 +9,7 @@
 - [Blog](https://peakai.hu/blog/)
 
 ## Cikkek
+- [Hogyan kezelje egy gumiszerviz a szezonális csere idején a flottás és a lakossági ügyfeleket egyszerre?](https://peakai.hu/blog/szezonalis-gumicsere-flottas-es-lakossagi-ugyfelek-kapacitas/): kapacitásmegosztás a szezoncsúcsban flottás és lakossági ügyfelek között (flottás kvóta, 48 órás elengedés, abroncshoz kötött időpont, napi lista, telefonos asszisztens), modellszámítás és árak
 - [Milyen online foglalórendszer kell egy gumiszerviznek, és mennyibe kerül?](https://peakai.hu/blog/online-foglalorendszer-gumiszerviz-melyik-kell-mennyibe-kerul/): mit tudjon egy gumiszerviz foglalója (rendszám, munkatípus, emelőnkénti kapacitás, ütközésvédelem, napi lista), 10 kérdés a szolgáltatónak, első éves költség és megtérülési modellszámítás
 - [Hogyan lehet nyomon követni a flottás ügyfelek beérkező abroncsait egy gumiszervizben?](https://peakai.hu/blog/flottas-abroncsok-nyomon-kovetese-gumiszerviz/): rendszámhoz kötött abroncs-nyilvántartás Várjuk → Megérkezett → Felszerelve állapotokkal, partner-e-mailek automatikus feldolgozása, modellszámítás a kézi követés költségéről
 - [Hogyan kezelje egy gumiszerviz a flottás partnercégek foglalásait egy naptárban?](https://peakai.hu/blog/flottas-partnerceg-foglalasok-gumiszerviz-naptar/): flottakezelők és partnercégek foglalásai egy ütközésvédett naptárban (API, e-mail-feldolgozás, pultos rögzítés), modellszámítás a kézi átvezetés költségéről
