@@ -1,0 +1,364 @@
+<!doctype html>
+<html lang="hu">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="/assets/consent.js" defer></script>
+<title>Hogyan kezelje egy gumiszerviz a szezonális csere idején a flottás és a lakossági ügyfeleket egyszerre? | Peak AI</title>
+<meta name="description" content="Flottás kvóta, 48 órás elengedés, abroncshoz kötött időpont, napi lista és telefon: így osztja meg egy gumiszerviz a szezoncsúcs kapacitását flottás és lakossági ügyfelek között, modellszámítással.">
+<meta name="theme-color" content="#0B0E13">
+<link rel="canonical" href="https://peakai.hu/blog/szezonalis-gumicsere-flottas-es-lakossagi-ugyfelek-kapacitas/">
+<meta property="og:title" content="Hogyan kezelje egy gumiszerviz a szezonális csere idején a flottás és a lakossági ügyfeleket egyszerre?">
+<meta property="og:description" content="Flottás kvóta, 48 órás elengedés, abroncshoz kötött időpont, napi lista és telefon: így osztja meg egy gumiszerviz a szezoncsúcs kapacitását flottás és lakossági ügyfelek között, modellszámítással.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://peakai.hu/blog/szezonalis-gumicsere-flottas-es-lakossagi-ugyfelek-kapacitas/">
+<meta property="og:locale" content="hu_HU">
+<meta property="og:image" content="https://peakai.hu/assets/og/blog.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://peakai.hu/assets/og/blog.png">
+<meta property="og:site_name" content="Peak AI">
+<meta property="article:published_time" content="2026-11-04">
+<meta name="author" content="Dr. Révész Barnabás">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 80'%3E%3Cpolygon points='20,72 60,6 100,72' fill='%235DE8E2'/%3E%3Cpolygon points='0,72 28,32 56,72' fill='%235DE8E2' opacity='.55'/%3E%3Cpolygon points='62,72 90,38 118,72' fill='%235DE8E2' opacity='.75'/%3E%3Crect x='0' y='72' width='120' height='2' fill='%235DE8E2' opacity='.9'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/blog/style.css">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "Article",
+   "headline": "Hogyan kezelje egy gumiszerviz a szezonális csere idején a flottás és a lakossági ügyfeleket egyszerre?",
+   "description": "Flottás kvóta, 48 órás elengedés, abroncshoz kötött időpont, napi lista és telefon: így osztja meg egy gumiszerviz a szezoncsúcs kapacitását flottás és lakossági ügyfelek között, modellszámítással.",
+   "inLanguage": "hu-HU",
+   "datePublished": "2026-11-04",
+   "dateModified": "2026-11-04",
+   "image": "https://peakai.hu/assets/og/blog.png",
+   "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://peakai.hu/blog/szezonalis-gumicsere-flottas-es-lakossagi-ugyfelek-kapacitas/"
+   },
+   "author": {
+    "@type": "Person",
+    "name": "Dr. Révész Barnabás",
+    "jobTitle": "alapító, Peak AI",
+    "email": "barnabas@peakai.hu"
+   },
+   "publisher": {
+    "@type": "Organization",
+    "name": "Peak AI",
+    "url": "https://peakai.hu/"
+   }
+  },
+  {
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Peak AI",
+     "item": "https://peakai.hu/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "Blog",
+     "item": "https://peakai.hu/blog/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 3,
+     "name": "Flottás és lakossági ügyfelek szezonban"
+    }
+   ]
+  },
+  {
+   "@type": "FAQPage",
+   "mainEntity": [
+    {
+     "@type": "Question",
+     "name": "Hogyan ossza meg egy gumiszerviz a szezoncsúcs kapacitását flottás és lakossági ügyfelek között?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Egy naptárban, előre rögzített flottás kvótával (például napi egy emelő vagy egy idősáv), amelyet a rendszer tart. A kvóta fel nem használt része 24–48 órával az adott nap előtt automatikusan visszakerül a lakossági foglalóhoz."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Mennyi kapacitást tartson fenn egy gumiszerviz a flottás partnereknek?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Annyit, amennyit a tavalyi szezon csúcsheteiben a flotta ténylegesen elvitt, és amennyit a partnerrel vállalt határidő megkövetel. A szezon első heteiben jellemzően nagyobb kvóta kell, utána kisebb."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Mikor engedje el a nem használt flottás időpontokat?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Jellemzően 24–48 órával előtte, mert a flottás sofőr ennél később ritkán foglal, a lakossági ügyfél viszont szezonban másnapra is jön. Az elengedés idejét érdemes a partnerrel is egyeztetni."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Mennyit ér, ha a flottás kvóta automatikusan felszabadul?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Modellszámítás: 3 emelőnél napi 4 egyébként üresen maradó flottás helyet lakossági ügyfél kap, 12 000 Ft-os munkadíjjal ez napi 48 000 Ft, évi 30 csúcsnapon kb. 1,44 millió Ft munkadíj."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Mennyibe kerül egy rendszer, amely flottás és lakossági ügyfeleket egy naptárban kezel?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "A Peak AI-nál a forrásonkénti kapacitás és a flottás ügyfelek kezelése a PEAK Pro csomagban van: 299 000 Ft + áfa havonta 2 forrásig, 399 000 Ft + áfa bevezetési díjjal, 12 hónapos szerződéssel. A partnerek rendszerének bekötésére egyedi ajánlatot adunk, előre egyeztetett áron."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Mikor véglegesítsen egy flottás időpontot?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Akkor, ha a partner által küldött abroncsszett már megérkezett a szervizbe. Ha az időpont előtti napon még nincs ott, a rendszer jelezzen a pultnak, hogy a sofőrt át lehessen foglalni, a helyet pedig el lehessen engedni."
+     }
+    }
+   ]
+  }
+ ]
+}
+</script>
+</head>
+<body>
+<nav>
+  <div class="wrap nav-in">
+    <a class="logo logo-nav" href="/" aria-label="Peak AI">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 110" role="img">
+        <g transform="translate(0,15)">
+          <polygon points="20,72 60,6 100,72" fill="#0B0E13"/>
+          <polygon points="0,72 28,32 56,72" fill="#0B0E13" opacity="0.55"/>
+          <polygon points="62,72 90,38 118,72" fill="#0B0E13" opacity="0.75"/>
+          <rect x="0" y="72" width="120" height="2" fill="#0B0E13" opacity="0.9"/>
+        </g>
+        <text x="170" y="80" font-family="Space Grotesk, system-ui, sans-serif" font-weight="600" font-size="72" letter-spacing="-2" fill="#0B0E13">Peak</text>
+        <text x="354" y="80" font-family="Space Grotesk, system-ui, sans-serif" font-weight="300" font-style="italic" font-size="72" letter-spacing="-2" fill="#1FAEA8"> AI</text>
+      </svg>
+    </a>
+    <div class="nav-links">
+      <a href="/#hogyan">Hogyan működik</a>
+      <a href="/#tudas">Mit tud</a>
+      <a href="/#csomagok">Csomagok</a>
+      <a href="/#kinek">Kinek</a>
+      <a href="/blog/" aria-current="page">Blog</a>
+      <a href="/kalkulator/">Kalkulátor</a>
+    </div>
+    <a class="btn btn-sm" href="/#kapcsolat">Demót kérek</a>
+  </div>
+</nav>
+<article class="article">
+  <p class="breadcrumb"><a href="/">Peak AI</a> › <a href="/blog/">Blog</a> › Flottás és lakossági ügyfelek szezonban</p>
+
+  <h1>Hogyan kezelje egy gumiszerviz a szezonális csere idején a flottás és a lakossági ügyfeleket egyszerre?</h1>
+
+  <p class="post-meta" style="margin:18px 0 30px">2026. november 4. · 8 perc olvasás</p>
+
+  <div class="answer">
+    <p class="post-meta">Rövid válasz</p>
+    <p>Úgy, hogy <strong>mindkét ügyfélkör egy naptárba foglal, de a kapacitás előre fel van osztva</strong>: a flottás partnereknek fenntartott kvóta (például napi egy emelő vagy egy délelőtti sáv) jár, és amit a flotta a nap előtt <strong>48 órával sem foglalt le, az automatikusan visszakerül a lakossági ügyfelekhez</strong>. Flottás időpont csak akkor véglegesedjen, ha a partner abroncsa már megérkezett, a telefont pedig szezonban egy asszisztens vegye át, hogy a lakossági hívások ne szorítsák ki a pultot. Modellszámítás: 3 emelőnél, napi 4 visszaengedett, egyébként üresen maradó flottás helyen és 12 000 Ft-os munkadíjjal ez <strong>napi 48 000 Ft, évi 30 csúcsnapon kb. 1,44 millió Ft</strong> munkadíj, amely kvóta-elengedés nélkül elveszne.</p>
+  </div>
+
+  <h2>Miért nehezebb a szezoncsúcs, ha flottás és lakossági ügyfél is van?</h2>
+  <p>Azért, mert a két ügyfélkör másképp és más ütemben foglal, de ugyanarra a néhány emelőre.</p>
+  <p>A lakossági kereslet hirtelen robban: az első hideg reggeleken, amikor a nappali hőmérséklet tartósan 7 °C alá esik (ez a téli gumira váltás bevett ökölszabálya), mindenki egyszerre hív. A szezon elején a sajtó szerint sok helyen két hét is volt a várakozás egy gumicsere-időpontra. A flottás kereslet ezzel szemben tervezhető, de függ: a flottakezelő évente kétszer értesíti a sofőröket, a sofőr a partnerszervizben foglal, az abroncsot pedig gyakran a partner szállítja be külön. A tétel nem kicsi: a Magyar Lízingszövetség tagjainak flottakezelési állománya 2025 végén meghaladta az 50 ezer járművet. Ha a kettő nincs összehangolva, két rossz dolog történik egyszerre: a flottás sofőr nem kap helyet, mert a lakossági roham elvitte, vagy a flottának tartott helyek üresen maradnak, miközben a lakossági ügyfelet elküldik.</p>
+  <p>Hogy a flottás foglalások milyen csatornákon jönnek, és hogyan futnak egy naptárba, arról a <a href="/blog/flottas-partnerceg-foglalasok-gumiszerviz-naptar/" style="color:var(--peak-accent-deep);text-decoration:none">flottás partnercégek foglalásairól szóló cikkünkben</a> írtunk. Ez a cikk a következő lépésről szól: ha már egy naptár van, hogyan osztja el a szezon kapacitását.</p>
+
+  <h2>Hogyan ossza fel a kapacitást a két ügyfélkör között?</h2>
+  <p>A legjobban egy előre rögzített, a rendszer által tartott flottás kvóta működik, nem a pultos fejben tartott „ezt hagyjuk meg a cégeseknek”.</p>
+  <p>Négy bevett modell közül lehet választani:</p>
+  <div class="tbl-wrap">
+  <table>
+    <thead>
+      <tr><th>Modell</th><th>Hogyan működik</th><th>Mikor jó</th><th>Kockázat</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><b>Nincs kvóta</b></td><td>Aki előbb foglal, azé a hely</td><td>Kevés flottás autó, nincs vállalt határidő a partner felé</td><td>A lakossági roham kiszorítja a flottát, a partner panaszkodik</td></tr>
+      <tr><td><b>Fix emelő</b></td><td>Egy emelő szezonban csak flottás munkát kap</td><td>Sok, egyenletesen érkező flottás autó</td><td>Ha a flotta lassan foglal, az emelő üresen áll</td></tr>
+      <tr><td><b>Idősáv</b></td><td>Például 8–12 óra között a helyek egy része flottás</td><td>A sofőrök reggel, munkakezdés előtt jönnek</td><td>Délután zsúfolt a lakossági rész</td></tr>
+      <tr><td><b>Kvóta elengedéssel</b></td><td>Napi flottás keret, ami X órával előtte felszabadul</td><td>A legtöbb vegyes ügyfélkörű szerviznél</td><td>Csak akkor működik, ha a rendszer magától engedi el</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p>A kvóta nagyságát a tavalyi szezonból érdemes kiindulni: hány flottás autó jött a csúcs négy hetében, és a partnerrel milyen határidőt vállalt a cserére. Ha a partner a szezon első két hetében várja a flotta nagy részét, akkor arra a két hétre nagyobb kvóta kell, utána kisebb.</p>
+
+  <h2>Mikor engedje el a lakossági ügyfeleknek a nem használt flottás helyeket?</h2>
+  <p>Jellemzően 24–48 órával az adott nap előtt, mert a flottás sofőr ennél később ritkán foglal, a lakossági ügyfél viszont szezonban akár másnapra is beugrik.</p>
+  <p>A lényeg, hogy ez ne a pult kézi döntése legyen. Ha a rendszer a naptárban forrásonként tartja a kapacitást, akkor az időpont előtt meghatározott órával a fel nem használt flottás helyek automatikusan megjelennek a lakossági online foglalóban és a telefonos asszisztens számára is. A pultnak nem kell reggel átnéznie, mi maradt üresen, és nem fordul elő, hogy egy szabad hely azért vész el, mert senki nem szólt. Az elengedés idejét érdemes a partnerrel is egyeztetni, hogy a flottakezelő tudja: a szervizben eddig garantált a hely, utána már nem.</p>
+
+  <h2>Mi legyen előbb: az abroncs megérkezése vagy a flottás időpont?</h2>
+  <p>Az abroncs: flottás időpontot akkor érdemes véglegesíteni, ha a partner által küldött szett már a szervizben van, különben a hely elvész.</p>
+  <p>Szezonban a leggyakoribb kárba veszett flottás időpont az, amikor a sofőr megjön, de a gumija még nem. Ezért a flottás foglalásnál a rendszernek látnia kell a beérkező abroncs állapotát (Várjuk → Megérkezett → Felszerelve), és ha az időpont előtti napon a szett még nem érkezett meg, jelezze a pultnak, hogy a sofőrt át kell foglalni, a helyet pedig el lehet engedni. A nyilvántartás felépítéséről a <a href="/blog/flottas-abroncsok-nyomon-kovetese-gumiszerviz/" style="color:var(--peak-accent-deep);text-decoration:none">flottás abroncsok követéséről szóló cikkünkben</a> írtunk részletesen.</p>
+
+  <h2>Hogyan lássa a pult egy pillantással, mi vár rá aznap?</h2>
+  <p>Egy nyomtatható napi listán, amelyen minden autónál ott a rendszám, a munka, a forrás (flottás partner vagy lakossági) és a munkaállapot.</p>
+  <ul>
+    <li><strong>Forrás szerinti jelölés.</strong> A szerelő lássa, hogy a flottás autónál a partner szabályai szerint kell dolgozni (például munkalap a partner felé, futásteljesítmény rögzítése), a lakossági autónál pedig helyben fizetnek.</li>
+    <li><strong>Abroncs állapota.</strong> Flottás autónál: megérkezett-e a szett, hol van; lakossági autónál: saját gumival jön, vagy tárolt szett kiadása.</li>
+    <li><strong>Munkaállapot.</strong> Várakozik, emelőn, kész — így a pult telefonon is meg tudja mondani, mikor viheti el az ügyfél az autót.</li>
+    <li><strong>Szabad helyek.</strong> Hány hely maradt aznap a lakossági és hány a flottás keretben, hogy a pult a beeső ügyfélnek azonnal tudjon válaszolni.</li>
+  </ul>
+  <p>Ha a foglalások adatbázis-szinten ütközésvédettek, a lista megbízható: ugyanarra a helyre akkor sem kerül két autó, ha a weboldal, a pult, a telefon és egy flottás partner egyszerre foglal.</p>
+
+  <h2>Mi történik a telefonnal szezonban, ha mindkét ügyfélkör egyszerre hív?</h2>
+  <p>Ha nincs, aki felvegye, a hívások egy része elvész — ezért szezonban a nem fogadott hívást érdemes egy telefonos asszisztensre bízni.</p>
+  <p>A csúcson nemcsak a lakossági ügyfelek hívnak, hanem a flottás sofőrök is („megjött már a gumim?”, „át tudom tenni csütörtökre?”). A telefonos AI-asszisztens néhány csörgés után átveszi a nem fogadott hívást, a lakossági ügyfélnek a lakossági keretből foglal, a gyakori kérdésekre a megadott válaszokkal felel, zárás után és hétvégén a következő munkanapra foglal vagy visszahívást rögzít a pultnak, és ha az ügyfél kollégát kér, azonnal átkapcsol. Mivel ugyanabba a naptárba foglal, a kvótát ugyanúgy tartja, mint az online foglaló. A szezonális telefonrohamról a <a href="/blog/gumiszezon-2026-telefon-idopontfoglalas-gumiszerviz/" style="color:var(--peak-accent-deep);text-decoration:none">gumiszezonról szóló cikkünkben</a> írtunk számokkal.</p>
+
+  <h2>Mennyit ér, ha a kapacitás jól van megosztva?</h2>
+  <p>Modellszámításunkban egy 3 emelős szervizben évi kb. 1,44 millió Ft munkadíjat, csak abból, hogy az üresen maradó flottás helyeket időben lakossági ügyfél kapja meg.</p>
+  <p class="note"><strong>Modellszámítás, a feltevések kiírva:</strong> 3 emelő, napi 9 óra nyitvatartás, egy szezonális kerékcsere átlagosan 30 perc, így emelőnként 18, összesen <strong>54 hely naponta</strong>. Flottás kvóta: egy emelő, azaz napi 18 hely. Feltevés, hogy egy csúcsnapon ebből átlagosan 4 hely marad lefoglalatlan (a sofőr későn foglal, vagy nem érkezett meg az abroncsa), és a lakossági várólista miatt a felszabaduló hely 48 órán belül betelik. Egy szezonális csere munkadíjára 12 000 Ft-os példaértékkel: 4 × 12 000 = <strong>48 000 Ft naponta</strong>. Évi 30 csúcsnappal (ősszel és tavasszal 15–15) ez 30 × 48 000 = <strong>1 440 000 Ft</strong>. Kvóta-elengedés nélkül ez a 120 hely üresen marad, kvóta nélkül viszont a flottás partner felé vállalt határidő csúszhat. A számok szemléltetők, nem konkrét vállalkozás mért adatai; a munkadíj és a kihasználtság az Ön szervizében más.</p>
+  <p>A modell nem számolja a második nyereséget: a flottás partner megtartását. Aki a csúcson is időben fogadja a flotta autóit, annál a flottakezelő a következő szezonban is foglal; ezt forintban nem becsüljük, mert partnerenként nagyon eltér.</p>
+
+  <h2>Mennyibe kerül egy ilyen rendszer a Peak AI-nál?</h2>
+  <p>A flottás és lakossági ügyfelek forrásonkénti kapacitással való kezelése a PEAK Pro csomagban van: 299 000 Ft + áfa havonta 2 forrásig, 399 000 Ft + áfa egyszeri bevezetési díjjal, 12 hónapos szerződéssel.</p>
+  <ul>
+    <li><strong>PEAK Pro — 299 000 Ft / hó + áfa, 2 forrásig</strong> (telephely vagy partnercég). Minden, ami a PEAK AI Receptionben, tehát saját domaines foglaló és telefonos AI-asszisztens is, 800 perc / hó a két forrásra együtt, kereten felül 120 Ft + áfa / perc. Forrásonkénti kapacitás és eltérő szolgáltatások, árak; központi ügyféladatbázis, forrásonkénti riportok; flottás ügyfelek kezelése; Google-értékelések kezelése. Minden további forrás +59 000 Ft + áfa / hó (+400 perc).</li>
+    <li><strong>PEAK AI Reception — 179 000 Ft / hó + áfa</strong>, 249 000 Ft + áfa bevezetési díjjal: foglaló és telefonos asszisztens 300 perc / hó kerettel, ha a flottás ügyfélkör kicsi, és nincs szükség forrásonkénti kapacitásra.</li>
+  </ul>
+  <p>Mindhárom csomag 14 napos díjmentes próbaüzemmel indul; a bevezetési díj a próbaidő utáni, 15. naptól esedékes. Az egyes flottás partnerek rendszerének bekötése (API, e-mail-értesítő feldolgozása) és a flottás abroncs-nyilvántartás a partnerek számától és formátumától függ, ezért erre a feladat megismerése után egyedi ajánlatot adunk, előre egyeztetett áron, nem óradíjban.</p>
+  <p class="note"><strong>Modellszámítás, első év:</strong> PEAK Pro: 12 × 299 000 Ft + 399 000 Ft = <strong>3 987 000 Ft + áfa</strong>, partnerbekötés nélkül. Ehhez képest a fenti 1,44 millió Ft-os kvóta-elengedés önmagában nem fizeti ki a csomagot. Akkor éri meg, ha a telefonos asszisztens által átvett hívások, a flottás foglalások kézi átvezetésének megszűnése és a megtartott partnerek együtt is többet hoznak. Ha a flottás ügyfélkör néhány autó szezononként, egy egyszerűbb csomag és kézi kvóta is elég.</p>
+
+  <h2>Hogyan készüljön fel a következő szezonra?</h2>
+  <p>A tavaszi csere előtt négy lépésben, mert a kvótát a szezon előtt kell beállítani, nem a roham közepén.</p>
+  <ul>
+    <li><strong>1. Nézze meg az őszi számokat.</strong> Hány flottás és hány lakossági autó jött a csúcs heteiben, hány flottás időpont maradt üresen, és hány lakossági ügyfelet kellett elküldeni.</li>
+    <li><strong>2. Egyeztessen a partnerekkel.</strong> Milyen határidőt várnak, hány autóval számolnak, és mennyivel előtte szabadíthatja fel a nem használt helyeket.</li>
+    <li><strong>3. Döntse el a kvótamodellt.</strong> Fix emelő, idősáv vagy elengedéses kvóta — a fenti táblázat alapján, emelőnként és hetenként.</li>
+    <li><strong>4. Kösse össze az abroncsot a foglalással.</strong> Flottás időpont a beérkezett szetthez, és jelzés a pultnak, ha egy szett nem érkezett meg időben.</li>
+  </ul>
+
+  <h2>Gyakori kérdések</h2>
+
+  <div class="faq">
+    <div class="faq-item">
+      <h3>Hogyan ossza meg egy gumiszerviz a szezoncsúcs kapacitását flottás és lakossági ügyfelek között?</h3>
+      <p>Egy naptárban, előre rögzített flottás kvótával (például napi egy emelő vagy egy idősáv), amelyet a rendszer tart. A kvóta fel nem használt része 24–48 órával az adott nap előtt automatikusan visszakerül a lakossági foglalóhoz.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Mennyi kapacitást tartson fenn egy gumiszerviz a flottás partnereknek?</h3>
+      <p>Annyit, amennyit a tavalyi szezon csúcsheteiben a flotta ténylegesen elvitt, és amennyit a partnerrel vállalt határidő megkövetel. A szezon első heteiben jellemzően nagyobb kvóta kell, utána kisebb.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Mikor engedje el a nem használt flottás időpontokat?</h3>
+      <p>Jellemzően 24–48 órával előtte, mert a flottás sofőr ennél később ritkán foglal, a lakossági ügyfél viszont szezonban másnapra is jön. Az elengedés idejét érdemes a partnerrel is egyeztetni.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Mennyit ér, ha a flottás kvóta automatikusan felszabadul?</h3>
+      <p>Modellszámítás: 3 emelőnél napi 4 egyébként üresen maradó flottás helyet lakossági ügyfél kap, 12 000 Ft-os munkadíjjal ez napi 48 000 Ft, évi 30 csúcsnapon kb. 1,44 millió Ft munkadíj.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Mennyibe kerül egy rendszer, amely flottás és lakossági ügyfeleket egy naptárban kezel?</h3>
+      <p>A Peak AI-nál a forrásonkénti kapacitás és a flottás ügyfelek kezelése a PEAK Pro csomagban van: 299 000 Ft + áfa havonta 2 forrásig, 399 000 Ft + áfa bevezetési díjjal, 12 hónapos szerződéssel. A partnerek rendszerének bekötésére egyedi ajánlatot adunk, előre egyeztetett áron.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Mikor véglegesítsen egy flottás időpontot?</h3>
+      <p>Akkor, ha a partner által küldött abroncsszett már megérkezett a szervizbe. Ha az időpont előtti napon még nincs ott, a rendszer jelezzen a pultnak, hogy a sofőrt át lehessen foglalni, a helyet pedig el lehessen engedni.</p>
+    </div>
+  </div>
+
+  <h2>Források</h2>
+  <ul class="note" style="padding-left:20px">
+    <li>Gumi.hu: <a href="https://gumi.hu/blog/teli-gumi-kotelezo-magyarorszagon/" rel="nofollow noopener" target="_blank" style="color:var(--peak-accent-deep);text-decoration:none">A téli gumi kötelező Magyarországon?</a> — a 7 °C-os szabály.</li>
+    <li>Formula.hu, 2025. október: <a href="https://formula.hu/egyeb/2025/10/16/nincs-szabad-idopont-a-gumisnal-gumicsere-haznal-is-megoldhato" rel="nofollow noopener" target="_blank" style="color:var(--peak-accent-deep);text-decoration:none">Nincs szabad időpont a gumisnál</a> — két hét várakozás a szezon elején.</li>
+    <li>Ayvens Magyarország: <a href="https://www.ayvens.com/hu-hu/autohasznaloinknak/gumiabroncs/" rel="nofollow noopener" target="_blank" style="color:var(--peak-accent-deep);text-decoration:none">Gumiabroncs — tájékoztató autóhasználóknak</a>: évente kétszer tájékoztató az időpontfoglalásról, szerződött gumiszerviz-partnerek.</li>
+    <li>Economx: <a href="https://www.economx.hu/magyar-gazdasag/2026/02/24/magyar-lizingszovetseg-agardi-marianna-vallalatok-824405/" rel="nofollow noopener" target="_blank" style="color:var(--peak-accent-deep);text-decoration:none">Megindult a flották zöldítése</a> (2026. február 24.): a Magyar Lízingszövetség tagjainak flottakezelési állománya 50 ezer jármű felett.</li>
+    <li>Peak AI árlista: <a href="/#csomagok" style="color:var(--peak-accent-deep);text-decoration:none">Csomagok</a> (2026. novemberi állapot).</li>
+  </ul>
+
+    <div class="author">
+      <div class="author-mark">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 80" role="img" aria-label="Peak AI">
+          <polygon points="20,72 60,6 100,72" fill="#1FAEA8"/>
+          <polygon points="0,72 28,32 56,72" fill="#1FAEA8" opacity="0.55"/>
+          <polygon points="62,72 90,38 118,72" fill="#1FAEA8" opacity="0.75"/>
+          <rect x="0" y="72" width="120" height="2" fill="#1FAEA8" opacity="0.9"/>
+        </svg>
+      </div>
+      <div>
+        <h4>Dr. Révész Barnabás</h4>
+        <p>
+          A Peak AI alapítója. Nukleáris medicina szakorvos, egészségügyi közgazdasági
+          végzettséggel — szabályozott iparágban szerzett tapasztalattal épít magyar nyelvű
+          AI telefonos asszisztenseket kis- és középvállalkozásoknak.
+          <a href="mailto:barnabas@peakai.hu" style="color:var(--peak-accent-deep);text-decoration:none">barnabas@peakai.hu</a>
+        </p>
+      </div>
+    </div>
+</article>
+  <div class="next-up">
+    <p class="post-meta">Következő cikk</p>
+    <a class="post-card" href="/blog/flottas-partnerceg-foglalasok-gumiszerviz-naptar/">
+      <h2>Hogyan kezelje egy gumiszerviz a flottás partnercégek foglalásait egy naptárban?</h2>
+      <p>API, e-mail-értesítő vagy pultos rögzítés: így futnak a flottakezelők és partnercégek foglalásai ugyanabba a naptárba, ütközés nélkül.</p>
+      <span class="post-more">Elolvasom →</span>
+    </a>
+  </div>
+  <div class="wrap" style="margin-top:56px">
+    <div class="cta on-dark">
+      <h2>Nézzük meg élőben, az Ön cégére szabva.</h2>
+      <p>
+        Megmutatjuk, hogyan hangzana az asszisztens az Ön vállalkozásának nevében, és
+        közben látja, ahogy a lefoglalt időpont megjelenik a naptárban. 15 perc az egész,
+        döntés és szerződés nélkül.
+      </p>
+      <a class="btn" href="/#kapcsolat">Kérek egy demót</a>
+    </div>
+  </div>
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="logo logo-foot" href="/" aria-label="Peak AI — Reach higher ground">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 180" role="img">
+            <g transform="translate(0,20)">
+              <polygon points="20,72 60,6 100,72" fill="#5DE8E2"/>
+              <polygon points="0,72 28,32 56,72" fill="#5DE8E2" opacity="0.55"/>
+              <polygon points="62,72 90,38 118,72" fill="#5DE8E2" opacity="0.75"/>
+              <rect x="0" y="72" width="120" height="2" fill="#5DE8E2" opacity="0.9"/>
+            </g>
+            <text x="170" y="85" font-family="Space Grotesk, system-ui, sans-serif" font-weight="600" font-size="72" letter-spacing="-2" fill="#F4F6FA">Peak</text>
+            <text x="354" y="85" font-family="Space Grotesk, system-ui, sans-serif" font-weight="300" font-style="italic" font-size="72" letter-spacing="-2" fill="#5DE8E2"> AI</text>
+            <line x1="170" y1="115" x2="220" y2="115" stroke="#5DE8E2" stroke-width="2"/>
+            <text x="232" y="121" font-family="JetBrains Mono, ui-monospace, monospace" font-weight="500" font-size="16" letter-spacing="3" fill="#A8B1BD">REACH HIGHER GROUND</text>
+          </svg>
+        </a>
+        <p style="margin:20px 0 0;color:var(--peak-mist)">AI telefonos asszisztens<br>kis- és középvállalkozásoknak.</p>
+      </div>
+      <div>
+        <span class="foot-h">Kapcsolat</span>
+        <p style="margin:0">
+          <a href="mailto:barnabas@peakai.hu">barnabas@peakai.hu</a><br>
+          Magyarország
+        </p>
+      </div>
+      <div>
+        <span class="foot-h">Oldalak</span>
+        <p style="margin:0">
+          <a href="/#hogyan">Hogyan működik</a><br>
+          <a href="/#csomagok">Csomagok</a><br>
+          <a href="/blog/">Blog</a><br>
+          <a href="/#kapcsolat">Kapcsolat</a>
+        </p>
+      </div>
+    </div>
+    <p class="tiny">
+      © 2026 Peak AI ·
+      A bruttó árak 27% áfával számolva, tájékoztató jelleggel. ·
+      A mintaszámítások szemléltető modellek, nem konkrét vállalkozás mért adatai.
+    </p>
+  </div>
+</footer>
+</body>
+</html>
