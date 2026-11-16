@@ -1,0 +1,363 @@
+<!doctype html>
+<html lang="hu">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="/assets/consent.js" defer></script>
+<title>Hogyan értesüljön a gumiszerviz automatikusan, ha egy flottakezelő abroncsot küld egy ügyfélnek? | Peak AI</title>
+<meta name="description" content="Közös e-mail-cím, hat kiolvasott adat, rendszámhoz kötött „Várjuk” sor és pultos jelzés bizonytalan esetben: így dolgozza fel egy gumiszerviz automatikusan a flottakezelők abroncs-értesítőit.">
+<meta name="theme-color" content="#0B0E13">
+<link rel="canonical" href="https://peakai.hu/blog/flottakezelo-abroncs-ertesites-automatikus-feldolgozas-gumiszerviz/">
+<meta property="og:title" content="Hogyan értesüljön a gumiszerviz automatikusan, ha egy flottakezelő abroncsot küld egy ügyfélnek?">
+<meta property="og:description" content="Közös e-mail-cím, hat kiolvasott adat, rendszámhoz kötött „Várjuk” sor és pultos jelzés bizonytalan esetben: így dolgozza fel egy gumiszerviz automatikusan a flottakezelők abroncs-értesítőit.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://peakai.hu/blog/flottakezelo-abroncs-ertesites-automatikus-feldolgozas-gumiszerviz/">
+<meta property="og:locale" content="hu_HU">
+<meta property="og:image" content="https://peakai.hu/assets/og/blog.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://peakai.hu/assets/og/blog.png">
+<meta property="og:site_name" content="Peak AI">
+<meta property="article:published_time" content="2026-11-16">
+<meta name="author" content="Dr. Révész Barnabás">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 80'%3E%3Cpolygon points='20,72 60,6 100,72' fill='%235DE8E2'/%3E%3Cpolygon points='0,72 28,32 56,72' fill='%235DE8E2' opacity='.55'/%3E%3Cpolygon points='62,72 90,38 118,72' fill='%235DE8E2' opacity='.75'/%3E%3Crect x='0' y='72' width='120' height='2' fill='%235DE8E2' opacity='.9'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/blog/style.css">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "Article",
+   "headline": "Hogyan értesüljön a gumiszerviz automatikusan, ha egy flottakezelő abroncsot küld egy ügyfélnek?",
+   "description": "Közös e-mail-cím, hat kiolvasott adat, rendszámhoz kötött „Várjuk” sor és pultos jelzés bizonytalan esetben: így dolgozza fel egy gumiszerviz automatikusan a flottakezelők abroncs-értesítőit.",
+   "inLanguage": "hu-HU",
+   "datePublished": "2026-11-16",
+   "dateModified": "2026-11-16",
+   "image": "https://peakai.hu/assets/og/blog.png",
+   "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://peakai.hu/blog/flottakezelo-abroncs-ertesites-automatikus-feldolgozas-gumiszerviz/"
+   },
+   "author": {
+    "@type": "Person",
+    "name": "Dr. Révész Barnabás",
+    "jobTitle": "alapító, Peak AI",
+    "email": "barnabas@peakai.hu"
+   },
+   "publisher": {
+    "@type": "Organization",
+    "name": "Peak AI",
+    "url": "https://peakai.hu/"
+   }
+  },
+  {
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Peak AI",
+     "item": "https://peakai.hu/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "Blog",
+     "item": "https://peakai.hu/blog/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 3,
+     "name": "Flottás abroncsértesítők automatikus feldolgozása"
+    }
+   ]
+  },
+  {
+   "@type": "FAQPage",
+   "mainEntity": [
+    {
+     "@type": "Question",
+     "name": "Lehet automatikusan rögzíteni a flottakezelők abroncs-értesítőit?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Igen, ha az értesítők egy közös címre érkeznek, és a partner állandó formátumban küldi őket. A rendszer kiolvassa a rendszámot, a partnert, a darabszámot, a méretet és a márkát, és létrehozza a „Várjuk” sort; bizonytalan esetben a pultnak jelez."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Mi történik, ha az e-mailben nincs rendszám?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "A rendszer nem rögzít tippet, hanem jelzést küld a pultnak az eredeti levéllel és azzal, hogy mi hiányzik. A pultos kiegészíti, vagy visszaír a partnernek."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Át kell szoktatni a partnereket egy új e-mail-címre?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Nem feltétlenül. A meglévő postafiókban egy szűrő is továbbíthatja a megadott partnerektől érkező leveleket a feldolgozó címre; Gmailben ehhez a továbbítási címet előbb meg kell erősíteni."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Mennyi munkát takarít meg?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Modellszámítás: havi 130 értesítőnél, levelenként 4 perc kézi átírással kb. 8,7 óra, minimálbéres munkáltatói költséggel kb. 18 200 Ft havonta. A nagyobb haszon az elmaradó elírás és a hiába bejövő sofőr."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Mennyibe kerül a partner-e-mailek bekötése?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Partnerenként eltér, ezért a feladat megismerése után egyedi ajánlatot adunk, előre egyeztetett áron. A foglalórendszer a PEAK Booking csomaggal 59 000 Ft + áfa havonta, 149 000 Ft + áfa bevezetési díjjal indul."
+     }
+    }
+   ]
+  }
+ ]
+}
+</script>
+</head>
+<body>
+<nav>
+  <div class="wrap nav-in">
+    <a class="logo logo-nav" href="/" aria-label="Peak AI">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 110" role="img">
+        <g transform="translate(0,15)">
+          <polygon points="20,72 60,6 100,72" fill="#0B0E13"/>
+          <polygon points="0,72 28,32 56,72" fill="#0B0E13" opacity="0.55"/>
+          <polygon points="62,72 90,38 118,72" fill="#0B0E13" opacity="0.75"/>
+          <rect x="0" y="72" width="120" height="2" fill="#0B0E13" opacity="0.9"/>
+        </g>
+        <text x="170" y="80" font-family="Space Grotesk, system-ui, sans-serif" font-weight="600" font-size="72" letter-spacing="-2" fill="#0B0E13">Peak</text>
+        <text x="354" y="80" font-family="Space Grotesk, system-ui, sans-serif" font-weight="300" font-style="italic" font-size="72" letter-spacing="-2" fill="#1FAEA8"> AI</text>
+      </svg>
+    </a>
+    <div class="nav-links">
+      <a href="/#hogyan">Hogyan működik</a>
+      <a href="/#tudas">Mit tud</a>
+      <a href="/#csomagok">Csomagok</a>
+      <a href="/#kinek">Kinek</a>
+      <a href="/blog/" aria-current="page">Blog</a>
+      <a href="/kalkulator/">Kalkulátor</a>
+    </div>
+    <a class="btn btn-sm" href="/#kapcsolat">Demót kérek</a>
+  </div>
+</nav>
+<article class="article">
+  <p class="breadcrumb"><a href="/">Peak AI</a> › <a href="/blog/">Blog</a> › Flottás abroncsértesítők automatikus feldolgozása</p>
+  <h1>Hogyan értesüljön a gumiszerviz automatikusan, ha egy flottakezelő abroncsot küld egy ügyfélnek?</h1>
+  <p class="post-meta" style="margin:18px 0 30px">2026. november 16. · 8 perc olvasás</p>
+  <div class="answer">
+    <p class="post-meta">Rövid válasz</p>
+    <p>Úgy, hogy a flottakezelők és abroncsszállítók értesítő e-mailjei <strong>egy közös, erre szolgáló címre érkeznek</strong>, a rendszer pedig minden levélből kiolvassa a rendszámot, a partnert, a darabszámot, a méretet, a márkát és a várható érkezést, majd magától létrehozza a rendszámhoz kötött <strong>„Várjuk” sort</strong>, és ha van már foglalás erre a rendszámra, mellé is kiírja. Ha egy kötelező adat hiányzik vagy ellentmondásos, a rendszer nem tippel, hanem <strong>a pultnak jelez</strong>. Modellszámítás: havi 130 értesítőnél, levelenként 4 perc kézi átírással ez kb. 8,7 óra, minimálbéres munkáltatói költséggel <strong>kb. 18 200 Ft havonta</strong> — a nagyobb nyereség az elmaradó elírás és a sofőr, aki nem jön be hiába.</p>
+  </div>
+
+  <h2>Honnan tudja meg ma egy gumiszerviz, hogy abroncs érkezik?</h2>
+  <p>Leggyakrabban egy e-mailből, amely valamelyik kolléga postafiókjába fut be, és onnan kézzel kerül át egy füzetbe, táblázatba vagy a foglalási rendszerbe.</p>
+  <p>A flottás abroncsot nem a sofőr hozza: a flottakezelő vagy a partnercég rendeli meg, és a szállító közvetlenül a szervizbe küldi. Erről a szerviz jellemzően négyféleképpen értesül: értesítő e-mailből, a partner portáljáról, a csomaghoz csatolt szállítólevélből, vagy telefonon. Ezek közül az e-mail írásos, előre érkezik és géppel olvasható, ezért erre érdemes építeni.</p>
+  <p>A gond nem az, hogy nincs információ, hanem hogy szétszórva van. Ha az értesítő a pultos saját postafiókjába érkezik, a kolléga szabadsága alatt senki nem látja. A szezon csúcsán pedig egy napi 15–20 értesítős postafiókban könnyen elsikkad egy levél.</p>
+  <p>Hogy a beérkezett szettet milyen állapotokkal érdemes nyilvántartani (Várjuk → Megérkezett → Felszerelve), azt a <a href="/blog/flottas-abroncsok-nyomon-kovetese-gumiszerviz/" style="color:var(--peak-accent-deep);text-decoration:none">flottás abroncsok nyomon követéséről szóló cikkünkben</a> írtuk le. Ez a cikk a lánc első szeméről szól: hogyan jön létre automatikusan a „Várjuk” sor.</p>
+
+  <h2>Melyik e-mail-címre érkezzenek a partnerek értesítői?</h2>
+  <p>Egy közös, csak erre használt címre (például abroncs@<em>szerviz-domain</em>.hu), és nem egy kolléga személyes postafiókjába.</p>
+  <p>Ennek három oka van. A közös cím nem függ attól, ki van szabadságon. A feldolgozó rendszer csak ezt a postafiókot olvassa, a kollégák személyes levelezését nem. És a partnereknek egyszer kell megadni, utána nem változik, akkor sem, ha a pultos személye igen.</p>
+  <p>Ha a partnereket nem akarja új címre átszoktatni, a meglévő postafiókban szűrővel is megoldható: Gmailben egy szűrő a megadott feladótól vagy tárgyszótól érkező leveleket automatikusan továbbíthatja egy másik címre. A Google súgója szerint ehhez a továbbítási címet előbb meg kell erősíteni egy oda küldött ellenőrző linkkel, és ha csak bizonyos leveleket akar továbbítani, az általános automatikus továbbítást ki kell kapcsolni, és szűrőt kell beállítani.</p>
+
+  <h2>Milyen adatokat kell kiolvasni egy értesítő e-mailből?</h2>
+  <p>Hat adatot: rendszám, partner, darabszám, méret, márka és várható érkezés — plusz, ha van, a partner saját hivatkozási száma.</p>
+  <div class="tbl-wrap">
+  <table>
+    <thead>
+      <tr><th>Adat</th><th>Hol szokott lenni</th><th>Ha hiányzik vagy kétes</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><b>Rendszám</b></td><td>Tárgy vagy a levél törzse, táblázatban</td><td>Nem rögzít, pultos jelzés — ez a párosítás kulcsa</td></tr>
+      <tr><td><b>Partner</b></td><td>A feladó címe, aláírás</td><td>Ismeretlen feladónál pultos jelzés, nem automatikus sor</td></tr>
+      <tr><td><b>Darabszám</b></td><td>Tételsor, „4 db”</td><td>Rögzít, de megjegyzéssel jelöli, hogy ellenőrizni kell</td></tr>
+      <tr><td><b>Méret</b></td><td>Pl. 205/55 R16 formátumban</td><td>Rögzít megjegyzéssel; átvételkor kell összevetni</td></tr>
+      <tr><td><b>Márka, mintázat</b></td><td>Tételsor</td><td>Rögzít megjegyzéssel</td></tr>
+      <tr><td><b>Várható érkezés</b></td><td>Szállítási dátum, „holnap”, „jövő héten”</td><td>Dátum nélkül is rögzíthető, a lista tetejére kerül</td></tr>
+      <tr><td><b>Hivatkozási szám</b></td><td>Rendelés- vagy szállításazonosító</td><td>Nem kötelező, de ezzel ismerhető fel a módosítás</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2>Mikor ne rögzítsen a rendszer automatikusan?</h2>
+  <p>Minden olyan esetben, amikor a levélből nem egyértelmű, melyik autóhoz tartozik a szett — ilyenkor a pult kap jelzést, és ember dönt.</p>
+  <ul>
+    <li><strong>Nincs rendszám</strong>, vagy a talált karaktersor nem felel meg a rendszám-formátumnak (elgépelés, hiányzó karakter).</li>
+    <li><strong>Több rendszám egy levélben</strong>, és a tételsorokból nem derül ki, melyik szett melyik autóé.</li>
+    <li><strong>Ismeretlen feladó</strong>: új partner, vagy egy ismert partner új címről ír.</li>
+    <li><strong>Ismeretlen formátum</strong>: a partner megváltoztatta a levélsablonját, vagy az adatok csak egy beszkennelt mellékletben vannak.</li>
+    <li><strong>Ellentmondás</strong>: ugyanarra a rendszámra már van nyitott „Várjuk” sor más mérettel.</li>
+  </ul>
+  <p>A pultos jelzésben ne csak az álljon, hogy „hiba történt”, hanem az is, mi hiányzik, és egy kattintással nyíljon meg az eredeti levél. Így a pultos egy percen belül dönt: kiegészíti és rögzíti, vagy visszaír a partnernek. A szabály egyszerű: <strong>egy rossz rendszámra rögzített szett több kárt okoz, mint egy kézzel beírt sor</strong>, mert a hiba csak akkor derül ki, amikor a sofőr már az emelő mellett áll.</p>
+  <p>Ezt építjük: egy magyar gumiszerviznél élesben működik, hogy a partnerek értesítő e-mailjeit a rendszer automatikusan feldolgozza, a flottás abroncsokat rendszám szerint kereshetően, darabszámmal, mérettel és márkával veszi nyilvántartásba, bizonytalan esetben pedig a pultnak jelez.</p>
+
+  <h2>Mi történjen, ha a partner módosítja vagy visszavonja a szállítást?</h2>
+  <p>A meglévő sor frissüljön, ne jöjjön létre egy második — ehhez a partner hivatkozási számát vagy a rendszám és partner párosát kell kulcsként használni.</p>
+  <p>Gyakori, hogy a partner pontosít („mégis 2 db”, „a szállítás csúszik keddre”), vagy ugyanazt az értesítőt kétszer küldi el. Ha a rendszer minden levélből új sort csinál, a pultos két „Várjuk” sort lát egy autóra, és nem tudja, melyik érvényes. A jó megoldás: azonos hivatkozási számnál a régi sor frissül, és a változás bekerül a megjegyzésbe dátummal. Ha a levélben „lemondás” vagy „sztornó” szerepel, a sor ne törlődjön magától, hanem kapjon jelzést a pultnál — egy már megérkezett szettet nem lehet e-mailből visszavonni.</p>
+
+  <h2>Hogyan lesz az értesítésből foglalás vagy teendő?</h2>
+  <p>A rendszám a közös kulcs: ha van már foglalás erre a rendszámra, a „Várjuk” állapot megjelenik mellette; ha nincs, a sor a pult teendőlistájára kerül.</p>
+  <p>Két eset fordul elő. Ha a sofőr már foglalt időpontot, a pultos a napi listán látja, hogy a szett még nem érkezett meg, és még előző nap szólhat a partnernek. Ha még nincs foglalás, a szett megérkezésekor érdemes a sofőrt vagy a flottakezelőt értesíteni, hogy foglaljon. A flottás foglalások ugyanabba a naptárba futhatnak, mint a lakossági időpontok — erről a <a href="/blog/flottas-partnerceg-foglalasok-gumiszerviz-naptar/" style="color:var(--peak-accent-deep);text-decoration:none">flottás partnercégek foglalásairól szóló cikkünkben</a> írtunk.</p>
+  <p>A sofőrök jelentős része ilyenkor telefonon jelentkezik, gyakran munkaidőben, amikor a pult a szereléssel van elfoglalva. Ha a hívásokat sem győzi a pult, egy telefonos AI-asszisztens a rendszám alapján ugyanebbe a naptárba foglal; hogy ez mennyibe kerül és mikor térül meg, az <a href="/blog/ai-telefonos-recepcios-mennyibe-kerul/" style="color:var(--peak-accent-deep);text-decoration:none">AI telefonos recepciós áráról szóló cikkünkben</a> számoltuk ki.</p>
+
+  <h2>Mennyi munkaidőt takarít meg az automatikus feldolgozás?</h2>
+  <p>Modellszámításunkban szezonhónapban kb. 8,7 órát, ami minimálbéres munkáltatói költséggel kb. 18 000 Ft havonta — a nagyobb tétel a hibák elmaradása.</p>
+  <p class="note"><strong>Modellszámítás — kézi átírás.</strong> Feltevések: szezonhónapban 130 partnerértesítő érkezik (heti kb. 30); egy levél megnyitása, kiolvasása, beírása és a foglalással való összevetése átlagosan 4 perc. 130 × 4 = 520 perc, azaz kb. 8,7 óra havonta. A 2026-os bruttó minimálbér 322 800 Ft, 13% szociális hozzájárulási adóval a munkáltatói költség 364 764 Ft; 174 munkaórával ez kb. 2 096 Ft óránként. 8,7 × 2 096 ≈ <strong>18 200 Ft havonta</strong>. Ha a 130 kézi beírásból 2% hibás (rossz rendszám, elírt méret), az havi 2–3 eset, amikor a sofőr bejön, és a szett nincs meg vagy nem az övé. A számok szemléltetők, nem konkrét vállalkozás mért adatai.</p>
+  <p>Az automatizálásnál sem nulla a pult munkája: a bizonytalan leveleket továbbra is embernek kell eldöntenie. A különbség az, hogy a pultos csak a kétes eseteket látja, nem mind a 130 levelet, és a döntéshez minden adat egy képernyőn van.</p>
+
+  <h2>Mire figyeljen adatvédelmi szempontból?</h2>
+  <p>Arra, hogy az értesítőkben gyakran a sofőr neve és telefonszáma is szerepel, ez személyes adat, ezért csak azt rögzítse, ami a szereléshez kell, és a feldolgozó szolgáltatóval kössön írásos adatfeldolgozói szerződést.</p>
+  <p>A GDPR 4. cikke szerint személyes adat minden olyan információ, amely azonosított vagy azonosítható természetes személyre vonatkozik; egy sofőr neve és telefonszáma ilyen. Ha a feldolgozást külső szolgáltató végzi a szerviz megbízásából, a 28. cikk szerint a viszonyt szerződésben kell rendezni, amely elektronikus formában is lehet írásos. Gyakorlati szabályok:</p>
+  <ul>
+    <li>A rendszer <strong>csak a közös abroncs-postafiókot</strong> olvassa, a személyes levelezést nem.</li>
+    <li>Csak a szereléshez szükséges adat kerüljön a nyilvántartásba; a levél többi része maradjon a postafiókban.</li>
+  </ul>
+
+  <h2>Hogyan vezethető be lépésről lépésre?</h2>
+  <p>Öt lépésben, és az első két hétben a kézi ellenőrzés párhuzamosan fut az automatikával.</p>
+  <ol>
+    <li><strong>Partnerlista.</strong> Kik küldenek abroncsot, és milyen címről? Ez adja az ismert feladók listáját.</li>
+    <li><strong>Mintalevelek.</strong> Partnerenként néhány valódi értesítő az elmúlt szezonból — ezekből látszik, hol van a rendszám, a méret és a hivatkozási szám.</li>
+    <li><strong>Közös cím vagy szűrő.</strong> Az értesítők egy helyre futnak be; a partnereket egy rövid levélben értesíti az új címről, vagy szűrővel továbbítja őket.</li>
+    <li><strong>Párhuzamos próba.</strong> A rendszer létrehozza a sorokat, a pultos pedig két hétig összeveti a levelekkel. Ami nem egyezik, abból finomítás lesz.</li>
+    <li><strong>Élesítés.</strong> Innentől a pultos csak a jelzett eseteket nézi. Ha egy partner sablont vált, a levelei bizonytalanként jelennek meg, amíg a feldolgozást hozzá nem igazítjuk.</li>
+  </ol>
+
+  <h2>Mennyibe kerül egy ilyen rendszer?</h2>
+  <p>A foglalórendszer a nyilvános árlistán szerepel, a partner-értesítők bekötése partnerenként eltér, ezért arra a feladat megismerése után egyedi ajánlatot adunk, előre egyeztetett áron, nem óradíjban.</p>
+  <p>A Peak AI nyilvános árlistája szerint (a főoldal <a href="/#csomagok" style="color:var(--peak-accent-deep);text-decoration:none">Csomagok</a> része, 2026. novemberi állapot):</p>
+  <ul>
+    <li><strong>PEAK Booking — 59 000 Ft / hó + áfa.</strong> Saját foglalási rendszer telefonos AI-asszisztens nélkül: rendszám és szerelői megjegyzés mező, munkaállapot-tábla nyomtatható napi listával, adatbázis-szintű ütközésvédelem, e-mailes visszaigazolás és emlékeztető. Partnercég-integráció (API) igény esetén, egyedi ajánlat alapján. Egyszeri bevezetési díj: 149 000 Ft + áfa.</li>
+    <li><strong>PEAK AI Reception — 179 000 Ft / hó + áfa.</strong> Foglalási rendszer és telefonos AI-asszisztens, 300 perc / hó, kereten felül 120 Ft + áfa / perc. Egyszeri bevezetési díj: 249 000 Ft + áfa.</li>
+    <li><strong>PEAK Pro — 299 000 Ft / hó + áfa, 2 forrásig</strong> (telephely vagy partnercég), 800 perc / hó a két forrásra együtt; minden további forrás +59 000 Ft + áfa / hó (+400 perc). Flottás ügyfelek kezelése, forrásonkénti riportok. Egyszeri bevezetési díj: 399 000 Ft + áfa.</li>
+  </ul>
+  <p>Mindhárom csomag 12 hónapos szerződés, 14 napos díjmentes próbaüzemmel: ha a 14. napig írásban lemondja, nem fizet semmit, a bevezetési díj a 15. naptól esedékes.</p>
+
+  <h2>Gyakori kérdések</h2>
+  <div class="faq">
+    <div class="faq-item">
+      <h3>Lehet automatikusan rögzíteni a flottakezelők abroncs-értesítőit?</h3>
+      <p>Igen, ha az értesítők egy közös címre érkeznek, és a partner állandó formátumban küldi őket. A rendszer kiolvassa a rendszámot, a partnert, a darabszámot, a méretet és a márkát, és létrehozza a „Várjuk” sort; bizonytalan esetben a pultnak jelez.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Mi történik, ha az e-mailben nincs rendszám?</h3>
+      <p>A rendszer nem rögzít tippet, hanem jelzést küld a pultnak az eredeti levéllel és azzal, hogy mi hiányzik. A pultos kiegészíti, vagy visszaír a partnernek.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Át kell szoktatni a partnereket egy új e-mail-címre?</h3>
+      <p>Nem feltétlenül. A meglévő postafiókban egy szűrő is továbbíthatja a megadott partnerektől érkező leveleket a feldolgozó címre; Gmailben ehhez a továbbítási címet előbb meg kell erősíteni.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Mennyi munkát takarít meg?</h3>
+      <p>Modellszámítás: havi 130 értesítőnél, levelenként 4 perc kézi átírással kb. 8,7 óra, minimálbéres munkáltatói költséggel kb. 18 200 Ft havonta. A nagyobb haszon az elmaradó elírás és a hiába bejövő sofőr.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Mennyibe kerül a partner-e-mailek bekötése?</h3>
+      <p>Partnerenként eltér, ezért a feladat megismerése után egyedi ajánlatot adunk, előre egyeztetett áron. A foglalórendszer a PEAK Booking csomaggal 59 000 Ft + áfa havonta, 149 000 Ft + áfa bevezetési díjjal indul.</p>
+    </div>
+  </div>
+
+  <h2>Források</h2>
+  <ul class="note" style="padding-left:20px">
+    <li>Google Gmail súgó: <a href="https://support.google.com/mail/answer/10957" rel="nofollow noopener" target="_blank" style="color:var(--peak-accent-deep);text-decoration:none">Gmail-üzenetek automatikus továbbítása másik fiókba</a> — szűrős továbbítás, a cím megerősítése.</li>
+    <li>Forvis Mazars: <a href="https://www.forvismazars.com/hu/hu/hirek/tudastar/minimalber-2026-brutto-es-netto-oesszegek" rel="nofollow noopener" target="_blank" style="color:var(--peak-accent-deep);text-decoration:none">A minimálbér és garantált bérminimum változása 2026-ban</a> — 322 800 Ft bruttó minimálbér, 13% szocho.</li>
+    <li>EUR-Lex: <a href="https://eur-lex.europa.eu/legal-content/HU/TXT/?uri=CELEX:32016R0679" rel="nofollow noopener" target="_blank" style="color:var(--peak-accent-deep);text-decoration:none">(EU) 2016/679 rendelet (GDPR)</a> — 4. cikk (személyes adat), 28. cikk (adatfeldolgozó).</li>
+    <li>Peak AI árlista: <a href="/#csomagok" style="color:var(--peak-accent-deep);text-decoration:none">Csomagok</a> (2026. novemberi állapot).</li>
+  </ul>
+
+    <div class="author">
+      <div class="author-mark">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 80" role="img" aria-label="Peak AI">
+          <polygon points="20,72 60,6 100,72" fill="#1FAEA8"/>
+          <polygon points="0,72 28,32 56,72" fill="#1FAEA8" opacity="0.55"/>
+          <polygon points="62,72 90,38 118,72" fill="#1FAEA8" opacity="0.75"/>
+          <rect x="0" y="72" width="120" height="2" fill="#1FAEA8" opacity="0.9"/>
+        </svg>
+      </div>
+      <div>
+        <h4>Dr. Révész Barnabás</h4>
+        <p>
+          A Peak AI alapítója. Nukleáris medicina szakorvos, egészségügyi közgazdasági
+          végzettséggel — szabályozott iparágban szerzett tapasztalattal épít magyar nyelvű
+          AI telefonos asszisztenseket kis- és középvállalkozásoknak.
+          <a href="mailto:barnabas@peakai.hu" style="color:var(--peak-accent-deep);text-decoration:none">barnabas@peakai.hu</a>
+        </p>
+      </div>
+    </div>
+</article>
+  <div class="next-up">
+    <p class="post-meta">Következő cikk</p>
+    <a class="post-card" href="/blog/flottas-abroncsok-nyomon-kovetese-gumiszerviz/">
+      <h2>Hogyan lehet nyomon követni a flottás ügyfelek beérkező abroncsait egy gumiszervizben?</h2>
+      <p>Várjuk → Megérkezett → Felszerelve: a három állapot, a rögzítendő adatok és a kézi követés munkaidő-költsége.</p>
+      <span class="post-more">Elolvasom →</span>
+    </a>
+  </div>
+  <div class="wrap" style="margin-top:56px">
+    <div class="cta on-dark">
+      <h2>Nézzük meg élőben, az Ön cégére szabva.</h2>
+      <p>
+        Megmutatjuk, hogyan hangzana az asszisztens az Ön vállalkozásának nevében, és
+        közben látja, ahogy a lefoglalt időpont megjelenik a naptárban. 15 perc az egész,
+        döntés és szerződés nélkül.
+      </p>
+      <a class="btn" href="/#kapcsolat">Kérek egy demót</a>
+    </div>
+  </div>
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="logo logo-foot" href="/" aria-label="Peak AI — Reach higher ground">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 180" role="img">
+            <g transform="translate(0,20)">
+              <polygon points="20,72 60,6 100,72" fill="#5DE8E2"/>
+              <polygon points="0,72 28,32 56,72" fill="#5DE8E2" opacity="0.55"/>
+              <polygon points="62,72 90,38 118,72" fill="#5DE8E2" opacity="0.75"/>
+              <rect x="0" y="72" width="120" height="2" fill="#5DE8E2" opacity="0.9"/>
+            </g>
+            <text x="170" y="85" font-family="Space Grotesk, system-ui, sans-serif" font-weight="600" font-size="72" letter-spacing="-2" fill="#F4F6FA">Peak</text>
+            <text x="354" y="85" font-family="Space Grotesk, system-ui, sans-serif" font-weight="300" font-style="italic" font-size="72" letter-spacing="-2" fill="#5DE8E2"> AI</text>
+            <line x1="170" y1="115" x2="220" y2="115" stroke="#5DE8E2" stroke-width="2"/>
+            <text x="232" y="121" font-family="JetBrains Mono, ui-monospace, monospace" font-weight="500" font-size="16" letter-spacing="3" fill="#A8B1BD">REACH HIGHER GROUND</text>
+          </svg>
+        </a>
+        <p style="margin:20px 0 0;color:var(--peak-mist)">AI telefonos asszisztens<br>kis- és középvállalkozásoknak.</p>
+      </div>
+      <div>
+        <span class="foot-h">Kapcsolat</span>
+        <p style="margin:0">
+          <a href="mailto:barnabas@peakai.hu">barnabas@peakai.hu</a><br>
+          Magyarország
+        </p>
+      </div>
+      <div>
+        <span class="foot-h">Oldalak</span>
+        <p style="margin:0">
+          <a href="/#hogyan">Hogyan működik</a><br>
+          <a href="/#csomagok">Csomagok</a><br>
+          <a href="/blog/">Blog</a><br>
+          <a href="/#kapcsolat">Kapcsolat</a>
+        </p>
+      </div>
+    </div>
+    <p class="tiny">
+      © 2026 Peak AI ·
+      A bruttó árak 27% áfával számolva, tájékoztató jelleggel. ·
+      A mintaszámítások szemléltető modellek, nem konkrét vállalkozás mért adatai.
+    </p>
+  </div>
+</footer>
+</body>
+</html>
