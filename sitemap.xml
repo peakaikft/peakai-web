@@ -8,7 +8,7 @@
   </url>
   <url>
     <loc>https://peakai.hu/blog/</loc>
-    <lastmod>2026-11-11</lastmod>
+    <lastmod>2026-11-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -116,7 +116,7 @@
   </url>
   <url>
     <loc>https://peakai.hu/blog/flottas-abroncsok-nyomon-kovetese-gumiszerviz/</loc>
-    <lastmod>2026-10-30</lastmod>
+    <lastmod>2026-11-16</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -135,6 +135,12 @@
   <url>
     <loc>https://peakai.hu/blog/szezonalis-gumicsere-flottas-es-lakossagi-ugyfelek-kapacitas/</loc>
     <lastmod>2026-11-04</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://peakai.hu/blog/flottakezelo-abroncs-ertesites-automatikus-feldolgozas-gumiszerviz/</loc>
+    <lastmod>2026-11-16</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
