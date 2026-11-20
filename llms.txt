@@ -5,6 +5,7 @@
 ## Fő oldalak
 - [Főoldal, szolgáltatások, csomagok és árak](https://peakai.hu/): csomagok: PEAK Booking 59 000 Ft + áfa/hó, PEAK AI Reception 179 000 Ft + áfa/hó, PEAK Pro 299 000 Ft + áfa/hó
 - [Gyakori kérdések](https://peakai.hu/#gyik)
+- [PEAK Hirdetés – hirdetéskezelés a foglalóhoz](https://peakai.hu/hirdetes/): beállítás, mérés és heti jelentés a hirdetésből jött foglalásokról; 59 000 Ft + áfa/hó, bevezetési díj nélkül
 - [Megtérülés-kalkulátor](https://peakai.hu/kalkulator/)
 - [Blog](https://peakai.hu/blog/)
 
