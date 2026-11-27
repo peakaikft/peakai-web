@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="hu">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="/assets/consent.js" defer></script>
+<title>Hogyan csökkenthető a meg nem jelenések száma egy gumiszervizben? | Peak AI</title>
+<meta name="description" content="Azonnali visszaigazolás, emlékeztető navigációs gombbal, egy kattintásos módosítás és lemondás, újra foglalható időpont: így csökkenthető a meg nem jelenések száma egy gumiszervizben. Forrásolt adatokkal, modellszámítással.">
+<meta name="theme-color" content="#0B0E13">
+<link rel="canonical" href="https://peakai.hu/blog/meg-nem-jelenesek-csokkentese-gumiszerviz/">
+<meta property="og:title" content="Hogyan csökkenthető a meg nem jelenések száma egy gumiszervizben?">
+<meta property="og:description" content="Azonnali visszaigazolás, emlékeztető navigációs gombbal, egy kattintásos módosítás és lemondás, újra foglalható időpont: így csökkenthető a meg nem jelenések száma egy gumiszervizben. Forrásolt adatokkal, modellszámítással.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://peakai.hu/blog/meg-nem-jelenesek-csokkentese-gumiszerviz/">
+<meta property="og:locale" content="hu_HU">
+<meta property="og:image" content="https://peakai.hu/assets/og/blog.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://peakai.hu/assets/og/blog.png">
+<meta property="og:site_name" content="Peak AI">
+<meta property="article:published_time" content="2026-11-27">
+<meta name="author" content="Dr. Révész Barnabás">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 80'%3E%3Cpolygon points='20,72 60,6 100,72' fill='%235DE8E2'/%3E%3Cpolygon points='0,72 28,32 56,72' fill='%235DE8E2' opacity='.55'/%3E%3Cpolygon points='62,72 90,38 118,72' fill='%235DE8E2' opacity='.75'/%3E%3Crect x='0' y='72' width='120' height='2' fill='%235DE8E2' opacity='.9'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/blog/style.css">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "Article",
+   "headline": "Hogyan csökkenthető a meg nem jelenések száma egy gumiszervizben?",
+   "description": "Azonnali visszaigazolás, emlékeztető navigációs gombbal, egy kattintásos módosítás és lemondás, újra foglalható időpont: így csökkenthető a meg nem jelenések száma egy gumiszervizben. Forrásolt adatokkal, modellszámítással.",
+   "inLanguage": "hu-HU",
+   "datePublished": "2026-11-27",
+   "dateModified": "2026-11-27",
+   "image": "https://peakai.hu/assets/og/blog.png",
+   "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://peakai.hu/blog/meg-nem-jelenesek-csokkentese-gumiszerviz/"
+   },
+   "author": {
+    "@type": "Person",
+    "name": "Dr. Révész Barnabás",
+    "jobTitle": "alapító, Peak AI",
+    "email": "barnabas@peakai.hu"
+   },
+   "publisher": {
+    "@type": "Organization",
+    "name": "Peak AI",
+    "url": "https://peakai.hu/"
+   }
+  },
+  {
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Peak AI",
+     "item": "https://peakai.hu/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "Blog",
+     "item": "https://peakai.hu/blog/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 3,
+     "name": "Kevesebb meg nem jelenés a gumiszervizben",
+     "item": "https://peakai.hu/blog/meg-nem-jelenesek-csokkentese-gumiszerviz/"
+    }
+   ]
+  },
+  {
+   "@type": "FAQPage",
+   "mainEntity": [
+    {
+     "@type": "Question",
+     "name": "Mikor menjen ki az emlékeztető a gumicsere előtt?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Röviddel az időpont előtt, hogy az ügyfél még időben lemondhassa vagy módosíthassa, és a hely újra foglalható legyen. A visszaigazolás pedig azonnal, a foglalás pillanatában menjen ki."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Elég-e az e-mailes emlékeztető, vagy SMS kell?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "A Cochrane 2013-as áttekintése SMS-es emlékeztetőket vizsgált egészségügyi időpontoknál (67,8% helyett 78,6% megjelenés). Gumiszervizes e-mailre nincs ilyen mért adat; a lényeg, hogy az emlékeztető minden foglalásnál automatikusan kimenjen, és legyen benne módosító link és navigációs gomb."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Mi történik a lemondott időponttal?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Jó foglalórendszerben azonnal újra foglalhatóvá válik a weboldalon, a pultnál és telefonon is, a szerviz pedig értesítést kap, így szezonban a pultos felhívhatja azt, aki korábbi időpontot kért."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Kérjen-e előleget a gumiszerviz a szezonális cserére?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Lakossági szettcserénél általában nem ez az első lépés, mert online fizetést és visszatérítési szabályokat igényel, és elriaszthat. Először az emlékeztetőt és az egyszerű lemondást érdemes bevezetni és mérni; előre rendelt abroncsnál vagy felnijavításnál lehet indokolt."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Mennyibe kerül egy emlékeztetőt küldő foglalórendszer?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "A Peak AI árlistája szerint a PEAK Booking 59 000 Ft + áfa havonta, ebben benne van az e-mailes visszaigazolás és az automata emlékeztető. Bevezetési díj nincs, bármikor lemondható (30 napos felmondási idővel), 14 napos díjmentes próbaüzemmel."
+     }
+    }
+   ]
+  }
+ ]
+}
+</script>
+</head>
+<body>
+<nav>
+  <div class="wrap nav-in">
+    <a class="logo logo-nav" href="/" aria-label="Peak AI">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 110" role="img">
+        <g transform="translate(0,15)">
+          <polygon points="20,72 60,6 100,72" fill="#0B0E13"/>
+          <polygon points="0,72 28,32 56,72" fill="#0B0E13" opacity="0.55"/>
+          <polygon points="62,72 90,38 118,72" fill="#0B0E13" opacity="0.75"/>
+          <rect x="0" y="72" width="120" height="2" fill="#0B0E13" opacity="0.9"/>
+        </g>
+        <text x="170" y="80" font-family="Space Grotesk, system-ui, sans-serif" font-weight="600" font-size="72" letter-spacing="-2" fill="#0B0E13">Peak</text>
+        <text x="354" y="80" font-family="Space Grotesk, system-ui, sans-serif" font-weight="300" font-style="italic" font-size="72" letter-spacing="-2" fill="#1FAEA8"> AI</text>
+      </svg>
+    </a>
+    <div class="nav-links">
+      <a href="/#hogyan">Hogyan működik</a>
+      <a href="/#tudas">Mit tud</a>
+      <a href="/#csomagok">Csomagok</a>
+      <a href="/#kinek">Kinek</a>
+      <a href="/blog/" aria-current="page">Blog</a>
+      <a href="/kalkulator/">Kalkulátor</a>
+    </div>
+    <a class="btn btn-sm" href="/#kapcsolat">Demót kérek</a>
+  </div>
+</nav>
+<article class="article">
+  <p class="breadcrumb"><a href="/">Peak AI</a> › <a href="/blog/">Blog</a> › Kevesebb meg nem jelenés a gumiszervizben</p>
+  <h1>Hogyan csökkenthető a meg nem jelenések száma egy gumiszervizben?</h1>
+  <p class="post-meta" style="margin:18px 0 30px">2026. november 27. · 8 perc olvasás</p>
+  <div class="answer">
+    <p class="post-meta">Rövid válasz</p>
+    <p>Három dolog együtt csökkenti a legtöbbet: <strong>azonnali visszaigazolás</strong> a foglaláskor, <strong>automatikus emlékeztető röviddel az időpont előtt</strong> navigációs gombbal, és egy <strong>egy kattintásos módosítás vagy lemondás</strong>, amelytől a felszabaduló időpont azonnal újra foglalható. Egy Cochrane-áttekintés (7 vizsgálat, 5841 résztvevő, egészségügyi időpontok) szerint emlékeztetővel a megjelenési arány <strong>67,8%-ról 78,6%-ra</strong> nőtt. Modellszámításunkban havi 300 foglalásnál 5% meg nem jelenés <strong>15 üres időpont, kb. 240 000 Ft</strong> kiesett bevétel; ha ezek fele időben lemond, és a helyet más foglalja el, az <strong>kb. 120 000 Ft havonta</strong>.</p>
+  </div>
+
+  <h2>Miért nem jelennek meg az ügyfelek a lefoglalt gumicserén?</h2>
+  <p>Többnyire nem szándékosan: elfelejtik, más időpontot találtak, vagy nem tudják egyszerűen lemondani, ezért inkább nem szólnak.</p>
+  <p>A szezonális gumicserét gyakran hetekkel előre foglalják. A JóSzaki 2026-os árösszesítője szerint a tavaszi és őszi csúcsidőszakban 1–2 hetes várakozás is előfordulhat, vagyis a foglalás és az időpont között bőven van idő elfelejteni. Ilyenkor jellemző az is, hogy valaki több helyre telefonál, és ahol hamarabb kap helyet, oda megy — a másik foglalást pedig nem mondja le, mert ahhoz újra fel kellene hívnia a szervizt, amely napközben ritkán veszi fel elsőre.</p>
+  <p>A meg nem jelenés tehát nagyrészt folyamatprobléma, nem ügyfélprobléma. Ha a lemondás egy kattintás, és az ügyfelet a megfelelő pillanatban emlékeztetik, a „csendes” kimaradásokból időben jelzett lemondás lesz, és a hely újra eladható.</p>
+
+  <h2>Mennyibe kerül egy gumiszerviznek egy kimaradt időpont?</h2>
+  <p>Egy kimaradt szettcsere nagyjából egy szettcsere árának megfelelő kiesett bevétel, szezonban pedig ráadásul egy másik ügyféltől elvett hely.</p>
+  <p>A Mandiner 2025. októberi összeállítása szerint a gumicsere átlagosan 15–20 ezer forint között alakult, SUV-nál akár 25 ezer forint is lehet. A JóSzaki 2026-os, több szerviz árlistájából összesített táblázata egy komplett garnitúra cseréjét szereléssel és centírozással (személyautó, 4 db, 15–16") 14 000–18 000 Ft-ra, átlagosan 16 000 Ft-ra teszi.</p>
+  <p class="note"><strong>Modellszámítás — kiesett bevétel egy szezonhónapban.</strong> Feltevések: a szerviz egy szezonhónapban 300 lakossági időpontot ad ki (weboldalon, telefonon és a pultnál együtt); a foglalások 5%-a meg nem jelenés; egy szettcsere átlagos ára 16 000 Ft (JóSzaki 2026-os átlaga). 300 × 5% = <strong>15 üres időpont</strong>, 15 × 16 000 = <strong>240 000 Ft kiesett bevétel havonta</strong> (bevétel, nem fedezet). Ha az emlékeztető és az egyszerű lemondás miatt ezek fele (7–8 eset) legalább előző nap lemond, és szezonban — amikor 1–2 hét a várakozás — a helyet más elfoglalja, az kb. 7,5 × 16 000 = <strong>120 000 Ft havonta</strong>. Az 5%-os arány és a felére csökkenés szemléltető feltevés, nem mért adat; a saját arányát a foglalóból tudja kiolvasni: hány időpontnál maradt el a megjelenés.</p>
+
+  <h2>Mennyit számít egy emlékeztető üzenet?</h2>
+  <p>Kutatási adatok szerint sokat: egészségügyi időpontoknál az üzenetes emlékeztető mérhetően növeli a megjelenést.</p>
+  <p>A Cochrane 2013-as szisztematikus áttekintése (8 randomizált vizsgálat, 6615 résztvevő) szerint 7 vizsgálatban, 5841 résztvevőnél emlékeztető nélkül 67,8%, mobiltelefonos üzenetes emlékeztetővel 78,6% volt a megjelenés (relatív arány 1,14; 95% CI 1,03–1,26; közepes minőségű bizonyíték). Három vizsgálatban az üzenet ugyanolyan hatásos volt, mint a telefonhívásos emlékeztető (80,3%), két vizsgálatban pedig megjelenésenként 55–65%-kal olcsóbb.</p>
+  <p>Fontos a fenntartás: ezek orvosi időpontok és SMS-ek, nem gumiszervizes e-mailek, a szerzők szerint a bizonyíték alacsony–közepes minőségű. Az irány viszont egyértelmű, és a tanulság gumiszervizre is igaz: ha az emlékeztetőt nem a pultosnak kell telefonon elküldenie, hanem magától megy ki, akkor minden foglalásnál kimegy, a szezon legzsúfoltabb napján is.</p>
+
+  <h2>Mi legyen a visszaigazolásban és az emlékeztetőben?</h2>
+  <p>Minden, ami ahhoz kell, hogy az ügyfél pontosan odaérjen, vagy időben lemondja: időpont, munka, rendszám, cím navigációs gombbal és egy módosító link.</p>
+  <div class="tbl-wrap">
+  <table>
+    <thead>
+      <tr><th>Elem</th><th>Miért csökkenti a kimaradást</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><b>Időpont és munkatípus</b></td><td>Az ügyfél rögtön látja, ha rossz napot vagy munkát foglalt</td></tr>
+      <tr><td><b>Rendszám</b></td><td>Két autós családban kiderül, melyik autóval kell jönni</td></tr>
+      <tr><td><b>Navigációs gomb</b></td><td>Egy koppintással megnyílik a térkép, első alkalommal is odatalál</td></tr>
+      <tr><td><b>Módosítás / lemondás link</b></td><td>Telefonálás nélkül szólhat, ha mégsem jön — a hely felszabadul</td></tr>
+      <tr><td><b>Teendők</b></td><td>Pl. csavarzár kulcsát hozza, a tárolt garnitúrát a rendszám alapján előkészítik</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p>A szöveg legyen rövid és barátságos, a szerviz nevével és hangján. A visszaigazolás a foglalás pillanatában menjen ki, az emlékeztető röviddel az időpont előtt. Ezt építjük: a foglaló a visszaigazolást és az emlékeztetőt magától küldi navigációs gombbal, a levelek szövegét indulás előtt a szervizzel egyeztetjük, és egy magyar gumiszerviznél ez élesben működik.</p>
+
+  <h2>Hogyan segít, ha az ügyfél maga módosíthatja vagy lemondhatja az időpontot?</h2>
+  <p>Úgy, hogy a csendes kimaradásból időben jelzett lemondás lesz, és az üres hely újra foglalhatóvá válik, mielőtt a szerelő hiába várna.</p>
+  <p>Ha a lemondáshoz telefonálni kell, sokan nem telefonálnak — főleg, ha a vonal foglalt. Ha viszont az e-mailben ott a link, a módosítás egy perc. A mi foglalónkban ilyenkor az időpont azonnal újra foglalható lesz a weboldalon, a pultnál és telefonon is, a szerviz pedig e-mailt kap a lemondásról, így szezonban a pultos rögtön felhívhatja azt, aki korábban hamarabbi időpontot kért.</p>
+  <p>Aki mégis telefonon mondaná le, annak is legyen kit hívnia. A telefonos AI-asszisztens néhány csörgés után átveszi a nem fogadott hívást, és a foglalást telefonon is módosítja vagy lemondja, ugyanabban a naptárban; hogy ez havonta mennyibe kerül és mi van benne, azt <a href="/blog/ai-telefonos-recepcios-mennyibe-kerul/" style="color:var(--peak-accent-deep);text-decoration:none">az AI telefonos recepciós költségéről szóló cikkünkben</a> számoltuk végig.</p>
+
+  <h2>Kérjen-e foglalót vagy előleget egy gumiszerviz?</h2>
+  <p>Szezonális lakossági cserénél általában nem ez az első lépés: az emlékeztető és az egyszerű lemondás kevesebb súrlódással oldja meg a gond nagy részét.</p>
+  <p>Az előleg bevezetése online fizetést, visszatérítési szabályokat és ügyfélpanaszokat hoz magával, és elriaszthatja azokat, akik csak gyorsan foglalnának. Drágább, hosszabb vagy előre megrendelt munkáknál (például új abroncs rendelése, felnijavítás) más a helyzet: ott a kimaradt időpont mellett anyagköltség is lehet. Javasolt sorrend: először mérje a meg nem jelenéseket emlékeztetővel és egy kattintásos lemondással; ha utána is magas marad egy-egy munkatípusnál, ott érdemes szigorúbb feltételt bevezetni.</p>
+
+  <h2>Mi a helyzet a flottás ügyfelekkel és a be nem érkezett abroncsokkal?</h2>
+  <p>Flottás munkáknál a kimaradás gyakran nem az ügyfélen, hanem az abroncson múlik: ha a garnitúra nem érkezett meg, a sofőr hiába jön, és az időpont elveszik.</p>
+  <p>Ezért a flottás foglalást érdemes összekötni a beérkező abroncsok nyilvántartásával. Ha az abroncsok állapota (Várjuk → Megérkezett → Felszerelve) rendszám szerint látszik, a pultos az időpont előtt látja, melyik autóhoz nincs még meg a garnitúra, és még időben átteheti a foglalást. Hogy ez hogyan működik a partnerértesítők automatikus feldolgozásával, azt <a href="/blog/flottas-abroncsok-nyomon-kovetese-gumiszerviz/" style="color:var(--peak-accent-deep);text-decoration:none">a flottás abroncsok nyomon követéséről szóló cikkünkben</a> írtuk le.</p>
+
+  <h2>Hogyan mérje, hogy csökkent-e a meg nem jelenések száma?</h2>
+  <p>Egy számmal: a kiadott időpontok közül hánynál nem jelent meg az ügyfél, munkatípusonként és hetente.</p>
+  <ol>
+    <li><strong>Jegyezze fel a pultnál</strong>, ha valaki nem jött el — külön a lemondástól.</li>
+    <li><strong>Hasonlítsa össze</strong> a meg nem jelenések és a lemondások arányát az emlékeztető bevezetése előtt és után.</li>
+    <li><strong>Nézze munkatípusonként</strong>: ha egy munkánál (pl. gumitárolásból kiadás) magasabb, ott érdemes a szöveget vagy a teendőket pontosítani.</li>
+    <li><strong>Figyelje az újrafoglalást</strong>: hány lemondott hely telt be újra, mert ez a valódi nyereség.</li>
+  </ol>
+
+  <h2>Mennyibe kerül egy ilyen foglaló- és emlékeztetőrendszer?</h2>
+  <p>Az időpont-emlékeztető a Peak AI mindhárom csomagjában benne van, nem külön fizetendő szolgáltatás.</p>
+  <p>A nyilvános árlista szerint (a főoldal <a href="/#csomagok" style="color:var(--peak-accent-deep);text-decoration:none">Csomagok</a> része, 2026. novemberi állapot) a <strong>PEAK Booking</strong> 59 000 Ft + áfa havonta: saját domain és arculat, rendszám és szerelői megjegyzés mező, munkaállapot-tábla nyomtatható napi listával, adatbázis-szintű ütközésvédelem, e-mailes visszaigazolás és automata emlékeztető. A telefonos asszisztenssel együtt — amely telefonon is módosít és lemond — a <strong>PEAK AI Reception</strong> 179 000 Ft + áfa havonta, 300 perc / hó kerettel, kereten felül 120 Ft + áfa/perc. Bevezetési díj nincs, a szolgáltatás bármikor lemondható (30 napos felmondási idővel), és 14 napos díjmentes próbaüzemmel indul. A flottás partnercégek bekötése egyedi ajánlat alapján, előre egyeztetett áron történik.</p>
+  <p>A fenti modellszámítás szerint ha a meg nem jelenések fele helyett más ügyfél jön, az havi kb. 120 000 Ft — ez a feltevésektől függ, ezért érdemes a próbaüzem két hete alatt a saját számait megnézni. Ha kíváncsi, hogyan nézne ki ez az Ön szervizében, egy 10 perces bemutatón megmutatjuk.</p>
+
+  <h2>Gyakori kérdések</h2>
+  <div class="faq">
+    <div class="faq-item">
+      <h3>Mikor menjen ki az emlékeztető a gumicsere előtt?</h3>
+      <p>Röviddel az időpont előtt, hogy az ügyfél még időben lemondhassa vagy módosíthassa, és a hely újra foglalható legyen. A visszaigazolás pedig azonnal, a foglalás pillanatában menjen ki.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Elég-e az e-mailes emlékeztető, vagy SMS kell?</h3>
+      <p>A Cochrane 2013-as áttekintése SMS-es emlékeztetőket vizsgált egészségügyi időpontoknál (67,8% helyett 78,6% megjelenés). Gumiszervizes e-mailre nincs ilyen mért adat; a lényeg, hogy az emlékeztető minden foglalásnál automatikusan kimenjen, és legyen benne módosító link és navigációs gomb.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Mi történik a lemondott időponttal?</h3>
+      <p>Jó foglalórendszerben azonnal újra foglalhatóvá válik a weboldalon, a pultnál és telefonon is, a szerviz pedig értesítést kap, így szezonban a pultos felhívhatja azt, aki korábbi időpontot kért.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Kérjen-e előleget a gumiszerviz a szezonális cserére?</h3>
+      <p>Lakossági szettcserénél általában nem ez az első lépés, mert online fizetést és visszatérítési szabályokat igényel, és elriaszthat. Először az emlékeztetőt és az egyszerű lemondást érdemes bevezetni és mérni; előre rendelt abroncsnál vagy felnijavításnál lehet indokolt.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Mennyibe kerül egy emlékeztetőt küldő foglalórendszer?</h3>
+      <p>A Peak AI árlistája szerint a PEAK Booking 59 000 Ft + áfa havonta, ebben benne van az e-mailes visszaigazolás és az automata emlékeztető. Bevezetési díj nincs, bármikor lemondható (30 napos felmondási idővel), 14 napos díjmentes próbaüzemmel.</p>
+    </div>
+  </div>
+  <h2>Források</h2>
+  <ul class="note" style="padding-left:20px">
+    <li>Gurol-Urganci I. és mtsai: <a href="https://www.cochrane.org/evidence/CD007458_mobile-phone-messaging-reminders-attendance-healthcare-appointments" rel="nofollow noopener" target="_blank" style="color:var(--peak-accent-deep);text-decoration:none">Mobile phone messaging reminders for attendance at healthcare appointments</a>, Cochrane Database of Systematic Reviews 2013 (CD007458; <a href="https://pubmed.ncbi.nlm.nih.gov/24310741/" rel="nofollow noopener" target="_blank" style="color:var(--peak-accent-deep);text-decoration:none">PubMed</a>) — 8 RCT, 6615 résztvevő; megjelenés emlékeztető nélkül 67,8%, SMS-sel 78,6% (RR 1,14; 95% CI 1,03–1,26); telefonhívással 80,3%.</li>
+    <li>JóSzaki: <a href="https://joszaki.hu/arak/gumicsere" rel="nofollow noopener" target="_blank" style="color:var(--peak-accent-deep);text-decoration:none">Gumicsere árak 2026</a> — komplett garnitúra csere szereléssel, centírozással (személyautó, 4 db, 15–16") 14 000–18 000 Ft, átlag 16 000 Ft; csúcsidőszakban 1–2 hetes várakozás.</li>
+    <li>Mandiner, 2025. október 31.: <a href="https://mandiner.hu/belfold/2025/10/gumicsere-teli-abroncs-2025" rel="nofollow noopener" target="_blank" style="color:var(--peak-accent-deep);text-decoration:none">Gumicsere: mutatjuk, megéri-e már most télire váltani</a> — a gumicsere átlagosan 15–20 ezer Ft, SUV-nál akár 25 ezer Ft.</li>
+    <li>Peak AI árlista: <a href="/#csomagok" style="color:var(--peak-accent-deep);text-decoration:none">Csomagok</a> (2026. novemberi állapot).</li>
+  </ul>
+
+
+    <div class="author">
+      <div class="author-mark">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 80" role="img" aria-label="Peak AI">
+          <polygon points="20,72 60,6 100,72" fill="#1FAEA8"/>
+          <polygon points="0,72 28,32 56,72" fill="#1FAEA8" opacity="0.55"/>
+          <polygon points="62,72 90,38 118,72" fill="#1FAEA8" opacity="0.75"/>
+          <rect x="0" y="72" width="120" height="2" fill="#1FAEA8" opacity="0.9"/>
+        </svg>
+      </div>
+      <div>
+        <h4>Dr. Révész Barnabás</h4>
+        <p>
+          A Peak AI alapítója. Nukleáris medicina szakorvos, egészségügyi közgazdasági
+          végzettséggel — szabályozott iparágban szerzett tapasztalattal épít magyar nyelvű
+          AI telefonos asszisztenseket kis- és középvállalkozásoknak.
+          <a href="mailto:barnabas@peakai.hu" style="color:var(--peak-accent-deep);text-decoration:none">barnabas@peakai.hu</a>
+        </p>
+      </div>
+    </div>
+</article>
+  <div class="next-up">
+    <p class="post-meta">Következő cikk</p>
+    <a class="post-card" href="/blog/online-foglalorendszer-gumiszerviz-melyik-kell-mennyibe-kerul/">
+      <h2>Milyen online foglalórendszer kell egy gumiszerviznek, és mennyibe kerül?</h2>
+      <p>Rendszám, munkatípus, ütközésvédelem, napi lista és automatikus emlékeztető: mit tudjon egy gumiszervizes foglaló, és mennyibe kerül 2026-ban.</p>
+      <span class="post-more">Elolvasom →</span>
+    </a>
+  </div>
+  <div class="wrap" style="margin-top:56px">
+    <div class="cta on-dark">
+      <h2>Nézzük meg élőben, az Ön cégére szabva.</h2>
+      <p>
+        Megmutatjuk, hogyan hangzana az asszisztens az Ön vállalkozásának nevében, és
+        közben látja, ahogy a lefoglalt időpont megjelenik a naptárban. 10 perc az egész,
+        döntés és szerződés nélkül.
+      </p>
+      <a class="btn" href="/#kapcsolat">Kérek egy demót</a>
+    </div>
+  </div>
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="logo logo-foot" href="/" aria-label="Peak AI — Reach higher ground">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 180" role="img">
+            <g transform="translate(0,20)">
+              <polygon points="20,72 60,6 100,72" fill="#5DE8E2"/>
+              <polygon points="0,72 28,32 56,72" fill="#5DE8E2" opacity="0.55"/>
+              <polygon points="62,72 90,38 118,72" fill="#5DE8E2" opacity="0.75"/>
+              <rect x="0" y="72" width="120" height="2" fill="#5DE8E2" opacity="0.9"/>
+            </g>
+            <text x="170" y="85" font-family="Space Grotesk, system-ui, sans-serif" font-weight="600" font-size="72" letter-spacing="-2" fill="#F4F6FA">Peak</text>
+            <text x="354" y="85" font-family="Space Grotesk, system-ui, sans-serif" font-weight="300" font-style="italic" font-size="72" letter-spacing="-2" fill="#5DE8E2"> AI</text>
+            <line x1="170" y1="115" x2="220" y2="115" stroke="#5DE8E2" stroke-width="2"/>
+            <text x="232" y="121" font-family="JetBrains Mono, ui-monospace, monospace" font-weight="500" font-size="16" letter-spacing="3" fill="#A8B1BD">REACH HIGHER GROUND</text>
+          </svg>
+        </a>
+        <p style="margin:20px 0 0;color:var(--peak-mist)">AI telefonos asszisztens<br>kis- és középvállalkozásoknak.</p>
+      </div>
+      <div>
+        <span class="foot-h">Kapcsolat</span>
+        <p style="margin:0">
+          <a href="mailto:barnabas@peakai.hu">barnabas@peakai.hu</a><br>
+          Magyarország
+        </p>
+      </div>
+      <div>
+        <span class="foot-h">Oldalak</span>
+        <p style="margin:0">
+          <a href="/#hogyan">Hogyan működik</a><br>
+          <a href="/#csomagok">Csomagok</a><br>
+          <a href="/blog/">Blog</a><br>
+          <a href="/#kapcsolat">Kapcsolat</a>
+        </p>
+      </div>
+    </div>
+    <p class="tiny">
+      © 2026 Peak AI ·
+      A bruttó árak 27% áfával számolva, tájékoztató jelleggel. ·
+      A mintaszámítások szemléltető modellek, nem konkrét vállalkozás mért adatai.
+    </p>
+  </div>
+</footer>
+</body>
+</html>
